@@ -7,7 +7,7 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
             action("ERF Consumption Journal")
             {
                 Caption = 'Consumption Journal';
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
                 Image = Journal;
                 Promoted = true;
                 PromotedCategory = Process;
