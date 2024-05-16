@@ -2,7 +2,7 @@
 report 52102 "ERF Purchase Order"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/ERFPurchaseOrder.rdl';
+    RDLCLayout = './src/Reports/Layouts/ERFPurchaseOrder.rdl';
     Caption = 'ERF Purchase Order';
     ApplicationArea = all;
     UsageCategory = ReportsAndAnalysis;

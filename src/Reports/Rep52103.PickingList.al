@@ -1,7 +1,7 @@
 report 52103 "ERF Picking List"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './src/Reports/ERFPickingList.rdl';
+    RDLCLayout = './src/Reports/Layouts/ERFPickingList.rdl';
     Caption = 'ERF Picking List';
     ApplicationArea = all;
     UsageCategory = ReportsAndAnalysis;
