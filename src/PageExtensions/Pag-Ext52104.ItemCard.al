@@ -1,4 +1,4 @@
-pageextension 52100 "ERF Item Card" extends "Item Card"
+pageextension 52104 "ERF Item Card" extends "Item Card"
 {
     layout
     {
