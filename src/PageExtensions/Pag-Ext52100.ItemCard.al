@@ -9,6 +9,11 @@ pageextension 52100 "ERF Item Card" extends "Item Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies how many units of the item are inbound on purchase quotes, meaning listed on outstanding purchase quote lines.';
             }
+            field("ERF Qty. on Archive Purch. Quote"; Rec."ERF Qty. Archive Purch. Quote")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies how many units of the item are inbound on archive purchase quotes, meaning listed on outstanding archive purchase quote lines.';
+            }
         }
         addafter(Description)
         {
