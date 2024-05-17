@@ -2048,9 +2048,6 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
               <Height>11pt</Height>
               <Width>1.24016in</Width>
               <ZIndex>1</ZIndex>
-              <Visibility>
-                <Hidden>=Not(CBool(ReportItems!PrintFooter.Value))</Hidden>
-              </Visibility>
               <DataElementOutput>NoOutput</DataElementOutput>
               <Style />
             </Textbox>

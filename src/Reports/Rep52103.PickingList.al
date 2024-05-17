@@ -279,15 +279,42 @@ report 52103 "ERF Picking List"
                         column(LineNo_WhseActLine2; "Line No.")
                         {
                         }
+                        column(PickCode; ProdBOMLineRecGbl."ERF Pick Code")
+                        {
+
+                        }
+                        column(QtyInBin; BinContentsRecGbl.Quantity)
+                        {
+
+                        }
                     }
 
                     trigger OnAfterGetRecord()
+                    var
+                        ProdOrderLineRecLcl: Record "Prod. Order Line";
+
                     begin
                         if SumUpLines then begin
                             TempWhseActivLine.Get("Activity Type", "No.", "Line No.");
                             "Qty. (Base)" := TempWhseActivLine."Qty. (Base)";
                             "Qty. to Handle" := TempWhseActivLine."Qty. to Handle";
                         end;
+
+                        if ProdOrderLineRecLcl.get(ProdOrderLineRecLcl.Status::Released, TempWhseActivLine."Source No.", TempWhseActivLine."Source Line No.") then begin
+                            ProdBOMLineRecGbl.Reset();
+                            ProdBOMLineRecGbl.SetRange("Production BOM No.", ProdOrderLineRecLcl."Production BOM No.");
+                            ProdBOMLineRecGbl.SetRange("Version Code", ProdOrderLineRecLcl."Production BOM Version Code");
+                            ProdBOMLineRecGbl.SetRange("No.", TempWhseActivLine."No.");
+                            if ProdBOMLineRecGbl.FindFirst() then;
+                        end;
+
+                        BinContentsRecGbl.Reset();
+                        BinContentsRecGbl.SetRange("Location Code", TempWhseActivLine."Location Code");
+                        BinContentsRecGbl.SetRange("Bin Code", TempWhseActivLine."Bin Code");
+                        BinContentsRecGbl.SetRange("Variant Code", TempWhseActivLine."Variant Code");
+                        BinContentsRecGbl.SetRange("Item No.", TempWhseActivLine."No.");
+                        if BinContentsRecGbl.FindFirst() then
+                            BinContentsRecGbl.CalcFields(Quantity);
                     end;
 
                     trigger OnPreDataItem()
@@ -384,6 +411,8 @@ report 52103 "ERF Picking List"
     var
         Location: Record Location;
         TempWhseActivLine: Record "Warehouse Activity Line" temporary;
+        ProdBOMLineRecGbl: Record "Production BOM Line";
+        BinContentsRecGbl: Record "Bin Content";
         PickFilter: Text;
         InvtPick: Boolean;
         Counter: Integer;
