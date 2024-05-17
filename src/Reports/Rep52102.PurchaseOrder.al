@@ -191,6 +191,9 @@ report 52102 "ERF Purchase Order"
                     column(VendorInvoiceNo; "Purchase Header"."Vendor Invoice No.")
                     {
                     }
+                    column(COCTxt; COCTxt)
+                    {
+                    }
                     dataitem("Purchase Line"; "Purchase Line")
                     {
                         DataItemLink = "Document No." = field("No.");
@@ -287,12 +290,14 @@ report 52102 "ERF Purchase Order"
                         column(TotalCaption; TotalCaptionLbl)
                         {
                         }
-                        column(VendorItemNo; "Vendor Item No.")
+                        column(VendorItemNo; VendorItemNoVarGbl)
                         { }
                         column(RequestDeliveryDate; format("Promised Receipt Date"))
                         { }
 
                         trigger OnAfterGetRecord()
+                        var
+                            ItemVendRecLc: Record "Item Vendor";
                         begin
                             OnLineNumber := OnLineNumber + 1;
 
@@ -303,6 +308,18 @@ report 52102 "ERF Purchase Order"
                             //     ItemNumberToPrint := "Vendor Item No."
                             // else
                             ItemNumberToPrint := "No.";
+
+                            if "Vendor Item No." <> '' then begin
+                                VendorItemNoVarGbl := "Vendor Item No.";
+                            end else begin
+                                ItemVendRecLc.Reset();
+                                ItemVendRecLc.SetRange("Item No.", "No.");
+                                ItemVendRecLc.SetRange("Vendor No.", "Buy-from Vendor No.");
+                                ItemVendRecLc.SetRange("Variant Code", "Variant Code");
+                                if ItemVendRecLc.FindFirst() then
+                                    VendorItemNoVarGbl := "Vendor Item No.";
+                            end;
+
 
                             if Type = Type::" " then begin
                                 ItemNumberToPrint := '';
@@ -417,6 +434,8 @@ report 52102 "ERF Purchase Order"
             }
 
             trigger OnAfterGetRecord()
+            var
+                PurchaseLineRecLcl: Record "Purchase Line";
             begin
                 if PrintCompany then
                     if RespCenter.Get("Responsibility Center") then begin
@@ -461,6 +480,14 @@ report 52102 "ERF Purchase Order"
                     UseDate := "Posting Date"
                 else
                     UseDate := WorkDate();
+
+                PurchaseLineRecLcl.Reset();
+                PurchaseLineRecLcl.SetRange("Document Type", "Purchase Header"."Document Type");
+                PurchaseLineRecLcl.SetRange("Document No.", "Purchase Header"."No.");
+                PurchaseLineRecLcl.SetRange(Type, PurchaseLineRecLcl.Type::" ");
+                PurchaseLineRecLcl.SetFilter("No.", '%1', 'COC');
+                if PurchaseLineRecLcl.FindFirst() then
+                    COCTxt := 'COC';
             end;
 
             trigger OnPreDataItem()
@@ -581,6 +608,7 @@ report 52102 "ERF Purchase Order"
         CopyNo: Integer;
         NumberOfLines: Integer;
         OnLineNumber: Integer;
+        VendorItemNoVarGbl: Text[50];
         PurchasePrinted: Codeunit "Purch.Header-Printed";
         FormatAddress: Codeunit "Format Address";
         SalesTaxCalc: Codeunit "Sales Tax Calculate";
@@ -633,5 +661,6 @@ report 52102 "ERF Purchase Order"
         TotalCaptionLbl: Label 'Total:';
         VendorOrderNoLbl: Label 'Vendor Order No.';
         VendorInvoiceNoLbl: Label 'Vendor Invoice No.';
+        COCTxt: Text;
 }
 
