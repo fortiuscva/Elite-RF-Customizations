@@ -20,4 +20,11 @@ tableextension 52100 "ERF Item" extends Item
             FieldClass = FlowField;
         }
     }
+    procedure GetExtendedDescription(): Text
+    var
+        ItemAdditionalFields: Record "ERF Item Additional Fields";
+    begin
+        if ItemAdditionalFields.Get(Rec."No.") then
+            exit(ItemAdditionalFields."Extended Description");
+    end;
 }
