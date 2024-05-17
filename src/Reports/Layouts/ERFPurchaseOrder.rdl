@@ -1101,8 +1101,7 @@ CStr(last(Fields!BreakdownAmt4.Value)) +Chr(177)+
 CStr(Sum(Fields!AmountExclInvDisc.Value)) +Chr(177)+ 
 CStr(Sum(Fields!InvDiscountAmt_PurchaseLine.Value)) +Chr(177)+ 
 CStr(Last(Fields!TaxAmount.Value)) +Chr(177)+ 
-CStr(Sum(Fields!LineAmtTaxAmtInvDiscountAmt.Value) +Chr(177)+ 
-CStr(Fields!COCTxt.Value))</Value>
+CStr(Sum(Fields!LineAmtTaxAmtInvDiscountAmt.Value))</Value>
                                   <Style>
                                     <Color>Red</Color>
                                   </Style>
