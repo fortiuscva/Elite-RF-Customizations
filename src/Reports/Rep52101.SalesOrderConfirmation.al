@@ -801,7 +801,7 @@ report 52101 "ERF Sales Order Confirmation"
         SalesOrderDateCaptionLbl: Label 'Sales Order Date:';
         PageCaptionLbl: Label 'Page:';
         ShipViaCaptionLbl: Label 'Shipment Method';
-        TermsCaptionLbl: Label 'Terms';
+        TermsCaptionLbl: Label 'Payment Terms';
         PODateCaptionLbl: Label 'P.O. Date';
         TaxIdentTypeCaptionLbl: Label 'Tax Ident. Type';
         ItemNoCaptionLbl: Label 'Item No.';
