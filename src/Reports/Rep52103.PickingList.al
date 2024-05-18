@@ -312,6 +312,7 @@ report 52103 "ERF Picking List"
                         BinContentsRecGbl.SetRange("Location Code", TempWhseActivLine."Location Code");
                         BinContentsRecGbl.SetRange("Bin Code", TempWhseActivLine."Bin Code");
                         BinContentsRecGbl.SetRange("Variant Code", TempWhseActivLine."Variant Code");
+                        BinContentsRecGbl.SetRange("Item No.", TempWhseActivLine."No.");
                         if BinContentsRecGbl.FindFirst() then
                             BinContentsRecGbl.CalcFields(Quantity);
                     end;
