@@ -15,6 +15,8 @@ report 52103 "ERF Picking List"
             column(No_WhseActivHeader; "No.")
             {
             }
+            column(SourceNo_WarehouseActivityHeader; "Warehouse Activity Header"."Source No.")
+            { }
             dataitem("Integer"; "Integer")
             {
                 DataItemTableView = sorting(Number) where(Number = const(1));
