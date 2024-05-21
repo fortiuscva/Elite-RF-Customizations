@@ -309,6 +309,7 @@ report 52102 "ERF Purchase Order"
                             // else
                             ItemNumberToPrint := "No.";
 
+                            Clear(VendorItemNoVarGbl);
                             if "Vendor Item No." <> '' then begin
                                 VendorItemNoVarGbl := "Vendor Item No.";
                             end else begin
@@ -327,6 +328,7 @@ report 52102 "ERF Purchase Order"
                                 "Line Amount" := 0;
                                 "Inv. Discount Amount" := 0;
                                 Quantity := 0;
+                                "Promised Receipt Date" := 0D;
                             end;
 
                             AmountExclInvDisc := "Line Amount";
@@ -390,7 +392,6 @@ report 52102 "ERF Purchase Order"
                             OnLineNumber := 0;
                             PrintFooter := false;
 
-                            SetRange(Type, Type::Item);
                         end;
                     }
                 }
