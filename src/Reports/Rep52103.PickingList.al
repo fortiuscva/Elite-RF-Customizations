@@ -302,19 +302,19 @@ report 52103 "ERF Picking List"
                             "Qty. to Handle" := TempWhseActivLine."Qty. to Handle";
                         end;
 
-                        if ProdOrderLineRecLcl.get(ProdOrderLineRecLcl.Status::Released, TempWhseActivLine."Source No.", TempWhseActivLine."Source Line No.") then begin
+                        if ProdOrderLineRecLcl.get(ProdOrderLineRecLcl.Status::Released, WhseActLine."Source No.", WhseActLine."Source Line No.") then begin
                             ProdBOMLineRecGbl.Reset();
                             ProdBOMLineRecGbl.SetRange("Production BOM No.", ProdOrderLineRecLcl."Production BOM No.");
                             ProdBOMLineRecGbl.SetRange("Version Code", ProdOrderLineRecLcl."Production BOM Version Code");
-                            ProdBOMLineRecGbl.SetRange("No.", TempWhseActivLine."No.");
+                            ProdBOMLineRecGbl.SetRange("No.", WhseActLine."Item No.");
                             if ProdBOMLineRecGbl.FindFirst() then;
                         end;
 
                         BinContentsRecGbl.Reset();
-                        BinContentsRecGbl.SetRange("Location Code", TempWhseActivLine."Location Code");
-                        BinContentsRecGbl.SetRange("Bin Code", TempWhseActivLine."Bin Code");
-                        BinContentsRecGbl.SetRange("Variant Code", TempWhseActivLine."Variant Code");
-                        BinContentsRecGbl.SetRange("Item No.", TempWhseActivLine."No.");
+                        BinContentsRecGbl.SetRange("Location Code", WhseActLine."Location Code");
+                        BinContentsRecGbl.SetRange("Bin Code", WhseActLine."Bin Code");
+                        BinContentsRecGbl.SetRange("Variant Code", WhseActLine."Variant Code");
+                        BinContentsRecGbl.SetRange("Item No.", WhseActLine."Item No.");
                         if BinContentsRecGbl.FindFirst() then
                             BinContentsRecGbl.CalcFields(Quantity);
                     end;
