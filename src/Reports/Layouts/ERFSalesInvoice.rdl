@@ -934,7 +934,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>17.8843cm</Height>
+                  <Height>16.66908cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -5219,152 +5219,6 @@
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </Tablix>
-                            <Textbox Name="CompanyLegalStatement">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!CompanyLegalStatement.Value</Value>
-                                      <Style>
-                                        <FontFamily>Segoe UI</FontFamily>
-                                        <FontSize>8pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>CompanyLegalStatement</rd:DefaultName>
-                              <Top>17.35347cm</Top>
-                              <Left>0.02485cm</Left>
-                              <Height>11pt</Height>
-                              <Width>18cm</Width>
-                              <ZIndex>3</ZIndex>
-                              <Visibility>
-                                <Hidden>=Fields!CompanyLegalStatement.Value = ""</Hidden>
-                              </Visibility>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>5pt</PaddingLeft>
-                                <PaddingRight>5pt</PaddingRight>
-                              </Style>
-                            </Textbox>
-                            <Tablix Name="Tablix2">
-                              <TablixBody>
-                                <TablixColumns>
-                                  <TablixColumn>
-                                    <Width>0.07938cm</Width>
-                                  </TablixColumn>
-                                </TablixColumns>
-                                <TablixRows>
-                                  <TablixRow>
-                                    <Height>0.42333cm</Height>
-                                    <TablixCells>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="Textbox98">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value />
-                                                    <Style />
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox98</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>None</Style>
-                                              </Border>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                    </TablixCells>
-                                  </TablixRow>
-                                </TablixRows>
-                              </TablixBody>
-                              <TablixColumnHierarchy>
-                                <TablixMembers>
-                                  <TablixMember />
-                                </TablixMembers>
-                              </TablixColumnHierarchy>
-                              <TablixRowHierarchy>
-                                <TablixMembers>
-                                  <TablixMember>
-                                    <Group Name="Group1" />
-                                    <TablixHeader>
-                                      <Size>17.80795cm</Size>
-                                      <CellContents>
-                                        <Textbox Name="Textbox10">
-                                          <CanGrow>true</CanGrow>
-                                          <KeepTogether>true</KeepTogether>
-                                          <Paragraphs>
-                                            <Paragraph>
-                                              <TextRuns>
-                                                <TextRun>
-                                                  <Value>=Fields!ACHInformationName.Value</Value>
-                                                  <Style>
-                                                    <FontStyle>Normal</FontStyle>
-                                                    <FontFamily>Segoe UI</FontFamily>
-                                                    <FontSize>8pt</FontSize>
-                                                  </Style>
-                                                </TextRun>
-                                              </TextRuns>
-                                              <Style />
-                                            </Paragraph>
-                                          </Paragraphs>
-                                          <rd:DefaultName>Textbox10</rd:DefaultName>
-                                          <Style>
-                                            <Border>
-                                              <Color>LightGrey</Color>
-                                              <Style>None</Style>
-                                            </Border>
-                                            <PaddingLeft>2pt</PaddingLeft>
-                                            <PaddingRight>2pt</PaddingRight>
-                                            <PaddingTop>2pt</PaddingTop>
-                                            <PaddingBottom>2pt</PaddingBottom>
-                                          </Style>
-                                        </Textbox>
-                                      </CellContents>
-                                    </TablixHeader>
-                                  </TablixMember>
-                                </TablixMembers>
-                              </TablixRowHierarchy>
-                              <Filters>
-                                <Filter>
-                                  <FilterExpression>=Fields!LineFeeCaptionText.Value</FilterExpression>
-                                  <Operator>GreaterThan</Operator>
-                                  <FilterValues>
-                                    <FilterValue>=""</FilterValue>
-                                  </FilterValues>
-                                </Filter>
-                              </Filters>
-                              <Top>16.68825cm</Top>
-                              <Left>0.16301cm</Left>
-                              <Height>0.42333cm</Height>
-                              <Width>17.88733cm</Width>
-                              <ZIndex>4</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Tablix>
                             <Tablix Name="Tablix3">
                               <TablixBody>
                                 <TablixColumns>
@@ -5503,7 +5357,7 @@
                               <Left>0.16301cm</Left>
                               <Height>1.4636cm</Height>
                               <Width>3.3782cm</Width>
-                              <ZIndex>5</ZIndex>
+                              <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -5866,7 +5720,7 @@
                               <Left>11.40301cm</Left>
                               <Height>1.76266cm</Height>
                               <Width>7cm</Width>
-                              <ZIndex>6</ZIndex>
+                              <ZIndex>4</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -5964,7 +5818,7 @@
                               <Left>0.09699cm</Left>
                               <Height>0.4cm</Height>
                               <Width>18.30602cm</Width>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -5995,7 +5849,7 @@
                               <Left>1.0258cm</Left>
                               <Height>0.5cm</Height>
                               <Width>16.44839cm</Width>
-                              <ZIndex>8</ZIndex>
+                              <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -6028,7 +5882,7 @@
                               <Left>4.17736cm</Left>
                               <Height>0.5cm</Height>
                               <Width>14.22565cm</Width>
-                              <ZIndex>9</ZIndex>
+                              <ZIndex>7</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -6074,7 +5928,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.22049cm</Top>
-            <Height>17.8843cm</Height>
+            <Height>16.66908cm</Height>
             <Width>18.54551cm</Width>
             <Style>
               <Border>
@@ -6082,8 +5936,77 @@
               </Border>
             </Style>
           </Tablix>
+          <Tablix Name="Tablix2">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>7.2625cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>1.5525cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>= "Please send ACH or Domestic Payments to:" + System.Environment.NewLine + "Bank Information:" + System.Environment.NewLine + "Bank Name/Address: Byline Bank" + System.Environment.NewLine + "180 N. LaSalle St. Chicago, IL 60601" +System.Environment.NewLine +"Account Name: Elite RF LLC"+System.Environment.NewLine +"Routing Number: 071001533" + System.Environment.NewLine + "Account Number: 6572032468" + System.Environment.NewLine + "EIN# 46-4452602" +System.Environment.NewLine + "Swift Code: BYLIUS44"</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <rd:Selected>true</rd:Selected>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <Top>17.1042cm</Top>
+            <Left>0.0762cm</Left>
+            <Height>1.5525cm</Height>
+            <Width>7.2625cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
         </ReportItems>
-        <Height>18.47521cm</Height>
+        <Height>18.6567cm</Height>
         <Style />
       </Body>
       <Width>18.54551cm</Width>
