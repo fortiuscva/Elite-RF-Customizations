@@ -822,6 +822,12 @@
         <Field Name="RightHeaderValue">
           <DataField>RightHeaderValue</DataField>
         </Field>
+        <Field Name="ACHInformationName">
+          <DataField>ACHInformationName</DataField>
+        </Field>
+        <Field Name="ACHInformationValue">
+          <DataField>ACHInformationValue</DataField>
+        </Field>
         <Field Name="GreetingText">
           <DataField>GreetingText</DataField>
         </Field>
@@ -5304,14 +5310,14 @@
                                     <TablixHeader>
                                       <Size>17.80795cm</Size>
                                       <CellContents>
-                                        <Textbox Name="Group1">
+                                        <Textbox Name="Textbox10">
                                           <CanGrow>true</CanGrow>
                                           <KeepTogether>true</KeepTogether>
                                           <Paragraphs>
                                             <Paragraph>
                                               <TextRuns>
                                                 <TextRun>
-                                                  <Value>=Fields!LineFeeCaptionText.Value</Value>
+                                                  <Value>=Fields!ACHInformationName.Value</Value>
                                                   <Style>
                                                     <FontStyle>Normal</FontStyle>
                                                     <FontFamily>Segoe UI</FontFamily>
@@ -5322,10 +5328,7 @@
                                               <Style />
                                             </Paragraph>
                                           </Paragraphs>
-                                          <rd:DefaultName>Group1</rd:DefaultName>
-                                          <Visibility>
-                                            <Hidden>=Fields!LineFeeCaptionText.Value = ""</Hidden>
-                                          </Visibility>
+                                          <rd:DefaultName>Textbox10</rd:DefaultName>
                                           <Style>
                                             <Border>
                                               <Color>LightGrey</Color>
@@ -5842,6 +5845,9 @@
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
+                                    <Visibility>
+                                      <Hidden>true</Hidden>
+                                    </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                   </TablixMember>
                                 </TablixMembers>

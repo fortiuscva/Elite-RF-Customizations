@@ -1029,6 +1029,17 @@ report 52106 "ERF Standard Sales - Invoice"
                 {
                 }
             }
+            dataitem(ACHInformation; "Name/Value Buffer")
+            {
+                DataItemTableView = sorting(ID);
+                UseTemporary = true;
+                column(ACHInformationName; Name)
+                {
+                }
+                column(ACHInformationValue; Value)
+                {
+                }
+            }
             dataitem(LetterText; "Integer")
             {
                 DataItemTableView = sorting(Number) where(Number = const(1));
@@ -1162,7 +1173,7 @@ report 52106 "ERF Standard Sales - Invoice"
 
                 FillLeftHeader();
                 FillRightHeader();
-
+                FillACHInformation();
                 if not Cust.Get("Bill-to Customer No.") then
                     Clear(Cust);
 
@@ -1660,6 +1671,25 @@ report 52106 "ERF Standard Sales - Invoice"
             OnAfterFillRightHeader(RightHeader, Header);
         end;
     end;
+
+    local procedure FillACHInformation()
+    var
+        IsHandled: Boolean;
+    begin
+
+        ACHInformation.DeleteAll();
+
+        FillNameValueTable(ACHInformation, 'Please send ACH or Domestic Payments to:', '');
+        FillNameValueTable(ACHInformation, 'Bank Information:', '');
+        FillNameValueTable(ACHInformation, 'Bank Name/Address:Byline Bank', '');
+        FillNameValueTable(ACHInformation, '180 N. LaSalle St. Chicago, IL 60601', '');
+        FillNameValueTable(ACHInformation, 'Account Name: Elite RF LLC', '');
+        FillNameValueTable(ACHInformation, 'Routing Number: 071001533', '');
+        FillNameValueTable(ACHInformation, 'Account Number: 6572032468', '');
+        FillNameValueTable(ACHInformation, 'EIN# 46-4452602', '');
+        FillNameValueTable(ACHInformation, 'Swift Code: BYLIUS44', '');
+    end;
+
 
     local procedure FillNameValueTable(var NameValueBuffer: Record "Name/Value Buffer"; Name: Text; Value: Text)
     var
