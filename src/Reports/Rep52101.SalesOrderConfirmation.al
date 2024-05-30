@@ -207,7 +207,7 @@ report 52101 "ERF Sales Order Confirmation"
                     { }
                     column(QuoteNo_SalesHeader; "Sales Header"."Quote NO.")
                     { }
-                    column(DueDate_SalesHeader; "Sales Header"."Due Date")
+                    column(DueDate_SalesHeader; "Sales Header"."Shipment Date")
                     { }
                     column(ShptDate_SalesHeader; "Sales Header"."Shipment Date")
                     {

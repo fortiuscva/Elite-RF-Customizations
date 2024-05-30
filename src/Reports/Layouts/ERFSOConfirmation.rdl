@@ -1396,7 +1396,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
         <Height>1.49047cm</Height>
         <Style />
       </Body>
-      <Width>18.08203cm</Width>
+      <Width>18.08204cm</Width>
       <Page>
         <PageHeader>
           <Height>10.12119cm</Height>
@@ -1514,6 +1514,9 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Height>13.9pt</Height>
               <Width>1.10237in</Width>
               <ZIndex>4</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="PONumberCaption1">
@@ -1558,7 +1561,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.65032in</Top>
+              <Top>3.48365in</Top>
               <Left>3.84822in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
@@ -1584,7 +1587,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.46976in</Top>
+              <Top>3.30309in</Top>
               <Left>3.84822in</Left>
               <Height>12pt</Height>
               <Width>1.43997in</Width>
@@ -1610,11 +1613,14 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.31698in</Top>
+              <Top>3.65032in</Top>
               <Left>3.84822in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
               <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="BillCaption1">
@@ -1713,6 +1719,9 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Height>11.9pt</Height>
               <Width>1.10237in</Width>
               <ZIndex>12</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="SalesInvHdrYourRef1">
@@ -1758,7 +1767,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.65032in</Top>
+              <Top>3.48365in</Top>
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
@@ -1933,7 +1942,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.48365in</Top>
+              <Top>3.31698in</Top>
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
@@ -1958,11 +1967,14 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.31698in</Top>
+              <Top>3.65032in</Top>
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
               <ZIndex>22</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress61">
@@ -2361,6 +2373,9 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Height>11pt</Height>
               <Width>1.10237in</Width>
               <ZIndex>38</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="TaxIdentType">
@@ -2386,6 +2401,9 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Height>11pt</Height>
               <Width>1.10237in</Width>
               <ZIndex>39</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress62">
