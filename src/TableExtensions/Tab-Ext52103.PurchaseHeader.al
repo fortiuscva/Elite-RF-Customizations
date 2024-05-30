@@ -4,7 +4,7 @@ tableextension 52103 "ERF Purchase Header" extends "Purchase Header"
     {
         field(52100; "ERF CoC Required"; Boolean)
         {
-            Caption = 'CoC Required';
+            Caption = 'COC Required';
             DataClassification = CustomerContent;
         }
     }
