@@ -8,4 +8,9 @@ tableextension 52103 "ERF Purchase Header" extends "Purchase Header"
             DataClassification = CustomerContent;
         }
     }
+
+    trigger OnInsert()
+    begin
+        "ERF CoC Required" := true;
+    end;
 }
