@@ -1477,8 +1477,6 @@
                   <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                  <RepeatOnNewPage>true</RepeatOnNewPage>
                   <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
@@ -1627,7 +1625,7 @@
         <Height>7.75203cm</Height>
         <Style />
       </Body>
-      <Width>16.71736cm</Width>
+      <Width>16.71737cm</Width>
       <Page>
         <PageHeader>
           <Height>1.692cm</Height>
