@@ -828,7 +828,7 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox12">
+                        <Textbox Name="Textbox38">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -847,7 +847,7 @@ Cstr(fields!VendorInvoiceNo.Value)</Value>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <rd:DefaultName>Textbox38</rd:DefaultName>
                           <Style>
                             <BackgroundColor>White</BackgroundColor>
                             <VerticalAlign>Top</VerticalAlign>
@@ -1340,7 +1340,7 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Height>0.66292in</Height>
+            <Height>0.66293in</Height>
             <Width>7.28822in</Width>
             <Visibility>
               <Hidden>=IIF(Fields!ItemNumberToPrint.Value &lt;&gt; "",FALSE,TRUE)</Hidden>
@@ -1348,10 +1348,10 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>1.68383cm</Height>
+        <Height>1.68384cm</Height>
         <Style />
       </Body>
-      <Width>18.5121cm</Width>
+      <Width>18.51208cm</Width>
       <Page>
         <PageHeader>
           <Height>8.54718cm</Height>
@@ -2065,7 +2065,7 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(10,2)</Value>
+                      <Value>=IIF(First(Fields!ERF_CoC_Required.Value, "DataSet_Result"), "COC","")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>15pt</FontSize>
@@ -2494,6 +2494,9 @@ End Function
       <Fields>
         <Field Name="No_PurchaseHeader">
           <DataField>No_PurchaseHeader</DataField>
+        </Field>
+        <Field Name="ERF_CoC_Required">
+          <DataField>ERF_CoC_Required</DataField>
         </Field>
         <Field Name="CompanyAddress1">
           <DataField>CompanyAddress1</DataField>

@@ -17,6 +17,8 @@ report 52102 "ERF Purchase Order"
             column(No_PurchaseHeader; "No.")
             {
             }
+            column(ERF_CoC_Required; "Purchase Header"."ERF CoC Required")
+            { }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = sorting(Number);
