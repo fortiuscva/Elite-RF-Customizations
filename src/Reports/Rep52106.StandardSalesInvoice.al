@@ -1029,6 +1029,7 @@ report 52106 "ERF Standard Sales - Invoice"
                 {
                 }
             }
+
             dataitem(LetterText; "Integer")
             {
                 DataItemTableView = sorting(Number) where(Number = const(1));
@@ -1128,6 +1129,7 @@ report 52106 "ERF Standard Sales - Invoice"
                         TotalAmountExclInclVATTextValue := TotalInclVATText;
                         TotalAmountExclInclVATValue := TotalAmountInclVAT;
                     end;
+
                 end;
             }
 
@@ -1162,7 +1164,6 @@ report 52106 "ERF Standard Sales - Invoice"
 
                 FillLeftHeader();
                 FillRightHeader();
-
                 if not Cust.Get("Bill-to Customer No.") then
                     Clear(Cust);
 
@@ -1660,6 +1661,7 @@ report 52106 "ERF Standard Sales - Invoice"
             OnAfterFillRightHeader(RightHeader, Header);
         end;
     end;
+
 
     local procedure FillNameValueTable(var NameValueBuffer: Record "Name/Value Buffer"; Name: Text; Value: Text)
     var
