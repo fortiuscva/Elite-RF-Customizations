@@ -1,7 +1,5 @@
-tableextension 52102 "ERF Purchase Line Archive" extends "Purchase Line Archive"
+tableextension 52108 "ERF Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
 {
-    LookupPageId = "ERF Purchase Lines Archive";
-    DrillDownPageId = "ERF Purchase Lines Archive";
     fields
     {
         field(52100; "ERF Job Id"; Code[20])
