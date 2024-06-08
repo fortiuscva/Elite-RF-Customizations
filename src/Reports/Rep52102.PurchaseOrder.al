@@ -497,10 +497,9 @@ report 52102 "ERF Purchase Order"
 
             trigger OnPreDataItem()
             begin
-                if PrintCompany then
-                    FormatAddress.Company(CompanyAddress, CompanyInformation)
-                else
-                    Clear(CompanyAddress);
+
+                FormatAddress.Company(CompanyAddress, CompanyInformation)
+
             end;
         }
     }
