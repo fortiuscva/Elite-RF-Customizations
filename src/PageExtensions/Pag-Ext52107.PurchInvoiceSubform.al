@@ -1,0 +1,14 @@
+pageextension 52107 "ERF Purch. Invoice Subform" extends "Purch. Invoice Subform"
+{
+    layout
+    {
+        addafter("No.")
+        {
+            field("ERF Job Id"; Rec."ERF Job Id")
+            {
+                ApplicationArea = all;
+                ToolTip = 'Job Id';
+            }
+        }
+    }
+}
