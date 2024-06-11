@@ -31,10 +31,10 @@
                   <Width>0.99327cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.09688cm</Width>
+                  <Width>2.62605cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.83306cm</Width>
+                  <Width>2.33035cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.10583cm</Width>
@@ -15259,7 +15259,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Height>18.14206cm</Height>
-            <Width>24.7864cm</Width>
+            <Width>24.81286cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
