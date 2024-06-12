@@ -294,7 +294,7 @@ report 52102 "ERF Purchase Order"
                         }
                         column(VendorItemNo; VendorItemNoVarGbl)
                         { }
-                        column(RequestDeliveryDate; format("Promised Receipt Date"))
+                        column(RequestDeliveryDate; format("Expected Receipt Date"))
                         { }
 
                         trigger OnAfterGetRecord()
