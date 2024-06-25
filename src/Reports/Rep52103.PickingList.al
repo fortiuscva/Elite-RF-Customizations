@@ -98,7 +98,7 @@ report 52103 "ERF Picking List"
                 column(QtytoHandle_WhseActLineCaption; WhseActLine.FieldCaption("Qty. to Handle"))
                 {
                 }
-                column(QtyBase_WhseActLineCaption; WhseActLine.FieldCaption("Qty. (Base)"))
+                column(QtyBase_WhseActLineCaption; QtyReqCaptionLbl)
                 {
                 }
                 column(DestinatnType_WhseActLineCaption; WhseActLine.FieldCaption("Destination Type"))
@@ -128,6 +128,12 @@ report 52103 "ERF Picking List"
                 column(QtyHandledCaption; QtyHandledCaptionLbl)
                 {
                 }
+                column(ProdOrderItemNo; ProdOrderLineRecGbl."Item No.")
+                {
+
+                }
+                column(ProdOrderQty; ProdOrderLineRecGbl.Quantity)
+                { }
                 dataitem("Warehouse Activity Line"; "Warehouse Activity Line")
                 {
                     DataItemLink = "Activity Type" = field(Type), "No." = field("No.");
@@ -259,7 +265,7 @@ report 52103 "ERF Picking List"
                     column(EmptyStringCaption; EmptyStringCaptionLbl)
                     {
                     }
-                    column(QtyPerUnitofMeasure; "Warehouse Activity Line"."Qty. per Unit of Measure")
+                    column(QtyPerUnitofMeasure; ProdOrderCompGbl."Qty. per Unit of Measure")
                     { }
                     dataitem(WhseActLine2; "Warehouse Activity Line")
                     {
@@ -308,6 +314,12 @@ report 52103 "ERF Picking List"
                             ProdBOMLineRecGbl.SetRange("Version Code", ProdOrderLineRecLcl."Production BOM Version Code");
                             ProdBOMLineRecGbl.SetRange("No.", WhseActLine."Item No.");
                             if ProdBOMLineRecGbl.FindFirst() then;
+
+                            ProdOrderCompGbl.Reset();
+                            ProdOrderCompGbl.SetRange(Status, ProdOrderCompGbl.Status::Released);
+                            ProdOrderCompGbl.SetRange("Prod. Order No.", WhseActLine."Source No.");
+                            ProdOrderCompGbl.SetRange("Prod. Order Line No.", WhseActLine."Source Line No.");
+                            if ProdOrderCompGbl.FindFirst() then;
                         end;
 
                         BinContentsRecGbl.Reset();
@@ -343,6 +355,16 @@ report 52103 "ERF Picking List"
 
                 if not IsReportInPreviewMode() then
                     CODEUNIT.Run(CODEUNIT::"Whse.-Printed", "Warehouse Activity Header");
+
+                WhseActivLineGbl.Reset();
+                WhseActivLineGbl.SetRange("Activity Type", "Warehouse Activity Header".Type);
+                WhseActivLineGbl.SetRange("No.", "Warehouse Activity Header"."No.");
+                if WhseActivLineGbl.FindFirst() then begin
+                    ProdOrderLineRecGbl.Reset();
+                    ProdOrderLineRecGbl.SetRange("Prod. Order No.", WhseActivLineGbl."Source No.");
+                    ProdOrderLineRecGbl.SetRange("Line No.", WhseActivLineGbl."Source Line No.");
+                    if ProdOrderLineRecGbl.FindFirst() then;
+                end;
             end;
         }
     }
@@ -415,6 +437,9 @@ report 52103 "ERF Picking List"
         TempWhseActivLine: Record "Warehouse Activity Line" temporary;
         ProdBOMLineRecGbl: Record "Production BOM Line";
         BinContentsRecGbl: Record "Bin Content";
+        ProdOrderLineRecGbl: Record "Prod. Order Line";
+        WhseActivLineGbl: Record "Warehouse Activity Line";
+        ProdOrderCompGbl: Record "Prod. Order Component";
         PickFilter: Text;
         InvtPick: Boolean;
         Counter: Integer;
@@ -423,6 +448,7 @@ report 52103 "ERF Picking List"
         WhseActLineDueDateCaptionLbl: Label 'Due Date';
         QtyHandledCaptionLbl: Label 'Qty. Handled';
         EmptyStringCaptionLbl: Label '____________';
+        QtyReqCaptionLbl: Label 'Qty Req';
 
     protected var
         BreakbulkFilter: Boolean;
