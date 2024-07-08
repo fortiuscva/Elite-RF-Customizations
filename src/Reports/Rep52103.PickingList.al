@@ -265,7 +265,7 @@ report 52103 "ERF Picking List"
                     column(EmptyStringCaption; EmptyStringCaptionLbl)
                     {
                     }
-                    column(QtyPerUnitofMeasure; ProdOrderCompGbl."Qty. per Unit of Measure")
+                    column(QtyPerUnitofMeasure; ProdOrderCompGbl."Quantity per")
                     { }
                     dataitem(WhseActLine2; "Warehouse Activity Line")
                     {
@@ -319,6 +319,7 @@ report 52103 "ERF Picking List"
                             ProdOrderCompGbl.SetRange(Status, ProdOrderCompGbl.Status::Released);
                             ProdOrderCompGbl.SetRange("Prod. Order No.", WhseActLine."Source No.");
                             ProdOrderCompGbl.SetRange("Prod. Order Line No.", WhseActLine."Source Line No.");
+                            ProdOrderCompGbl.SetRange("Line No.", WhseActLine."Source Subline No.");
                             if ProdOrderCompGbl.FindFirst() then;
                         end;
 
@@ -328,7 +329,9 @@ report 52103 "ERF Picking List"
                         BinContentsRecGbl.SetRange("Variant Code", WhseActLine."Variant Code");
                         BinContentsRecGbl.SetRange("Item No.", WhseActLine."Item No.");
                         if BinContentsRecGbl.FindFirst() then
-                            BinContentsRecGbl.CalcFields(Quantity);
+                            BinContentsRecGbl.CalcFields(Quantity)
+                        else
+                            clear(BinContentsRecGbl);
                     end;
 
                     trigger OnPreDataItem()
