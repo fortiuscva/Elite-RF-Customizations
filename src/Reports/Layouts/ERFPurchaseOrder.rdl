@@ -1541,22 +1541,28 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(16,1)</Value>
+                      <Value EvaluationMode="Constant">Send Invoices: INVOICES@ELITERF.COM</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.96755in</Top>
-              <Left>0.38631in</Left>
-              <Height>11pt</Height>
+              <Top>2.01755in</Top>
+              <Left>0.39881in</Left>
+              <Height>13.7pt</Height>
               <Width>2.65796in</Width>
               <ZIndex>7</ZIndex>
               <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
