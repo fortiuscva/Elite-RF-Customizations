@@ -308,6 +308,10 @@ report 52104 "ERF Sales Shipment"
                             { }
                             column(TempTrackingSpecBuffer_Qty_Base; TempTrackingSpecBuffer."Quantity (Base)")
                             { }
+                            column(TrackingSpecBufferNo; TempTrackingSpecBuffer."Item No.")
+                            { }
+                            column(TrackingSpecBufferDesc; TempTrackingSpecBuffer.Description)
+                            { }
 
                             trigger OnAfterGetRecord()
                             begin
@@ -319,7 +323,11 @@ report 52104 "ERF Sales Shipment"
 
                             trigger OnPreDataItem()
                             begin
+
                                 SetRange(Number, 1, TempTrackingSpecBuffer.Count);
+
+                                TempTrackingSpecBuffer.SetCurrentKey(
+                                "Source ID", "Source Type", "Source Subtype", "Source Batch Name", "Source Prod. Order Line", "Source Ref. No.");
                             end;
                         }
                         dataitem(AsmLoop; "Integer")
@@ -411,12 +419,10 @@ report 52104 "ERF Sales Shipment"
                                         AsmHeaderExists := SalesShipmentLine.AsmToShipmentExists(PostedAsmHeader);
                                     end;
 
-                                if TempSalesShipmentLine."No." <> '' then begin
-                                    ItemTrackingDocMgt.SetRetrieveAsmItemTracking(true);
-                                    TrackingSpecCount := ItemTrackingDocMgt.RetrieveDocumentItemTracking(
-                                          TempTrackingSpecBuffer, "Sales Shipment Header"."No.", DATABASE::"Sales Shipment Header", 0);
-                                    ItemTrackingDocMgt.SetRetrieveAsmItemTracking(false);
-                                end;
+                                TempTrackingSpecBuffer.DeleteAll();
+                                ItemTrackingDocMgt.FindShptRcptEntries(TempTrackingSpecBuffer,
+                                Database::"Sales Shipment Line", 0, TempSalesShipmentLine."Document No.", '', 0, TempSalesShipmentLine."Line No.",
+                                               TempSalesShipmentLine.Description);
                             end;
 
                             if OnLineNumber = NumberOfLines then
