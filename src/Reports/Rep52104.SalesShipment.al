@@ -66,7 +66,6 @@ report 52104 "ERF Sales Shipment"
                         "Line No." := HighestLineNo + 1000;
                         HighestLineNo := "Line No.";
                     end;
-                    TempSalesShipmentLine.Insert();
                 end;
             }
             dataitem(CopyLoop; "Integer")
@@ -297,6 +296,32 @@ report 52104 "ERF Sales Shipment"
                         column(BackOrderedCaption; BackOrderedCaptionLbl)
                         {
                         }
+                        dataitem(ItemTrackingBuff; Integer)
+                        {
+                            DataItemTableView = sorting(Number);
+
+                            column(TempTrackingSpecBuffer_SerialNo; TempTrackingSpecBuffer."Serial No.")
+                            { }
+                            column(TempTrackingSpecBuffer_EntryNo; TempTrackingSpecBuffer."Entry No.")
+                            { }
+                            column(Number; Number)
+                            { }
+                            column(TempTrackingSpecBuffer_Qty_Base; TempTrackingSpecBuffer."Quantity (Base)")
+                            { }
+
+                            trigger OnAfterGetRecord()
+                            begin
+                                if Number = 1 then
+                                    TempTrackingSpecBuffer.FindSet()
+                                else
+                                    TempTrackingSpecBuffer.Next();
+                            end;
+
+                            trigger OnPreDataItem()
+                            begin
+                                SetRange(Number, 1, TempTrackingSpecBuffer.Count);
+                            end;
+                        }
                         dataitem(AsmLoop; "Integer")
                         {
                             DataItemTableView = sorting(Number);
@@ -334,7 +359,6 @@ report 52104 "ERF Sales Shipment"
                                 SetRange(Number, 1, PostedAsmLine.Count);
                             end;
                         }
-
                         trigger OnAfterGetRecord()
                         var
                             SalesShipmentLine: Record "Sales Shipment Line";
@@ -386,6 +410,13 @@ report 52104 "ERF Sales Shipment"
                                         SalesShipmentLine.Get("Document No.", "Line No.");
                                         AsmHeaderExists := SalesShipmentLine.AsmToShipmentExists(PostedAsmHeader);
                                     end;
+
+                                if TempSalesShipmentLine."No." <> '' then begin
+                                    ItemTrackingDocMgt.SetRetrieveAsmItemTracking(true);
+                                    TrackingSpecCount := ItemTrackingDocMgt.RetrieveDocumentItemTracking(
+                                          TempTrackingSpecBuffer, "Sales Shipment Header"."No.", DATABASE::"Sales Shipment Header", 0);
+                                    ItemTrackingDocMgt.SetRetrieveAsmItemTracking(false);
+                                end;
                             end;
 
                             if OnLineNumber = NumberOfLines then
@@ -401,7 +432,6 @@ report 52104 "ERF Sales Shipment"
                         end;
                     }
                 }
-
                 trigger OnAfterGetRecord()
                 begin
                     if CopyNo = NoLoops then begin
@@ -682,11 +712,14 @@ report 52104 "ERF Sales Shipment"
         ShippedCaptionLbl: Label 'Shipped';
         OrderedCaptionLbl: Label 'Ordered';
         BackOrderedCaptionLbl: Label 'Back Ordered';
+        ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
+        TrackingSpecCount: Integer;
 
     protected var
         CompanyInfo1: Record "Company Information";
         CompanyInfo2: Record "Company Information";
         CompanyInfo3: Record "Company Information";
+        TempTrackingSpecBuffer: Record "Tracking Specification" temporary;
 
     procedure InitLogInteraction()
     begin
