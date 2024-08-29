@@ -22,15 +22,25 @@ pageextension 52114 "ERF Posted Purchase Receipts" extends "Posted Purchase Rece
         GetPurchInvLineDocNo();
     end;
 
-    local procedure GetPurchInvLineDocNo(): Code[20]
+    local procedure GetPurchInvLineDocNo() InvoiceDocNo: Code[20]
     var
         TempPurchInvLine: Record "Purch. Inv. Line" temporary;
+        InvFound: Boolean;
     begin
+        Clear(InvFound);
+        PurchRcptLine.Reset();
         PurchRcptLine.SetRange("Document No.", Rec."No.");
-        if PurchRcptLine.FindFirst() then begin
-            PurchRcptLine.GetPurchInvLines(TempPurchInvLine);
-            if TempPurchInvLine.FindFirst() then
-                exit(TempPurchInvLine."Document No.");
+        PurchRcptLine.SetFilter("No.", '<>%1', '');
+        if PurchRcptLine.FindSet() then begin
+            repeat
+                Clear(TempPurchInvLine);
+                TempPurchInvLine.DeleteAll();
+                PurchRcptLine.GetPurchInvLines(TempPurchInvLine);
+                if TempPurchInvLine.FindFirst() then begin
+                    InvoiceDocNo := TempPurchInvLine."Document No.";
+                    InvFound := true;
+                end;
+            until (PurchRcptLine.Next() = 0) or InvFound;
         end;
     end;
 
