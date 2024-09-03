@@ -3722,6 +3722,12 @@ Shared PictureData3 as Object
         <Field Name="TempTrackingSpecBuffer_Qty_BaseFormat">
           <DataField>TempTrackingSpecBuffer_Qty_BaseFormat</DataField>
         </Field>
+        <Field Name="TrackingSpecBufferNo">
+          <DataField>TrackingSpecBufferNo</DataField>
+        </Field>
+        <Field Name="TrackingSpecBufferDesc">
+          <DataField>TrackingSpecBufferDesc</DataField>
+        </Field>
         <Field Name="PostedAsmLineItemNo">
           <DataField>PostedAsmLineItemNo</DataField>
         </Field>
