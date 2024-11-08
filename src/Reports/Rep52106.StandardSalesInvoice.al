@@ -1653,6 +1653,7 @@ report 52106 "ERF Standard Sales - Invoice"
             FillNameValueTable(RightHeader, CompanyInfo.GetRegistrationNumberLbl(), CompanyInfo.GetRegistrationNumber());
             FillNameValueTable(RightHeader, CompanyInfo.GetVATRegistrationNumberLbl(), CompanyInfo.GetVATRegistrationNumber());
             FillNameValueTable(RightHeader, CompanyInfoBankNameLbl, CompanyBankAccount.Name);
+            FillNameValueTable(RightHeader, 'Send remittance to:', 'remittance@eliterf.com');
             FillNameValueTable(RightHeader, CompanyInfoGiroNoLbl, CompanyInfo."Giro No.");
             FillNameValueTable(RightHeader, CompanyBankAccount.FieldCaption(IBAN), CompanyBankAccount.IBAN);
             FillNameValueTable(RightHeader, CompanyBankAccount.FieldCaption("SWIFT Code"), CompanyBankAccount."SWIFT Code");
