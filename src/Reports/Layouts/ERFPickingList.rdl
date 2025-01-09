@@ -31,7 +31,7 @@
                   <Width>0.99327cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.44626cm</Width>
+                  <Width>4.74274cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.33035cm</Width>
@@ -46,7 +46,7 @@
                   <Width>1.4cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.1825cm</Width>
+                  <Width>1.84236cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.95292cm</Width>
@@ -16012,14 +16012,14 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Height>19.16506cm</Height>
-            <Width>24.73347cm</Width>
+            <Width>25.6898cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>19.34206cm</Height>
         <Style />
       </Body>
-      <Width>24.83932cm</Width>
+      <Width>25.71244cm</Width>
       <Page>
         <PageHeader>
           <Height>1.692cm</Height>
@@ -16064,7 +16064,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
                 </Paragraph>
               </Paragraphs>
               <Top>0.846cm</Top>
-              <Left>23.23174cm</Left>
+              <Left>24.18424cm</Left>
               <Height>0.423cm</Height>
               <Width>1.05556cm</Width>
               <ZIndex>1</ZIndex>
@@ -16092,7 +16092,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
                 </Paragraph>
               </Paragraphs>
               <Top>0.423cm</Top>
-              <Left>23.2373cm</Left>
+              <Left>24.1898cm</Left>
               <Height>0.423cm</Height>
               <Width>1.5cm</Width>
               <ZIndex>2</ZIndex>
@@ -16142,7 +16142,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Left>21.5873cm</Left>
+              <Left>22.5398cm</Left>
               <Height>0.423cm</Height>
               <Width>3.15cm</Width>
               <ZIndex>4</ZIndex>
@@ -16169,7 +16169,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
                 </Paragraph>
               </Paragraphs>
               <Top>1.269cm</Top>
-              <Left>21.4873cm</Left>
+              <Left>22.4398cm</Left>
               <Height>0.423cm</Height>
               <Width>3.25cm</Width>
               <ZIndex>5</ZIndex>
@@ -16195,7 +16195,7 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
                 </Paragraph>
               </Paragraphs>
               <Top>0.846cm</Top>
-              <Left>24.2873cm</Left>
+              <Left>25.2398cm</Left>
               <Height>0.423cm</Height>
               <Width>0.45cm</Width>
               <ZIndex>6</ZIndex>
@@ -16206,13 +16206,14 @@ and Fields!No_WhseActivHeader.Value=previous(Fields!No_WhseActivHeader.Value),tr
           </ReportItems>
           <Style />
         </PageHeader>
-        <PageHeight>8.5in</PageHeight>
-        <PageWidth>11in</PageWidth>
+        <PageHeight>21.59cm</PageHeight>
+        <PageWidth>27.94cm</PageWidth>
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
-        <LeftMargin>1.5cm</LeftMargin>
+        <LeftMargin>0.75cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
         <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
