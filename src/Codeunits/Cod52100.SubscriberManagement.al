@@ -36,6 +36,13 @@ codeunit 52100 "ERF Subscriber Management"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post (Yes/No)", OnAfterConfirmPost, '', false, false)]
+    local procedure "Sales-Post (Yes/No)_OnAfterConfirmPost"(var SalesHeader: Record "Sales Header")
+    begin
+        if SalesHeader."Posting Date" <> WorkDate() then
+            SalesHeader."Posting Date" := WorkDate();
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
