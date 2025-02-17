@@ -346,7 +346,21 @@ report 52103 "ERF Picking List"
                     end;
                 }
             }
-
+            dataitem("Prod.Order Component"; "Prod. Order Component")
+            {
+                DataItemLinkReference = "Warehouse Activity Header";
+                DataItemLink = "Prod. Order No." = field("Source No.");
+                DataItemTableView = sorting(Status, "Prod. Order No.", "Prod. Order Line No.", "Item Low-Level Code") where("Quantity per" = const(0));
+                column(Item_No_; "Prod.Order Component"."Item No.") { }
+                column(Description; "Prod.Order Component".Description) { }
+                column(Quantity_per; "Prod.Order Component"."Quantity per") { }
+                column(Unit_of_Measure_Code; "Prod.Order Component"."Unit of Measure Code") { }
+                column(Unit_Cost; "Prod.Order Component"."Unit Cost") { }
+                column(Prod__Order_No_; "Prod. Order No.") { }
+                column(Prod__Order_Line_No_; "Prod. Order Line No.") { }
+                column(Line_No_; "Line No.") { }
+                column(ProOrderComponentCount; "Prod.Order Component".Count) { }
+            }
             trigger OnAfterGetRecord()
             begin
                 GetLocation("Location Code");
