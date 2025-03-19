@@ -571,8 +571,8 @@ report 52101 "ERF Sales Order Confirmation"
                         CompanyInformation."Fax No." := RespCenter."Fax No.";
                     end;
 
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
-                CurrReport.FormatRegion := Language.GetFormatRegionOrDefault("Format Region");
+                CurrReport.Language := LanguageGbl.GetLanguageIdOrDefault("Language Code");
+                CurrReport.FormatRegion := LanguageGbl.GetFormatRegionOrDefault("Format Region");
 
                 FormatDocumentFields("Sales Header");
 
@@ -744,7 +744,7 @@ report 52101 "ERF Sales Order Confirmation"
         Cust: Record Customer;
         AsmHeader: Record "Assembly Header";
         AsmLine: Record "Assembly Line";
-        Language: Codeunit Language;
+        LanguageGbl: Codeunit Language;
         SalesPrinted: Codeunit "Sales-Printed";
         FormatAddress: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
