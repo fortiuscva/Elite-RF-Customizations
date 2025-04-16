@@ -448,8 +448,8 @@ report 52102 "ERF Purchase Order"
                         CompanyInformation."Phone No." := RespCenter."Phone No.";
                         CompanyInformation."Fax No." := RespCenter."Fax No.";
                     end;
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
-                CurrReport.FormatRegion := Language.GetFormatRegionOrDefault("Format Region");
+                CurrReport.Language := LanguageGbl.GetLanguageIdOrDefault("Language Code");
+                CurrReport.FormatRegion := LanguageGbl.GetFormatRegionOrDefault("Format Region");
 
                 if "Purchaser Code" = '' then
                     Clear(SalesPurchPerson)
@@ -599,7 +599,7 @@ report 52102 "ERF Purchase Order"
         TempSalesTaxAmtLine: Record "Sales Tax Amount Line" temporary;
         TaxArea: Record "Tax Area";
         Vend: Record Vendor;
-        Language: Codeunit Language;
+        LanguageGbl: Codeunit Language;
         CompanyAddress: array[8] of Text[100];
         BuyFromAddress: array[8] of Text[100];
         ShipToAddress: array[8] of Text[100];
