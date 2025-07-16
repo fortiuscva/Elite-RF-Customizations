@@ -296,6 +296,8 @@ report 52104 "ERF Sales Shipment"
                         column(BackOrderedCaption; BackOrderedCaptionLbl)
                         {
                         }
+                        column(SerialNo; SerialNo)
+                        { }
                         dataitem(ItemTrackingBuff; Integer)
                         {
                             DataItemTableView = sorting(Number);
@@ -312,7 +314,6 @@ report 52104 "ERF Sales Shipment"
                             { }
                             column(TrackingSpecBufferDesc; TempTrackingSpecBuffer.Description)
                             { }
-
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then
@@ -427,6 +428,12 @@ report 52104 "ERF Sales Shipment"
 
                             if OnLineNumber = NumberOfLines then
                                 PrintFooter := true;
+
+                            Clear(SerialNo);
+                            if TempTrackingSpecBuffer.FindSet() then
+                                repeat
+                                    SerialNo += TempTrackingSpecBuffer."Serial No." + ' ';
+                                until TempTrackingSpecBuffer.Next() = 0;
                         end;
 
                         trigger OnPreDataItem()
@@ -689,6 +696,7 @@ report 52104 "ERF Sales Shipment"
         ShippingAgentCodeText: Text;
         ShippingAgentCodeLabel: Text;
         LogInteraction: Boolean;
+        SerialNo: Text;
         Text000: Label 'COPY';
         Text001: Label 'Tracking No.';
         Text002: Label 'Specific Tracking No.';
