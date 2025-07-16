@@ -705,7 +705,7 @@ report 52104 "ERF Sales Shipment"
         PONumberCaptionLbl: Label 'P.O. Number';
         SalesPersonCaptionLbl: Label 'SalesPerson';
         ShipCaptionLbl: Label 'Ship';
-        ShipmentCaptionLbl: Label 'SHIPMENT';
+        ShipmentCaptionLbl: Label 'PACKING SLIP';
         ShipmentNumberCaptionLbl: Label 'Shipment Number:';
         ShipmentDateCaptionLbl: Label 'Shipment Date:';
         PageCaptionLbl: Label 'Page:';

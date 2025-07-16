@@ -1639,7 +1639,7 @@ report 52106 "ERF Standard Sales - Invoice"
         if not IsHandled then begin
             RightHeader.DeleteAll();
 
-            FillNameValueTable(RightHeader, EMailLbl, CompanyInfo."E-Mail");
+            //FillNameValueTable(RightHeader, EMailLbl, CompanyInfo."E-Mail");
             FillNameValueTable(RightHeader, HomePageLbl, CompanyInfo."Home Page");
             FillNameValueTable(RightHeader, CompanyInfoPhoneNoLbl, CompanyInfo."Phone No.");
             FillNameValueTable(RightHeader, CompanyInfo.GetRegistrationNumberLbl(), CompanyInfo.GetRegistrationNumber());
@@ -1683,7 +1683,7 @@ report 52106 "ERF Standard Sales - Invoice"
     local procedure FormatDocumentFields(SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
         with SalesInvoiceHeader do begin
-            FormatDocument.SetTotalLabels(GetCurrencySymbol(), TotalText, TotalInclVATText, TotalExclVATText);
+            FormatDocument.SetTotalLabels('USD', TotalText, TotalInclVATText, TotalExclVATText);
             FormatDocument.SetSalesPerson(SalespersonPurchaser, "Salesperson Code", SalesPersonText);
             FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
             FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
