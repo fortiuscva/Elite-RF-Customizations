@@ -32,12 +32,29 @@ report 52104 "ERF Sales Shipment"
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    SalesShipmentLinePrev: Record "Sales Shipment Line";
                 begin
                     TempSalesShipmentLine := "Sales Shipment Line";
                     TempSalesShipmentLine.Insert();
                     TempSalesShipmentLineAsm := "Sales Shipment Line";
                     TempSalesShipmentLineAsm.Insert();
                     HighestLineNo := "Line No.";
+                    AlreadyShippedQty := 0;
+
+                    if TempSalesShipmentLine."Order No." <> '' then begin
+                        SalesShipmentLinePrev.SetRange("Order No.", TempSalesShipmentLine."Order No.");
+                        SalesShipmentLinePrev.SetRange("Line No.", TempSalesShipmentLine."Line No.");
+                        SalesShipmentLinePrev.SetRange(Type, Type::Item);
+                        SalesShipmentLinePrev.SetRange("No.", TempSalesShipmentLine."No.");
+                        SalesShipmentLinePrev.SetFilter("Document No.", '<>%1', TempSalesShipmentLine."Document No."); // Exclude current shipment
+
+                        if SalesShipmentLinePrev.FindSet() then
+                            repeat
+                                AlreadyShippedQty += SalesShipmentLinePrev.Quantity;
+                            until SalesShipmentLinePrev.Next() = 0;
+                    end;
+
                 end;
 
                 trigger OnPreDataItem()
@@ -266,6 +283,10 @@ report 52104 "ERF Sales Shipment"
                         {
                             DecimalPlaces = 0 : 5;
                         }
+                        column(AlreadyShippedQty; AlreadyShippedQty)
+                        {
+                            DecimalPlaces = 0 : 5;
+                        }
                         column(TempSalesShptLineDesc; TempSalesShipmentLine.Description + ' ' + TempSalesShipmentLine."Description 2")
                         {
                         }
@@ -294,6 +315,9 @@ report 52104 "ERF Sales Shipment"
                         {
                         }
                         column(BackOrderedCaption; BackOrderedCaptionLbl)
+                        {
+                        }
+                        column(AlreadyShippedCaption; AlreadyShippedCaptionLbl)
                         {
                         }
                         column(SerialNo; SerialNo)
@@ -723,11 +747,13 @@ report 52104 "ERF Sales Shipment"
         ItemNoCaptionLbl: Label 'Item No.';
         UnitCaptionLbl: Label 'Unit';
         DescriptionCaptionLbl: Label 'Description';
-        ShippedCaptionLbl: Label 'Shipped';
-        OrderedCaptionLbl: Label 'Ordered';
+        ShippedCaptionLbl: Label 'Current Ship Qty.';
+        OrderedCaptionLbl: Label 'Total Order Qty.';
         BackOrderedCaptionLbl: Label 'Back Ordered';
+        AlreadyShippedCaptionLbl: Label 'Already Shipped';
         ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
         TrackingSpecCount: Integer;
+        AlreadyShippedQty: Decimal;
 
     protected var
         CompanyInfo1: Record "Company Information";
