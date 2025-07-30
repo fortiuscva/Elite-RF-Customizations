@@ -59,8 +59,8 @@ report 52109 "Inventory Pick Label Printing"
         }
     }
     var
-        PickCodeCaptionLbl: Label 'Pick Code: ';
-        ProdOrderNoCaptionLbl: Label 'P/N: ';
+        PickCodeCaptionLbl: Label 'P/N: ';
+        ProdOrderNoCaptionLbl: Label 'Prod. No.: ';
         QtyReqCaptionLbl: Label 'Qty. Required: ';
         ProdOrderNoValue: Code[20];
 
