@@ -32,29 +32,12 @@ report 52104 "ERF Sales Shipment"
                 }
 
                 trigger OnAfterGetRecord()
-                var
-                    SalesShipmentLinePrev: Record "Sales Shipment Line";
                 begin
                     TempSalesShipmentLine := "Sales Shipment Line";
                     TempSalesShipmentLine.Insert();
                     TempSalesShipmentLineAsm := "Sales Shipment Line";
                     TempSalesShipmentLineAsm.Insert();
                     HighestLineNo := "Line No.";
-                    AlreadyShippedQty := 0;
-
-                    if TempSalesShipmentLine."Order No." <> '' then begin
-                        SalesShipmentLinePrev.SetRange("Order No.", TempSalesShipmentLine."Order No.");
-                        SalesShipmentLinePrev.SetRange("Line No.", TempSalesShipmentLine."Line No.");
-                        SalesShipmentLinePrev.SetRange(Type, Type::Item);
-                        SalesShipmentLinePrev.SetRange("No.", TempSalesShipmentLine."No.");
-                        SalesShipmentLinePrev.SetFilter("Document No.", '<>%1', TempSalesShipmentLine."Document No."); // Exclude current shipment
-
-                        if SalesShipmentLinePrev.FindSet() then
-                            repeat
-                                AlreadyShippedQty += SalesShipmentLinePrev.Quantity;
-                            until SalesShipmentLinePrev.Next() = 0;
-                    end;
-
                 end;
 
                 trigger OnPreDataItem()
@@ -244,7 +227,7 @@ report 52104 "ERF Sales Shipment"
                     column(ShipmentNumberCaption; ShipmentNumberCaptionLbl)
                     {
                     }
-                    column(ShipmentDateCaption; ShipmentDateCaptionLbl)
+                    column(ShipmentDateCaption; PostedShipmentDateCaptionLbl)
                     {
                     }
                     column(PageCaption; PageCaptionLbl)
@@ -448,6 +431,17 @@ report 52104 "ERF Sales Shipment"
                                 ItemTrackingDocMgt.FindShptRcptEntries(TempTrackingSpecBuffer,
                                 Database::"Sales Shipment Line", 0, TempSalesShipmentLine."Document No.", '', 0, TempSalesShipmentLine."Line No.",
                                                TempSalesShipmentLine.Description);
+                                AlreadyShippedQty := 0;
+                                SalesShipmentLine.Reset();
+                                SalesShipmentLine.SetFilter("Document No.", '<>%1', TempSalesShipmentLine."Document No.");
+                                SalesShipmentLine.SetRange("Order No.", TempSalesShipmentLine."Order No.");
+                                SalesShipmentLine.SetRange("No.", TempSalesShipmentLine."No.");
+                                SalesShipmentLine.SetFilter(Quantity, '<>%1', 0);
+                                if SalesShipmentLine.FindSet() then begin
+                                    repeat
+                                        AlreadyShippedQty += SalesShipmentLine.Quantity;
+                                    until SalesShipmentLine.Next = 0;
+                                end;
                             end;
 
                             if OnLineNumber = NumberOfLines then
@@ -739,7 +733,7 @@ report 52104 "ERF Sales Shipment"
         ShipCaptionLbl: Label 'Ship';
         ShipmentCaptionLbl: Label 'PACKING SLIP';
         ShipmentNumberCaptionLbl: Label 'Shipment Number:';
-        ShipmentDateCaptionLbl: Label 'Shipment Date:';
+        PostedShipmentDateCaptionLbl: Label 'Posted Shipment Date:';
         PageCaptionLbl: Label 'Page:';
         ShipViaCaptionLbl: Label 'Ship Via';
         PODateCaptionLbl: Label 'P.O. Date';
