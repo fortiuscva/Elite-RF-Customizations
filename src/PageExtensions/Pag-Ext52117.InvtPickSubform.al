@@ -8,6 +8,7 @@ pageextension 52117 "ERF Invt. Pick Subform" extends "Invt. Pick Subform"
             {
                 ApplicationArea = all;
                 Caption = 'Pick Code';
+                Editable = false;
             }
         }
     }
