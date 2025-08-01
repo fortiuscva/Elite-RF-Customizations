@@ -8,11 +8,11 @@ report 52109 "Inventory Pick Label Printing"
     {
         dataitem(WarehouseActivityLine; "Warehouse Activity Line")
         {
-            column(PickCodeCaption; PickCodeCaptionLbl)
+            column(PNCaption; PNCaptionLbl)
             {
 
             }
-            column(ProdOrderNoCaption; ProdOrderNoCaptionLbl)
+            column(PickCodeCaption; PickCodeCaptionLbl)
             {
             }
             column(BinCodeCaption; FieldCaption("Bin Code"))
@@ -30,7 +30,7 @@ report 52109 "Inventory Pick Label Printing"
             column(Quantity; Quantity)
             {
             }
-            column(ProdOrderNo; ProdOrderNoValue)
+            column(PickCode; "ERF Pick Code")
             {
             }
 
@@ -59,8 +59,8 @@ report 52109 "Inventory Pick Label Printing"
         }
     }
     var
-        PickCodeCaptionLbl: Label 'P/N: ';
-        ProdOrderNoCaptionLbl: Label 'Prod. No.: ';
+        PNCaptionLbl: Label 'P/N: ';
+        PickCodeCaptionLbl: Label 'Pick Code: ';
         QtyReqCaptionLbl: Label 'Qty. Required: ';
         ProdOrderNoValue: Code[20];
 
