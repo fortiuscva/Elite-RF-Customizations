@@ -227,7 +227,7 @@ report 52104 "ERF Sales Shipment"
                     column(ShipmentNumberCaption; ShipmentNumberCaptionLbl)
                     {
                     }
-                    column(ShipmentDateCaption; ShipmentDateCaptionLbl)
+                    column(ShipmentDateCaption; PostedShipmentDateCaptionLbl)
                     {
                     }
                     column(PageCaption; PageCaptionLbl)
@@ -266,6 +266,10 @@ report 52104 "ERF Sales Shipment"
                         {
                             DecimalPlaces = 0 : 5;
                         }
+                        column(AlreadyShippedQty; AlreadyShippedQty)
+                        {
+                            DecimalPlaces = 0 : 5;
+                        }
                         column(TempSalesShptLineDesc; TempSalesShipmentLine.Description + ' ' + TempSalesShipmentLine."Description 2")
                         {
                         }
@@ -296,6 +300,11 @@ report 52104 "ERF Sales Shipment"
                         column(BackOrderedCaption; BackOrderedCaptionLbl)
                         {
                         }
+                        column(AlreadyShippedCaption; AlreadyShippedCaptionLbl)
+                        {
+                        }
+                        column(SerialNo; SerialNo)
+                        { }
                         dataitem(ItemTrackingBuff; Integer)
                         {
                             DataItemTableView = sorting(Number);
@@ -312,7 +321,6 @@ report 52104 "ERF Sales Shipment"
                             { }
                             column(TrackingSpecBufferDesc; TempTrackingSpecBuffer.Description)
                             { }
-
                             trigger OnAfterGetRecord()
                             begin
                                 if Number = 1 then
@@ -423,10 +431,27 @@ report 52104 "ERF Sales Shipment"
                                 ItemTrackingDocMgt.FindShptRcptEntries(TempTrackingSpecBuffer,
                                 Database::"Sales Shipment Line", 0, TempSalesShipmentLine."Document No.", '', 0, TempSalesShipmentLine."Line No.",
                                                TempSalesShipmentLine.Description);
+                                AlreadyShippedQty := 0;
+                                SalesShipmentLine.Reset();
+                                SalesShipmentLine.SetFilter("Document No.", '<>%1', TempSalesShipmentLine."Document No.");
+                                SalesShipmentLine.SetRange("Order No.", TempSalesShipmentLine."Order No.");
+                                SalesShipmentLine.SetRange("No.", TempSalesShipmentLine."No.");
+                                SalesShipmentLine.SetFilter(Quantity, '<>%1', 0);
+                                if SalesShipmentLine.FindSet() then begin
+                                    repeat
+                                        AlreadyShippedQty += SalesShipmentLine.Quantity;
+                                    until SalesShipmentLine.Next = 0;
+                                end;
                             end;
 
                             if OnLineNumber = NumberOfLines then
                                 PrintFooter := true;
+
+                            Clear(SerialNo);
+                            if TempTrackingSpecBuffer.FindSet() then
+                                repeat
+                                    SerialNo += TempTrackingSpecBuffer."Serial No." + ' ';
+                                until TempTrackingSpecBuffer.Next() = 0;
                         end;
 
                         trigger OnPreDataItem()
@@ -689,6 +714,7 @@ report 52104 "ERF Sales Shipment"
         ShippingAgentCodeText: Text;
         ShippingAgentCodeLabel: Text;
         LogInteraction: Boolean;
+        SerialNo: Text;
         Text000: Label 'COPY';
         Text001: Label 'Tracking No.';
         Text002: Label 'Specific Tracking No.';
@@ -705,9 +731,9 @@ report 52104 "ERF Sales Shipment"
         PONumberCaptionLbl: Label 'P.O. Number';
         SalesPersonCaptionLbl: Label 'SalesPerson';
         ShipCaptionLbl: Label 'Ship';
-        ShipmentCaptionLbl: Label 'SHIPMENT';
+        ShipmentCaptionLbl: Label 'PACKING SLIP';
         ShipmentNumberCaptionLbl: Label 'Shipment Number:';
-        ShipmentDateCaptionLbl: Label 'Shipment Date:';
+        PostedShipmentDateCaptionLbl: Label 'Posted Shipment Date:';
         PageCaptionLbl: Label 'Page:';
         ShipViaCaptionLbl: Label 'Ship Via';
         PODateCaptionLbl: Label 'P.O. Date';
@@ -715,11 +741,13 @@ report 52104 "ERF Sales Shipment"
         ItemNoCaptionLbl: Label 'Item No.';
         UnitCaptionLbl: Label 'Unit';
         DescriptionCaptionLbl: Label 'Description';
-        ShippedCaptionLbl: Label 'Shipped';
-        OrderedCaptionLbl: Label 'Ordered';
+        ShippedCaptionLbl: Label 'Current Ship Qty.';
+        OrderedCaptionLbl: Label 'Total Order Qty.';
         BackOrderedCaptionLbl: Label 'Back Ordered';
+        AlreadyShippedCaptionLbl: Label 'Already Shipped';
         ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
         TrackingSpecCount: Integer;
+        AlreadyShippedQty: Decimal;
 
     protected var
         CompanyInfo1: Record "Company Information";
