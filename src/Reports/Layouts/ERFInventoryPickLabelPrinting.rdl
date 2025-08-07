@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-07-17T14:35:59.8267490Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-08-01T13:50:25.8979055Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -61,7 +61,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!PickCodeCaption.Value</Value>
+                                                    <Value>=Fields!PNCaption.Value</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -82,7 +82,6 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox1</rd:DefaultName>
                                             <Top>0.025in</Top>
-                                            <Left>0in</Left>
                                             <Height>0.2125in</Height>
                                             <Width>4.0375in</Width>
                                             <Style>
@@ -102,7 +101,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!ProdOrderNoCaption.Value</Value>
+                                                    <Value>=Fields!PickCodeCaption.Value</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -110,7 +109,7 @@
                                                     </Style>
                                                   </TextRun>
                                                   <TextRun>
-                                                    <Value>=Fields!ProdOrderNo.Value</Value>
+                                                    <Value>=Fields!PickCode.Value</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -123,7 +122,6 @@
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox1</rd:DefaultName>
                                             <Top>0.26389in</Top>
-                                            <Left>0in</Left>
                                             <Height>0.2125in</Height>
                                             <Width>4.0375in</Width>
                                             <ZIndex>1</ZIndex>
@@ -338,11 +336,11 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
+        <Field Name="PNCaption">
+          <DataField>PNCaption</DataField>
+        </Field>
         <Field Name="PickCodeCaption">
           <DataField>PickCodeCaption</DataField>
-        </Field>
-        <Field Name="ProdOrderNoCaption">
-          <DataField>ProdOrderNoCaption</DataField>
         </Field>
         <Field Name="BinCodeCaption">
           <DataField>BinCodeCaption</DataField>
@@ -362,8 +360,8 @@ End Function
         <Field Name="QuantityFormat">
           <DataField>QuantityFormat</DataField>
         </Field>
-        <Field Name="ProdOrderNo">
-          <DataField>ProdOrderNo</DataField>
+        <Field Name="PickCode">
+          <DataField>PickCode</DataField>
         </Field>
       </Fields>
       <Query>
