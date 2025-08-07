@@ -1,5 +1,17 @@
 pageextension 52117 "ERF Invt. Pick Subform" extends "Invt. Pick Subform"
 {
+    layout
+    {
+        addlast(Control1)
+        {
+            field("ERF Pick Code"; Rec."ERF Pick Code")
+            {
+                ApplicationArea = all;
+                Caption = 'Pick Code';
+                Editable = false;
+            }
+        }
+    }
     actions
     {
         addlast(processing)
