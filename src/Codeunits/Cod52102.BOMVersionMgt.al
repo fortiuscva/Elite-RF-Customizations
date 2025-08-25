@@ -14,12 +14,12 @@ codeunit 52102 "ERF BOM Version Mgt"
             Error('Target version %1 must be New or Under Development.', TargetVersion."Version Code");
 
         SourceVersion.Reset();
-        SourceVersion.SetFilter(Status, '%1|%2', SourceVersion.Status::New, SourceVersion.Status::"Under Development");
+        //SourceVersion.SetFilter(Status, '%1|%2', SourceVersion.Status::New, SourceVersion.Status::"Under Development");
         if Page.RunModal(Page::"Prod. BOM Version List", SourceVersion) <> Action::LookupOK then
             exit;
 
-        if not (SourceVersion.Status in [SourceVersion.Status::New, SourceVersion.Status::"Under Development"]) then
-            Error('Source version %1 must be New or Under Development.', SourceVersion."Version Code");
+        // if not (SourceVersion.Status in [SourceVersion.Status::New, SourceVersion.Status::"Under Development"]) then
+        //     Error('Source version %1 must be New or Under Development.', SourceVersion."Version Code");
 
         if Item.Get(SourceVersion."Production BOM No.") then
             if Item.Blocked then
