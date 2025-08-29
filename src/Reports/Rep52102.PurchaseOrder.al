@@ -6,6 +6,7 @@ report 52102 "ERF Purchase Order"
     Caption = 'ERF Purchase Order';
     ApplicationArea = all;
     UsageCategory = ReportsAndAnalysis;
+    EnableHyperlinks = true;
 
     dataset
     {
