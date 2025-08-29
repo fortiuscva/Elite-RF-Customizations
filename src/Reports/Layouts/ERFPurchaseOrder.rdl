@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-08-26T19:33:25.2046292Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-08-28T13:15:42.5320419Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -2209,7 +2209,31 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!SupplierQualityAgreementMsg.Value, "DataSet_Result")</Value>
+                      <Value>="By accepting this PO, the Supplier agrees to comply with all "</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>="Supplier Quality "</Value>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Hyperlink>="https://eliterfllc.com/wp-content/uploads/2025/08/A-840-1-Supplier-Quality-Requirements-Rev-A.pdf"</Hyperlink>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>="requirements listed under About Us section on our website."</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2217,14 +2241,14 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox20</rd:DefaultName>
               <Top>0.325in</Top>
               <Height>0.59261in</Height>
-              <Width>3.47449in</Width>
+              <Width>3.22449in</Width>
               <ZIndex>10</ZIndex>
               <Visibility>
                 <Hidden>=NOT(Code.EndDocument())</Hidden>
@@ -2233,7 +2257,7 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
+                <VerticalAlign>Top</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
