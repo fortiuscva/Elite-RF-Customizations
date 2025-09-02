@@ -9,6 +9,10 @@ pageextension 52116 "ERF Prod. Order Components" extends "Prod. Order Components
                 ToolTip = 'Error Text';
                 ApplicationArea = all;
             }
+            field("ERF Pick Code"; Rec."ERF Pick Code")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
