@@ -12,5 +12,12 @@ tableextension 52109 "ERF Prod. Order Component" extends "Prod. Order Component"
             Caption = 'Error Text';
             DataClassification = ToBeClassified;
         }
+        field(52102; "ERF Pick Code"; Text[500])
+        {
+            Caption = 'Pick Code';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Production BOM Line"."ERF Pick Code" where(Type = const(Item), "No." = field("Item No.")));
+        }
     }
 }
