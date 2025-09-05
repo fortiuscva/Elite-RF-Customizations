@@ -323,6 +323,9 @@ report 52101 "ERF Sales Order Confirmation"
                     dataitem(SalesLine; "Integer")
                     {
                         DataItemTableView = sorting(Number);
+                        column(DeliveryDate; TempSalesLine."Promised Delivery Date")
+                        {
+                        }
                         column(AmountExclInvDisc; AmountExclInvDisc)
                         {
                         }
@@ -428,6 +431,9 @@ report 52101 "ERF Sales Order Confirmation"
                         {
                         }
                         column(AmtExemptfromSalesTaxCptn; AmtExemptfromSalesTaxCptnLbl)
+                        {
+                        }
+                        column(DeliveryDateCaption; DeliveryDateCptnLbl)
                         {
                         }
                         dataitem(AsmLoop; "Integer")
@@ -820,6 +826,7 @@ report 52101 "ERF Sales Order Confirmation"
         Home_CaptionLbl: Label 'Home Page';
         Phone_No_CaptionLbl: Label 'Phone No.';
         Email_CaptionLbl: Label 'Email';
+        DeliveryDateCptnLbl: Label 'Delivery Date';
 
     protected var
         CompanyInfo1: Record "Company Information";
