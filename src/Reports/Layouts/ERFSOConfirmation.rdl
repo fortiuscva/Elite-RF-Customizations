@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-09-05T15:03:56.6924602Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-09-08T14:54:59.5640990Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,6 +22,400 @@
       <rd:DataSourceID>11be3d33-bcca-48e8-9c7e-5fcd70509247</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="No_SalesHeader">
+          <DataField>No_SalesHeader</DataField>
+        </Field>
+        <Field Name="CompanyInfo2Picture">
+          <DataField>CompanyInfo2Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfo1Picture">
+          <DataField>CompanyInfo1Picture</DataField>
+        </Field>
+        <Field Name="CompanyInfoPicture">
+          <DataField>CompanyInfoPicture</DataField>
+        </Field>
+        <Field Name="CompanyAddress1">
+          <DataField>CompanyAddress1</DataField>
+        </Field>
+        <Field Name="CompanyAddress2">
+          <DataField>CompanyAddress2</DataField>
+        </Field>
+        <Field Name="CompanyAddress3">
+          <DataField>CompanyAddress3</DataField>
+        </Field>
+        <Field Name="CompanyAddress4">
+          <DataField>CompanyAddress4</DataField>
+        </Field>
+        <Field Name="CompanyAddress5">
+          <DataField>CompanyAddress5</DataField>
+        </Field>
+        <Field Name="CompanyAddress6">
+          <DataField>CompanyAddress6</DataField>
+        </Field>
+        <Field Name="CopyTxt">
+          <DataField>CopyTxt</DataField>
+        </Field>
+        <Field Name="BillToAddress1">
+          <DataField>BillToAddress1</DataField>
+        </Field>
+        <Field Name="BillToAddress2">
+          <DataField>BillToAddress2</DataField>
+        </Field>
+        <Field Name="BillToAddress3">
+          <DataField>BillToAddress3</DataField>
+        </Field>
+        <Field Name="BillToAddress4">
+          <DataField>BillToAddress4</DataField>
+        </Field>
+        <Field Name="BillToAddress5">
+          <DataField>BillToAddress5</DataField>
+        </Field>
+        <Field Name="BillToAddress6">
+          <DataField>BillToAddress6</DataField>
+        </Field>
+        <Field Name="BillToAddress7">
+          <DataField>BillToAddress7</DataField>
+        </Field>
+        <Field Name="SellToAddress1">
+          <DataField>SellToAddress1</DataField>
+        </Field>
+        <Field Name="SellToAddress2">
+          <DataField>SellToAddress2</DataField>
+        </Field>
+        <Field Name="SellToAddress3">
+          <DataField>SellToAddress3</DataField>
+        </Field>
+        <Field Name="SellToAddress4">
+          <DataField>SellToAddress4</DataField>
+        </Field>
+        <Field Name="SellToAddress5">
+          <DataField>SellToAddress5</DataField>
+        </Field>
+        <Field Name="SellToAddress6">
+          <DataField>SellToAddress6</DataField>
+        </Field>
+        <Field Name="SellToAddress7">
+          <DataField>SellToAddress7</DataField>
+        </Field>
+        <Field Name="SellToAddress8">
+          <DataField>SellToAddress8</DataField>
+        </Field>
+        <Field Name="Home_Caption">
+          <DataField>Home_Caption</DataField>
+        </Field>
+        <Field Name="CompanyInformation_HomePage">
+          <DataField>CompanyInformation_HomePage</DataField>
+        </Field>
+        <Field Name="Phone_No_Caption">
+          <DataField>Phone_No_Caption</DataField>
+        </Field>
+        <Field Name="CompanyInformation_PhoneNO">
+          <DataField>CompanyInformation_PhoneNO</DataField>
+        </Field>
+        <Field Name="Email_Caption">
+          <DataField>Email_Caption</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Email">
+          <DataField>CompanyInformation_Email</DataField>
+        </Field>
+        <Field Name="QuoteNo_Caption">
+          <DataField>QuoteNo_Caption</DataField>
+        </Field>
+        <Field Name="DueDate_Caption">
+          <DataField>DueDate_Caption</DataField>
+        </Field>
+        <Field Name="QuoteNo_SalesHeader">
+          <DataField>QuoteNo_SalesHeader</DataField>
+        </Field>
+        <Field Name="DueDate_SalesHeader">
+          <DataField>DueDate_SalesHeader</DataField>
+        </Field>
+        <Field Name="ShptDate_SalesHeader">
+          <DataField>ShptDate_SalesHeader</DataField>
+        </Field>
+        <Field Name="ShipToAddress1">
+          <DataField>ShipToAddress1</DataField>
+        </Field>
+        <Field Name="ShipToAddress2">
+          <DataField>ShipToAddress2</DataField>
+        </Field>
+        <Field Name="ShipToAddress3">
+          <DataField>ShipToAddress3</DataField>
+        </Field>
+        <Field Name="ShipToAddress4">
+          <DataField>ShipToAddress4</DataField>
+        </Field>
+        <Field Name="ShipToAddress5">
+          <DataField>ShipToAddress5</DataField>
+        </Field>
+        <Field Name="ShipToAddress6">
+          <DataField>ShipToAddress6</DataField>
+        </Field>
+        <Field Name="ShipToAddress7">
+          <DataField>ShipToAddress7</DataField>
+        </Field>
+        <Field Name="BilltoCustNo_SalesHeader">
+          <DataField>BilltoCustNo_SalesHeader</DataField>
+        </Field>
+        <Field Name="ExtDocNo_SalesHeader">
+          <DataField>ExtDocNo_SalesHeader</DataField>
+        </Field>
+        <Field Name="SalesPurchPersonName">
+          <DataField>SalesPurchPersonName</DataField>
+        </Field>
+        <Field Name="OrderDate_SalesHeader">
+          <DataField>OrderDate_SalesHeader</DataField>
+        </Field>
+        <Field Name="CompanyAddress7">
+          <DataField>CompanyAddress7</DataField>
+        </Field>
+        <Field Name="CompanyAddress8">
+          <DataField>CompanyAddress8</DataField>
+        </Field>
+        <Field Name="BillToAddress8">
+          <DataField>BillToAddress8</DataField>
+        </Field>
+        <Field Name="ShipToAddress8">
+          <DataField>ShipToAddress8</DataField>
+        </Field>
+        <Field Name="ShipmentMethodDesc">
+          <DataField>ShipmentMethodDesc</DataField>
+        </Field>
+        <Field Name="PaymentTermsDesc">
+          <DataField>PaymentTermsDesc</DataField>
+        </Field>
+        <Field Name="TaxRegLabel">
+          <DataField>TaxRegLabel</DataField>
+        </Field>
+        <Field Name="TaxRegNo">
+          <DataField>TaxRegNo</DataField>
+        </Field>
+        <Field Name="CopyNo">
+          <DataField>CopyNo</DataField>
+        </Field>
+        <Field Name="CustTaxIdentificationType">
+          <DataField>CustTaxIdentificationType</DataField>
+        </Field>
+        <Field Name="SoldCaption">
+          <DataField>SoldCaption</DataField>
+        </Field>
+        <Field Name="ToCaption">
+          <DataField>ToCaption</DataField>
+        </Field>
+        <Field Name="ShipDateCaption">
+          <DataField>ShipDateCaption</DataField>
+        </Field>
+        <Field Name="CustomerIDCaption">
+          <DataField>CustomerIDCaption</DataField>
+        </Field>
+        <Field Name="PONumberCaption">
+          <DataField>PONumberCaption</DataField>
+        </Field>
+        <Field Name="SalesPersonCaption">
+          <DataField>SalesPersonCaption</DataField>
+        </Field>
+        <Field Name="ShipCaption">
+          <DataField>ShipCaption</DataField>
+        </Field>
+        <Field Name="SalesOrderCaption">
+          <DataField>SalesOrderCaption</DataField>
+        </Field>
+        <Field Name="SalesOrderNumberCaption">
+          <DataField>SalesOrderNumberCaption</DataField>
+        </Field>
+        <Field Name="SalesOrderDateCaption">
+          <DataField>SalesOrderDateCaption</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="ShipViaCaption">
+          <DataField>ShipViaCaption</DataField>
+        </Field>
+        <Field Name="TermsCaption">
+          <DataField>TermsCaption</DataField>
+        </Field>
+        <Field Name="PODateCaption">
+          <DataField>PODateCaption</DataField>
+        </Field>
+        <Field Name="TaxIdentTypeCaption">
+          <DataField>TaxIdentTypeCaption</DataField>
+        </Field>
+        <Field Name="DeliveryDate">
+          <DataField>DeliveryDate</DataField>
+        </Field>
+        <Field Name="AmountExclInvDisc">
+          <DataField>AmountExclInvDisc</DataField>
+        </Field>
+        <Field Name="AmountExclInvDiscFormat">
+          <DataField>AmountExclInvDiscFormat</DataField>
+        </Field>
+        <Field Name="TempSalesLineNo">
+          <DataField>TempSalesLineNo</DataField>
+        </Field>
+        <Field Name="TempSalesLineUOM">
+          <DataField>TempSalesLineUOM</DataField>
+        </Field>
+        <Field Name="TempSalesLineQuantity">
+          <DataField>TempSalesLineQuantity</DataField>
+        </Field>
+        <Field Name="TempSalesLineQuantityFormat">
+          <DataField>TempSalesLineQuantityFormat</DataField>
+        </Field>
+        <Field Name="UnitPriceToPrint">
+          <DataField>UnitPriceToPrint</DataField>
+        </Field>
+        <Field Name="UnitPriceToPrintFormat">
+          <DataField>UnitPriceToPrintFormat</DataField>
+        </Field>
+        <Field Name="TempSalesLineDesc">
+          <DataField>TempSalesLineDesc</DataField>
+        </Field>
+        <Field Name="TempSalesLineDocumentNo">
+          <DataField>TempSalesLineDocumentNo</DataField>
+        </Field>
+        <Field Name="TempSalesLineLineNo">
+          <DataField>TempSalesLineLineNo</DataField>
+        </Field>
+        <Field Name="AsmInfoExistsForLine">
+          <DataField>AsmInfoExistsForLine</DataField>
+        </Field>
+        <Field Name="TaxLiable">
+          <DataField>TaxLiable</DataField>
+        </Field>
+        <Field Name="TaxLiableFormat">
+          <DataField>TaxLiableFormat</DataField>
+        </Field>
+        <Field Name="TempSalesLineLineAmtTaxLiable">
+          <DataField>TempSalesLineLineAmtTaxLiable</DataField>
+        </Field>
+        <Field Name="TempSalesLineLineAmtTaxLiableFormat">
+          <DataField>TempSalesLineLineAmtTaxLiableFormat</DataField>
+        </Field>
+        <Field Name="TempSalesLineInvDiscAmt">
+          <DataField>TempSalesLineInvDiscAmt</DataField>
+        </Field>
+        <Field Name="TempSalesLineInvDiscAmtFormat">
+          <DataField>TempSalesLineInvDiscAmtFormat</DataField>
+        </Field>
+        <Field Name="TaxAmount">
+          <DataField>TaxAmount</DataField>
+        </Field>
+        <Field Name="TaxAmountFormat">
+          <DataField>TaxAmountFormat</DataField>
+        </Field>
+        <Field Name="TempSalesLineLineAmtTaxAmtInvDiscAmt">
+          <DataField>TempSalesLineLineAmtTaxAmtInvDiscAmt</DataField>
+        </Field>
+        <Field Name="TempSalesLineLineAmtTaxAmtInvDiscAmtFormat">
+          <DataField>TempSalesLineLineAmtTaxAmtInvDiscAmtFormat</DataField>
+        </Field>
+        <Field Name="BreakdownTitle">
+          <DataField>BreakdownTitle</DataField>
+        </Field>
+        <Field Name="BreakdownLabel1">
+          <DataField>BreakdownLabel1</DataField>
+        </Field>
+        <Field Name="BreakdownLabel2">
+          <DataField>BreakdownLabel2</DataField>
+        </Field>
+        <Field Name="BreakdownLabel3">
+          <DataField>BreakdownLabel3</DataField>
+        </Field>
+        <Field Name="BreakdownAmt1">
+          <DataField>BreakdownAmt1</DataField>
+        </Field>
+        <Field Name="BreakdownAmt1Format">
+          <DataField>BreakdownAmt1Format</DataField>
+        </Field>
+        <Field Name="BreakdownAmt2">
+          <DataField>BreakdownAmt2</DataField>
+        </Field>
+        <Field Name="BreakdownAmt2Format">
+          <DataField>BreakdownAmt2Format</DataField>
+        </Field>
+        <Field Name="BreakdownAmt3">
+          <DataField>BreakdownAmt3</DataField>
+        </Field>
+        <Field Name="BreakdownAmt3Format">
+          <DataField>BreakdownAmt3Format</DataField>
+        </Field>
+        <Field Name="BreakdownAmt4">
+          <DataField>BreakdownAmt4</DataField>
+        </Field>
+        <Field Name="BreakdownAmt4Format">
+          <DataField>BreakdownAmt4Format</DataField>
+        </Field>
+        <Field Name="BreakdownLabel4">
+          <DataField>BreakdownLabel4</DataField>
+        </Field>
+        <Field Name="TotalTaxLabel">
+          <DataField>TotalTaxLabel</DataField>
+        </Field>
+        <Field Name="ItemNoCaption">
+          <DataField>ItemNoCaption</DataField>
+        </Field>
+        <Field Name="UnitCaption">
+          <DataField>UnitCaption</DataField>
+        </Field>
+        <Field Name="DescriptionCaption">
+          <DataField>DescriptionCaption</DataField>
+        </Field>
+        <Field Name="QuantityCaption">
+          <DataField>QuantityCaption</DataField>
+        </Field>
+        <Field Name="UnitPriceCaption">
+          <DataField>UnitPriceCaption</DataField>
+        </Field>
+        <Field Name="TotalPriceCaption">
+          <DataField>TotalPriceCaption</DataField>
+        </Field>
+        <Field Name="SubtotalCaption">
+          <DataField>SubtotalCaption</DataField>
+        </Field>
+        <Field Name="InvoiceDiscountCaption">
+          <DataField>InvoiceDiscountCaption</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
+        <Field Name="AmtSubjecttoSalesTaxCptn">
+          <DataField>AmtSubjecttoSalesTaxCptn</DataField>
+        </Field>
+        <Field Name="AmtExemptfromSalesTaxCptn">
+          <DataField>AmtExemptfromSalesTaxCptn</DataField>
+        </Field>
+        <Field Name="DeliveryDateCaption">
+          <DataField>DeliveryDateCaption</DataField>
+        </Field>
+        <Field Name="AsmLineUnitOfMeasureText">
+          <DataField>AsmLineUnitOfMeasureText</DataField>
+        </Field>
+        <Field Name="AsmLineQuantity">
+          <DataField>AsmLineQuantity</DataField>
+        </Field>
+        <Field Name="AsmLineQuantityFormat">
+          <DataField>AsmLineQuantityFormat</DataField>
+        </Field>
+        <Field Name="AsmLineDescription">
+          <DataField>AsmLineDescription</DataField>
+        </Field>
+        <Field Name="AsmLineNo">
+          <DataField>AsmLineNo</DataField>
+        </Field>
+        <Field Name="AsmLineType">
+          <DataField>AsmLineType</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1737,30 +2131,6 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <ZIndex>5</ZIndex>
               <Style />
             </Textbox>
-            <Textbox Name="CustomerIDCaption1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>= Code.GetData(67,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>3.48365in</Top>
-              <Left>3.84822in</Left>
-              <Height>11pt</Height>
-              <Width>1.43997in</Width>
-              <ZIndex>6</ZIndex>
-              <Style />
-            </Textbox>
             <Textbox Name="TermsCaption1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -1780,11 +2150,11 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.30309in</Top>
-              <Left>3.84822in</Left>
+              <Top>3.31698in</Top>
+              <Left>3.86211in</Left>
               <Height>12pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>7</ZIndex>
+              <ZIndex>6</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipViaCaption1">
@@ -1810,7 +2180,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>3.84822in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>8</ZIndex>
+              <ZIndex>7</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1836,7 +2206,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.05077in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>9</ZIndex>
+              <ZIndex>8</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="DocumentText1">
@@ -1861,7 +2231,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>0.52805in</Top>
               <Height>21.48031pt</Height>
               <Width>2.49307in</Width>
-              <ZIndex>10</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="SalesInvHdrNo1">
@@ -1886,7 +2256,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.3907in</Left>
               <Height>11pt</Height>
               <Width>1.10321in</Width>
-              <ZIndex>11</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="SalesPurchPersonName1">
@@ -1911,7 +2281,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>11.9pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>12</ZIndex>
+              <ZIndex>11</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -1939,32 +2309,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>12pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>13</ZIndex>
-              <Style />
-            </Textbox>
-            <Textbox Name="SalesInvHdrBilltoCustNo1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(47,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>3.48365in</Top>
-              <Left>5.30208in</Left>
-              <Height>11pt</Height>
-              <Width>1.43997in</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>12</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress61">
@@ -1989,7 +2334,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>15</ZIndex>
+              <ZIndex>13</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress51">
@@ -2014,7 +2359,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>16</ZIndex>
+              <ZIndex>14</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress41">
@@ -2039,7 +2384,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>17</ZIndex>
+              <ZIndex>15</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress31">
@@ -2064,7 +2409,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>18</ZIndex>
+              <ZIndex>16</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress21">
@@ -2089,7 +2434,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>19</ZIndex>
+              <ZIndex>17</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress11">
@@ -2114,7 +2459,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>20</ZIndex>
+              <ZIndex>18</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="PaymentTermsDesc1">
@@ -2139,7 +2484,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>21</ZIndex>
+              <ZIndex>19</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipmentMethodDesc1">
@@ -2164,7 +2509,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>22</ZIndex>
+              <ZIndex>20</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2192,7 +2537,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>23</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress51">
@@ -2217,7 +2562,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>22</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress41">
@@ -2242,7 +2587,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress31">
@@ -2267,7 +2612,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>24</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress21">
@@ -2292,7 +2637,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>27</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress11">
@@ -2317,7 +2662,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>26</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CopyTxt1">
@@ -2341,7 +2686,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>1.6927in</Top>
               <Height>11pt</Height>
               <Width>2.90153in</Width>
-              <ZIndex>29</ZIndex>
+              <ZIndex>27</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress61">
@@ -2366,7 +2711,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>30</ZIndex>
+              <ZIndex>28</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress51">
@@ -2391,7 +2736,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>31</ZIndex>
+              <ZIndex>29</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress41">
@@ -2416,7 +2761,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>32</ZIndex>
+              <ZIndex>30</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress31">
@@ -2441,7 +2786,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>33</ZIndex>
+              <ZIndex>31</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress21">
@@ -2466,7 +2811,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>34</ZIndex>
+              <ZIndex>32</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress11">
@@ -2491,7 +2836,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>35</ZIndex>
+              <ZIndex>33</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ExecutionTimeTextBox">
@@ -2517,7 +2862,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.3907in</Left>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>36</ZIndex>
+              <ZIndex>34</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="PageNumberTextBox">
@@ -2541,7 +2886,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>0.85404in</Top>
               <Height>11pt</Height>
               <Width>2.4939in</Width>
-              <ZIndex>37</ZIndex>
+              <ZIndex>35</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="TaxIdentTypeCaption">
@@ -2565,7 +2910,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>3.66282in</Top>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>38</ZIndex>
+              <ZIndex>36</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2593,7 +2938,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>39</ZIndex>
+              <ZIndex>37</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2620,7 +2965,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>3.01261in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>40</ZIndex>
+              <ZIndex>38</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress52">
@@ -2644,7 +2989,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.85858in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>41</ZIndex>
+              <ZIndex>39</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress42">
@@ -2668,7 +3013,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.70454in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>42</ZIndex>
+              <ZIndex>40</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress32">
@@ -2692,7 +3037,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.55051in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>43</ZIndex>
+              <ZIndex>41</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress22">
@@ -2716,7 +3061,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.38397in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>44</ZIndex>
+              <ZIndex>42</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress12">
@@ -2740,7 +3085,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.21744in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>45</ZIndex>
+              <ZIndex>43</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipCaption2">
@@ -2764,7 +3109,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>46</ZIndex>
+              <ZIndex>44</ZIndex>
               <Style />
             </Textbox>
           </ReportItems>
@@ -3424,6 +3769,12 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -3525,398 +3876,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>215ca597-963b-4565-a091-9de741285703</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="No_SalesHeader">
-          <DataField>No_SalesHeader</DataField>
-        </Field>
-        <Field Name="CompanyInfo2Picture">
-          <DataField>CompanyInfo2Picture</DataField>
-        </Field>
-        <Field Name="CompanyInfo1Picture">
-          <DataField>CompanyInfo1Picture</DataField>
-        </Field>
-        <Field Name="CompanyInfoPicture">
-          <DataField>CompanyInfoPicture</DataField>
-        </Field>
-        <Field Name="CompanyAddress1">
-          <DataField>CompanyAddress1</DataField>
-        </Field>
-        <Field Name="CompanyAddress2">
-          <DataField>CompanyAddress2</DataField>
-        </Field>
-        <Field Name="CompanyAddress3">
-          <DataField>CompanyAddress3</DataField>
-        </Field>
-        <Field Name="CompanyAddress4">
-          <DataField>CompanyAddress4</DataField>
-        </Field>
-        <Field Name="CompanyAddress5">
-          <DataField>CompanyAddress5</DataField>
-        </Field>
-        <Field Name="CompanyAddress6">
-          <DataField>CompanyAddress6</DataField>
-        </Field>
-        <Field Name="CopyTxt">
-          <DataField>CopyTxt</DataField>
-        </Field>
-        <Field Name="BillToAddress1">
-          <DataField>BillToAddress1</DataField>
-        </Field>
-        <Field Name="BillToAddress2">
-          <DataField>BillToAddress2</DataField>
-        </Field>
-        <Field Name="BillToAddress3">
-          <DataField>BillToAddress3</DataField>
-        </Field>
-        <Field Name="BillToAddress4">
-          <DataField>BillToAddress4</DataField>
-        </Field>
-        <Field Name="BillToAddress5">
-          <DataField>BillToAddress5</DataField>
-        </Field>
-        <Field Name="BillToAddress6">
-          <DataField>BillToAddress6</DataField>
-        </Field>
-        <Field Name="BillToAddress7">
-          <DataField>BillToAddress7</DataField>
-        </Field>
-        <Field Name="SellToAddress1">
-          <DataField>SellToAddress1</DataField>
-        </Field>
-        <Field Name="SellToAddress2">
-          <DataField>SellToAddress2</DataField>
-        </Field>
-        <Field Name="SellToAddress3">
-          <DataField>SellToAddress3</DataField>
-        </Field>
-        <Field Name="SellToAddress4">
-          <DataField>SellToAddress4</DataField>
-        </Field>
-        <Field Name="SellToAddress5">
-          <DataField>SellToAddress5</DataField>
-        </Field>
-        <Field Name="SellToAddress6">
-          <DataField>SellToAddress6</DataField>
-        </Field>
-        <Field Name="SellToAddress7">
-          <DataField>SellToAddress7</DataField>
-        </Field>
-        <Field Name="SellToAddress8">
-          <DataField>SellToAddress8</DataField>
-        </Field>
-        <Field Name="Home_Caption">
-          <DataField>Home_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInformation_HomePage">
-          <DataField>CompanyInformation_HomePage</DataField>
-        </Field>
-        <Field Name="Phone_No_Caption">
-          <DataField>Phone_No_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInformation_PhoneNO">
-          <DataField>CompanyInformation_PhoneNO</DataField>
-        </Field>
-        <Field Name="Email_Caption">
-          <DataField>Email_Caption</DataField>
-        </Field>
-        <Field Name="CompanyInformation_Email">
-          <DataField>CompanyInformation_Email</DataField>
-        </Field>
-        <Field Name="QuoteNo_Caption">
-          <DataField>QuoteNo_Caption</DataField>
-        </Field>
-        <Field Name="DueDate_Caption">
-          <DataField>DueDate_Caption</DataField>
-        </Field>
-        <Field Name="QuoteNo_SalesHeader">
-          <DataField>QuoteNo_SalesHeader</DataField>
-        </Field>
-        <Field Name="DueDate_SalesHeader">
-          <DataField>DueDate_SalesHeader</DataField>
-        </Field>
-        <Field Name="ShptDate_SalesHeader">
-          <DataField>ShptDate_SalesHeader</DataField>
-        </Field>
-        <Field Name="ShipToAddress1">
-          <DataField>ShipToAddress1</DataField>
-        </Field>
-        <Field Name="ShipToAddress2">
-          <DataField>ShipToAddress2</DataField>
-        </Field>
-        <Field Name="ShipToAddress3">
-          <DataField>ShipToAddress3</DataField>
-        </Field>
-        <Field Name="ShipToAddress4">
-          <DataField>ShipToAddress4</DataField>
-        </Field>
-        <Field Name="ShipToAddress5">
-          <DataField>ShipToAddress5</DataField>
-        </Field>
-        <Field Name="ShipToAddress6">
-          <DataField>ShipToAddress6</DataField>
-        </Field>
-        <Field Name="ShipToAddress7">
-          <DataField>ShipToAddress7</DataField>
-        </Field>
-        <Field Name="BilltoCustNo_SalesHeader">
-          <DataField>BilltoCustNo_SalesHeader</DataField>
-        </Field>
-        <Field Name="ExtDocNo_SalesHeader">
-          <DataField>ExtDocNo_SalesHeader</DataField>
-        </Field>
-        <Field Name="SalesPurchPersonName">
-          <DataField>SalesPurchPersonName</DataField>
-        </Field>
-        <Field Name="OrderDate_SalesHeader">
-          <DataField>OrderDate_SalesHeader</DataField>
-        </Field>
-        <Field Name="CompanyAddress7">
-          <DataField>CompanyAddress7</DataField>
-        </Field>
-        <Field Name="CompanyAddress8">
-          <DataField>CompanyAddress8</DataField>
-        </Field>
-        <Field Name="BillToAddress8">
-          <DataField>BillToAddress8</DataField>
-        </Field>
-        <Field Name="ShipToAddress8">
-          <DataField>ShipToAddress8</DataField>
-        </Field>
-        <Field Name="ShipmentMethodDesc">
-          <DataField>ShipmentMethodDesc</DataField>
-        </Field>
-        <Field Name="PaymentTermsDesc">
-          <DataField>PaymentTermsDesc</DataField>
-        </Field>
-        <Field Name="TaxRegLabel">
-          <DataField>TaxRegLabel</DataField>
-        </Field>
-        <Field Name="TaxRegNo">
-          <DataField>TaxRegNo</DataField>
-        </Field>
-        <Field Name="CopyNo">
-          <DataField>CopyNo</DataField>
-        </Field>
-        <Field Name="CustTaxIdentificationType">
-          <DataField>CustTaxIdentificationType</DataField>
-        </Field>
-        <Field Name="SoldCaption">
-          <DataField>SoldCaption</DataField>
-        </Field>
-        <Field Name="ToCaption">
-          <DataField>ToCaption</DataField>
-        </Field>
-        <Field Name="ShipDateCaption">
-          <DataField>ShipDateCaption</DataField>
-        </Field>
-        <Field Name="CustomerIDCaption">
-          <DataField>CustomerIDCaption</DataField>
-        </Field>
-        <Field Name="PONumberCaption">
-          <DataField>PONumberCaption</DataField>
-        </Field>
-        <Field Name="SalesPersonCaption">
-          <DataField>SalesPersonCaption</DataField>
-        </Field>
-        <Field Name="ShipCaption">
-          <DataField>ShipCaption</DataField>
-        </Field>
-        <Field Name="SalesOrderCaption">
-          <DataField>SalesOrderCaption</DataField>
-        </Field>
-        <Field Name="SalesOrderNumberCaption">
-          <DataField>SalesOrderNumberCaption</DataField>
-        </Field>
-        <Field Name="SalesOrderDateCaption">
-          <DataField>SalesOrderDateCaption</DataField>
-        </Field>
-        <Field Name="PageCaption">
-          <DataField>PageCaption</DataField>
-        </Field>
-        <Field Name="ShipViaCaption">
-          <DataField>ShipViaCaption</DataField>
-        </Field>
-        <Field Name="TermsCaption">
-          <DataField>TermsCaption</DataField>
-        </Field>
-        <Field Name="PODateCaption">
-          <DataField>PODateCaption</DataField>
-        </Field>
-        <Field Name="TaxIdentTypeCaption">
-          <DataField>TaxIdentTypeCaption</DataField>
-        </Field>
-        <Field Name="DeliveryDate">
-          <DataField>DeliveryDate</DataField>
-        </Field>
-        <Field Name="AmountExclInvDisc">
-          <DataField>AmountExclInvDisc</DataField>
-        </Field>
-        <Field Name="AmountExclInvDiscFormat">
-          <DataField>AmountExclInvDiscFormat</DataField>
-        </Field>
-        <Field Name="TempSalesLineNo">
-          <DataField>TempSalesLineNo</DataField>
-        </Field>
-        <Field Name="TempSalesLineUOM">
-          <DataField>TempSalesLineUOM</DataField>
-        </Field>
-        <Field Name="TempSalesLineQuantity">
-          <DataField>TempSalesLineQuantity</DataField>
-        </Field>
-        <Field Name="TempSalesLineQuantityFormat">
-          <DataField>TempSalesLineQuantityFormat</DataField>
-        </Field>
-        <Field Name="UnitPriceToPrint">
-          <DataField>UnitPriceToPrint</DataField>
-        </Field>
-        <Field Name="UnitPriceToPrintFormat">
-          <DataField>UnitPriceToPrintFormat</DataField>
-        </Field>
-        <Field Name="TempSalesLineDesc">
-          <DataField>TempSalesLineDesc</DataField>
-        </Field>
-        <Field Name="TempSalesLineDocumentNo">
-          <DataField>TempSalesLineDocumentNo</DataField>
-        </Field>
-        <Field Name="TempSalesLineLineNo">
-          <DataField>TempSalesLineLineNo</DataField>
-        </Field>
-        <Field Name="AsmInfoExistsForLine">
-          <DataField>AsmInfoExistsForLine</DataField>
-        </Field>
-        <Field Name="TaxLiable">
-          <DataField>TaxLiable</DataField>
-        </Field>
-        <Field Name="TaxLiableFormat">
-          <DataField>TaxLiableFormat</DataField>
-        </Field>
-        <Field Name="TempSalesLineLineAmtTaxLiable">
-          <DataField>TempSalesLineLineAmtTaxLiable</DataField>
-        </Field>
-        <Field Name="TempSalesLineLineAmtTaxLiableFormat">
-          <DataField>TempSalesLineLineAmtTaxLiableFormat</DataField>
-        </Field>
-        <Field Name="TempSalesLineInvDiscAmt">
-          <DataField>TempSalesLineInvDiscAmt</DataField>
-        </Field>
-        <Field Name="TempSalesLineInvDiscAmtFormat">
-          <DataField>TempSalesLineInvDiscAmtFormat</DataField>
-        </Field>
-        <Field Name="TaxAmount">
-          <DataField>TaxAmount</DataField>
-        </Field>
-        <Field Name="TaxAmountFormat">
-          <DataField>TaxAmountFormat</DataField>
-        </Field>
-        <Field Name="TempSalesLineLineAmtTaxAmtInvDiscAmt">
-          <DataField>TempSalesLineLineAmtTaxAmtInvDiscAmt</DataField>
-        </Field>
-        <Field Name="TempSalesLineLineAmtTaxAmtInvDiscAmtFormat">
-          <DataField>TempSalesLineLineAmtTaxAmtInvDiscAmtFormat</DataField>
-        </Field>
-        <Field Name="BreakdownTitle">
-          <DataField>BreakdownTitle</DataField>
-        </Field>
-        <Field Name="BreakdownLabel1">
-          <DataField>BreakdownLabel1</DataField>
-        </Field>
-        <Field Name="BreakdownLabel2">
-          <DataField>BreakdownLabel2</DataField>
-        </Field>
-        <Field Name="BreakdownLabel3">
-          <DataField>BreakdownLabel3</DataField>
-        </Field>
-        <Field Name="BreakdownAmt1">
-          <DataField>BreakdownAmt1</DataField>
-        </Field>
-        <Field Name="BreakdownAmt1Format">
-          <DataField>BreakdownAmt1Format</DataField>
-        </Field>
-        <Field Name="BreakdownAmt2">
-          <DataField>BreakdownAmt2</DataField>
-        </Field>
-        <Field Name="BreakdownAmt2Format">
-          <DataField>BreakdownAmt2Format</DataField>
-        </Field>
-        <Field Name="BreakdownAmt3">
-          <DataField>BreakdownAmt3</DataField>
-        </Field>
-        <Field Name="BreakdownAmt3Format">
-          <DataField>BreakdownAmt3Format</DataField>
-        </Field>
-        <Field Name="BreakdownAmt4">
-          <DataField>BreakdownAmt4</DataField>
-        </Field>
-        <Field Name="BreakdownAmt4Format">
-          <DataField>BreakdownAmt4Format</DataField>
-        </Field>
-        <Field Name="BreakdownLabel4">
-          <DataField>BreakdownLabel4</DataField>
-        </Field>
-        <Field Name="TotalTaxLabel">
-          <DataField>TotalTaxLabel</DataField>
-        </Field>
-        <Field Name="ItemNoCaption">
-          <DataField>ItemNoCaption</DataField>
-        </Field>
-        <Field Name="UnitCaption">
-          <DataField>UnitCaption</DataField>
-        </Field>
-        <Field Name="DescriptionCaption">
-          <DataField>DescriptionCaption</DataField>
-        </Field>
-        <Field Name="QuantityCaption">
-          <DataField>QuantityCaption</DataField>
-        </Field>
-        <Field Name="UnitPriceCaption">
-          <DataField>UnitPriceCaption</DataField>
-        </Field>
-        <Field Name="TotalPriceCaption">
-          <DataField>TotalPriceCaption</DataField>
-        </Field>
-        <Field Name="SubtotalCaption">
-          <DataField>SubtotalCaption</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountCaption">
-          <DataField>InvoiceDiscountCaption</DataField>
-        </Field>
-        <Field Name="TotalCaption">
-          <DataField>TotalCaption</DataField>
-        </Field>
-        <Field Name="AmtSubjecttoSalesTaxCptn">
-          <DataField>AmtSubjecttoSalesTaxCptn</DataField>
-        </Field>
-        <Field Name="AmtExemptfromSalesTaxCptn">
-          <DataField>AmtExemptfromSalesTaxCptn</DataField>
-        </Field>
-        <Field Name="DeliveryDateCaption">
-          <DataField>DeliveryDateCaption</DataField>
-        </Field>
-        <Field Name="AsmLineUnitOfMeasureText">
-          <DataField>AsmLineUnitOfMeasureText</DataField>
-        </Field>
-        <Field Name="AsmLineQuantity">
-          <DataField>AsmLineQuantity</DataField>
-        </Field>
-        <Field Name="AsmLineQuantityFormat">
-          <DataField>AsmLineQuantityFormat</DataField>
-        </Field>
-        <Field Name="AsmLineDescription">
-          <DataField>AsmLineDescription</DataField>
-        </Field>
-        <Field Name="AsmLineNo">
-          <DataField>AsmLineNo</DataField>
-        </Field>
-        <Field Name="AsmLineType">
-          <DataField>AsmLineType</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
