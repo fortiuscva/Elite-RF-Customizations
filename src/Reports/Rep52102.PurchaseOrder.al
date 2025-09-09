@@ -6,6 +6,7 @@ report 52102 "ERF Purchase Order"
     Caption = 'ERF Purchase Order';
     ApplicationArea = all;
     UsageCategory = ReportsAndAnalysis;
+    EnableHyperlinks = true;
 
     dataset
     {
@@ -19,6 +20,9 @@ report 52102 "ERF Purchase Order"
             }
             column(ERF_CoC_Required; "Purchase Header"."ERF CoC Required")
             { }
+            column(SupplierQualityAgreementMsg; SupplierQualityAgreementMsgLbl)
+            {
+            }
             dataitem(CopyLoop; "Integer")
             {
                 DataItemTableView = sorting(Number);
@@ -665,6 +669,7 @@ report 52102 "ERF Purchase Order"
         TotalCaptionLbl: Label 'Total:';
         VendorOrderNoLbl: Label 'Vendor Order No.';
         VendorInvoiceNoLbl: Label 'Vendor Invoice No.';
+        SupplierQualityAgreementMsgLbl: Label 'By accepting this PO, the Supplier agrees to comply with all Supplier Quality requirements listed under About Us section on our website.';
         COCTxt: Text;
 }
 
