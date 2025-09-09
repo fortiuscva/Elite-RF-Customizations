@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-09-08T14:54:59.5640990Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-09-09T14:10:10.4738299Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -976,7 +976,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DeliveryDateCaption.Value</Value>
+                                  <Value>=Fields!DueDate_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2131,6 +2131,30 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <ZIndex>5</ZIndex>
               <Style />
             </Textbox>
+            <Textbox Name="CustomerIDCaption1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>= Code.GetData(67,1)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>3.48365in</Top>
+              <Left>3.84822in</Left>
+              <Height>11pt</Height>
+              <Width>1.43997in</Width>
+              <ZIndex>6</ZIndex>
+              <Style />
+            </Textbox>
             <Textbox Name="TermsCaption1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -2150,11 +2174,11 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.31698in</Top>
-              <Left>3.86211in</Left>
+              <Top>3.30309in</Top>
+              <Left>3.84822in</Left>
               <Height>12pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>7</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipViaCaption1">
@@ -2180,7 +2204,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>3.84822in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>7</ZIndex>
+              <ZIndex>8</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2206,7 +2230,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.05077in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>8</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="DocumentText1">
@@ -2231,7 +2255,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>0.52805in</Top>
               <Height>21.48031pt</Height>
               <Width>2.49307in</Width>
-              <ZIndex>9</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="SalesInvHdrNo1">
@@ -2256,7 +2280,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.3907in</Left>
               <Height>11pt</Height>
               <Width>1.10321in</Width>
-              <ZIndex>10</ZIndex>
+              <ZIndex>11</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="SalesPurchPersonName1">
@@ -2281,7 +2305,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>11.9pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>11</ZIndex>
+              <ZIndex>12</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2309,7 +2333,32 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>12pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>12</ZIndex>
+              <ZIndex>13</ZIndex>
+              <Style />
+            </Textbox>
+            <Textbox Name="SalesInvHdrBilltoCustNo1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Code.GetData(47,1)</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>3.48365in</Top>
+              <Left>5.30208in</Left>
+              <Height>11pt</Height>
+              <Width>1.43997in</Width>
+              <ZIndex>14</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress61">
@@ -2334,7 +2383,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>13</ZIndex>
+              <ZIndex>15</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress51">
@@ -2359,7 +2408,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>16</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress41">
@@ -2384,7 +2433,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>15</ZIndex>
+              <ZIndex>17</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress31">
@@ -2409,7 +2458,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>16</ZIndex>
+              <ZIndex>18</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress21">
@@ -2434,7 +2483,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>17</ZIndex>
+              <ZIndex>19</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipToAddress11">
@@ -2459,7 +2508,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>2.45009in</Left>
               <Height>11pt</Height>
               <Width>2.02809in</Width>
-              <ZIndex>18</ZIndex>
+              <ZIndex>20</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="PaymentTermsDesc1">
@@ -2484,7 +2533,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>19</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipmentMethodDesc1">
@@ -2509,7 +2558,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.30208in</Left>
               <Height>11pt</Height>
               <Width>1.43997in</Width>
-              <ZIndex>20</ZIndex>
+              <ZIndex>22</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2537,7 +2586,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>21</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress51">
@@ -2562,7 +2611,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>22</ZIndex>
+              <ZIndex>24</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress41">
@@ -2587,7 +2636,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>23</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress31">
@@ -2612,7 +2661,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>24</ZIndex>
+              <ZIndex>26</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress21">
@@ -2637,7 +2686,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>27</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress11">
@@ -2662,7 +2711,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>28</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CopyTxt1">
@@ -2686,7 +2735,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>1.6927in</Top>
               <Height>11pt</Height>
               <Width>2.90153in</Width>
-              <ZIndex>27</ZIndex>
+              <ZIndex>29</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress61">
@@ -2711,7 +2760,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>30</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress51">
@@ -2736,7 +2785,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>29</ZIndex>
+              <ZIndex>31</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress41">
@@ -2761,7 +2810,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>30</ZIndex>
+              <ZIndex>32</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress31">
@@ -2786,7 +2835,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>31</ZIndex>
+              <ZIndex>33</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress21">
@@ -2811,7 +2860,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>32</ZIndex>
+              <ZIndex>34</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="CompanyAddress11">
@@ -2836,7 +2885,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.5in</Left>
               <Height>11pt</Height>
               <Width>1.60986in</Width>
-              <ZIndex>33</ZIndex>
+              <ZIndex>35</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ExecutionTimeTextBox">
@@ -2862,7 +2911,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.3907in</Left>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>34</ZIndex>
+              <ZIndex>36</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="PageNumberTextBox">
@@ -2886,7 +2935,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>0.85404in</Top>
               <Height>11pt</Height>
               <Width>2.4939in</Width>
-              <ZIndex>35</ZIndex>
+              <ZIndex>37</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="TaxIdentTypeCaption">
@@ -2910,7 +2959,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>3.66282in</Top>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>36</ZIndex>
+              <ZIndex>38</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2938,7 +2987,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>1.10237in</Left>
               <Height>11pt</Height>
               <Width>1.10237in</Width>
-              <ZIndex>37</ZIndex>
+              <ZIndex>39</ZIndex>
               <Visibility>
                 <Hidden>true</Hidden>
               </Visibility>
@@ -2965,7 +3014,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>3.01261in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>38</ZIndex>
+              <ZIndex>40</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress52">
@@ -2989,7 +3038,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.85858in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>39</ZIndex>
+              <ZIndex>41</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress42">
@@ -3013,7 +3062,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.70454in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>40</ZIndex>
+              <ZIndex>42</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress32">
@@ -3037,7 +3086,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.55051in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>41</ZIndex>
+              <ZIndex>43</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress22">
@@ -3061,7 +3110,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.38397in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>42</ZIndex>
+              <ZIndex>44</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="BillToAddress12">
@@ -3085,7 +3134,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Top>2.21744in</Top>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>43</ZIndex>
+              <ZIndex>45</ZIndex>
               <Style />
             </Textbox>
             <Textbox Name="ShipCaption2">
@@ -3109,7 +3158,7 @@ CStr(SUM(Fields!TempSalesLineLineAmtTaxAmtInvDiscAmt.Value)) + Chr(177)+
               <Left>5.07608in</Left>
               <Height>11pt</Height>
               <Width>1.82213in</Width>
-              <ZIndex>44</ZIndex>
+              <ZIndex>46</ZIndex>
               <Style />
             </Textbox>
           </ReportItems>
