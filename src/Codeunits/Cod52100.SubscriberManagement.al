@@ -43,6 +43,21 @@ codeunit 52100 "ERF Subscriber Management"
             SalesHeader."Posting Date" := WorkDate();
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Calculate Prod. Order", OnAfterTransferBOMComponent, '', false, false)]
+    local procedure "Calculate Prod. Order_OnAfterTransferBOMComponent"(var ProdOrderLine: Record "Prod. Order Line"; var ProductionBOMLine: Record "Production BOM Line"; var ProdOrderComponent: Record "Prod. Order Component"; LineQtyPerUOM: Decimal; ItemQtyPerUOM: Decimal)
+    begin
+        ProdOrderComponent."ERF Production BOM No." := ProductionBOMLine."Production BOM No.";
+        ProdOrderComponent."ERF Production BOM Line No." := ProductionBOMLine."Line No.";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create Inventory Pick/Movement", OnBeforeNewWhseActivLineInsertFromComp, '', false, false)]
+    local procedure "Create Inventory Pick/Movement_OnBeforeNewWhseActivLineInsertFromComp"(var WarehouseActivityLine: Record "Warehouse Activity Line"; var ProdOrderComp: Record "Prod. Order Component"; var WarehouseActivityHeader: Record "Warehouse Activity Header"; var RemQtyToPickBase: Decimal)
+    begin
+        WarehouseActivityLine."ERF Production BOM No." := ProdOrderComp."ERF Production BOM No.";
+        WarehouseActivityLine."ERF Production BOM Line No." := ProdOrderComp."ERF Production BOM Line No.";
+    end;
+
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
