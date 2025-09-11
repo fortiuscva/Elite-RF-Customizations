@@ -136,6 +136,7 @@ report 52103 "ERF Picking List"
                 { }
                 dataitem("Warehouse Activity Line"; "Warehouse Activity Line")
                 {
+                    CalcFields = "ERF Pick Code";
                     DataItemLink = "Activity Type" = field(Type), "No." = field("No.");
                     DataItemLinkReference = "Warehouse Activity Header";
                     DataItemTableView = sorting("Activity Type", "No.", "Sorting Sequence No.");
@@ -196,6 +197,7 @@ report 52103 "ERF Picking List"
                 }
                 dataitem(WhseActLine; "Warehouse Activity Line")
                 {
+                    CalcFields = "ERF Pick Code";
                     DataItemLink = "Activity Type" = field(Type), "No." = field("No.");
                     DataItemLinkReference = "Warehouse Activity Header";
                     DataItemTableView = sorting("Activity Type", "No.", "Sorting Sequence No.");
@@ -267,6 +269,10 @@ report 52103 "ERF Picking List"
                     }
                     column(QtyPerUnitofMeasure; ProdOrderCompGbl."Quantity per")
                     { }
+                    column(PickCode; "ERF Pick Code")
+                    {
+
+                    }
                     dataitem(WhseActLine2; "Warehouse Activity Line")
                     {
                         DataItemLink = "Activity Type" = field("Activity Type"), "No." = field("No."), "Bin Code" = field("Bin Code"), "Item No." = field("Item No."), "Action Type" = field("Action Type"), "Variant Code" = field("Variant Code"), "Unit of Measure Code" = field("Unit of Measure Code"), "Due Date" = field("Due Date");
@@ -286,10 +292,6 @@ report 52103 "ERF Picking List"
                         }
                         column(LineNo_WhseActLine2; "Line No.")
                         {
-                        }
-                        column(PickCode; ProdBOMLineRecGbl."ERF Pick Code")
-                        {
-
                         }
                         column(QtyInBin; BinContentsRecGbl.Quantity)
                         {
