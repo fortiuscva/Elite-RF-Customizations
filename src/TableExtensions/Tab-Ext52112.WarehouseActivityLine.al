@@ -7,7 +7,7 @@ tableextension 52112 "ERF Warehouse Activity Line" extends "Warehouse Activity L
             Caption = 'Pick Code';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup("Production BOM Line"."ERF Pick Code" where(Type = const(Item), "No." = field("Item No.")));
+            CalcFormula = lookup("Production BOM Line"."ERF Pick Code" where(Type = const(Item), "No." = field("Item No."), "Line No." = field("Line No.")));
         }
     }
 }
