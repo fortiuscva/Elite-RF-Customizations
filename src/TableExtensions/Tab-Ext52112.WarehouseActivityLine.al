@@ -12,15 +12,18 @@ tableextension 52112 "ERF Warehouse Activity Line" extends "Warehouse Activity L
         field(52101; "ERF Production BOM No."; Code[20])
         {
             Caption = 'Production BOM No.';
+            Editable = false;
         }
         field(52102; "ERF Production BOM Line No."; Integer)
         {
             Caption = 'Production BOM Line No.';
+            Editable = false;
         }
         field(52103; "ERF Version Code"; Code[20])
         {
             Caption = 'Version Code';
             TableRelation = "Production BOM Version"."Version Code" where("Production BOM No." = field("ERF Production BOM No."));
+            Editable = false;
         }
     }
 }
