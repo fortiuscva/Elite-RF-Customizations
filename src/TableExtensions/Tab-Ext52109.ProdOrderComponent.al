@@ -23,15 +23,18 @@ tableextension 52109 "ERF Prod. Order Component" extends "Prod. Order Component"
         {
             DataClassification = ToBeClassified;
             Caption = 'Production BOM No.';
+            Editable = false;
         }
         field(52104; "ERF Production BOM Line No."; Integer)
         {
             Caption = 'Production BOM Line No.';
+            Editable = false;
         }
         field(52105; "ERF Version Code"; Code[20])
         {
             Caption = 'Version Code';
             TableRelation = "Production BOM Version"."Version Code" where("Production BOM No." = field("ERF Production BOM No."));
+            Editable = false;
         }
     }
 }
