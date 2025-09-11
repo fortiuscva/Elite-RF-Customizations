@@ -48,6 +48,7 @@ codeunit 52100 "ERF Subscriber Management"
     begin
         ProdOrderComponent."ERF Production BOM No." := ProductionBOMLine."Production BOM No.";
         ProdOrderComponent."ERF Production BOM Line No." := ProductionBOMLine."Line No.";
+        ProdOrderComponent."ERF Version Code" := ProductionBOMLine."Version Code";
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create Inventory Pick/Movement", OnBeforeNewWhseActivLineInsertFromComp, '', false, false)]
@@ -55,6 +56,7 @@ codeunit 52100 "ERF Subscriber Management"
     begin
         WarehouseActivityLine."ERF Production BOM No." := ProdOrderComp."ERF Production BOM No.";
         WarehouseActivityLine."ERF Production BOM Line No." := ProdOrderComp."ERF Production BOM Line No.";
+        WarehouseActivityLine."ERF Version Code" := ProdOrderComp."ERF Version Code";
     end;
 
 
