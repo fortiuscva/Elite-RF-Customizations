@@ -3,7 +3,7 @@ report 52110 "ERF Update Prod BOM Pick Code"
     Caption = 'Update Prod BOM Pick Code';
     ProcessingOnly = true;
     ApplicationArea = All;
-    UsageCategory = Tasks;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {
