@@ -313,6 +313,7 @@ report 52103 "ERF Picking List"
                             ProdBOMLineRecGbl.SetRange("Production BOM No.", ProdOrderLineRecLcl."Production BOM No.");
                             ProdBOMLineRecGbl.SetRange("Version Code", ProdOrderLineRecLcl."Production BOM Version Code");
                             ProdBOMLineRecGbl.SetRange("No.", WhseActLine."Item No.");
+                            ProdBOMLineRecGbl.SetRange("Line No.", WhseActLine."ERF Production BOM Line No.");
                             if ProdBOMLineRecGbl.FindFirst() then;
 
                             ProdOrderCompGbl.Reset();
