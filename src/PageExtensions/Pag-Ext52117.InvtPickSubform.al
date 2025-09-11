@@ -10,6 +10,16 @@ pageextension 52117 "ERF Invt. Pick Subform" extends "Invt. Pick Subform"
                 Caption = 'Pick Code';
                 Editable = false;
             }
+            field("ERF Production BOM No."; Rec."ERF Production BOM No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Production BOM No. field.', Comment = '%';
+            }
+            field("ERF Production BOM Line No."; Rec."ERF Production BOM Line No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Production BOM Line No. field.', Comment = '%';
+            }
         }
     }
     actions
