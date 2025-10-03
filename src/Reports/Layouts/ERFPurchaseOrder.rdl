@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-08-28T13:15:42.5320419Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-10-01T19:21:44.7911500Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -1464,7 +1464,13 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
               <Height>11pt</Height>
               <Width>0.89498in</Width>
               <ZIndex>3</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -1598,7 +1604,13 @@ First(Fields!LineAmtTaxAmtInvDiscountAmtFormat.Value)</Value>
               <Height>11pt</Height>
               <Width>0.89498in</Width>
               <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
