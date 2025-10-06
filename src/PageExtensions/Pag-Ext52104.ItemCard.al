@@ -33,6 +33,16 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
                 end;
             }
         }
+        addlast(Item)
+        {
+
+            field("ERF MSL Level Defined"; Rec."ERF MSL Level Defined")
+            {
+                ApplicationArea = All;
+                Caption = 'MSL Level Defined';
+                ToolTip = 'Specifies the value of the MSL Level Defined field.', Comment = '%';
+            }
+        }
     }
     actions
     {
