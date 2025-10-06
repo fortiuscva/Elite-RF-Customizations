@@ -36,6 +36,11 @@ tableextension 52100 "ERF Item" extends Item
             Editable = false;
             FieldClass = FlowField;
         }
+        field(52102; "ERF MSL Level Defined"; Code[50])
+        {
+            Caption = 'MSL Level Defined';
+            TableRelation = "ERF MSL Level".Code;
+        }
     }
     procedure GetExtendedDescription(): Text
     var
