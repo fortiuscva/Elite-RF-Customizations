@@ -48,7 +48,11 @@ table 52102 "ERF Equipment Calibration "
             var
                 VendorRec: Record Vendor;
             begin
-                If VendorRec.Get("Calibration Provider") then
+                If not VendorRec.Get("Calibration Provider") then
+                    exit;
+                if Rec."Calibration Provider" = '' then
+                    Rec.Validate("Calibration Provider Name", '')
+                else
                     Rec.Validate("Calibration Provider Name", VendorRec.Name);
             end;
         }
