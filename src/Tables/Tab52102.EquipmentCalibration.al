@@ -18,11 +18,11 @@ table 52102 "ERF Equipment Calibration "
         }
         field(9; "Model No."; Code[20])
         {
-            Caption = 'Model No.';
+            Caption = 'Model #';
         }
         field(11; "Serial No."; Code[20])
         {
-            Caption = 'Serial No.';
+            Caption = 'Serial #';
         }
         field(15; Manufacturer; Text[100])
         {
