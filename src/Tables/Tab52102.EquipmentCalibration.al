@@ -50,8 +50,8 @@ table 52102 "ERF Equipment Calibration "
             begin
                 if (Rec."Calibration Provider" <> xRec."Calibration Provider") then begin
                     if Rec."Calibration Provider" <> '' then begin
-                        if VendorRec.Get(Rec."Calibration Provider") then
-                            Rec.Validate("Calibration Provider Name", VendorRec.Name)
+                        VendorRec.Get(Rec."Calibration Provider");
+                        Rec.Validate("Calibration Provider Name", VendorRec.Name);
                     end else
                         Rec.Validate("Calibration Provider Name", '');
                 end;
