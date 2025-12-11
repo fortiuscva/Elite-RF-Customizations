@@ -48,12 +48,13 @@ table 52102 "ERF Equipment Calibration "
             var
                 VendorRec: Record Vendor;
             begin
-                if (Rec."Calibration Provider" <> xRec."Calibration Provider") then
+                if (Rec."Calibration Provider" <> xRec."Calibration Provider") then begin
                     if Rec."Calibration Provider" <> '' then begin
                         if VendorRec.Get(Rec."Calibration Provider") then
                             Rec.Validate("Calibration Provider Name", VendorRec.Name)
                     end else
                         Rec.Validate("Calibration Provider Name", '');
+                end;
             end;
         }
         field(35; "Calibration Provider Name"; Text[100])
