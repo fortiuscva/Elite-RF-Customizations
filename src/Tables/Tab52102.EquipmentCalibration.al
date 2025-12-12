@@ -1,4 +1,4 @@
-table 52102 "ERF Equipment Calibration "
+table 52102 "ERF Equipment Calibration"
 {
     Caption = 'Equipment Calibration';
     LookupPageId = "ERF Equip. Calibration Details";
