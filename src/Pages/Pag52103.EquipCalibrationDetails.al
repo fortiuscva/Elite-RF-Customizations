@@ -3,7 +3,7 @@ page 52103 "ERF Equip. Calibration Details"
     ApplicationArea = All;
     Caption = 'Equipment Calibration Interface';
     PageType = List;
-    SourceTable = "ERF Equipment Calibration ";
+    SourceTable = "ERF Equipment Calibration";
     UsageCategory = Lists;
 
     layout
