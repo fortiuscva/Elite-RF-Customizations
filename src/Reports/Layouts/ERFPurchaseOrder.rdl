@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-10-01T19:21:44.7911500Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-01-07T15:46:48.5561830Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -2228,7 +2228,7 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>="Supplier Quality "</Value>
+                      <Value>="Supplier Quality Requirements, "</Value>
                       <ActionInfo>
                         <Actions>
                           <Action>
@@ -2245,7 +2245,41 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>="requirements listed under About Us section on our website."</Value>
+                      <Value>="Supplier Code of Conduct, "</Value>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Hyperlink>="https://eliterfllc.com/wp-content/uploads/2023/12/Supplier_Code_of_Conduct.pdf"</Hyperlink>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>="Counterfeit Materials Prevention Policy "</Value>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Hyperlink>="https://eliterfllc.com/wp-content/uploads/2025/08/Counterfeit_Materials_Prevention_Policy.pdf"</Hyperlink>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>="listed under About Us section on our website. Suppliers must issue a Sales Order Acknowledgement confirming PO acceptance and committed delivery dates.."</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2260,7 +2294,7 @@ System.Environment.NewLine +First(Fields!CompanyAddress3.Value, "DataSet_Result"
               <rd:DefaultName>Textbox20</rd:DefaultName>
               <Top>0.325in</Top>
               <Height>0.59261in</Height>
-              <Width>3.22449in</Width>
+              <Width>3.45065in</Width>
               <ZIndex>10</ZIndex>
               <Visibility>
                 <Hidden>=NOT(Code.EndDocument())</Hidden>
