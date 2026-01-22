@@ -95,6 +95,11 @@ page 52104 "ERF Equipment Calibration Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
                 }
+                field("Checked Date"; Rec."Checked Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
+                }
             }
         }
     }
