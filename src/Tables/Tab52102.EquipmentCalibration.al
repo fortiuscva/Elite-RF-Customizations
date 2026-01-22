@@ -30,11 +30,35 @@ table 52102 "ERF Equipment Calibration"
         }
         field(19; "Last Calibrated"; Date)
         {
-            Caption = 'Last Calibrated';
+            Caption = 'Last Calibrated Date';
+            trigger OnValidate()
+            begin
+                if ("Last Calibrated" <> 0D) and ("Calibration Frequency" <> 0) then begin
+                    MonthDateFormula := ConvertToDateFormulaInMonths("Calibration Frequency");
+                    Validate("Calibration Due Date", CalcDate(MonthDateFormula, "Last Calibrated"));
+                end;
+                if Rec."Last Calibrated" <> xRec."Last Calibrated" then
+                    if "Last Calibrated" <> 0D then
+                        CreateCalibrationHistoricalEntry()
+                    else
+                        Validate("Calibration Due Date", 0D);
+            end;
         }
-        field(23; "Calibration Frequency"; DateFormula)
+        field(23; "Calibration Frequency"; Integer)
         {
-            Caption = 'Calibration Frequency';
+            Caption = 'Calibration Frequency (Months)';
+            trigger OnValidate()
+            begin
+                if ("Last Calibrated" <> 0D) and ("Calibration Frequency" <> 0) then begin
+                    MonthDateFormula := ConvertToDateFormulaInMonths("Calibration Frequency");
+                    Validate("Calibration Due Date", CalcDate(MonthDateFormula, "Last Calibrated"));
+                end;
+                if Rec."Calibration Frequency" <> xRec."Calibration Frequency" then
+                    if "Calibration Frequency" <> 0 then
+                        ModifyCalibrationHistoricalEntry()
+                    else
+                        Validate("Calibration Due Date", 0D);
+            end;
         }
         field(27; "Calibration Due Date"; Date)
         {
@@ -74,6 +98,34 @@ table 52102 "ERF Equipment Calibration"
         {
             Caption = 'Location';
         }
+        field(52; "Checked by Employee No."; Code[20])
+        {
+            Caption = 'Checked by Employee No.';
+            TableRelation = Employee;
+            trigger OnValidate()
+            var
+                EmployeeRec: Record Employee;
+            begin
+                if Rec."Checked by Employee No." <> xRec."Checked by Employee No." then begin
+                    if "Checked by Employee No." <> '' then begin
+                        EmployeeRec.Get("Checked by Employee No.");
+                        Validate("Checked by Employee Name", EmployeeRec.FullName());
+                    end else
+                        Validate("Checked by Employee Name", '');
+                end;
+            end;
+        }
+        field(54; "Checked by Employee Name"; Text[100])
+        {
+            Caption = 'Checked by Employee Name';
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(57; "Checked Date"; Date)
+        {
+            Caption = 'Checked Date';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
@@ -89,4 +141,53 @@ table 52102 "ERF Equipment Calibration"
 
         }
     }
+    procedure CreateCalibrationHistoricalEntry()
+    var
+        EntryNo: Integer;
+    begin
+        CalibrationHistory.Reset();
+        If CalibrationHistory.FindLast() then
+            EntryNo := CalibrationHistory."Entry No." + 1
+        else
+            EntryNo := 1;
+
+        CalibrationHistory.Init();
+        CalibrationHistory."Entry No." := EntryNo;
+        CalibrationHistory.Insert(true);
+        CalibrationHistory.Validate("Equipment Id", "Equipment ID");
+        CalibrationHistory.Validate("Equipment Type", "Equipment Type");
+        CalibrationHistory.Validate("Calibrated Date", "Last Calibrated");
+        CalibrationHistory.Validate("Calibration Frequency", "Calibration Frequency");
+        CalibrationHistory.Validate("Calibration Due Date", "Calibration Due Date");
+        CalibrationHistory.Modify(true);
+    end;
+
+    procedure ConvertToDateFormulaInMonths(Months: Integer): DateFormula
+    var
+        DateFormulaInMonths: DateFormula;
+        MonthsFormatText: Text;
+    begin
+        MonthsFormatText := Format(Months) + 'M';
+        Evaluate(DateFormulaInMonths, MonthsFormatText);
+        exit(DateFormulaInMonths);
+    end;
+
+    procedure ModifyCalibrationHistoricalEntry()
+    var
+        CalibrationHistory: Record "ERF Calibration History";
+    begin
+        CalibrationHistory.Reset();
+        CalibrationHistory.SetRange("Calibrated Date", "Last Calibrated");
+        if CalibrationHistory.FindFirst() then begin
+            CalibrationHistory.Validate("Calibration Frequency", "Calibration Frequency");
+            CalibrationHistory.Validate("Calibration Due Date", "Calibration Due Date");
+            CalibrationHistory.Modify(true);
+        end;
+    end;
+
+    var
+        CalibrationHistory: Record "ERF Calibration History";
+        MonthDateFormula: DateFormula;
+
+
 }
