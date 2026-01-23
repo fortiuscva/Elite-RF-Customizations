@@ -27,14 +27,17 @@ table 52103 "ERF Calibration History"
         field(9; "Model No."; Code[20])
         {
             Caption = 'Model #';
+            DataClassification = CustomerContent;
         }
         field(11; "Serial No."; Code[20])
         {
             Caption = 'Serial #';
+            DataClassification = CustomerContent;
         }
         field(15; Manufacturer; Text[100])
         {
             Caption = 'Manufacturer';
+            DataClassification = CustomerContent;
         }
         field(19; "Last Calibrated"; Date)
         {
@@ -65,6 +68,7 @@ table 52103 "ERF Calibration History"
         field(39; "Verify Calibration Certificate"; Boolean)
         {
             Caption = 'Verified Calibration Certificate?';
+            DataClassification = CustomerContent;
         }
         field(43; Status; Enum "ERF Equip. Calibration Status")
         {

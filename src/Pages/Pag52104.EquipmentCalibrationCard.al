@@ -124,10 +124,9 @@ page 52104 "ERF Equipment Calibration Card"
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         Clear(EquipCalibrationMgmt);
-        if Confirm('Do you want to save your changes to the Log?', true) then begin
+        if Confirm('Do you want to save your changes to the Log?', false) then
             EquipCalibrationMgmt.CreateCalibrationHistoricalEntry(Rec);
-            exit(true);
-        end;
+        exit(true);
     end;
 
     var

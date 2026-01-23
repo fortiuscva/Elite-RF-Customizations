@@ -11,28 +11,32 @@ table 52102 "ERF Equipment Calibration"
         field(1; "Equipment ID"; Code[20])
         {
             Caption = 'Equipment ID';
-            OptimizeForTextSearch = true;
+            DataClassification = CustomerContent;
         }
         field(6; "Equipment Type"; Text[100])
         {
             Caption = 'Equipment Type';
-            OptimizeForTextSearch = true;
+            DataClassification = CustomerContent;
         }
         field(9; "Model No."; Code[20])
         {
             Caption = 'Model #';
+            DataClassification = CustomerContent;
         }
         field(11; "Serial No."; Code[20])
         {
             Caption = 'Serial #';
+            DataClassification = CustomerContent;
         }
         field(15; Manufacturer; Text[100])
         {
             Caption = 'Manufacturer';
+            DataClassification = CustomerContent;
         }
         field(19; "Last Calibrated"; Date)
         {
             Caption = 'Last Calibrated Date';
+            DataClassification = CustomerContent;
             trigger OnValidate()
             begin
                 if ("Last Calibrated" <> 0D) and ("Calibration Frequency" <> 0) then begin
@@ -46,6 +50,7 @@ table 52102 "ERF Equipment Calibration"
         field(23; "Calibration Frequency"; Integer)
         {
             Caption = 'Calibration Frequency (Months)';
+            DataClassification = CustomerContent;
             trigger OnValidate()
             begin
                 if ("Last Calibrated" <> 0D) and ("Calibration Frequency" <> 0) then begin
@@ -59,11 +64,13 @@ table 52102 "ERF Equipment Calibration"
         field(27; "Calibration Due Date"; Date)
         {
             Caption = 'Calibration Due Date';
+            DataClassification = CustomerContent;
         }
         field(31; "Calibration Provider"; Code[20])
         {
             Caption = 'Third Party Calibration Provider';
             TableRelation = Vendor;
+            DataClassification = CustomerContent;
             trigger OnValidate()
             var
                 VendorRec: Record Vendor;
@@ -81,23 +88,28 @@ table 52102 "ERF Equipment Calibration"
         {
             Caption = 'Third Party Calibration Provider Name';
             Editable = false;
+            DataClassification = CustomerContent;
         }
         field(39; "Verify Calibration Certificate"; Boolean)
         {
             Caption = 'Verified Calibration Certificate?';
+            DataClassification = CustomerContent;
         }
         field(43; Status; Enum "ERF Equip. Calibration Status")
         {
             Caption = 'Status';
+            DataClassification = CustomerContent;
         }
         field(49; Location; Text[100])
         {
             Caption = 'Location';
+            DataClassification = CustomerContent;
         }
         field(52; "Checked by Employee No."; Code[20])
         {
             Caption = 'Checked by Employee No.';
             TableRelation = Employee;
+            DataClassification = CustomerContent;
             trigger OnValidate()
             var
                 EmployeeRec: Record Employee;
