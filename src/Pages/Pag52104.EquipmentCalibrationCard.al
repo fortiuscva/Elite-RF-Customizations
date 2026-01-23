@@ -121,6 +121,16 @@ page 52104 "ERF Equipment Calibration Card"
             }
         }
     }
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        Clear(EquipCalibrationMgmt);
+        if Confirm('Do you want to save your changes to the Log?', true) then begin
+            EquipCalibrationMgmt.CreateCalibrationHistoricalEntry(Rec);
+            exit(true);
+        end;
+    end;
+
     var
         CalibrationHistory: Record "ERF Calibration History";
+        EquipCalibrationMgmt: Codeunit "ERF Equip. Calibration Mgmt.";
 }

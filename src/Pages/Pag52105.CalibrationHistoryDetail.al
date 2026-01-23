@@ -16,10 +16,6 @@ page 52105 "ERF Calibration History Detail"
         {
             repeater(General)
             {
-                field("Entry No."; Rec."Entry No.")
-                {
-                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
-                }
                 field("Equipment Id"; Rec."Equipment Id")
                 {
                     ToolTip = 'Specifies the value of the Equipment Id field.', Comment = '%';
@@ -28,7 +24,19 @@ page 52105 "ERF Calibration History Detail"
                 {
                     ToolTip = 'Specifies the value of the Equipment Type field.', Comment = '%';
                 }
-                field("Calibrated Date"; Rec."Calibrated Date")
+                field("Model No."; Rec."Model No.")
+                {
+                    ToolTip = 'Specifies the value of the Model # field.', Comment = '%';
+                }
+                field("Serial No."; Rec."Serial No.")
+                {
+                    ToolTip = 'Specifies the value of the Serial # field.', Comment = '%';
+                }
+                field(Manufacturer; Rec.Manufacturer)
+                {
+                    ToolTip = 'Specifies the value of the Manufacturer field.', Comment = '%';
+                }
+                field("Calibrated Date"; Rec."Last Calibrated")
                 {
                     ToolTip = 'Specifies the value of the Last Calibrated Date field.', Comment = '%';
                 }
@@ -40,16 +48,44 @@ page 52105 "ERF Calibration History Detail"
                 {
                     ToolTip = 'Specifies the value of the Calibration Due Date field.', Comment = '%';
                 }
+                field("Calibration Provider"; Rec."Calibration Provider")
+                {
+                    ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
+                }
+                field("Calibration Provider Name"; Rec."Calibration Provider Name")
+                {
+                    ToolTip = 'Specifies the value of the Third Party Calibration Provider Name field.', Comment = '%';
+                }
+                field(Status; Rec.Status)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(Location; Rec.Location)
+                {
+                    ToolTip = 'Specifies the value of the Location field.', Comment = '%';
+                }
+                field("Checked by Employee No."; Rec."Checked by Employee No.")
+                {
+                    ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
+                }
+                field("Checked by Employee Name"; Rec."Checked by Employee Name")
+                {
+                    ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
+                }
+                field("Checked Date"; Rec."Checked Date")
+                {
+                    ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
+                }
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
+                }
                 field(SystemCreatedAt; Rec.SystemCreatedAt)
                 {
-                    Caption = 'Created At';
+                    Caption = 'Entry Date & Time';
                     ToolTip = 'Specifies the value of the SystemCreatedAt field.', Comment = '%';
                 }
-                field(SystemModifiedAt; Rec.SystemModifiedAt)
-                {
-                    Caption = 'Modified At';
-                    ToolTip = 'Specifies the value of the SystemModifiedAt field.', Comment = '%';
-                }
+
             }
         }
     }
