@@ -1,49 +1,57 @@
-page 52103 "ERF Equip. Calibration Details"
+page 52104 "ERF Equipment Calibration Card"
 {
-    ApplicationArea = All;
-    Caption = 'Equipment Calibration Interface';
-    CardPageId = "ERF Equipment Calibration Card";
-    Editable = false;
-    PageType = List;
+    Caption = 'Equipment Calibration Details';
+    PageType = Card;
+    RefreshOnActivate = true;
     SourceTable = "ERF Equipment Calibration";
-    UsageCategory = Lists;
 
     layout
     {
         area(Content)
         {
-            repeater(General)
+            group(General)
             {
+                Caption = 'General';
+
                 field("Equipment ID"; Rec."Equipment ID")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Equipment ID field.', Comment = '%';
                 }
                 field("Equipment Type"; Rec."Equipment Type")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Equipment Type field.', Comment = '%';
                 }
                 field("Model No."; Rec."Model No.")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Model No. field.', Comment = '%';
                 }
                 field("Serial No."; Rec."Serial No.")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Serial No. field.', Comment = '%';
                 }
                 field(Manufacturer; Rec.Manufacturer)
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Manufacturer field.', Comment = '%';
                 }
                 field("Last Calibrated"; Rec."Last Calibrated")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Last Calibrated field.', Comment = '%';
                 }
                 field("Calibration Frequency"; Rec."Calibration Frequency")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Calibration Frequency field.', Comment = '%';
                 }
                 field("Calibration Due Date"; Rec."Calibration Due Date")
                 {
+                    ApplicationArea = all;
+                    Editable = false;
                     ToolTip = 'Specifies the value of the Calibration Due Date field.', Comment = '%';
                     trigger OnDrillDown()
                     begin
@@ -54,34 +62,42 @@ page 52103 "ERF Equip. Calibration Details"
                 }
                 field("Calibration Provider"; Rec."Calibration Provider")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
                 }
                 field("Calibration Provider Name"; Rec."Calibration Provider Name")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Third Party Calibration Provider Name field.', Comment = '%';
                 }
                 field("Verify Calibration Certificate"; Rec."Verify Calibration Certificate")
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Verified Calibration Certificate? field.', Comment = '%';
                 }
                 field(Status; Rec.Status)
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
                 field(Location; Rec.Location)
                 {
+                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Location field.', Comment = '%';
                 }
                 field("Checked by Employee No."; Rec."Checked by Employee No.")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
                 }
                 field("Checked by Employee Name"; Rec."Checked by Employee Name")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
                 }
                 field("Checked Date"; Rec."Checked Date")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
                 }
             }
@@ -105,6 +121,15 @@ page 52103 "ERF Equip. Calibration Details"
             }
         }
     }
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        Clear(EquipCalibrationMgmt);
+        if Confirm('Do you want to save your changes to the Log?', false) then
+            EquipCalibrationMgmt.CreateCalibrationHistoricalEntry(Rec);
+        exit(true);
+    end;
+
     var
         CalibrationHistory: Record "ERF Calibration History";
+        EquipCalibrationMgmt: Codeunit "ERF Equip. Calibration Mgmt.";
 }
