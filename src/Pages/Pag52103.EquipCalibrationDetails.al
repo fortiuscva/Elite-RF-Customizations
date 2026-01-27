@@ -5,8 +5,11 @@ page 52103 "ERF Equip. Calibration Details"
     CardPageId = "ERF Equipment Calibration Card";
     Editable = false;
     PageType = List;
+    RefreshOnActivate = true;
     SourceTable = "ERF Equipment Calibration";
+    SourceTableView = sorting("Equipment ID");
     UsageCategory = Lists;
+    DelayedInsert = false;
 
     layout
     {
@@ -86,6 +89,17 @@ page 52103 "ERF Equip. Calibration Details"
                 }
             }
         }
+        area(FactBoxes)
+        {
+            part("Attached Documents List"; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Documents';
+                UpdatePropagation = Both;
+                SubPageLink = "Table ID" = const(Database::"ERF Equipment Calibration"),
+                              "No." = field("Equipment ID");
+            }
+        }
     }
     actions
     {
@@ -104,6 +118,7 @@ page 52103 "ERF Equip. Calibration Details"
                 end;
             }
         }
+
     }
     var
         CalibrationHistory: Record "ERF Calibration History";
