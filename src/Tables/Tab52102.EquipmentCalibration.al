@@ -11,10 +11,12 @@ table 52102 "ERF Equipment Calibration"
         field(1; "Equipment ID"; Code[20])
         {
             Caption = 'Equipment ID';
+            OptimizeForTextSearch = true;
         }
         field(6; "Equipment Type"; Text[100])
         {
             Caption = 'Equipment Type';
+            OptimizeForTextSearch = true;
         }
         field(9; "Model No."; Code[20])
         {
@@ -37,11 +39,8 @@ table 52102 "ERF Equipment Calibration"
                     MonthDateFormula := ConvertToDateFormulaInMonths("Calibration Frequency");
                     Validate("Calibration Due Date", CalcDate(MonthDateFormula, "Last Calibrated"));
                 end;
-                if Rec."Last Calibrated" <> xRec."Last Calibrated" then
-                    if "Last Calibrated" <> 0D then
-                        CreateCalibrationHistoricalEntry()
-                    else
-                        Validate("Calibration Due Date", 0D);
+                if "Last Calibrated" = 0D then
+                    Validate("Calibration Due Date", 0D);
             end;
         }
         field(23; "Calibration Frequency"; Integer)
@@ -53,11 +52,8 @@ table 52102 "ERF Equipment Calibration"
                     MonthDateFormula := ConvertToDateFormulaInMonths("Calibration Frequency");
                     Validate("Calibration Due Date", CalcDate(MonthDateFormula, "Last Calibrated"));
                 end;
-                if Rec."Calibration Frequency" <> xRec."Calibration Frequency" then
-                    if "Calibration Frequency" <> 0 then
-                        ModifyCalibrationHistoricalEntry()
-                    else
-                        Validate("Calibration Due Date", 0D);
+                if "Calibration Frequency" = 0 then
+                    Validate("Calibration Due Date", 0D);
             end;
         }
         field(27; "Calibration Due Date"; Date)
@@ -141,27 +137,6 @@ table 52102 "ERF Equipment Calibration"
 
         }
     }
-    procedure CreateCalibrationHistoricalEntry()
-    var
-        EntryNo: Integer;
-    begin
-        CalibrationHistory.Reset();
-        If CalibrationHistory.FindLast() then
-            EntryNo := CalibrationHistory."Entry No." + 1
-        else
-            EntryNo := 1;
-
-        CalibrationHistory.Init();
-        CalibrationHistory."Entry No." := EntryNo;
-        CalibrationHistory.Insert(true);
-        CalibrationHistory.Validate("Equipment Id", "Equipment ID");
-        CalibrationHistory.Validate("Equipment Type", "Equipment Type");
-        CalibrationHistory.Validate("Calibrated Date", "Last Calibrated");
-        CalibrationHistory.Validate("Calibration Frequency", "Calibration Frequency");
-        CalibrationHistory.Validate("Calibration Due Date", "Calibration Due Date");
-        CalibrationHistory.Modify(true);
-    end;
-
     procedure ConvertToDateFormulaInMonths(Months: Integer): DateFormula
     var
         DateFormulaInMonths: DateFormula;
@@ -172,22 +147,7 @@ table 52102 "ERF Equipment Calibration"
         exit(DateFormulaInMonths);
     end;
 
-    procedure ModifyCalibrationHistoricalEntry()
-    var
-        CalibrationHistory: Record "ERF Calibration History";
-    begin
-        CalibrationHistory.Reset();
-        CalibrationHistory.SetRange("Calibrated Date", "Last Calibrated");
-        if CalibrationHistory.FindFirst() then begin
-            CalibrationHistory.Validate("Calibration Frequency", "Calibration Frequency");
-            CalibrationHistory.Validate("Calibration Due Date", "Calibration Due Date");
-            CalibrationHistory.Modify(true);
-        end;
-    end;
-
     var
         CalibrationHistory: Record "ERF Calibration History";
         MonthDateFormula: DateFormula;
-
-
 }
