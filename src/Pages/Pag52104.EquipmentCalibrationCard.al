@@ -4,7 +4,8 @@ page 52104 "ERF Equipment Calibration Card"
     PageType = Card;
     RefreshOnActivate = true;
     SourceTable = "ERF Equipment Calibration";
-
+    SourceTableView = sorting("Equipment ID");
+    DelayedInsert = false;
     layout
     {
         area(Content)
@@ -100,6 +101,17 @@ page 52104 "ERF Equipment Calibration Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
                 }
+            }
+        }
+        area(FactBoxes)
+        {
+            part("Attached Documents List"; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Documents';
+                UpdatePropagation = Both;
+                SubPageLink = "Table ID" = const(Database::"ERF Equipment Calibration"),
+                              "No." = field("Equipment ID");
             }
         }
     }

@@ -59,6 +59,32 @@ codeunit 52100 "ERF Subscriber Management"
         WarehouseActivityLine."ERF Version Code" := ProdOrderComp."ERF Version Code";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", OnAfterGetRefTable, '', false, false)]
+    local procedure "Document Attachment Mgmt_OnAfterGetRefTable"(var RecRef: RecordRef; DocumentAttachment: Record "Document Attachment")
+    var
+        EquipCalibrationRec: Record "ERF Equipment Calibration";
+    begin
+        case DocumentAttachment."Table ID" of
+            Database::"ERF Equipment Calibration":
+                begin
+                    RecRef.Open(Database::"ERF Equipment Calibration");
+                    if EquipCalibrationRec.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(EquipCalibrationRec);
+                end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document Attachment Mgmt", OnAfterTableHasNumberFieldPrimaryKey, '', false, false)]
+    local procedure "Document Attachment Mgmt_OnAfterTableHasNumberFieldPrimaryKey"(TableNo: Integer; var Result: Boolean; var FieldNo: Integer)
+    begin
+        case TableNo of
+            Database::"ERF Equipment Calibration":
+                begin
+                    FieldNo := 1;
+                    Result := true;
+                end;
+        end;
+    end;
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
