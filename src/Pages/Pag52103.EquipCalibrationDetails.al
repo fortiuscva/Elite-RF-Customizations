@@ -55,10 +55,10 @@ page 52103 "ERF Equip. Calibration Details"
                         Page.RunModal(Page::"ERF Calibration History Detail", CalibrationHistory);
                     end;
                 }
-                field("Calibration Provider"; Rec."Calibration Provider")
-                {
-                    ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
-                }
+                // field("Calibration Provider"; Rec."Calibration Provider")
+                // {
+                //     ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
+                // }
                 field("Calibration Provider Name"; Rec."Calibration Provider Name")
                 {
                     ToolTip = 'Specifies the value of the Third Party Calibration Provider Name field.', Comment = '%';
@@ -75,15 +75,15 @@ page 52103 "ERF Equip. Calibration Details"
                 {
                     ToolTip = 'Specifies the value of the Location field.', Comment = '%';
                 }
-                field("Checked by Employee No."; Rec."Checked by Employee No.")
-                {
-                    ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
-                }
-                field("Checked by Employee Name"; Rec."Checked by Employee Name")
+                // field("Checked by Employee No."; Rec."Checked by Employee No.")
+                // {
+                //     ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
+                // }
+                field("Approved By"; Rec."Approved By")
                 {
                     ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
                 }
-                field("Checked Date"; Rec."Checked Date")
+                field("Checked Date"; Rec."Approved Date")
                 {
                     ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
                 }

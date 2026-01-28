@@ -41,12 +41,12 @@ table 52103 "ERF Calibration History"
         }
         field(19; "Last Calibrated"; Date)
         {
-            Caption = 'Last Calibrated Date';
+            Caption = 'Last Calibrated';
             DataClassification = CustomerContent;
         }
         field(23; "Calibration Frequency"; Integer)
         {
-            Caption = 'Calibration Frequency (Months)';
+            Caption = 'Calibration Frequency';
             DataClassification = CustomerContent;
         }
         field(27; "Calibration Due Date"; Date)
@@ -54,15 +54,15 @@ table 52103 "ERF Calibration History"
             Caption = 'Calibration Due Date';
             DataClassification = CustomerContent;
         }
-        field(31; "Calibration Provider"; Code[20])
-        {
-            Caption = 'Third Party Calibration Provider';
-            TableRelation = Vendor;
-            DataClassification = CustomerContent;
-        }
+        // field(31; "Calibration Provider"; Code[20])
+        // {
+        //     Caption = 'Third Party Calibration Provider';
+        //     TableRelation = Vendor;
+        //     DataClassification = CustomerContent;
+        // }
         field(35; "Calibration Provider Name"; Text[100])
         {
-            Caption = 'Third Party Calibration Provider Name';
+            Caption = 'Third Party Calibration Provider';
             DataClassification = CustomerContent;
         }
         field(39; "Verify Calibration Certificate"; Boolean)
@@ -80,20 +80,20 @@ table 52103 "ERF Calibration History"
             Caption = 'Location';
             DataClassification = CustomerContent;
         }
-        field(52; "Checked by Employee No."; Code[20])
+        // field(52; "Checked by Employee No."; Code[20])
+        // {
+        //     Caption = 'Checked by Employee No.';
+        //     TableRelation = Employee;
+        //     DataClassification = CustomerContent;
+        // }
+        field(54; "Approved By"; Text[100])
         {
-            Caption = 'Checked by Employee No.';
-            TableRelation = Employee;
+            Caption = 'Approved By';
             DataClassification = CustomerContent;
         }
-        field(54; "Checked by Employee Name"; Text[100])
+        field(57; "Approved Date"; Date)
         {
-            Caption = 'Checked by Employee Name';
-            DataClassification = CustomerContent;
-        }
-        field(57; "Checked Date"; Date)
-        {
-            Caption = 'Checked Date';
+            Caption = 'Approved Date';
             DataClassification = CustomerContent;
         }
     }
