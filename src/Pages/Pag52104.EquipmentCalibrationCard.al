@@ -60,11 +60,11 @@ page 52104 "ERF Equipment Calibration Card"
                         Page.RunModal(Page::"ERF Calibration History Detail", CalibrationHistory);
                     end;
                 }
-                field("Calibration Provider"; Rec."Calibration Provider")
-                {
-                    ApplicationArea = all;
-                    ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
-                }
+                // field("Calibration Provider"; Rec."Calibration Provider")
+                // {
+                //     ApplicationArea = all;
+                //     ToolTip = 'Specifies the value of the Third Party Calibration Provider field.', Comment = '%';
+                // }
                 field("Calibration Provider Name"; Rec."Calibration Provider Name")
                 {
                     ApplicationArea = all;
@@ -85,17 +85,17 @@ page 52104 "ERF Equipment Calibration Card"
                     ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Location field.', Comment = '%';
                 }
-                field("Checked by Employee No."; Rec."Checked by Employee No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
-                }
-                field("Checked by Employee Name"; Rec."Checked by Employee Name")
+                // field("Checked by Employee No."; Rec."Checked by Employee No.")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the Checked by Employee No. field.', Comment = '%';
+                // }
+                field("Approved By"; Rec."Approved By")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
                 }
-                field("Checked Date"; Rec."Checked Date")
+                field("Approved Date"; Rec."Approved Date")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
