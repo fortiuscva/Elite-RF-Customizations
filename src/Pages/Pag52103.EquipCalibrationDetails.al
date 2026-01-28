@@ -45,12 +45,12 @@ page 52103 "ERF Equip. Calibration Details"
                 field("Calibration Due Date"; Rec."Calibration Due Date")
                 {
                     ToolTip = 'Specifies the value of the Calibration Due Date field.', Comment = '%';
-                    trigger OnDrillDown()
-                    begin
-                        CalibrationHistory.Reset();
-                        CalibrationHistory.SetRange("Equipment Id", Rec."Equipment ID");
-                        Page.RunModal(Page::"ERF Calibration History Detail", CalibrationHistory);
-                    end;
+                    // trigger OnDrillDown()
+                    // begin
+                    //     CalibrationHistory.Reset();
+                    //     CalibrationHistory.SetRange("Equipment Id", Rec."Equipment ID");
+                    //     Page.RunModal(Page::"ERF Calibration History Detail", CalibrationHistory);
+                    // end;
                 }
                 // field("Calibration Provider"; Rec."Calibration Provider")
                 // {
