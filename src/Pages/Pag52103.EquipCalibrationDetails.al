@@ -80,6 +80,10 @@ page 52103 "ERF Equip. Calibration Details"
                 {
                     ToolTip = 'Specifies the value of the Checked by Employee Name field.', Comment = '%';
                 }
+                field("Checked Date"; Rec."Checked Date")
+                {
+                    ToolTip = 'Specifies the value of the Checked Date field.', Comment = '%';
+                }
             }
         }
     }
