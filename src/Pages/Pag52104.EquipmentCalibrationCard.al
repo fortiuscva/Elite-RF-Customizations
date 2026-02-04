@@ -81,10 +81,20 @@ page 52104 "ERF Equipment Calibration Card"
                     ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Location Code field.', Comment = '%';
+                }
                 field(Location; Rec.Location)
                 {
                     ApplicationArea = all;
                     ToolTip = 'Specifies the value of the Location field.', Comment = '%';
+                }
+                field("Bin Code"; Rec."Bin Code")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Bin Code field.', Comment = '%';
                 }
                 // field("Checked by Employee No."; Rec."Checked by Employee No.")
                 // {

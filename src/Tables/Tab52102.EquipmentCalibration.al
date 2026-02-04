@@ -100,9 +100,34 @@ table 52102 "ERF Equipment Calibration"
             Caption = 'Status';
             DataClassification = CustomerContent;
         }
+        field(48; "Location Code"; Code[10])
+        {
+            Caption = 'Location Code';
+            TableRelation = Location;
+            DataClassification = CustomerContent;
+            trigger OnValidate()
+            var
+                LocationRec: Record Location;
+            begin
+                if Rec."Location Code" <> xRec."Location Code" then begin
+                    if Rec."Location Code" <> '' then begin
+                        if LocationRec.Get("Location Code") then
+                            Validate(Location, LocationRec.Name);
+                    end else
+                        Validate(Location, '');
+                end;
+            end;
+        }
         field(49; Location; Text[100])
         {
-            Caption = 'Location';
+            Caption = 'Location Name';
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
+        field(50; "Bin Code"; Code[10])
+        {
+            Caption = 'Bin Code';
+            TableRelation = Bin.Code where("Location Code" = field("Location Code"));
             DataClassification = CustomerContent;
         }
         // field(52; "Checked by Employee No."; Code[20])
