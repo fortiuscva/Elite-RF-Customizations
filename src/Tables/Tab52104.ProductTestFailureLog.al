@@ -114,9 +114,4 @@ table 52104 "ERF Product Test Failure Log"
             Clustered = true;
         }
     }
-    trigger OnInsert()
-    begin
-        if "Issue Date" = 0D then
-            "Issue Date" := Today;
-    end;
 }
