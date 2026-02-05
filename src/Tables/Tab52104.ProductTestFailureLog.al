@@ -22,14 +22,14 @@ table 52104 "ERF Product Test Failure Log"
         {
             Caption = 'Production Order No.';
             DataClassification = CustomerContent;
-            TableRelation = "Production Order"."No.";
+            TableRelation = "Production Order"."No." where(Status = const(Released));
             trigger OnValidate()
             var
                 ProdOrder: Record "Production Order";
             begin
                 Clear("Model No./Part No.");
                 if "Production Order No." <> '' then begin
-                    ProdOrder.Get("Production Order No.");
+                    ProdOrder.Get(ProdOrder.Status::Released, "Production Order No.");
                     Validate("Model No./Part No.", ProdOrder."Source No.");
                 end;
             end;
