@@ -1,7 +1,7 @@
 page 52106 "ERF Product Test Failure Log"
 {
     ApplicationArea = All;
-    Caption = 'ERF Product Test Failure Log';
+    Caption = 'Product Test Failure Log';
     PageType = List;
     SourceTable = "ERF Product Test Failure Log";
     UsageCategory = Lists;
@@ -75,4 +75,9 @@ page 52106 "ERF Product Test Failure Log"
             }
         }
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        if Rec."Issue Date" = 0D then
+            Rec."Issue Date" := Today;
+    end;
 }
