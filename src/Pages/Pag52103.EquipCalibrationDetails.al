@@ -1,7 +1,7 @@
 page 52103 "ERF Equip. Calibration Details"
 {
     ApplicationArea = All;
-    Caption = 'Equipment Calibration Interface';
+    Caption = 'F-715-1 Equipment Calibration Interface';
     CardPageId = "ERF Equipment Calibration Card";
     Editable = false;
     PageType = List;
