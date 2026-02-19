@@ -41,6 +41,17 @@ tableextension 52100 "ERF Item" extends Item
             Caption = 'MSL Level Defined';
             TableRelation = "ERF MSL Level".Code;
         }
+        field(52105; "ERF Conv New Tracking Code"; Code[10])
+        {
+            Caption = 'Conversion New Tracking Code';
+            DataClassification = CustomerContent;
+        }
+
+        field(52106; "ERF Conv Old Tracking Code"; Code[10])
+        {
+            Caption = 'Conversion Old Tracking Code';
+            DataClassification = CustomerContent;
+        }
     }
     procedure GetExtendedDescription(): Text
     var

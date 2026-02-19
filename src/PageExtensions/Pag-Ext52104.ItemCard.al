@@ -66,5 +66,35 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
                 end;
             }
         }
+        addlast(Processing)
+        {
+            action("ERF PrepareTrackingConversion")
+            {
+                Caption = 'Prepare Tracking Conversion';
+                Image = Setup;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    Mgmt: Codeunit "ERF ItemTrackingConversionCU";
+                begin
+                    Mgmt.PrepareConversion(Rec);
+                end;
+            }
+
+            action("ERF CompleteTrackingConversion")
+            {
+                Caption = 'Complete Tracking Conversion';
+                Image = Post;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    Mgmt: Codeunit "ERF ItemTrackingConversionCU";
+                begin
+                    Mgmt.CompleteConversion(Rec);
+                end;
+            }
+        }
     }
 }
