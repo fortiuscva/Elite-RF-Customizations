@@ -1,7 +1,7 @@
 page 52106 "ERF Product Test Failure Log"
 {
     ApplicationArea = All;
-    Caption = 'Product Test Failure Log';
+    Caption = 'F-812-6 Product Test Failure Log Rev B';
     PageType = List;
     SourceTable = "ERF Product Test Failure Log";
     UsageCategory = Lists;
@@ -24,7 +24,15 @@ page 52106 "ERF Product Test Failure Log"
                 {
                     ToolTip = 'Specifies the value of the Report Issued By field.', Comment = '%';
                 }
+                field("Report Issued By Name"; Rec."Report Issued By Name")
+                {
+                    ToolTip = 'Specifies the value of the Report Issued By field.', Comment = '%';
+                }
                 field("Assembled/Build By"; Rec."Assembled/Build By")
+                {
+                    ToolTip = 'Specifies the value of the Assembled/Build By field.', Comment = '%';
+                }
+                field("Assembled/Build By Name"; Rec."Assembled/Build By Name")
                 {
                     ToolTip = 'Specifies the value of the Assembled/Build By field.', Comment = '%';
                 }
@@ -39,6 +47,10 @@ page 52106 "ERF Product Test Failure Log"
                 field("Tested By"; Rec."Tested By")
                 {
                     ToolTip = 'Specifies the value of the Tested By field.', Comment = '%';
+                }
+                field("Tested By Name"; Rec."Tested By Name")
+                {
+                    ToolTip = 'Specifies the value of the Tested By Name field.', Comment = '%';
                 }
                 field("Test Date"; Rec."Test Date")
                 {
@@ -64,9 +76,13 @@ page 52106 "ERF Product Test Failure Log"
                 {
                     ToolTip = 'Specifies the value of the Preventive Action Taken field.', Comment = '%';
                 }
-                field("Closed by"; Rec."Closed by")
+                field("Approved By"; Rec."Approved By")
                 {
                     ToolTip = 'Specifies the value of the Closed by field.', Comment = '%';
+                }
+                field("Approved By Name"; Rec."Approved By Name")
+                {
+                    ToolTip = 'Specifies the value of the Approved By Name field.', Comment = '%';
                 }
                 field(Status; Rec.Status)
                 {
