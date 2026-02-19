@@ -71,9 +71,17 @@ page 52103 "ERF Equip. Calibration Details"
                 {
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
+                field("Location Code"; Rec."Location Code")
+                {
+                    ToolTip = 'Specifies the value of the Location Code field.', Comment = '%';
+                }
                 field(Location; Rec.Location)
                 {
                     ToolTip = 'Specifies the value of the Location field.', Comment = '%';
+                }
+                field("Bin Code"; Rec."Bin Code")
+                {
+                    ToolTip = 'Specifies the value of the Bin Code field.', Comment = '%';
                 }
                 // field("Checked by Employee No."; Rec."Checked by Employee No.")
                 // {
