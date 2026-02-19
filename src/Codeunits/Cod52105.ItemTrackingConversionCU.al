@@ -1,6 +1,11 @@
 codeunit 52105 "ERF ItemTrackingConversionCU"
 {
 
+    var
+        SalesReceivablesRec: Record "Sales & Receivables Setup";
+        TempEntryCounter: Integer;
+
+
     procedure PrepareConversion(var Item: Record Item)
     var
         InputPage: Page "ERF TrackingCodeInputDialog";
@@ -8,7 +13,6 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         TempBuffer: Record "Warehouse Entry" temporary;
     begin
 
-        // Ask user for new tracking code
         if InputPage.RunModal() <> Action::OK then
             exit;
 
@@ -20,6 +24,7 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         if Item."Item Tracking Code" = NewTrackingCode then
             Error('Item already has this tracking code.');
 
+        SalesReceivablesRec.get();
         ValidateItem(Item);
 
         PreventDuplicateJournals(Item);
@@ -28,18 +33,22 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         Item."ERF Conv New Tracking Code" := NewTrackingCode;
         Item.Modify(true);
 
+        TempEntryCounter := 0;
+
         BuildWarehouseBuffer(Item, TempBuffer);
 
-        CreateJournalLines(TempBuffer, 'TRACKNEG', false);
-        CreateJournalLines(TempBuffer, 'TRACKPOS', true);
+        if TempBuffer.IsEmpty then
+            Error('No warehouse inventory found to convert.');
 
-        Message(
-        'Conversion journals created successfully.\' +
-        'Post TRACKNEG journal first, then run Complete Conversion.');
+
+        CreateJournalLines(TempBuffer, SalesReceivablesRec."ERF ItemTrackingCode Neg.Batch", false);
+        CreateJournalLines(TempBuffer, SalesReceivablesRec."ERF ItemTrackingCode Pos.Batch", true);
+
+        Message(StrSubstNo(
+            'Conversion journals created successfully.\' +
+            'Post %1 journal first, then run Complete Conversion.', SalesReceivablesRec."ERF ItemTrackingCode Neg.Batch"));
 
     end;
-
-
 
     procedure CompleteConversion(var Item: Record Item)
     begin
@@ -55,8 +64,8 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         OpenPositiveJournal();
 
         Message(
-        'Tracking Code updated successfully.\' +
-        'Assign Lot/Serial Numbers and post TRACKPOS journal.');
+            StrSubstNo('Tracking Code updated successfully.\' +
+            'Assign Lot/Serial Numbers and post %1 journal.', SalesReceivablesRec."ERF ItemTrackingCode Pos.Batch"));
 
     end;
 
@@ -78,8 +87,8 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         if WhseActivityLine.FindFirst() then
             Error(
-            'Open Warehouse Activities exist for Item %1. Complete or delete them before conversion.',
-            Item."No.");
+                'Open Warehouse Activities exist for Item %1. Complete or delete them before conversion.',
+                Item."No.");
 
     end;
 
@@ -92,8 +101,8 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         if ReservationEntry.FindFirst() then
             Error(
-            'Reservations exist for Item %1. Remove reservations before conversion.',
-            Item."No.");
+                'Reservations exist for Item %1. Remove reservations before conversion.',
+                Item."No.");
 
     end;
 
@@ -103,11 +112,13 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         Item.CalcFields(Inventory);
 
         if Item.Inventory <> 0 then
-            Error(
-            'Inventory must be zero before completing conversion.\' +
-            'Post the TRACKNEG journal first.');
+            Error(StrSubstNo(
+                'Inventory must be zero before completing conversion.\' +
+                'Post the %1 journal first.', SalesReceivablesRec."ERF ItemTrackingCode Neg.Batch"));
 
     end;
+
+
 
     local procedure PreventDuplicateJournals(Item: Record Item)
     var
@@ -116,14 +127,16 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         ItemJournalLine.SetRange("Item No.", Item."No.");
         ItemJournalLine.SetRange("Journal Template Name", 'ITEM');
-        ItemJournalLine.SetFilter("Journal Batch Name", 'TRACKNEG|TRACKPOS');
+        ItemJournalLine.SetFilter("Journal Batch Name", '%1|%2', SalesReceivablesRec."ERF ItemTrackingCode Neg.Batch", SalesReceivablesRec."ERF ItemTrackingCode Pos.Batch");
 
         if ItemJournalLine.FindFirst() then
             Error(
-            'Conversion journals already exist for Item %1.',
-            Item."No.");
+                'Conversion journals already exist for Item %1.',
+                Item."No.");
 
     end;
+
+
 
     local procedure BuildWarehouseBuffer(
         Item: Record Item;
@@ -134,15 +147,11 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         WhseEntry.SetRange("Item No.", Item."No.");
         WhseEntry.SetFilter(Quantity, '>%1', 0);
+
         if WhseEntry.FindSet() then
             repeat
                 InsertBuffer(WhseEntry, TempBuffer);
             until WhseEntry.Next() = 0;
-
-        if TempBuffer.IsEmpty then
-            Error(
-            'No warehouse inventory exists for Item %1.',
-            Item."No.");
 
     end;
 
@@ -166,8 +175,10 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
         end
         else begin
 
-            TempBuffer.Init();
+            TempEntryCounter += 1;
 
+            TempBuffer.Init();
+            TempBuffer."Entry No." := TempEntryCounter;
             TempBuffer."Item No." := SourceEntry."Item No.";
             TempBuffer."Location Code" := SourceEntry."Location Code";
             TempBuffer."Bin Code" := SourceEntry."Bin Code";
@@ -176,11 +187,11 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
             TempBuffer.Insert();
 
         end;
-
+        TempBuffer.Reset();
     end;
 
     local procedure CreateJournalLines(
-        TempBuffer: Record "Warehouse Entry" temporary;
+        var TempBuffer: Record "Warehouse Entry" temporary;
         BatchName: Code[10];
         Positive: Boolean)
     var
@@ -189,6 +200,7 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
     begin
 
         LineNo := GetNextLineNo(BatchName);
+        TempBuffer.Reset();
         if TempBuffer.FindSet() then
             repeat
                 ItemJournalLine.Init();
@@ -238,7 +250,7 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
     begin
 
         ItemJournalLine.SetRange("Journal Template Name", 'ITEM');
-        ItemJournalLine.SetRange("Journal Batch Name", 'TRACKPOS');
+        ItemJournalLine.SetRange("Journal Batch Name", SalesReceivablesRec."ERF ItemTrackingCode Pos.Batch");
 
         Page.Run(Page::"Item Journal", ItemJournalLine);
 

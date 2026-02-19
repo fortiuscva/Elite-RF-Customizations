@@ -8,6 +8,14 @@ pageextension 52128 "ERF Sales & Receivables Setup" extends "Sales & Receivables
             {
                 ApplicationArea = all;
             }
+            field("ERF ItemTrackingCode Neg.Batch"; Rec."ERF ItemTrackingCode Neg.Batch")
+            {
+                ApplicationArea = all;
+            }
+            field("ERF ItemTrackingCode Pos.Batch"; Rec."ERF ItemTrackingCode Pos.Batch")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
