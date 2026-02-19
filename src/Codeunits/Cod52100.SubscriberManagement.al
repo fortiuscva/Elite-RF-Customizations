@@ -86,6 +86,23 @@ codeunit 52100 "ERF Subscriber Management"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", OnAfterInsertInvoiceHeader, '', false, false)]
+    local procedure "Sales-Post_OnAfterInsertInvoiceHeader"(var SalesHeader: Record "Sales Header"; var SalesInvHeader: Record "Sales Invoice Header")
+    var
+        SalesLine: Record "Sales Line";
+    begin
+        if SalesHeader."Document Type" <> SalesHeader."Document Type"::Order then
+            exit;
+        SalesLine.Reset();
+        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+        SalesLine.SetRange("Document No.", SalesHeader."No.");
+        SalesLine.SetRange(Type, SalesLine.Type::Resource);
+        SalesLine.SetFilter("Qty. to Invoice", '<>0');
+        if SalesLine.FindFirst() then
+            if SalesLine."No." = 'PREPAY' then
+                SalesInvHeader."Prepayment Invoice" := true;
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
