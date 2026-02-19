@@ -39,12 +39,32 @@ table 52104 "ERF Product Test Failure Log"
             Caption = 'Report Issued By';
             DataClassification = CustomerContent;
             TableRelation = Employee."No.";
+            trigger OnValidate()
+            var
+                EmployeeRec: Record Employee;
+            begin
+                if "Report Issued By" <> '' then begin
+                    EmployeeRec.Get("Report Issued By");
+                    "Report Issued By Name" := EmployeeRec."First Name" + ' ' + EmployeeRec."Last Name";
+                end else
+                    "Report Issued By Name" := '';
+            end;
         }
         field(8; "Assembled/Build By"; Code[20])
         {
             Caption = 'Assembled/Build By';
             DataClassification = CustomerContent;
             TableRelation = Employee."No.";
+            trigger OnValidate()
+            var
+                EmployeeRec: Record Employee;
+            begin
+                if "Assembled/Build By" <> '' then begin
+                    EmployeeRec.Get("Assembled/Build By");
+                    "Assembled/Build By Name" := EmployeeRec."First Name" + ' ' + EmployeeRec."Last Name";
+                end else
+                    "Assembled/Build By Name" := '';
+            end;
         }
         field(9; "Model No./Part No."; Code[20])
         {
@@ -62,6 +82,16 @@ table 52104 "ERF Product Test Failure Log"
             Caption = 'Tested By';
             DataClassification = CustomerContent;
             TableRelation = Employee."No.";
+            trigger OnValidate()
+            var
+                EmployeeRec: Record Employee;
+            begin
+                if "Tested By" <> '' then begin
+                    EmployeeRec.Get("Tested By");
+                    "Tested By Name" := EmployeeRec."First Name" + ' ' + EmployeeRec."Last Name";
+                end else
+                    "Tested By Name" := '';
+            end;
         }
         field(12; "Test Date"; Date)
         {
@@ -93,16 +123,50 @@ table 52104 "ERF Product Test Failure Log"
             Caption = 'Preventive Action Taken';
             DataClassification = CustomerContent;
         }
-        field(18; "Closed by"; Code[20])
+        field(18; "Approved By"; Code[20])
         {
-            Caption = 'Closed by';
+            Caption = 'Approved By';
             DataClassification = CustomerContent;
             TableRelation = Employee."No.";
+            trigger OnValidate()
+            var
+                EmployeeRec: Record Employee;
+            begin
+                if "Approved By" <> '' then begin
+                    EmployeeRec.Get("Approved By");
+                    "Approved By Name" := EmployeeRec."First Name" + ' ' + EmployeeRec."Last Name";
+                end else
+                    "Approved By Name" := '';
+            end;
         }
         field(19; Status; Enum "Prod. TestFailureLog Status")
         {
             Caption = 'Status';
             DataClassification = CustomerContent;
+        }
+        field(20; "Report Issued By Name"; Text[250])
+        {
+            Caption = 'Report Issued By Name';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+        field(21; "Assembled/Build By Name"; Text[250])
+        {
+            Caption = 'Assembled/Build By Name';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+        field(22; "Tested By Name"; Text[250])
+        {
+            Caption = 'Tested By Name';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
+        field(23; "Approved By Name"; Text[250])
+        {
+            Caption = 'Approved By Name';
+            DataClassification = CustomerContent;
+            Editable = false;
         }
 
     }
