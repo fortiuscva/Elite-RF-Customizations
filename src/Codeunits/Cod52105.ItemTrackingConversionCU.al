@@ -55,10 +55,10 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         if Item."ERF Conv New Tracking Code" = '' then
             Error('Prepare Conversion must be completed first.');
-
+        SalesReceivablesRec.Get();
         ValidateInventoryIsZero(Item);
 
-        Item.Validate("Item Tracking Code", Item."ERF Conv New Tracking Code");
+        Item."Item Tracking Code" := Item."ERF Conv New Tracking Code";
         Item.Modify(true);
 
         OpenPositiveJournal();
@@ -146,7 +146,7 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
     begin
 
         WhseEntry.SetRange("Item No.", Item."No.");
-        WhseEntry.SetFilter(Quantity, '>%1', 0);
+        //WhseEntry.SetFilter(Quantity, '>%1', 0);
 
         if WhseEntry.FindSet() then
             repeat
@@ -216,6 +216,7 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
                         "Entry Type",
                         ItemJournalLine."Entry Type"::"Negative Adjmt.");
 
+                ItemJournalLine.Validate("Posting Date", Today());
                 ItemJournalLine.Validate("Item No.", TempBuffer."Item No.");
                 ItemJournalLine.Validate("Location Code", TempBuffer."Location Code");
                 ItemJournalLine.Validate("Variant Code", TempBuffer."Variant Code");
@@ -251,8 +252,8 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         ItemJournalLine.SetRange("Journal Template Name", 'ITEM');
         ItemJournalLine.SetRange("Journal Batch Name", SalesReceivablesRec."ERF ItemTrackingCode Pos.Batch");
-
-        Page.Run(Page::"Item Journal", ItemJournalLine);
+        if ItemJournalLine.FindSet() then
+            Page.Run(Page::"Item Journal", ItemJournalLine);
 
     end;
 
