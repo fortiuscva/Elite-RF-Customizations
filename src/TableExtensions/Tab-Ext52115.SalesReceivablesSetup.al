@@ -12,13 +12,13 @@ tableextension 52115 "ERF Sales & Receivables Setup" extends "Sales & Receivable
         {
             Caption = 'Item Tracking Code Negative Batch';
             DataClassification = ToBeClassified;
-            TableRelation = "Item Journal Batch" where("Journal Template Name" = const('ITEM'));
+            TableRelation = "Item Journal Batch".Name where("Journal Template Name" = const('ITEM'));
         }
         field(52102; "ERF ItemTrackingCode Pos.Batch"; Code[10])
         {
             Caption = 'Item Tracking Code Positive Batch';
             DataClassification = ToBeClassified;
-            TableRelation = "Item Journal Batch" where("Journal Template Name" = const('ITEM'));
+            TableRelation = "Item Journal Batch".Name where("Journal Template Name" = const('ITEM'));
         }
     }
 }
