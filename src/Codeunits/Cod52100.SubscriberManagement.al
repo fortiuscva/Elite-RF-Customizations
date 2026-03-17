@@ -103,6 +103,19 @@ codeunit 52100 "ERF Subscriber Management"
                 SalesInvHeader."Prepayment Invoice" := true;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Tracking CaptionClass Mgt", OnBeforeResolveCaption, '', false, false)]
+    local procedure "Item Tracking CaptionClass Mgt_OnBeforeResolveCaption"(var InventorySetup: Record "Inventory Setup"; CaptionString: Text; var Result: Text; var IsHandled: Boolean)
+
+    begin
+        case CaptionString of
+            '%1 No.':
+                begin
+                    Result := 'Date Code';
+                    IsHandled := true;
+                end;
+        end;
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
