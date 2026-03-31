@@ -34,6 +34,9 @@ report 52104 "ERF Sales Shipment"
                 trigger OnAfterGetRecord()
                 begin
                     TempSalesShipmentLine := "Sales Shipment Line";
+                    if TempSalesShipmentLine.Type = TempSalesShipmentLine.Type::Resource then
+                        if TempSalesShipmentLine."No." = 'PREPAY' then
+                            CurrReport.Skip();
                     TempSalesShipmentLine.Insert();
                     TempSalesShipmentLineAsm := "Sales Shipment Line";
                     TempSalesShipmentLineAsm.Insert();
