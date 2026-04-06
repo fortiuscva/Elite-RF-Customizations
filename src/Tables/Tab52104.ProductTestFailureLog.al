@@ -22,7 +22,7 @@ table 52104 "ERF Product Test Failure Log"
         {
             Caption = 'Production Order No.';
             DataClassification = CustomerContent;
-            TableRelation = "Production Order"."No." where(Status = const(Released));
+            TableRelation = "Production Order"."No." where(Status = filter(Released | Finished));
             trigger OnValidate()
             var
                 ProdOrder: Record "Production Order";
