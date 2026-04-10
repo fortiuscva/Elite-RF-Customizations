@@ -22,15 +22,17 @@ table 52104 "ERF Product Test Failure Log"
         {
             Caption = 'Production Order No.';
             DataClassification = CustomerContent;
-            TableRelation = "Production Order"."No." where(Status = const(Released));
+            TableRelation = "Production Order"."No." where(Status = filter(Released | Finished));
             trigger OnValidate()
             var
                 ProdOrder: Record "Production Order";
             begin
                 Clear("Model No./Part No.");
                 if "Production Order No." <> '' then begin
-                    ProdOrder.Get(ProdOrder.Status::Released, "Production Order No.");
-                    Validate("Model No./Part No.", ProdOrder."Source No.");
+                    if not (ProdOrder.Get(ProdOrder.Status::Released, "Production Order No.") or ProdOrder.Get(ProdOrder.Status::Finished, "Production Order No.")) then
+                        Error('Production Order %1 is not Released or Finished.', "Production Order No.")
+                    else
+                        Validate("Model No./Part No.", ProdOrder."Source No.");
                 end;
             end;
         }
