@@ -29,8 +29,10 @@ table 52104 "ERF Product Test Failure Log"
             begin
                 Clear("Model No./Part No.");
                 if "Production Order No." <> '' then begin
-                    ProdOrder.Get(ProdOrder.Status::Released, "Production Order No.");
-                    Validate("Model No./Part No.", ProdOrder."Source No.");
+                    if not (ProdOrder.Get(ProdOrder.Status::Released, "Production Order No.") or ProdOrder.Get(ProdOrder.Status::Finished, "Production Order No.")) then
+                        Error('Production Order %1 is not Released or Finished.', "Production Order No.")
+                    else
+                        Validate("Model No./Part No.", ProdOrder."Source No.");
                 end;
             end;
         }
