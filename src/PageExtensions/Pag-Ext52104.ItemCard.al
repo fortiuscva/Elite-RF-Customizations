@@ -71,6 +71,8 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
                 ApplicationArea = All;
                 Image = Change;
                 Enabled = Rec.Type = Rec.Type::"Non-Inventory";
+                Promoted = true;
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
