@@ -19,6 +19,11 @@ pageextension 52102 "ERF Item List" extends "Item List"
                         Page.RunModal(Page::"ERF Item Additional Fields", ItemAdditionalFields);
                 end;
             }
+            field("ERF Safety Stock Quantity"; Rec."Safety Stock Quantity")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies a quantity of stock to have in inventory to protect against supply-and-demand fluctuations during replenishment lead time.';
+            }
         }
     }
     actions
