@@ -12,8 +12,21 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
                 Promoted = true;
                 PromotedCategory = Process;
                 ToolTip = 'Post consumption released production order(s).';
-                RunObject = page "Consumption Journal";
-                RunPageView = where("Journal Template Name" = const('CONSUMPTIO'), "Journal Batch Name" = const('Default'));
+
+                trigger OnAction()
+                var
+                    ItemJnlLine: Record "Item Journal Line";
+                    ConsumptionJnl: Page "Consumption Journal";
+                begin
+                    Rec.CreateConsumptionLines();
+
+                    ItemJnlLine.SetRange("Journal Template Name", 'CONSUMPTIO');
+                    ItemJnlLine.SetRange("Journal Batch Name", 'DEFAULT');
+                    ItemJnlLine.SetRange("Order Type", ItemJnlLine."Order Type"::Production);
+                    ItemJnlLine.SetRange("Order No.", Rec."No.");
+                    ConsumptionJnl.SetTableView(ItemJnlLine);
+                    ConsumptionJnl.Run();
+                end;
             }
         }
     }
