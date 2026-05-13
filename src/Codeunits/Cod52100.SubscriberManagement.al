@@ -122,6 +122,14 @@ codeunit 52100 "ERF Subscriber Management"
         SalesShptLine."ERF On Time Shipment" := SalesShptHeader."ERF On Time Shipment";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", OnAfterInsertShipmentHeader, '', false, false)]
+    local procedure "Sales-Post_OnAfterInsertShipmentHeader"(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header")
+    begin
+        SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::No;
+    end;
+
+
+
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
