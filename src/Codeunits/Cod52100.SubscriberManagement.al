@@ -116,6 +116,13 @@ codeunit 52100 "ERF Subscriber Management"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnAfterInitFromSalesLine, '', false, false)]
+    local procedure "Sales Shipment Line_OnAfterInitFromSalesLine"(SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line"; var SalesShptLine: Record "Sales Shipment Line")
+    begin
+        SalesShptLine."ERF On Time Shipment" := SalesShptHeader."ERF On Time Shipment";
+    end;
+
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
