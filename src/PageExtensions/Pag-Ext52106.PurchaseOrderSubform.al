@@ -11,4 +11,19 @@ pageextension 52106 "ERF Purchase Order Subform" extends "Purchase Order Subform
             }
         }
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        PurchHeader: Record "Purchase Header";
+    begin
+        if PurchHeader.Get(Rec."Document Type", Rec."Document No.") then
+            Rec."ERF Job ID" := PurchHeader."ERF Job ID";
+    end;
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        PurchHeader: Record "Purchase Header";
+    begin
+        if PurchHeader.Get(Rec."Document Type", Rec."Document No.") then
+            Rec."ERF Job ID" := PurchHeader."ERF Job ID";
+    end;
 }

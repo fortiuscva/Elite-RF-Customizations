@@ -116,6 +116,29 @@ codeunit 52100 "ERF Subscriber Management"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Purchase Document", OnBeforeReleasePurchaseDoc, '', false, false)]
+    local procedure OnBeforeReleasePurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; var SkipCheckReleaseRestrictions: Boolean; var IsHandled: Boolean; SkipWhseRequestOperations: Boolean)
+    var
+        PurchLine: Record "Purchase Line";
+    begin
+        PurchaseHeader.TestField("ERF Job ID");
+
+        PurchLine.Reset();
+        PurchLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchLine.SetRange("Document No.", PurchaseHeader."No.");
+        PurchLine.SetRange(Type, PurchLine.Type::Item);
+        PurchLine.SetRange("ERF Job Id", '');
+        if PurchLine.FindFirst() then
+            PurchLine.TestField("ERF Job Id");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", OnAfterRecreatePurchLine, '', false, false)]
+    local procedure OnAfterRecreatePurchLine(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line" temporary; var PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchLine."ERF Job Id" := PurchaseHeader."ERF Job ID";
+        PurchLine.Modify();
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
