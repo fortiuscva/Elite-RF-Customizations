@@ -1,4 +1,4 @@
-pageextension 52131 "ERF Posted Purchase Invoice" extends "Posted Purchase Invoice"
+pageextension 52136 "Posted Purchase Credit Memo" extends "Posted Purchase Credit Memo"
 {
     layout
     {
