@@ -1,4 +1,4 @@
-tableextension 52120 "Purch. Inv. Header" extends "Purch. Inv. Header"
+tableextension 52127 "ERF Purch. Cr. Memo Hdr." extends "Purch. Cr. Memo Hdr."
 {
     fields
     {

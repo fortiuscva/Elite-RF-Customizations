@@ -1,4 +1,4 @@
-tableextension 52119 "ERF Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
+tableextension 52125 "ERF Purch. Rcpt. Header" extends "Purch. Rcpt. Header"
 {
     fields
     {
