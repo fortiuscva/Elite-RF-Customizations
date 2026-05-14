@@ -5,7 +5,7 @@ table 52107 "ERF F-830-4 ECN Log Rev A"
 
     fields
     {
-        field(1; "ECN Number"; Integer)
+        field(1; "ECN Number"; Code[10])
         {
             Caption = 'ECN Number';
         }
@@ -17,23 +17,23 @@ table 52107 "ERF F-830-4 ECN Log Rev A"
         {
             Caption = 'Date Signed';
         }
-        field(4; "Product P/N"; Text[50])
+        field(4; "Product P/N"; Text[100])
         {
             Caption = 'Product P/N';
         }
-        field(5; "Old Rev"; Text[20])
+        field(5; "Old Rev"; Text[10])
         {
             Caption = 'Old Rev';
         }
-        field(6; "New Rev"; Text[20])
+        field(6; "New Rev"; Text[100])
         {
             Caption = 'New Rev';
         }
-        field(7; "Part/Product Description"; Text[50])
+        field(7; "Part/Product Description"; Text[250])
         {
             Caption = 'Part/Product Description';
         }
-        field(8; "Description of Change"; Text[100])
+        field(8; "Description of Change"; Text[250])
         {
             Caption = 'Description of Change';
         }
@@ -45,13 +45,13 @@ table 52107 "ERF F-830-4 ECN Log Rev A"
         {
             Caption = 'ECO Effects On';
         }
-        field(11; Impact; Boolean)
+        field(11; "Per ECN Form (Y/N) Impact"; Code[10])
         {
-            Caption = 'Impact';
+            Caption = 'Per ECN Form (Y/N) Impact';
         }
-        field(12; "WIP/FG"; Text[250])
+        field(12; "Per ECN Form (Y/N) WIP/FG"; Text[250])
         {
-            Caption = 'WIP/FG';
+            Caption = 'Per ECN Form (Y/N) WIP/FG';
         }
 
     }
