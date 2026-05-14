@@ -1,4 +1,4 @@
-pageextension 52134 "ERF Posted Sales Shipments" extends "Posted Sales Shipments"
+pageextension 52138 "ERF Posted Sales Shipments" extends "Posted Sales Shipments"
 {
     layout
     {
