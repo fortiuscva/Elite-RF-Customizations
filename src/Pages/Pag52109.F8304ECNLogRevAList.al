@@ -53,11 +53,11 @@ page 52109 "ERF F-830-4 ECN Log Rev A List"
                 {
                     ToolTip = 'Specifies the value of the ECO Effects On field.', Comment = '%';
                 }
-                field(Impact; Rec.Impact)
+                field(Impact; Rec."Per ECN Form (Y/N) Impact")
                 {
                     ToolTip = 'Specifies the value of the Impact field.', Comment = '%';
                 }
-                field("WIP/FG"; Rec."WIP/FG")
+                field("WIP/FG"; Rec."Per ECN Form (Y/N) WIP/FG")
                 {
                     ToolTip = 'Specifies the value of the WIP/FG field.', Comment = '%';
                 }
