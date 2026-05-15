@@ -103,6 +103,29 @@ codeunit 52100 "ERF Subscriber Management"
                 SalesInvHeader."Prepayment Invoice" := true;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Purchase Document", OnBeforeReleasePurchaseDoc, '', false, false)]
+    local procedure OnBeforeReleasePurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; var SkipCheckReleaseRestrictions: Boolean; var IsHandled: Boolean; SkipWhseRequestOperations: Boolean)
+    var
+        PurchLine: Record "Purchase Line";
+    begin
+        PurchaseHeader.TestField("ERF Job ID");
+
+        PurchLine.Reset();
+        PurchLine.SetRange("Document Type", PurchaseHeader."Document Type");
+        PurchLine.SetRange("Document No.", PurchaseHeader."No.");
+        PurchLine.SetRange(Type, PurchLine.Type::Item);
+        PurchLine.SetRange("ERF Job Id", '');
+        if PurchLine.FindFirst() then
+            PurchLine.TestField("ERF Job Id");
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", OnAfterRecreatePurchLine, '', false, false)]
+    local procedure OnAfterRecreatePurchLine(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line" temporary; var PurchaseHeader: Record "Purchase Header")
+    begin
+        PurchLine."ERF Job Id" := PurchaseHeader."ERF Job ID";
+        PurchLine.Modify();
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Tracking CaptionClass Mgt", OnBeforeResolveCaption, '', false, false)]
     local procedure "Item Tracking CaptionClass Mgt_OnBeforeResolveCaption"(var InventorySetup: Record "Inventory Setup"; CaptionString: Text; var Result: Text; var IsHandled: Boolean)
 
@@ -127,8 +150,6 @@ codeunit 52100 "ERF Subscriber Management"
     begin
         SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::No;
     end;
-
-
 
 
     var
