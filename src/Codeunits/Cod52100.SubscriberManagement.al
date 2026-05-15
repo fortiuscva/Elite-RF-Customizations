@@ -108,6 +108,9 @@ codeunit 52100 "ERF Subscriber Management"
     var
         PurchLine: Record "Purchase Line";
     begin
+        if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::Order then
+            exit;
+
         PurchaseHeader.TestField("ERF Job ID");
 
         PurchLine.Reset();
