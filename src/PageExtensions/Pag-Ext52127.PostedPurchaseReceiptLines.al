@@ -15,6 +15,11 @@ pageextension 52127 "Posted Purchase Receipt Lines" extends "Posted Purchase Rec
                 ApplicationArea = All;
                 ToolTip = 'Specifies the date that the vendor has promised to deliver the order.';
             }
+            field("ERF Job ID"; Rec."ERF Job ID")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Job ID field.';
+            }
         }
         modify("Expected Receipt Date")
         {
