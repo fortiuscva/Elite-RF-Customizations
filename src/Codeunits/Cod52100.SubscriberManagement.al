@@ -103,6 +103,34 @@ codeunit 52100 "ERF Subscriber Management"
                 SalesInvHeader."Prepayment Invoice" := true;
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Tracking CaptionClass Mgt", OnBeforeResolveCaption, '', false, false)]
+    local procedure "Item Tracking CaptionClass Mgt_OnBeforeResolveCaption"(var InventorySetup: Record "Inventory Setup"; CaptionString: Text; var Result: Text; var IsHandled: Boolean)
+
+    begin
+        case CaptionString of
+            '%1 No.':
+                begin
+                    Result := 'Date Code';
+                    IsHandled := true;
+                end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnAfterInitFromSalesLine, '', false, false)]
+    local procedure "Sales Shipment Line_OnAfterInitFromSalesLine"(SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line"; var SalesShptLine: Record "Sales Shipment Line")
+    begin
+        SalesShptLine."ERF On Time Shipment" := SalesShptHeader."ERF On Time Shipment";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", OnAfterInsertShipmentHeader, '', false, false)]
+    local procedure "Sales-Post_OnAfterInsertShipmentHeader"(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header")
+    begin
+        SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::No;
+    end;
+
+
+
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
