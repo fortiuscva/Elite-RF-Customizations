@@ -126,19 +126,6 @@ codeunit 52100 "ERF Subscriber Management"
         PurchLine.Modify();
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Tracking CaptionClass Mgt", OnBeforeResolveCaption, '', false, false)]
-    local procedure "Item Tracking CaptionClass Mgt_OnBeforeResolveCaption"(var InventorySetup: Record "Inventory Setup"; CaptionString: Text; var Result: Text; var IsHandled: Boolean)
-
-    begin
-        case CaptionString of
-            '%1 No.':
-                begin
-                    Result := 'Date Code';
-                    IsHandled := true;
-                end;
-        end;
-    end;
-
     [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnAfterInitFromSalesLine, '', false, false)]
     local procedure "Sales Shipment Line_OnAfterInitFromSalesLine"(SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line"; var SalesShptLine: Record "Sales Shipment Line")
     begin
