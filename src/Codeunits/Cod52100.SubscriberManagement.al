@@ -117,25 +117,6 @@ codeunit 52100 "ERF Subscriber Management"
     end;
 
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Purchase Document", OnBeforeReleasePurchaseDoc, '', false, false)]
-    local procedure OnBeforeReleasePurchaseDoc(var PurchaseHeader: Record "Purchase Header"; PreviewMode: Boolean; var SkipCheckReleaseRestrictions: Boolean; var IsHandled: Boolean; SkipWhseRequestOperations: Boolean)
-    var
-        PurchLine: Record "Purchase Line";
-    begin
-        if PurchaseHeader."Document Type" <> PurchaseHeader."Document Type"::Order then
-            exit;
-
-        PurchaseHeader.TestField("ERF Job ID");
-
-        PurchLine.Reset();
-        PurchLine.SetRange("Document Type", PurchaseHeader."Document Type");
-        PurchLine.SetRange("Document No.", PurchaseHeader."No.");
-        PurchLine.SetRange(Type, PurchLine.Type::Item);
-        PurchLine.SetRange("ERF Job Id", '');
-        if PurchLine.FindFirst() then
-            PurchLine.TestField("ERF Job Id");
-    end;
-
     [EventSubscriber(ObjectType::Table, Database::"Purchase Header", OnAfterRecreatePurchLine, '', false, false)]
     local procedure OnAfterRecreatePurchLine(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line" temporary; var PurchaseHeader: Record "Purchase Header")
     begin
