@@ -1,4 +1,4 @@
-tableextension 52122 "ERF Sales Shipment Line" extends "Sales Shipment Line"
+tableextension 52130 "ERF Sales Invoice Line" extends "Sales Invoice Line"
 {
     fields
     {
@@ -6,7 +6,7 @@ tableextension 52122 "ERF Sales Shipment Line" extends "Sales Shipment Line"
         {
             Caption = 'On Time Shipment';
             FieldClass = FlowField;
-            CalcFormula = lookup("Sales Shipment Header"."ERF On Time Shipment" where("No." = field("Document No.")));
+            CalcFormula = lookup("Sales Invoice Header"."ERF On Time Shipment" where("No." = field("Document No.")));
             Editable = false;
         }
     }
