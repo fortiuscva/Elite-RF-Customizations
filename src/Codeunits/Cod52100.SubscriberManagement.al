@@ -125,17 +125,31 @@ codeunit 52100 "ERF Subscriber Management"
     end;
 
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnAfterInitFromSalesLine, '', false, false)]
-    local procedure "Sales Shipment Line_OnAfterInitFromSalesLine"(SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line"; var SalesShptLine: Record "Sales Shipment Line")
-    begin
-        SalesShptLine."ERF On Time Shipment" := SalesShptHeader."ERF On Time Shipment";
-    end;
+    // [EventSubscriber(ObjectType::Table, Database::"Sales Shipment Line", OnAfterInitFromSalesLine, '', false, false)]
+    // local procedure "Sales Shipment Line_OnAfterInitFromSalesLine"(SalesShptHeader: Record "Sales Shipment Header"; SalesLine: Record "Sales Line"; var SalesShptLine: Record "Sales Shipment Line")
+    // begin
+    //     SalesShptLine."ERF On Time Shipment" := SalesShptHeader."ERF On Time Shipment";
+    // end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", OnAfterInsertShipmentHeader, '', false, false)]
     local procedure "Sales-Post_OnAfterInsertShipmentHeader"(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header")
     begin
         SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::No;
     end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Posted Sales Shipment - Update", OnAfterRecordChanged, '', false, false)]
+    local procedure "Posted Sales Shipment - Update_OnAfterRecordChanged"(var SalesShipmentHeader: Record "Sales Shipment Header"; xSalesShipmentHeader: Record "Sales Shipment Header"; var IsChanged: Boolean)
+    begin
+        IsChanged := true;
+    end;
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Shipment Header - Edit", OnBeforeSalesShptHeaderModify, '', false, false)]
+    local procedure "Shipment Header - Edit_OnBeforeSalesShptHeaderModify"(var SalesShptHeader: Record "Sales Shipment Header"; FromSalesShptHeader: Record "Sales Shipment Header")
+    begin
+        SalesShptHeader."ERF On Time Shipment" := FromSalesShptHeader."ERF On Time Shipment";
+    end;
+
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
