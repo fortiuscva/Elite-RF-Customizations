@@ -127,7 +127,7 @@ codeunit 52100 "ERF Subscriber Management"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", OnAfterInsertShipmentHeader, '', false, false)]
     local procedure "Sales-Post_OnAfterInsertShipmentHeader"(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header")
     begin
-        SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::No;
+        SalesHeader."ERF On Time Shipment" := SalesHeader."ERF On Time Shipment"::" ";
     end;
 
     [EventSubscriber(ObjectType::Page, Page::"Posted Sales Shipment - Update", OnAfterRecordChanged, '', false, false)]
