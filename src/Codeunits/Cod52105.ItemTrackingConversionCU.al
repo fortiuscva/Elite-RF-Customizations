@@ -99,11 +99,9 @@ codeunit 52105 "ERF ItemTrackingConversionCU"
 
         ReservationEntry.SetRange("Item No.", Item."No.");
 
-        if ReservationEntry.FindFirst() then
-            Error(
-                'Reservations exist for Item %1. Remove reservations before conversion.',
-                Item."No.");
-
+        if ReservationEntry.FindSet() then
+            ReservationEntry.DeleteAll();
+        Message('Removed Reservations for Item %1', Item."No.");
     end;
 
     local procedure ValidateInventoryIsZero(Item: Record Item)
