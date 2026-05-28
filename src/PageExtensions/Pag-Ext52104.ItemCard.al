@@ -114,4 +114,11 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
             }
         }
     }
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    begin
+        if Rec.Type <> Rec.Type::Inventory then
+            exit;
+        Rec.TestField("Gen. Prod. Posting Group");
+        Rec.TestField("Inventory Posting Group");
+    end;
 }
