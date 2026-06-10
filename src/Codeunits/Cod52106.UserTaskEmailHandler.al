@@ -16,7 +16,7 @@ codeunit 52106 "ERF User Task Email Handler"
         EmailMessage.Create(
             UserRec."Contact Email",
             'New BC Task Assigned',
-            'Please find your new BC task in BC under user tasks. Thanks, Elite RF Team',
+            'New Business Central Task Assigned" Please update Business Central with Task Information." Thanks, Elite RF Team',
             true
         );
 
