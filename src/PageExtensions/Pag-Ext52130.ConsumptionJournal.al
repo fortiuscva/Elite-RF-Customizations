@@ -9,6 +9,11 @@ pageextension 52130 "ERF Consumption Journal" extends "Consumption Journal"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Prod. Order. Comp. Rem. Qty field.';
             }
+            field("ERF Pick Code"; Rec."ERF Pick Code")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Pick Code field.';
+            }
         }
     }
 }

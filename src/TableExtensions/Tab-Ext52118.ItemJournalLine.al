@@ -8,5 +8,10 @@ tableextension 52118 "ERF Item Journal Line" extends "Item Journal Line"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(52101; "ERF Pick Code"; Text[500])
+        {
+            Caption = 'Pick Code';
+            Editable = false;
+        }
     }
 }

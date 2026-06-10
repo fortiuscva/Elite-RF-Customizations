@@ -27,6 +27,7 @@ tableextension 52117 "ERF Production order" extends "Production order"
         ProdOrderComp.SetRange("Prod. Order No.", Rec."No.");
         if ProdOrderComp.FindSet() then begin
             repeat
+                ProdOrderComp.CalcFields("ERF Pick Code");
                 LineNo += 10000;
 
                 ItemJnlLine.Init();
@@ -50,6 +51,7 @@ tableextension 52117 "ERF Production order" extends "Production order"
                 ItemJnlLine."ERF Prod. Ord. Comp. Rem. Qty" := ProdOrderComp."Remaining Quantity";
                 ItemJnlLine."Source Code" := 'CONSUMPJNL';
                 ItemJnlLine."Source Type" := ItemJnlLine."Source Type"::Item;
+                ItemJnlLine."ERF Pick Code" := ProdOrderComp."ERF Pick Code";
                 ItemJnlLine.Modify();
             until ProdOrderComp.Next() = 0;
         end;
