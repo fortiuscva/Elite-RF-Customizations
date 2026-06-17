@@ -39,8 +39,8 @@ codeunit 52100 "ERF Subscriber Management"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post (Yes/No)", OnAfterConfirmPost, '', false, false)]
     local procedure "Sales-Post (Yes/No)_OnAfterConfirmPost"(var SalesHeader: Record "Sales Header")
     begin
-        if SalesHeader."Posting Date" <> WorkDate() then
-            SalesHeader."Posting Date" := WorkDate();
+        if SalesHeader."Posting Date" <> Today then
+            SalesHeader."Posting Date" := Today;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Calculate Prod. Order", OnAfterTransferBOMComponent, '', false, false)]
@@ -143,6 +143,58 @@ codeunit 52100 "ERF Subscriber Management"
         SalesShptHeader."ERF On Time Shipment" := FromSalesShptHeader."ERF On Time Shipment";
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", OnAfterInitRecord, '', false, false)]
+    local procedure SalesHeader_OnAfterInitRecord(var SalesHeader: Record "Sales Header")
+    begin
+        if SalesHeader."Document Type" = SalesHeader."Document Type"::Order then
+            if SalesHeader."Posting Date" <> Today then
+                SalesHeader.Validate("Posting Date", Today);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", OnAfterInitRecord, '', false, false)]
+    local procedure PurchaseHeader_OnAfterInitRecord(var PurchHeader: Record "Purchase Header")
+    begin
+        if PurchHeader."Document Type" = PurchHeader."Document Type"::Order then
+            if PurchHeader."Posting Date" <> Today then
+                PurchHeader.Validate("Posting Date", Today);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Warehouse Activity Header", OnAfterInsertEvent, '', false, false)]
+    local procedure WarehouseActivityHeader_OnAfterInsertEvent(var Rec: Record "Warehouse Activity Header"; RunTrigger: Boolean)
+    begin
+        if Rec."Posting Date" <> Today then
+            Rec.Validate("Posting Date", Today);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", OnAfterSetupNewLine, '', false, false)]
+    local procedure OnAfterSetupNewLine(var ItemJournalLine: Record "Item Journal Line"; var LastItemJournalLine: Record "Item Journal Line"; ItemJournalTemplate: Record "Item Journal Template"; ItemJnlBatch: Record "Item Journal Batch")
+    begin
+        if ItemJournalLine."Posting Date" <> Today then
+            ItemJournalLine.Validate("Posting Date", Today);
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
+    local procedure OnBeforeCode(var ItemJournalLine: Record "Item Journal Line"; var HideDialog: Boolean; var SuppressCommit: Boolean; var IsHandled: Boolean)
+    begin
+        if ItemJournalLine."Posting Date" <> Today then begin
+            ItemJournalLine."Posting Date" := Today;
+            ItemJournalLine.Modify();
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post (Yes/No)", OnAfterConfirmPost, '', false, false)]
+    local procedure PurchPost_OnAfterConfirmPost(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean)
+    begin
+        if PurchaseHeader."Posting Date" <> Today then
+            PurchaseHeader."Posting Date" := Today;
+    end;
+
+    [EventSubscriber(ObjectType::Page, Page::"Inventory Pick", OnBeforePostPickYesNo, '', false, false)]
+    local procedure OnBeforePostPickYesNo(var WarehouseActivityHeader: Record "Warehouse Activity Header")
+    begin
+        if WarehouseActivityHeader."Posting Date" <> Today then
+            WarehouseActivityHeader."Posting Date" := Today;
+    end;
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
