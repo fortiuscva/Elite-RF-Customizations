@@ -176,8 +176,10 @@ codeunit 52100 "ERF Subscriber Management"
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", OnBeforeCode, '', false, false)]
     local procedure OnBeforeCode(var ItemJournalLine: Record "Item Journal Line"; var HideDialog: Boolean; var SuppressCommit: Boolean; var IsHandled: Boolean)
     begin
-        if ItemJournalLine."Posting Date" <> Today then
+        if ItemJournalLine."Posting Date" <> Today then begin
             ItemJournalLine."Posting Date" := Today;
+            ItemJournalLine.Modify();
+        end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post (Yes/No)", OnAfterConfirmPost, '', false, false)]
