@@ -65,6 +65,23 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
                     CurrPage.Update();
                 end;
             }
+            action("ERF ConvertToInventory")
+            {
+                Caption = 'Convert to Inventory';
+                ApplicationArea = All;
+                Image = Change;
+                Enabled = Rec.Type = Rec.Type::"Non-Inventory";
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    Rec.Type := Rec.Type::Inventory;
+                    Message('%1 and %2 are mandatory.', Rec.FieldCaption("Gen. Prod. Posting Group"),
+                                                        Rec.FieldCaption("Inventory Posting Group"));
+                    CurrPage.Update();
+                end;
+            }
         }
         addlast(Processing)
         {
