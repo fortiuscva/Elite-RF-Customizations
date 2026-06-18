@@ -8,5 +8,10 @@ tableextension 52106 "ERF Purch. Inv. Line" extends "Purch. Inv. Line"
             DataClassification = ToBeClassified;
             TableRelation = "Sales Header"."No." where("Document Type" = filter(order));
         }
+        field(52101; "ERF Supplier OTD"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Supplier OTD';
+        }
     }
 }
