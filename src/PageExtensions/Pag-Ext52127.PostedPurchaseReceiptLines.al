@@ -23,7 +23,7 @@ pageextension 52127 "Posted Purchase Receipt Lines" extends "Posted Purchase Rec
         }
         addafter(Description)
         {
-            field("ERF Supplier OTD"; Rec."ERF Supplier OTD")
+            field("ERF Supplier Late Delivery"; Rec."ERF Supplier Late Delivery")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Supplier OTD field.', Comment = '%';

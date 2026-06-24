@@ -122,9 +122,9 @@ codeunit 52100 "ERF Subscriber Management"
     begin
         PurchLine."ERF Job Id" := PurchaseHeader."ERF Job ID";
         if PurchLine."Expected Receipt Date" < PurchaseHeader."Posting Date" then
-            PurchLine."ERF Supplier OTD" := true
+            PurchLine."ERF Supplier Late Delivery" := true
         else
-            PurchLine."ERF Supplier OTD" := false;
+            PurchLine."ERF Supplier Late Delivery" := false;
         PurchLine.Modify();
     end;
 
@@ -161,9 +161,9 @@ codeunit 52100 "ERF Subscriber Management"
             SupplierGraceDate := PurchRcptLine."Expected Receipt Date" +
                          PurchPaySetup."ERF Supplier Grace Period";
             if (PurchRcptLine."Expected Receipt Date" < PurchRcptLine."Posting Date") and (PurchRcptLine."Posting Date" > SupplierGraceDate) then
-                PurchRcptLine."ERF Supplier OTD" := true
+                PurchRcptLine."ERF Supplier Late Delivery" := true
             else
-                PurchRcptLine."ERF Supplier OTD" := false;
+                PurchRcptLine."ERF Supplier Late Delivery" := false;
         end;
     end;
 
