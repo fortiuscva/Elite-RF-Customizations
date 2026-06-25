@@ -133,6 +133,27 @@ codeunit 52100 "ERF Subscriber Management"
         SalesShptHeader."ERF On Time Shipment" := FromSalesShptHeader."ERF On Time Shipment";
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchRcptLineInsert, '', false, false)]
+    local procedure "Purch.-Post_OnBeforePurchRcptLineInsert"(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line"; CommitIsSupressed: Boolean; PostedWhseRcptLine: Record "Posted Whse. Receipt Line"; var IsHandled: Boolean; ItemLedgShptEntryNo: Integer)
+    var
+        PurchPaySetup: Record "Purchases & Payables Setup";
+        SupplierGraceDate: Date;
+    begin
+
+        PurchPaySetup.Get();
+
+        if PurchRcptLine."Expected Receipt Date" <> 0D then begin
+
+            SupplierGraceDate := PurchRcptLine."Expected Receipt Date" +
+                         PurchPaySetup."ERF Supplier Grace Period";
+            if (PurchRcptLine."Expected Receipt Date" < PurchRcptLine."Posting Date") and (PurchRcptLine."Posting Date" > SupplierGraceDate) then
+                PurchRcptLine."ERF Supplier OTD" := true
+            else
+                PurchRcptLine."ERF Supplier OTD" := false;
+        end;
+    end;
+
+
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", OnAfterInitRecord, '', false, false)]
     local procedure SalesHeader_OnAfterInitRecord(var SalesHeader: Record "Sales Header")
     begin
@@ -185,17 +206,6 @@ codeunit 52100 "ERF Subscriber Management"
         if WarehouseActivityHeader."Posting Date" <> Today then
             WarehouseActivityHeader."Posting Date" := Today;
     end;
-
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchRcptLineInsert, '', false, false)]
-    local procedure "Purch.-Post_OnBeforePurchRcptLineInsert"(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line"; CommitIsSupressed: Boolean; PostedWhseRcptLine: Record "Posted Whse. Receipt Line"; var IsHandled: Boolean; ItemLedgShptEntryNo: Integer)
-    begin
-        if PurchRcptLine."Expected Receipt Date" < PurchRcptLine."Posting Date" then
-            PurchRcptLine."ERF Supplier OTD" := true
-        else
-            PurchRcptLine."ERF Supplier OTD" := false;
-    end;
-
-
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
