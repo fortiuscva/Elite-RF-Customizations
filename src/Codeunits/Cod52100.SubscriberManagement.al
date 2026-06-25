@@ -107,6 +107,10 @@ codeunit 52100 "ERF Subscriber Management"
     local procedure OnAfterRecreatePurchLine(var PurchLine: Record "Purchase Line"; var TempPurchLine: Record "Purchase Line" temporary; var PurchaseHeader: Record "Purchase Header")
     begin
         PurchLine."ERF Job Id" := PurchaseHeader."ERF Job ID";
+        if PurchLine."Expected Receipt Date" < PurchaseHeader."Posting Date" then
+            PurchLine."ERF Supplier OTD" := true
+        else
+            PurchLine."ERF Supplier OTD" := false;
         PurchLine.Modify();
     end;
 
@@ -181,6 +185,17 @@ codeunit 52100 "ERF Subscriber Management"
         if WarehouseActivityHeader."Posting Date" <> Today then
             WarehouseActivityHeader."Posting Date" := Today;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", OnBeforePurchRcptLineInsert, '', false, false)]
+    local procedure "Purch.-Post_OnBeforePurchRcptLineInsert"(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line"; CommitIsSupressed: Boolean; PostedWhseRcptLine: Record "Posted Whse. Receipt Line"; var IsHandled: Boolean; ItemLedgShptEntryNo: Integer)
+    begin
+        if PurchRcptLine."Expected Receipt Date" < PurchRcptLine."Posting Date" then
+            PurchRcptLine."ERF Supplier OTD" := true
+        else
+            PurchRcptLine."ERF Supplier OTD" := false;
+    end;
+
+
 
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
