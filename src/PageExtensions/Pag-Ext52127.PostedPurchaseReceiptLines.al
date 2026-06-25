@@ -21,6 +21,14 @@ pageextension 52127 "Posted Purchase Receipt Lines" extends "Posted Purchase Rec
                 ToolTip = 'Specifies the value of the Job ID field.';
             }
         }
+        addafter(Description)
+        {
+            field("ERF Supplier Late Delivery"; Rec."ERF Supplier Late Delivery")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Supplier OTD field.', Comment = '%';
+            }
+        }
         modify("Expected Receipt Date")
         {
             Visible = true;

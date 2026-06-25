@@ -8,5 +8,11 @@ tableextension 52108 "ERF Purch. Cr. Memo Line" extends "Purch. Cr. Memo Line"
             DataClassification = ToBeClassified;
             TableRelation = "Sales Header"."No." where("Document Type" = filter(order));
         }
+        field(52101; "ERF Supplier Late Delivery"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Supplier Late Delivery';
+        }
     }
+
 }

@@ -10,5 +10,10 @@ tableextension 52102 "ERF Purchase Line Archive" extends "Purchase Line Archive"
             DataClassification = ToBeClassified;
             TableRelation = "Sales Header"."No." where("Document Type" = filter(order));
         }
+        field(52101; "ERF Supplier Late Delivery"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Supplier Late Delivery';
+        }
     }
 }
