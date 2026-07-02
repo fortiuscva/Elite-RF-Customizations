@@ -3,6 +3,7 @@ report 52115 "ERF PO Overdue Report"
     ApplicationArea = All;
     Caption = 'ERF PO Overdue Report';
     UsageCategory = ReportsAndAnalysis;
+    ProcessingOnly = true;
     dataset
     {
         dataitem(PurchaseLine; "Purchase Line")
@@ -16,12 +17,12 @@ report 52115 "ERF PO Overdue Report"
 
                 TempExcelBufferRecGbl.NewRow();
 
-                TempExcelBufferRecGbl.AddColumn('PO No.', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
-                TempExcelBufferRecGbl.AddColumn('Vendor No.', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
-                TempExcelBufferRecGbl.AddColumn('Item No.', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
-                TempExcelBufferRecGbl.AddColumn('Description', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
-                TempExcelBufferRecGbl.AddColumn('Outstanding Qty', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
-                TempExcelBufferRecGbl.AddColumn('Expected Receipt Date', true, '', false, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('PO No.', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('Vendor No.', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('Item No.', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('Description', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('Outstanding Qty', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
+                TempExcelBufferRecGbl.AddColumn('Expected Receipt Date', false, '', true, false, false, '', TempExcelBufferRecGbl."Cell Type"::Text);
 
             end;
 
