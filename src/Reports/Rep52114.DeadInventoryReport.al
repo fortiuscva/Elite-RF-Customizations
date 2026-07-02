@@ -10,6 +10,7 @@ report 52114 "ERF Dead Inventory Report"
         dataitem(Item; Item)
         {
             RequestFilterFields = "No.";
+            DataItemTableView = where(Type = const(Inventory));
 
             column(ItemNo; "No.")
             {
@@ -19,6 +20,14 @@ report 52114 "ERF Dead Inventory Report"
             }
             column(SumOfQty; Inventory)
             { }
+            column(AvgCost; AvgCost)
+            {
+            }
+
+            column(TotalCost; TotalCost)
+            {
+            }
+
             trigger OnAfterGetRecord()
             var
                 ItemLedgEntry: Record "Item Ledger Entry";
@@ -34,6 +43,9 @@ report 52114 "ERF Dead Inventory Report"
 
                 if ItemLedgEntry.FindFirst() then
                     CurrReport.Skip();
+                AvgCost := "Unit Cost";
+
+                TotalCost := Inventory * AvgCost;
             end;
         }
     }
@@ -59,7 +71,11 @@ report 52114 "ERF Dead Inventory Report"
         ItemNoCaption = 'Item No.';
         DescCaption = 'Description';
         SumofQtyCaption = 'Sum of Quantity';
+        AvgCostCaption = 'Avg. Cost';
+        TotalCostCaption = 'Total Cost';
     }
     var
         SelectedDate: Date;
+        AvgCost: Decimal;
+        TotalCost: Decimal;
 }
