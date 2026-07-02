@@ -42,12 +42,16 @@ report 52115 "ERF PO Overdue Report"
     }
     trigger OnPostReport()
     begin
+        FileName := 'PO Overdue Report.xlsx';
         TempExcelBufferRecGbl.CreateNewBook('PO Overdue Report');
         TempExcelBufferRecGbl.WriteSheet('PO Overdue Report', CompanyName, UserId);
         TempExcelBufferRecGbl.CloseBook();
 
+
         TempBlob.CreateOutStream(OutStr);
         TempExcelBufferRecGbl.SaveToStream(OutStr, true);
+        TempBlob.CreateInStream(InStr);
+        DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
 
         SendEmail();
     end;
