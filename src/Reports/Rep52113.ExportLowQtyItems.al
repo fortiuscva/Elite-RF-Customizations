@@ -57,6 +57,9 @@ report 52113 "ERF Export Low Qty Items"
         TempBlob.CreateOutStream(OutStr);
         TempExcelBufferRecGbl.SaveToStream(OutStr, true);
         TempBlob.CreateInStream(InStr);
+
+        DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
+
         EmailMsg.Create('purchasing@eliterf.com',
            'Weekly Low Stock Report',
            'Please find attached the weekly low stock items report.', true);
