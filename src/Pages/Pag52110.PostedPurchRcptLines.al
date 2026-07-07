@@ -16,6 +16,12 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
                 {
                     ToolTip = 'Specifies the receipt number.';
                 }
+                field("PO No."; Rec."Order No.")
+                {
+                    Caption = 'PO No.';
+                    ToolTip = 'Specifies the line number of the order that created the entry.';
+                }
+
                 field("Line No."; Rec."Line No.")
                 {
                     ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
@@ -23,6 +29,11 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
                 field(Type; Rec."Type")
                 {
                     ToolTip = 'Specifies the value of the Type field.', Comment = '%';
+                }
+                field("Item No."; ItemNo)
+                {
+                    Caption = 'Item No.';
+                    ToolTip = 'Specifies the value of the No. field.', Comment = '%';
                 }
                 field(Quantity; Rec.Quantity)
                 {
@@ -55,7 +66,7 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
     trigger OnAfterGetRecord()
     begin
         VendorName := '';
-
+        ItemNo := Rec."No.";
         if Vendor.Get(Rec."Buy-from Vendor No.") then
             VendorName := Vendor.Name;
     end;
@@ -63,4 +74,5 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
     var
         Vendor: Record Vendor;
         VendorName: Text[100];
+        ItemNo: Code[20];
 }
