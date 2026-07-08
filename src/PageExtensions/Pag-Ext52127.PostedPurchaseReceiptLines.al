@@ -34,4 +34,34 @@ pageextension 52127 "Posted Purchase Receipt Lines" extends "Posted Purchase Rec
             Visible = true;
         }
     }
+    actions
+    {
+        addlast(Processing)
+        {
+            action("ERF UpdateSupplierOTD")
+            {
+                ApplicationArea = All;
+                Caption = 'Update Supplier OTD';
+                Image = Edit;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    SupplierOTDMgt: Codeunit "ERF Supplier OTD Management";
+                    PurchRcptLine: Record "Purch. Rcpt. Line";
+
+                begin
+                    CurrPage.SetSelectionFilter(PurchRcptLine);
+
+                    if not Confirm('Do you want to update Supplier OTD to Yes for the selected records?',
+       false) then
+                        Rec."ERF Supplier Late Delivery" := false
+                    else
+                        Rec."ERF Supplier Late Delivery" := true;
+                    SupplierOTDMgt.UpdateSupplierOTD(PurchRcptLine, Rec."ERF Supplier Late Delivery");
+                end;
+            }
+        }
+    }
 }
