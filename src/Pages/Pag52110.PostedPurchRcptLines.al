@@ -63,6 +63,38 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("ERF UpdateSupplierOTD")
+            {
+                ApplicationArea = All;
+                Caption = 'Update Supplier OTD';
+                Image = Edit;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    SupplierOTDMgt: Codeunit "ERF Supplier OTD Management";
+                    PurchRcptLine: Record "Purch. Rcpt. Line";
+
+                begin
+                    CurrPage.SetSelectionFilter(PurchRcptLine);
+
+                    if not Confirm('Do you want to update Supplier OTD to Yes for the selected records?',
+       false) then
+                        Rec."ERF Supplier Late Delivery" := false
+                    else
+                        Rec."ERF Supplier Late Delivery" := true;
+                    SupplierOTDMgt.UpdateSupplierOTD(PurchRcptLine, Rec."ERF Supplier Late Delivery");
+                end;
+            }
+        }
+    }
+
+
     trigger OnAfterGetRecord()
     begin
         VendorName := '';
