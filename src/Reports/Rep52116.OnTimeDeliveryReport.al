@@ -23,7 +23,7 @@ report 52116 "ERF On Time Delivery Report"
             dataitem(SalesShipmentLine; "Sales Shipment Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
-                DataItemTableView = sorting("Document No.", "Line No.") WHERE(Type = CONST(Item));
+                DataItemTableView = sorting("Document No.", "Line No.") WHERE(Type = CONST(Item), Quantity = filter(> 0));
 
                 column(SalesOrderNo; "Order No.") { }
                 column(ItemNo; "No.") { }
