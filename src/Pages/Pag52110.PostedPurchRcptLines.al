@@ -5,7 +5,7 @@ page 52110 "ERF Posted Purch. Rcpt. Lines"
     PageType = List;
     SourceTable = "Purch. Rcpt. Line";
     UsageCategory = Lists;
-    SourceTableView = where(Type = const(Item), Quantity = filter(> 0));
+    SourceTableView = SORTING("Posting Date") ORDER(Descending) where(Type = const(Item), Quantity = filter(> 0));
     layout
     {
         area(Content)
