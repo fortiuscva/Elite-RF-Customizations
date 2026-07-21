@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-17T18:59:58.0142622Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-21T15:35:22.3886050Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -35,7 +35,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>14.38748in</Height>
+                  <Height>14.6237in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -594,7 +594,7 @@
                               </TablixRowHierarchy>
                               <Left>0.00001in</Left>
                               <Height>1.23622in</Height>
-                              <Width>8in</Width>
+                              <Width>8.00001in</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -7619,14 +7619,58 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
-                                                    <Style />
+                                                    <Value>If Assembly Failed, the Assembly comes to Assembler for the changes, changes are noted in the Notes section and documented in BOM</Value>
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
                                                   </TextRun>
                                                 </TextRuns>
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox3553</rd:DefaultName>
+                                            <Style>
+                                              <Border />
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>6</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                      <TablixCell />
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.23622in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox1">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>If Assembly Passed, the Assembly moves to Shipping Area and follows Shipping Procedure and Checklist</Value>
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>9pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox1</rd:DefaultName>
                                             <Style>
                                               <Border />
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -8323,6 +8367,9 @@
                                     <KeepWithGroup>After</KeepWithGroup>
                                   </TablixMember>
                                   <TablixMember>
+                                    <KeepWithGroup>After</KeepWithGroup>
+                                  </TablixMember>
+                                  <TablixMember>
                                     <Group Name="Details2" />
                                     <Visibility>
                                       <Hidden>true</Hidden>
@@ -8331,8 +8378,8 @@
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <Top>1.25689in</Top>
-                              <Height>13.13059in</Height>
-                              <Width>8in</Width>
+                              <Height>13.36681in</Height>
+                              <Width>8.00001in</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
                                 <Border>
@@ -8371,8 +8418,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Height>14.38748in</Height>
-            <Width>8in</Width>
+            <Height>14.6237in</Height>
+            <Width>8.00001in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -8380,10 +8427,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>36.54421cm</Height>
+        <Height>37.1442cm</Height>
         <Style />
       </Body>
-      <Width>20.33668cm</Width>
+      <Width>20.33669cm</Width>
       <Page>
         <PageHeader>
           <Height>1.905cm</Height>
@@ -8503,6 +8550,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3601</rd:DefaultName>
+              <Top>0in</Top>
               <Left>5.74344in</Left>
               <Height>0.23622in</Height>
               <Width>2.26313in</Width>
