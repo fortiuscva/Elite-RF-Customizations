@@ -34,6 +34,20 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
                     Report.RunModal(Report::"F-812-7 Quality Insp. Check", true, false, ProductionOrder);
                 end;
             }
+            action("ERF RPORoutingBarCode")
+            {
+                ApplicationArea = All;
+                Caption = 'RPO Routing Bar Code';
+                Ellipsis = true;
+                Image = BarCode;
+                trigger OnAction()
+                var
+                    ProductionOrder: Record "Production Order";
+                begin
+                    CurrPage.SetSelectionFilter(ProductionOrder);
+                    Report.RunModal(Report::"ERF RPO Routing Barcode", true, false, ProductionOrder);
+                end;
+            }
         }
         addafter("&Update Unit Cost")
         {
@@ -66,6 +80,8 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
             {
             }
             actionref("F-812-7 Quality Insp. Check"; "ERF QualityInspectionChecklist")
+            { }
+            actionref("RPO Routing Barcode"; "ERF RPORoutingBarCode")
             { }
         }
         addlast(Category_Process)
