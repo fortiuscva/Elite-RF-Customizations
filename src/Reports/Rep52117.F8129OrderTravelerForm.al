@@ -17,12 +17,22 @@ report 52117 "F-812-9 Order Traveler Form"
             column(Quantity; Quantity) { }
             column(ReservationEntry_SerialNo; ReservationEntry."Serial No.") { }
             column(Picture; CompanyInformation.Picture) { }
+            column(ProdOrderLine_LineNo; ProdOrderLine."Line No.") { }
+            column(ProdOrderRoutingLine_OperationNo; ProdOrderRoutingLine."Operation No.") { }
             trigger OnAfterGetRecord()
             begin
                 ReservationEntry.SetRange("Source type", Database::"Prod. Order Line");
                 ReservationEntry.SetRange("Source ID", ProductionOrder."No.");
                 if ReservationEntry.FindFirst() then;
 
+                ProdOrderLine.SetRange(Status, ProductionOrder.Status);
+                ProdOrderLine.SetRange("Prod. Order No.", ProductionOrder."No.");
+                if ProdOrderLine.FindFirst() then;
+
+                ProdOrderRoutingLine.SetRange("Prod. Order No.", ProductionOrder."No.");
+                ProdOrderRoutingLine.SetRange(Status, ProductionOrder.Status);
+                ProdOrderRoutingLine.SetRange("Routing Reference No.", ProdOrderLine."Line No.");
+                if ProdOrderRoutingLine.FindFirst() then;
             end;
         }
     }
@@ -53,4 +63,6 @@ report 52117 "F-812-9 Order Traveler Form"
     var
         ReservationEntry: Record "Reservation Entry";
         CompanyInformation: Record "Company Information";
+        ProdOrderLine: Record "Prod. Order Line";
+        ProdOrderRoutingLine: Record "Prod. Order Routing Line";
 }
