@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-22T14:06:02.0258444Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-27T15:13:26.8747546Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -8474,9 +8474,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3605</rd:DefaultName>
               <Top>1.27cm</Top>
-              <Left>7.23053cm</Left>
+              <Left>5.84445cm</Left>
               <Height>1.07625cm</Height>
-              <Width>12.42717cm</Width>
+              <Width>14.47557cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -8496,7 +8496,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="*" &amp; ReportItems!Textbox3.Value &amp; "*"</Value>
+                      <Value>="*" &amp; First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result") &amp; "*"</Value>
                       <Style>
                         <FontFamily>IDAutomationC39M</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -8517,9 +8517,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox16</rd:DefaultName>
               <Top>0cm</Top>
-              <Left>7.23053cm</Left>
+              <Left>5.84445cm</Left>
               <Height>1.21425cm</Height>
-              <Width>12.42717cm</Width>
+              <Width>14.44825cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -8686,6 +8686,12 @@ End Function
         </Field>
         <Field Name="Picture">
           <DataField>Picture</DataField>
+        </Field>
+        <Field Name="ProdOrderLine_LineNo">
+          <DataField>ProdOrderLine_LineNo</DataField>
+        </Field>
+        <Field Name="ProdOrderRoutingLine_OperationNo">
+          <DataField>ProdOrderRoutingLine_OperationNo</DataField>
         </Field>
       </Fields>
       <Query>
