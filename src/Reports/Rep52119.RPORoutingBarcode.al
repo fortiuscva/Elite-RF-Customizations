@@ -33,6 +33,8 @@ report 52119 "ERF RPO Routing Barcode"
                                     "Routing Reference No." = field("Routing Reference No.");
                     Column(Operation_No_; "Operation No.")
                     { }
+                    column(Description; Description)
+                    { }
                     Column(BarCodeText; BarCodeText)
                     { }
                     column(OperationNoCaption; OperationNoCaption)
@@ -47,7 +49,7 @@ report 52119 "ERF RPO Routing Barcode"
         OperationNoCaption: Label 'Operation No.';
         BarCodeCaption: Label 'BarCode';
         BarCodeText: Text;
-        RPOBarCodeCaptionLbl: Label 'RPO BarCode';
+        RPOBarCodeCaptionLbl: Label 'Operation No BarCode';
 }
 
 
