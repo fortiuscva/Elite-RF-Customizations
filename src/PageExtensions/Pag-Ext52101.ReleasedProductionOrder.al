@@ -42,11 +42,23 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
                 Caption = 'Consumption Journal';
                 ApplicationArea = All;
                 Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
                 ToolTip = 'Post consumption released production order(s).';
                 RunObject = page "Consumption Journal";
                 RunPageView = where("Journal Template Name" = const('CONSUMPTIO'), "Journal Batch Name" = const('Default'));
+            }
+        }
+        addafter("Job Card_Promoted")
+        {
+            actionref("ERF OrderTravellerForm_Promoted"; "ERF OrderTravellerForm")
+            {
+            }
+            actionref("F-812-7 Quality Insp. Check"; "ERF QualityInspectionChecklist")
+            { }
+        }
+        addlast(Category_Process)
+        {
+            actionref("ERF Consumption Journal_Promoted"; "ERF Consumption Journal")
+            {
             }
         }
     }
