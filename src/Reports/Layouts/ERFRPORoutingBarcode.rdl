@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-29T14:22:55.6561998Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-30T16:49:56.6150986Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,6 +22,46 @@
       <rd:DataSourceID>363c37ae-d2c2-4589-a9c4-93dcf3ad49ec</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="RPONOCaption">
+          <DataField>RPONOCaption</DataField>
+        </Field>
+        <Field Name="RPOBarCodeCaption">
+          <DataField>RPOBarCodeCaption</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="RPONo">
+          <DataField>RPONo</DataField>
+        </Field>
+        <Field Name="RPOLineNo">
+          <DataField>RPOLineNo</DataField>
+        </Field>
+        <Field Name="RPOLineNoCaption">
+          <DataField>RPOLineNoCaption</DataField>
+        </Field>
+        <Field Name="Operation_No_">
+          <DataField>Operation_No_</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="BarCodeText">
+          <DataField>BarCodeText</DataField>
+        </Field>
+        <Field Name="OperationNoCaption">
+          <DataField>OperationNoCaption</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -191,7 +231,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="*" &amp; Fields!RPONo.Value &amp; Fields!RPOLineNo.Value &amp; Fields!Operation_No_.Value &amp; "*"</Value>
+                                  <Value>="*" &amp; Fields!RPONo.Value &amp; "-" &amp; Fields!RPOLineNo.Value &amp; "-" &amp; Fields!Operation_No_.Value &amp; "*"</Value>
                                   <Style>
                                     <FontFamily>IDAutomationC39M</FontFamily>
                                   </Style>
@@ -487,6 +527,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -526,44 +572,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="RPONOCaption">
-          <DataField>RPONOCaption</DataField>
-        </Field>
-        <Field Name="RPOBarCodeCaption">
-          <DataField>RPOBarCodeCaption</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="RPONo">
-          <DataField>RPONo</DataField>
-        </Field>
-        <Field Name="RPOLineNo">
-          <DataField>RPOLineNo</DataField>
-        </Field>
-        <Field Name="RPOLineNoCaption">
-          <DataField>RPOLineNoCaption</DataField>
-        </Field>
-        <Field Name="Operation_No_">
-          <DataField>Operation_No_</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="BarCodeText">
-          <DataField>BarCodeText</DataField>
-        </Field>
-        <Field Name="OperationNoCaption">
-          <DataField>OperationNoCaption</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
