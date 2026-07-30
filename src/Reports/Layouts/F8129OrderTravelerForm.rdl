@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-29T11:13:53.5688263Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-30T16:35:36.7789568Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,6 +22,43 @@
       <rd:DataSourceID>39bd832e-148b-482a-945c-42f3eb37db8b</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="ProductionOrderNo">
+          <DataField>ProductionOrderNo</DataField>
+        </Field>
+        <Field Name="AssignedTo">
+          <DataField>AssignedTo</DataField>
+        </Field>
+        <Field Name="ItemPartNumber">
+          <DataField>ItemPartNumber</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="ReservationEntry_SerialNo">
+          <DataField>ReservationEntry_SerialNo</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="ProdOrderLine_LineNo">
+          <DataField>ProdOrderLine_LineNo</DataField>
+        </Field>
+        <Field Name="ProdOrderRoutingLine_OperationNo">
+          <DataField>ProdOrderRoutingLine_OperationNo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -8496,7 +8533,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="*" &amp; First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result") &amp; "*"</Value>
+                      <Value>="*" &amp; First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; "-" &amp;First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result") &amp; "*"</Value>
                       <Style>
                         <FontFamily>IDAutomationC39M</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -8539,7 +8576,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; "|" &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; "|" &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -8636,7 +8673,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3601</rd:DefaultName>
-              <Top>0in</Top>
               <Left>5.74344in</Left>
               <Height>0.23622in</Height>
               <Width>2.26313in</Width>
@@ -8667,6 +8703,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -8706,41 +8748,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="ProductionOrderNo">
-          <DataField>ProductionOrderNo</DataField>
-        </Field>
-        <Field Name="AssignedTo">
-          <DataField>AssignedTo</DataField>
-        </Field>
-        <Field Name="ItemPartNumber">
-          <DataField>ItemPartNumber</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="ReservationEntry_SerialNo">
-          <DataField>ReservationEntry_SerialNo</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="ProdOrderLine_LineNo">
-          <DataField>ProdOrderLine_LineNo</DataField>
-        </Field>
-        <Field Name="ProdOrderRoutingLine_OperationNo">
-          <DataField>ProdOrderRoutingLine_OperationNo</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
