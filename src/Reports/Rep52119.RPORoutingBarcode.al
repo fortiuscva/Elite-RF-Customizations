@@ -49,7 +49,7 @@ report 52119 "ERF RPO Routing Barcode"
         OperationNoCaption: Label 'Operation No.';
         BarCodeCaption: Label 'BarCode';
         BarCodeText: Text;
-        RPOBarCodeCaptionLbl: Label 'Operation No BarCode';
+        RPOBarCodeCaptionLbl: Label 'Operation Barcode';
 }
 
 
