@@ -2,7 +2,7 @@
   "id": "4eeb772b-d90d-44ef-a21b-ee8b44c7c461",
   "name": "Elite RF Customizations",
   "publisher": "Adcirrus",
-  "version": "23.0.0.94",
+  "version": "23.0.0.101",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -10,7 +10,20 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+      {
+      "id": "ba1776ba-1198-4b4c-a61e-c4612f1880d5",
+      "name": "IWorks Common",
+      "version": "2.19.9610.1",
+      "publisher": "Insight Works" 
+    },
+     {
+      "id": "9c55319d-f3b9-441b-9956-0a0a04decd4b",
+      "name": "Dynamic Ship: Integrated Shipping",
+      "version": "2.9.9686.1",
+      "publisher": "Insight Works" 
+    }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
   "application": "23.0.0.0",
