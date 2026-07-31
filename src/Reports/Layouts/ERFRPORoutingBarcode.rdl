@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-31T18:22:31.7538274Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-31T20:42:28.5203415Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -30,16 +30,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.23334in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.32592in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.275in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.55916in</Width>
+                  <Width>2.25in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.25in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.25in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -174,6 +180,76 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>RPO Header Item Description </Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Routing Line Operation Description</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -345,6 +421,75 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ItemDescription">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ItemDescription.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ItemDescription</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="OperationDescription">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!OperationDescription.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>OperationDescription</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
@@ -363,6 +508,8 @@
                 <TablixMember>
                   <FixedData>true</FixedData>
                 </TablixMember>
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -395,7 +542,7 @@
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet_Result</DataSetName>
             <Height>0.81024in</Height>
-            <Width>7.39342in</Width>
+            <Width>10.75in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -403,13 +550,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.05801cm</Height>
+        <Height>2.12151cm</Height>
         <Style />
       </Body>
-      <Width>19.36137cm</Width>
+      <Width>27.305cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.17904cm</Height>
+          <Height>2.2019cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -431,7 +578,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>0cm</Top>
+              <Top>0.02286cm</Top>
               <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>8.57484cm</Width>
@@ -462,7 +609,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>0.68425cm</Top>
+              <Top>0.70711cm</Top>
               <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>8.57484cm</Width>
@@ -498,7 +645,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
               <Top>0cm</Top>
-              <Left>13.08312cm</Left>
+              <Left>20.95712cm</Left>
               <Height>0.6cm</Height>
               <Width>6.2465cm</Width>
               <ZIndex>2</ZIndex>
@@ -532,8 +679,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.6477cm</Top>
-              <Left>13.08312cm</Left>
+              <Top>0.67056cm</Top>
+              <Left>20.95712cm</Left>
               <Height>0.57305cm</Height>
               <Width>6.27825cm</Width>
               <ZIndex>3</ZIndex>
@@ -567,8 +714,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>1.24037cm</Top>
-              <Left>13.08312cm</Left>
+              <Top>1.26323cm</Top>
+              <Left>20.95712cm</Left>
               <Height>0.6cm</Height>
               <Width>6.27825cm</Width>
               <ZIndex>4</ZIndex>
@@ -589,12 +736,12 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>27.94cm</PageHeight>
-        <PageWidth>21.59cm</PageWidth>
-        <LeftMargin>0.75cm</LeftMargin>
-        <RightMargin>0.3cm</RightMargin>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>
-        <BottomMargin>0.3cm</BottomMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
@@ -654,6 +801,9 @@ End Function
         <Field Name="RPONo">
           <DataField>RPONo</DataField>
         </Field>
+        <Field Name="ItemDescription">
+          <DataField>ItemDescription</DataField>
+        </Field>
         <Field Name="RPOLineNo">
           <DataField>RPOLineNo</DataField>
         </Field>
@@ -663,8 +813,8 @@ End Function
         <Field Name="Operation_No_">
           <DataField>Operation_No_</DataField>
         </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
+        <Field Name="OperationDescription">
+          <DataField>OperationDescription</DataField>
         </Field>
         <Field Name="BarCodeText">
           <DataField>BarCodeText</DataField>
