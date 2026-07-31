@@ -19,6 +19,8 @@ report 52119 "ERF RPO Routing Barcode"
             { }
             Column(RPONo; "No.")
             { }
+            Column(ItemDescription; Description)
+            { }
             dataitem("Prod. Order Line"; "Prod. Order Line")
             {
                 DataItemLink = Status = field(Status), "Prod. Order No." = field("No.");
@@ -33,7 +35,7 @@ report 52119 "ERF RPO Routing Barcode"
                                     "Routing Reference No." = field("Routing Reference No.");
                     Column(Operation_No_; "Operation No.")
                     { }
-                    column(Description; Description)
+                    column(OperationDescription; Description)
                     { }
                     Column(BarCodeText; BarCodeText)
                     { }
