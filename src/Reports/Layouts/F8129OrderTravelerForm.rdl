@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-07-27T15:13:26.8747546Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-07-30T16:35:36.7789568Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,6 +22,43 @@
       <rd:DataSourceID>39bd832e-148b-482a-945c-42f3eb37db8b</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="ProductionOrderNo">
+          <DataField>ProductionOrderNo</DataField>
+        </Field>
+        <Field Name="AssignedTo">
+          <DataField>AssignedTo</DataField>
+        </Field>
+        <Field Name="ItemPartNumber">
+          <DataField>ItemPartNumber</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="ReservationEntry_SerialNo">
+          <DataField>ReservationEntry_SerialNo</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="ProdOrderLine_LineNo">
+          <DataField>ProdOrderLine_LineNo</DataField>
+        </Field>
+        <Field Name="ProdOrderRoutingLine_OperationNo">
+          <DataField>ProdOrderRoutingLine_OperationNo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -8433,7 +8470,7 @@
       <Width>20.33669cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.94217cm</Height>
+          <Height>3.53158cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -8444,7 +8481,7 @@
               <Sizing>FitProportional</Sizing>
               <Top>0cm</Top>
               <Left>0cm</Left>
-              <Height>2.66375cm</Height>
+              <Height>3.12236cm</Height>
               <Width>5.77389cm</Width>
               <Style>
                 <Border>
@@ -8473,7 +8510,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3605</rd:DefaultName>
-              <Top>1.27cm</Top>
+              <Top>2.00025cm</Top>
               <Left>5.84445cm</Left>
               <Height>1.07625cm</Height>
               <Width>14.47557cm</Width>
@@ -8482,7 +8519,7 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
+                <VerticalAlign>Top</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -8496,7 +8533,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="*" &amp; First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result") &amp; "*"</Value>
+                      <Value>="*" &amp; First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; "-" &amp;First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result") &amp; "*"</Value>
                       <Style>
                         <FontFamily>IDAutomationC39M</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -8521,6 +8558,49 @@
               <Height>1.21425cm</Height>
               <Width>14.44825cm</Width>
               <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox25">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!ProductionOrderNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderLine_LineNo.Value, "DataSet_Result") &amp; "-" &amp; First(Fields!ProdOrderRoutingLine_OperationNo.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox16</rd:DefaultName>
+              <Top>1.2645cm</Top>
+              <Left>5.86522cm</Left>
+              <Height>0.76975cm</Height>
+              <Width>14.44825cm</Width>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -8593,7 +8673,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3601</rd:DefaultName>
-              <Top>0in</Top>
               <Left>5.74344in</Left>
               <Height>0.23622in</Height>
               <Width>2.26313in</Width>
@@ -8624,6 +8703,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -8663,41 +8748,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="ProductionOrderNo">
-          <DataField>ProductionOrderNo</DataField>
-        </Field>
-        <Field Name="AssignedTo">
-          <DataField>AssignedTo</DataField>
-        </Field>
-        <Field Name="ItemPartNumber">
-          <DataField>ItemPartNumber</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="ReservationEntry_SerialNo">
-          <DataField>ReservationEntry_SerialNo</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="ProdOrderLine_LineNo">
-          <DataField>ProdOrderLine_LineNo</DataField>
-        </Field>
-        <Field Name="ProdOrderRoutingLine_OperationNo">
-          <DataField>ProdOrderRoutingLine_OperationNo</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
