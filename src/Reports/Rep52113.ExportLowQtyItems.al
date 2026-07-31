@@ -60,9 +60,14 @@ report 52113 "ERF Export Low Qty Items"
 
         DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
 
-        EmailMsg.Create('purchasing@eliterf.com',
+        EmailMsg.Create('deep@eliterf.com',
            'Weekly Low Stock Report',
            'Please find attached the weekly low stock items report.', true);
+
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
 
         EmailMsg.AddAttachment(FileName,
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InStr);
