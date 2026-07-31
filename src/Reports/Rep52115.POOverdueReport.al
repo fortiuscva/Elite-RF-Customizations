@@ -63,11 +63,15 @@ report 52115 "ERF PO Overdue Report"
     begin
         TempBlob.CreateInStream(InStr);
 
-        EmailMessage.Create(
-            'purchasing@eliterf.com',
-            'PO Overdue Report',
-            'Please find attached the weekly PO Overdue Report.',
-            true);
+        EmailMessage.Create('deep@eliterf.com',
+                'PO Overdue Report',
+                'Please find attached the weekly PO Overdue Report.',
+                true);
+
+        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
+        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
+        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
+        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
 
         EmailMessage.AddAttachment(
             'PO Overdue Report.xlsx',
