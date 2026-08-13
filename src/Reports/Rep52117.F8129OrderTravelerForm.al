@@ -19,6 +19,17 @@ report 52117 "F-812-9 Order Traveler Form"
             column(Picture; CompanyInformation.Picture) { }
             column(ProdOrderLine_LineNo; ProdOrderLine."Line No.") { }
             column(ProdOrderRoutingLine_OperationNo; ProdOrderRoutingLine."Operation No.") { }
+
+            dataitem(ProdOrderCommentLine; "Prod. Order Comment Line")
+            {
+                DataItemLinkReference = ProductionOrder;
+                DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("No.");
+                DataItemTableView = SORTING(Status, "Prod. Order No.", "Line No.");
+                column(Comment; Comment)
+                { }
+                column(LineNo; "Line No.")
+                { }
+            }
             trigger OnAfterGetRecord()
             begin
                 ReservationEntry.SetRange("Source type", Database::"Prod. Order Line");
