@@ -9,8 +9,6 @@ report 52113 "ERF Export Low Qty Items"
         dataitem(Item; Item)
         {
             trigger OnPreDataItem()
-            var
-
             begin
                 Clear(TempExcelBufferRecGbl);
                 TempExcelBufferRecGbl.DeleteAll();
@@ -23,8 +21,6 @@ report 52113 "ERF Export Low Qty Items"
             end;
 
             trigger OnAfterGetRecord()
-            var
-                myInt: Integer;
             begin
                 CalcFields(Inventory);
                 if Inventory < "Safety Stock Quantity" then begin
@@ -38,39 +34,77 @@ report 52113 "ERF Export Low Qty Items"
             end;
         }
     }
+
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(Options)
+                {
+                    Caption = 'Options';
+
+                    field(SendByEmail; SendByEmail)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Send by Email';
+                        ToolTip = 'Specifies whether the generated Excel file should be sent by email.';
+                    }
+                }
+            }
+        }
+    }
+
     trigger OnPostReport()
     begin
-        if LowStockFound then
-            SendEmail();
+        if not LowStockFound then
+            exit;
+
+        if SendByEmail then
+            SendEmail()
+        else
+            DownloadExcel();
     end;
 
-    procedure SendEmail()
+    local procedure CreateExcelFile()
     begin
         FileName := 'LowStockItems.xlsx';
+        Clear(TempExcelBufferRecGbl);
 
         TempExcelBufferRecGbl.CreateNewBook('Items With Qty Less than Safety Stock');
         TempExcelBufferRecGbl.WriteSheet('Items With Qty Less than Safety Stock', CompanyName, UserId);
         TempExcelBufferRecGbl.CloseBook();
 
-        TempExcelBufferRecGbl.SetFriendlyFilename('Items With Qty Less than Safety Stock');
-
         TempBlob.CreateOutStream(OutStr);
         TempExcelBufferRecGbl.SaveToStream(OutStr, true);
+    end;
+
+    local procedure DownloadExcel()
+    begin
+        CreateExcelFile();
+
         TempBlob.CreateInStream(InStr);
 
         DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
+    end;
 
-        EmailMsg.Create('deep@eliterf.com',
-           'Weekly Low Stock Report',
-           'Please find attached the weekly low stock items report.', true);
+    local procedure SendEmail()
+    begin
+        CreateExcelFile();
+
+        TempBlob.CreateInStream(InStr);
+
+        Clear(EmailMsg);
+
+        EmailMsg.Create('deep@eliterf.com', 'Weekly Low Stock Report', 'Please find attached the weekly low stock items report.', true);
 
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
 
-        EmailMsg.AddAttachment(FileName,
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InStr);
+        EmailMsg.AddAttachment(FileName, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InStr);
 
         Email.Send(EmailMsg);
     end;
@@ -79,9 +113,10 @@ report 52113 "ERF Export Low Qty Items"
         TempExcelBufferRecGbl: Record "Excel Buffer" temporary;
         EmailMsg: Codeunit "Email Message";
         Email: Codeunit Email;
+        TempBlob: Codeunit "Temp Blob";
         FileName: Text;
         InStr: InStream;
         OutStr: OutStream;
-        TempBlob: Codeunit "Temp Blob";
         LowStockFound: Boolean;
+        SendByEmail: Boolean;
 }
