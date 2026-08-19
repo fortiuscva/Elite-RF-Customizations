@@ -13,7 +13,7 @@ report 52115 "ERF PO Overdue Report"
             trigger OnPreDataItem()
             begin
                 SetFilter("Outstanding Quantity", '>0');
-                SetFilter("Expected Receipt Date", '<%1', Today);
+                SetFilter("Expected Receipt Date", '>%1', Today);
 
                 TempExcelBufferRecGbl.NewRow();
 
@@ -40,9 +40,38 @@ report 52115 "ERF PO Overdue Report"
 
         }
     }
+    requestpage
+    {
+        layout
+        {
+            area(Content)
+            {
+                group(Options)
+                {
+                    Caption = 'Options';
+
+                    field(SendByEmail; SendByEmail)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Send by Email';
+                        ToolTip = 'Specifies whether the generated Excel file should be sent by email.';
+                    }
+                }
+            }
+        }
+    }
     trigger OnPostReport()
     begin
+        if SendByEmail then
+            SendEmail()
+        else
+            DownloadExcel();
+    end;
+
+    local procedure CreateExcelFile()
+    begin
         FileName := 'PO Overdue Report.xlsx';
+        Clear(TempExcelBufferRecGbl);
         TempExcelBufferRecGbl.CreateNewBook('PO Overdue Report');
         TempExcelBufferRecGbl.WriteSheet('PO Overdue Report', CompanyName, UserId);
         TempExcelBufferRecGbl.CloseBook();
@@ -50,35 +79,38 @@ report 52115 "ERF PO Overdue Report"
 
         TempBlob.CreateOutStream(OutStr);
         TempExcelBufferRecGbl.SaveToStream(OutStr, true);
-        TempBlob.CreateInStream(InStr);
-        DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
+    end;
 
-        SendEmail();
+    local procedure DownloadExcel()
+    begin
+        CreateExcelFile();
+
+        TempBlob.CreateInStream(InStr);
+
+        DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
     end;
 
     local procedure SendEmail()
-    var
-        EmailMessage: Codeunit "Email Message";
-        Email: Codeunit Email;
     begin
+        CreateExcelFile();
         TempBlob.CreateInStream(InStr);
+        Clear(EmailMsg);
 
-        EmailMessage.Create('deep@eliterf.com',
+        EmailMsg.Create('deep@eliterf.com',
                 'PO Overdue Report',
                 'Please find attached the weekly PO Overdue Report.',
                 true);
 
-        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
-        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
-        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
-        EmailMessage.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
+        EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
 
-        EmailMessage.AddAttachment(
-            'PO Overdue Report.xlsx',
+        EmailMsg.AddAttachment('PO Overdue Report.xlsx',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             InStr);
 
-        Email.Send(EmailMessage);
+        Email.Send(EmailMsg);
     end;
 
     var
@@ -89,4 +121,5 @@ report 52115 "ERF PO Overdue Report"
         InStr: InStream;
         OutStr: OutStream;
         TempBlob: Codeunit "Temp Blob";
+        SendByEmail: Boolean;
 }
