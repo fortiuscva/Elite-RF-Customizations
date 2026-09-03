@@ -42,6 +42,11 @@ pageextension 52104 "ERF Item Card" extends "Item Card"
                 Caption = 'MSL Level Defined';
                 ToolTip = 'Specifies the value of the MSL Level Defined field.', Comment = '%';
             }
+            field("ERF Engineering Group"; Rec."ERF Engineering Group")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the engineering group assigned to this item.';
+            }
         }
     }
     actions
