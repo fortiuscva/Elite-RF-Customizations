@@ -221,8 +221,7 @@ codeunit 52100 "ERF Subscriber Management"
             WarehouseActivityHeader."Posting Date" := Today;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry",
-                             'OnAfterModifyEvent', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry", 'OnAfterModifyEvent', '', false, false)]
     local procedure OnJobQueueAfterModify(var Rec: Record "Job Queue Entry"; var xRec: Record "Job Queue Entry")
     var
         Email: Codeunit Email;
