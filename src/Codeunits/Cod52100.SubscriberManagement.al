@@ -221,6 +221,39 @@ codeunit 52100 "ERF Subscriber Management"
             WarehouseActivityHeader."Posting Date" := Today;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry",
+                             'OnAfterModifyEvent', '', false, false)]
+    local procedure OnJobQueueAfterModify(var Rec: Record "Job Queue Entry"; var xRec: Record "Job Queue Entry")
+    var
+        Email: Codeunit Email;
+        EmailMessage: Codeunit "Email Message";
+        BodyText: Text;
+    begin
+        if Rec.Status = Rec.Status::Error then begin
+            if Rec."ERF Set Ready When Failed" then begin
+                Rec.Status := Rec.Status::Ready;
+                Rec.Modify();
+            end;
+
+            if Rec."ERF Send Failure Notification" then begin
+
+                BodyText :=
+                    'Job Queue has failed with the following error message<br><br>' +
+                    'Description: ' + Rec.Description + '<br>' +
+                    'Object Type: ' + Format(Rec."Object Type to Run") + '<br>' +
+                    'Object ID: ' + Format(Rec."Object ID to Run") + '<br>' +
+                    'Error Message:<br>' + Rec."Error Message";
+
+                EmailMessage.Create(Rec."ERF Notify All EmailRecipients",
+                'Job Queue Failure Alert',
+                    BodyText,
+                    true);
+
+                if Email.Send(EmailMessage, Enum::"Email Scenario"::Default) then;
+            end;
+        end;
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
