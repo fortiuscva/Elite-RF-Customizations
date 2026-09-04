@@ -221,6 +221,33 @@ codeunit 52100 "ERF Subscriber Management"
             WarehouseActivityHeader."Posting Date" := Today;
     end;
 
+    [EventSubscriber(ObjectType::Page, Page::"Doc. Attachment List Factbox", 'OnAfterGetRecRefFail', '', false, false)]
+    local procedure OnAfterGetRecRefFail(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
+    var
+        EngineeringGroup: Record "ERF Engineering Group";
+    begin
+        if DocumentAttachment."Table ID" <> Database::"ERF Engineering Group" then
+            exit;
+
+        RecRef.Open(Database::"ERF Engineering Group");
+
+        if EngineeringGroup.Get(DocumentAttachment."No.") then
+            RecRef.GetTable(EngineeringGroup);
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Document Attachment", 'OnAfterInitFieldsFromRecRef', '', false, false)]
+    local procedure OnAfterInitFieldsFromRecRef(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
+    var
+        FieldRef: FieldRef;
+    begin
+        if RecRef.Number <> Database::"ERF Engineering Group" then
+            exit;
+
+        FieldRef := RecRef.Field(1);
+
+        DocumentAttachment.Validate("No.", Format(FieldRef.Value));
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';

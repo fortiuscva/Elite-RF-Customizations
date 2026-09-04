@@ -32,6 +32,18 @@ page 52113 "ERF Engineering Group"
                 SubPageLink = "Engineering Group Code" = field(Code);
             }
         }
+        area(FactBoxes)
+        {
+            part("Attached Documents List"; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Documents';
+                UpdatePropagation = Both;
+
+                SubPageLink = "Table ID" = const(Database::"ERF Engineering Group"),
+                              "No." = field(Code);
+            }
+        }
     }
 
     actions
