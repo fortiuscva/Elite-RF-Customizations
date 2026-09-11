@@ -52,6 +52,12 @@ tableextension 52100 "ERF Item" extends Item
             Caption = 'Conversion Old Tracking Code';
             DataClassification = CustomerContent;
         }
+        field(52107; "ERF Engineering Group"; Code[20])
+        {
+            Caption = 'Engineering Group';
+            DataClassification = CustomerContent;
+            TableRelation = "ERF Engineering Group".Code;
+        }
     }
     procedure GetExtendedDescription(): Text
     var
