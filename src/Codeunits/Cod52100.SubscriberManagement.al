@@ -266,6 +266,13 @@ codeunit 52100 "ERF Subscriber Management"
         DocumentAttachment.Validate("No.", Format(FieldRef.Value));
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"DSHIP Event Publisher", 'OnGetLabelPackageInsurance', '', true, true)]
+    local procedure OnGetLabelPackageInsurance(lpHeader: Record "IWX LP Header")
+    begin
+        lpHeader."Insurance Amount" := lpHeader."ERF Insurance Value";
+        lpHeader.Modify(false);
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
