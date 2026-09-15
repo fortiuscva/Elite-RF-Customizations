@@ -247,7 +247,7 @@ codeunit 52100 "ERF Subscriber Management"
 
         DocumentAttachment.Validate("No.", Format(FieldRef.Value));
     end;
-    
+
     [EventSubscriber(ObjectType::Table, Database::"Job Queue Entry", 'OnAfterModifyEvent', '', false, false)]
     local procedure OnJobQueueAfterModify(var Rec: Record "Job Queue Entry"; var xRec: Record "Job Queue Entry")
     var
@@ -278,6 +278,13 @@ codeunit 52100 "ERF Subscriber Management"
                 if Email.Send(EmailMessage, Enum::"Email Scenario"::Default) then;
             end;
         end;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"DSHIP Event Publisher", 'OnGetLabelPackageInsurance', '', true, true)]
+    local procedure OnGetLabelPackageInsurance(lpHeader: Record "IWX LP Header")
+    begin
+        lpHeader."Insurance Amount" := lpHeader."ERF Insurance Value";
+        lpHeader.Modify(false);
     end;
 
     var
