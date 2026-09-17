@@ -19,10 +19,10 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
                     Report.RunModal(Report::"F-812-9 Order Traveler Form", true, false, ProductionOrder);
                 end;
             }
-            action("ERF QualityInspectionChecklist")
+            action("ERF SubQualityInspectionChecklist")
             {
                 ApplicationArea = Manufacturing;
-                Caption = 'Quality Inspection Checklist';
+                Caption = 'SUBA Quality Inspection Checklist';
                 Ellipsis = true;
                 Image = "Report";
 
@@ -32,6 +32,21 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
                 begin
                     CurrPage.SetSelectionFilter(ProductionOrder);
                     Report.RunModal(Report::"F-812-7 Quality Insp. Check", true, false, ProductionOrder);
+                end;
+            }
+            action("ERF PCBAQualityInspectionChecklist")
+            {
+                ApplicationArea = Manufacturing;
+                Caption = 'PCBA Quality Inspection Checklist';
+                Ellipsis = true;
+                Image = "Report";
+
+                trigger OnAction()
+                var
+                    ProductionOrder: Record "Production Order";
+                begin
+                    CurrPage.SetSelectionFilter(ProductionOrder);
+                    Report.RunModal(Report::"ERF F-812-7 Quality Insp. PCBA", true, false, ProductionOrder);
                 end;
             }
             action("ERF RPORoutingBarCode")
@@ -65,7 +80,9 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
         {
             actionref("ERF OrderTravellerForm_Promoted"; "ERF OrderTravellerForm")
             { }
-            actionref("F-812-7 Quality Insp. Check"; "ERF QualityInspectionChecklist")
+            actionref("F-812-7 Quality Insp. Check"; "ERF SubQualityInspectionChecklist")
+            { }
+            actionref("ERF F-812-7 Quality Insp. PCBA"; "ERF PCBAQualityInspectionChecklist")
             { }
             actionref("RPO Routing Barcode"; "ERF RPORoutingBarCode")
             { }
@@ -73,7 +90,8 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
         addlast(Category_Process)
         {
             actionref("ERF Consumption Journal_Promoted"; "ERF Consumption Journal")
-            { }
+            {
+            }
         }
     }
 }
