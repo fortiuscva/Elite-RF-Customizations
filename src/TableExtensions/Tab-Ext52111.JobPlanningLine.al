@@ -6,6 +6,7 @@ tableextension 52111 "ERF Job Planning Line" extends "Job Planning Line"
         {
             Caption = 'Production Order Number';
             DataClassification = ToBeClassified;
+            TableRelation = "Production Order"."No." where(Status = const(Released));
         }
         field(52101; "ERF Qty. to Assemble"; Text[20])
         {
