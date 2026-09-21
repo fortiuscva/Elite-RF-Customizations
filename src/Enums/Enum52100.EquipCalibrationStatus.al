@@ -30,4 +30,8 @@ enum 52100 "ERF Equip. Calibration Status"
     {
         Caption = 'Reference Only';
     }
+    value(7; Scrap)
+    {
+        Caption = 'Scrap';
+    }
 }
