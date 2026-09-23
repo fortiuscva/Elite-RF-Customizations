@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-08-07T16:04:25.1512861Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-09-22T11:20:05.9980917Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -8188,6 +8188,7 @@
                                                 <TablixMember>
                                                   <Group Name="Details3">
                                                     <GroupExpressions>
+                                                      <GroupExpression>=Fields!ProdOrderLineNo.Value</GroupExpression>
                                                       <GroupExpression>=Fields!LineNo.Value</GroupExpression>
                                                     </GroupExpressions>
                                                   </Group>
@@ -8369,7 +8370,7 @@
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <Top>1.25689in</Top>
-                              <Height>14.1429in</Height>
+                              <Height>14.14282in</Height>
                               <Width>8.00001in</Width>
                               <ZIndex>1</ZIndex>
                               <Style>
@@ -8632,7 +8633,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3601</rd:DefaultName>
-              <Top>0in</Top>
               <Left>5.74344in</Left>
               <Height>0.23622in</Height>
               <Width>2.26313in</Width>
@@ -8737,6 +8737,9 @@ End Function
         </Field>
         <Field Name="LineNo">
           <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="ProdOrderLineNo">
+          <DataField>ProdOrderLineNo</DataField>
         </Field>
       </Fields>
       <Query>

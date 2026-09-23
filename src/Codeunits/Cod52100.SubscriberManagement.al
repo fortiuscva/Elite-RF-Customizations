@@ -287,6 +287,27 @@ codeunit 52100 "ERF Subscriber Management"
         lpHeader.Modify(false);
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Create Inventory Pick/Movement", OnBeforeFindProdOrderComp, '', false, false)]
+    local procedure "Create Inventory Pick/Movement_OnBeforeFindProdOrderComp"(var ProdOrderComp: Record "Prod. Order Component"; ProductionOrder: Record "Production Order"; WarehouseActivityHeader: Record "Warehouse Activity Header")
+    var
+        SingleInstanceCU: Codeunit "ERF Single Instance";
+    begin
+        if not SingleInstanceCU.IsSelectedProdOrderLineActive() then
+            exit;
+
+        if ProductionOrder.Status <> SingleInstanceCU.GetSelectedStatus() then
+            exit;
+
+        if ProductionOrder."No." <> SingleInstanceCU.GetSelectedProdOrderNo() then
+            exit;
+
+        ProdOrderComp.SetRange(Status, SingleInstanceCU.GetSelectedStatus());
+
+        ProdOrderComp.SetRange("Prod. Order No.", SingleInstanceCU.GetSelectedProdOrderNo());
+
+        ProdOrderComp.SetRange("Prod. Order Line No.", SingleInstanceCU.GetSelectedProdOrderLineNo());
+    end;
+
     var
         NotEnoughInventoryLbl: Label 'Pick Lines cannot create due to inventory';
         AlredyExistsPickLines: Label 'Pick Lines Already Exists';
