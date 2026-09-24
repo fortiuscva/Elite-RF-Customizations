@@ -22,31 +22,6 @@
       <rd:DataSourceID>00000000-0000-0000-0000-000000000001</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="OrderNo">
-          <DataField>OrderNo</DataField>
-        </Field>
-        <Field Name="SalespersonCode">
-          <DataField>SalespersonCode</DataField>
-        </Field>
-        <Field Name="CommissionBasis">
-          <DataField>CommissionBasis</DataField>
-        </Field>
-        <Field Name="CommissionPercent">
-          <DataField>CommissionPercent</DataField>
-        </Field>
-        <Field Name="CommissionAmount">
-          <DataField>CommissionAmount</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -298,13 +273,41 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>789e8f92-3d08-4f29-8b2d-8b0b3b840797</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
+        </Field>
+        <Field Name="SalespersonCode">
+          <DataField>SalespersonCode</DataField>
+        </Field>
+        <Field Name="CommissionBasis">
+          <DataField>CommissionBasis</DataField>
+        </Field>
+        <Field Name="CommissionBasisFormat">
+          <DataField>CommissionBasisFormat</DataField>
+        </Field>
+        <Field Name="CommissionPercent">
+          <DataField>CommissionPercent</DataField>
+        </Field>
+        <Field Name="CommissionPercentFormat">
+          <DataField>CommissionPercentFormat</DataField>
+        </Field>
+        <Field Name="CommissionAmount">
+          <DataField>CommissionAmount</DataField>
+        </Field>
+        <Field Name="CommissionAmountFormat">
+          <DataField>CommissionAmountFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
