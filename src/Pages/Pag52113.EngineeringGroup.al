@@ -43,6 +43,17 @@ page 52113 "ERF Engineering Group"
                 SubPageLink = "Table ID" = const(Database::"ERF Engineering Group"),
                               "No." = field(Code);
             }
+            part("Line Documents"; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Line Documents';
+                UpdatePropagation = Both;
+
+                Provider = Lines;
+
+                SubPageLink = "Table ID" = const(Database::"ERF Engineering Group Line"),
+                    "No." = field("Attachment No.");
+            }
         }
     }
 
