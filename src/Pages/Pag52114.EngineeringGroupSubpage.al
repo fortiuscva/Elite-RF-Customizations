@@ -18,6 +18,10 @@ page 52114 "ERF Engineering Group Subpage"
                 {
                     ApplicationArea = All;
                 }
+                field(Selected; Rec.Selected)
+                {
+                    ApplicationArea = All;
+                }
                 field("Created User Name"; GetCreatedUserName())
                 {
                     ApplicationArea = All;
