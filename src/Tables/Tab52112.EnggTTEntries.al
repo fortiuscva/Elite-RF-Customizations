@@ -1,6 +1,8 @@
 table 52112 "ERF Engg. TT Entries"
 {
     Caption = 'Engineering Time Tracking Entries';
+    LookupPageId = "ERF Engg. TT Entries";
+    DrillDownPageId = "ERF Engg. TT Entries";
     DataClassification = CustomerContent;
 
     fields
@@ -10,7 +12,6 @@ table 52112 "ERF Engg. TT Entries"
             AutoIncrement = True;
             Caption = 'Entry No.';
             DataClassification = CustomerContent;
-
         }
         field(2; "Employee No."; Code[20])
         {
@@ -21,19 +22,17 @@ table 52112 "ERF Engg. TT Entries"
             var
                 Employee: Record Employee;
             begin
-                If Employee.Get("Employee No.") then
-                    "Employee Name" := Employee.FullName()
-                else
-                    Clear("Employee Name")
+                if ("Employee No." <> xRec."Employee No.") and ("Employee No." <> '') then begin
+                    Employee.Get("Employee No.");
+                    Validate("Employee Name", Employee.FullName());
+                end else
+                    Validate("Employee Name", '');
             end;
-
         }
         field(3; "Employee Name"; Text[250])
         {
             Caption = 'Employee Name';
             DataClassification = CustomerContent;
-            Editable = false;
-
         }
         field(4; "Project No."; Code[20])
         {
@@ -42,8 +41,8 @@ table 52112 "ERF Engg. TT Entries"
             TableRelation = Job;
             trigger OnValidate()
             begin
-                if Xrec."Project No." <> Rec."Project No." Then
-                    Clear("Project Task No.");
+                if (("Project No." <> xRec."Project No.") or ("Project No." = '')) then
+                    "Project Task No." := '';
             end;
         }
         field(5; "Project Task No."; Code[20])
@@ -55,22 +54,27 @@ table 52112 "ERF Engg. TT Entries"
         field(6; "Start Time"; DateTime)
         {
             Caption = 'Start Time';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(7; "End Time"; DateTime)
         {
             Caption = 'End Time';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(8; "Duration in Minutes"; Integer)
         {
             Caption = 'Duration in Minutes';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
         field(9; Status; Enum "ERF Engg. TT Entries Status")
         {
             Caption = 'Status';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
+        }
+        field(10; "Duration"; Text[250])
+        {
+            Caption = 'Duration';
+            DataClassification = CustomerContent;
         }
     }
     keys
@@ -78,6 +82,15 @@ table 52112 "ERF Engg. TT Entries"
         key(PK; "Entry No.")
         {
             Clustered = true;
+        }
+    }
+    fieldgroups
+    {
+        fieldgroup(DropDown; "Employee No.", "Employee Name", "Project No.", "Project Task No.")
+        {
+        }
+        fieldgroup(Brick; "Employee No.", "Employee Name", "Project No.", "Project Task No.")
+        {
         }
     }
 }

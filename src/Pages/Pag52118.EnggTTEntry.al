@@ -4,7 +4,8 @@ page 52118 "ERF Engg. TT Entry"
     Caption = 'Enggineering Time Tracking Entry';
     PageType = Card;
     SourceTable = "ERF Engg. TT Entries";
-    UsageCategory = Lists;
+    RefreshOnActivate = true;
+    UsageCategory = None;
 
     layout
     {
@@ -16,38 +17,54 @@ page 52118 "ERF Engg. TT Entry"
 
                 field("Entry No."; Rec."Entry No.")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
                 }
                 field("Employee No."; Rec."Employee No.")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
                 }
                 field("Employee Name"; Rec."Employee Name")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
                 }
                 field("Project No."; Rec."Project No.")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
                 }
                 field("Project Task No."; Rec."Project Task No.")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
                 }
                 field("Start Time"; Rec."Start Time")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
                 }
                 field("End Time"; Rec."End Time")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
+                }
+                field("Duration"; Rec."Duration")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
                 }
                 field("Duration in Minutes"; Rec."Duration in Minutes")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Duration in Minutes field.', Comment = '%';
                 }
                 field(Status; Rec.Status)
                 {
+                    ApplicationArea = All;
+                    Editable = false;
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
             }
@@ -59,31 +76,37 @@ page 52118 "ERF Engg. TT Entry"
         {
             action(StartTask)
             {
-                Caption = 'Satrt Task';
+                ApplicationArea = All;
+                Caption = 'Start Task';
+                Ellipsis = true;
+                Enabled = Rec.Status = Rec.Status::" ";
+                Image = Start;
                 trigger OnAction()
                 begin
-                    EnggEntries."Start Time" := CurrentDateTime();
-                    EnggEntries.Status := EnggEntries.Status::"In Progress";
-                    EnggEntries.Modify(true);
+                    Rec."Start Time" := CurrentDateTime();
+                    Rec.Status := Rec.Status::"In Progress";
+                    Rec.Modify(true);
                 end;
             }
             action(StopTask)
             {
+                ApplicationArea = All;
                 Caption = 'Stop Task';
+                Ellipsis = true;
+                Enabled = Rec.Status = Rec.Status::"In Progress";
+                Image = Stop;
                 trigger OnAction()
                 begin
-                    IF EnggEntries.Status <> EnggEntries.Status::"In Progress" then
-                        Error('Only an In Progressed Task can be stopped');
-                    EnggEntries.TestField("Start Time");
-                    EnggEntries."End Time" := CurrentDateTime();
-                    EnggEntries."Duration In Minutes" := Round((EnggEntries."End Time" - EnggEntries."Start Time") / 60000, 1, '=');
+                    Rec."End Time" := CurrentDateTime();
+                    Rec."Duration In Minutes" := Round((CurrentDateTime() - Rec."Start Time") / 60000, 1, '=');
+                    TimeDurationGbl := CurrentDateTime() - Rec."Start Time";
+                    Rec.Duration := Format(TimeDurationGbl);
+                    Rec.Status := Rec.Status::Completed;
+                    Rec.Modify(true);
                 end;
-
-
-
             }
         }
     }
     var
-        EnggEntries: Record "ERF Engg. TT Entries";
+        TimeDurationGbl: Duration;
 }
