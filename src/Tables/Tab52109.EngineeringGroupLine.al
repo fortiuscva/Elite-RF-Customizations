@@ -19,7 +19,7 @@ table 52109 "ERF Engineering Group Line"
             DataClassification = CustomerContent;
         }
 
-        field(3; Notes; Text[250])
+        field(3; Notes; Text[1024])
         {
             Caption = 'Notes';
             DataClassification = CustomerContent;
