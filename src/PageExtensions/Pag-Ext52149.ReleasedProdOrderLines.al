@@ -39,6 +39,22 @@ pageextension 52149 "ERF Released Prod. Order Lines" extends "Released Prod. Ord
                     CreateInventoryPick(Rec);
                 end;
             }
+            action("ERF OrderTravellerForm")
+            {
+                ApplicationArea = Manufacturing;
+                Caption = 'Order Traveller Form';
+                Ellipsis = true;
+                Image = "Report";
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    ProdOrderLine: Record "Prod. Order Line";
+                begin
+                    CurrPage.SetSelectionFilter(ProdOrderLine);
+                    Report.RunModal(Report::"F-812-9 Order Traveler Form", true, false, ProdOrderLine);
+                end;
+            }
 
         }
     }

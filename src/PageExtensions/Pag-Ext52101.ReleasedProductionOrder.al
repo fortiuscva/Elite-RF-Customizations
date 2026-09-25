@@ -4,21 +4,6 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
     {
         addafter("Job Card")
         {
-            action("ERF OrderTravellerForm")
-            {
-                ApplicationArea = Manufacturing;
-                Caption = 'Order Traveller Form';
-                Ellipsis = true;
-                Image = "Report";
-
-                trigger OnAction()
-                var
-                    ProductionOrder: Record "Production Order";
-                begin
-                    CurrPage.SetSelectionFilter(ProductionOrder);
-                    Report.RunModal(Report::"F-812-9 Order Traveler Form", true, false, ProductionOrder);
-                end;
-            }
             action("ERF SubQualityInspectionChecklist")
             {
                 ApplicationArea = Manufacturing;
@@ -91,8 +76,6 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
         }
         addafter("Job Card_Promoted")
         {
-            actionref("ERF OrderTravellerForm_Promoted"; "ERF OrderTravellerForm")
-            { }
             actionref("F-812-7 Quality Insp. Check"; "ERF SubQualityInspectionChecklist")
             { }
             actionref("ERF F-812-7 Quality Insp. PCBA"; "ERF PCBAQualityInspectionChecklist")
