@@ -243,14 +243,26 @@ codeunit 52100 "ERF Subscriber Management"
     local procedure OnAfterGetRecRefFail(var DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef)
     var
         EngineeringGroup: Record "ERF Engineering Group";
+        EngineeringGroupLine: Record "ERF Engineering Group Line";
     begin
-        if DocumentAttachment."Table ID" <> Database::"ERF Engineering Group" then
-            exit;
+        case DocumentAttachment."Table ID" of
+            Database::"ERF Engineering Group":
+                begin
+                    RecRef.Open(Database::"ERF Engineering Group");
 
-        RecRef.Open(Database::"ERF Engineering Group");
+                    if EngineeringGroup.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(EngineeringGroup);
+                end;
+            Database::"ERF Engineering Group Line":
+                begin
+                    RecRef.Open(Database::"ERF Engineering Group Line");
 
-        if EngineeringGroup.Get(DocumentAttachment."No.") then
-            RecRef.GetTable(EngineeringGroup);
+                    EngineeringGroupLine.SetRange("Attachment No.", DocumentAttachment."No.");
+
+                    if EngineeringGroupLine.FindFirst() then
+                        RecRef.GetTable(EngineeringGroupLine);
+                end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Document Attachment", 'OnAfterInitFieldsFromRecRef', '', false, false)]
@@ -258,12 +270,19 @@ codeunit 52100 "ERF Subscriber Management"
     var
         FieldRef: FieldRef;
     begin
-        if RecRef.Number <> Database::"ERF Engineering Group" then
-            exit;
+        case RecRef.Number of
+            Database::"ERF Engineering Group":
+                begin
+                    FieldRef := RecRef.Field(1);
+                    DocumentAttachment.Validate("No.", Format(FieldRef.Value));
+                end;
 
-        FieldRef := RecRef.Field(1);
-
-        DocumentAttachment.Validate("No.", Format(FieldRef.Value));
+            Database::"ERF Engineering Group Line":
+                begin
+                    FieldRef := RecRef.Field(5);
+                    DocumentAttachment.Validate("No.", Format(FieldRef.Value));
+                end;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"DSHIP Event Publisher", 'OnGetLabelPackageInsurance', '', true, true)]
