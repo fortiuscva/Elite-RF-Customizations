@@ -12,6 +12,11 @@ report 52115 "ERF PO Overdue Report"
                                 where("Document Type" = const(Order));
             trigger OnPreDataItem()
             begin
+                if SendByEmail then begin
+                    PurchaseSetup.Get();
+                    PurchaseSetup.TestField("ERF PO Over Due Email To");
+                end;
+
                 SetFilter("Outstanding Quantity", '>0');
                 SetFilter("Expected Receipt Date", '>%1', Today);
 
@@ -84,28 +89,42 @@ report 52115 "ERF PO Overdue Report"
     local procedure DownloadExcel()
     begin
         CreateExcelFile();
-
         TempBlob.CreateInStream(InStr);
-
         DownloadFromStream(InStr, 'Download Excel', '', 'Excel Files (*.xlsx)|*.xlsx', FileName);
     end;
 
     local procedure SendEmail()
+    Var
+        EmailTo: Text;
+        EmailCCTo: Text;
+        EmailSubject: Text;
+        EnvironmentInformation: Codeunit "Environment Information";
+        EnvironmentName: Text;
     begin
+        EmailTo := PurchaseSetup."ERF PO Over Due Email To";
+        if PurchaseSetup."ERF PO Over Due Email CC To" <> '' then
+            EmailCCTo := PurchaseSetup."ERF PO Over Due Email CC To";
+
+        EnvironmentName := EnvironmentInformation.GetEnvironmentName();
+        EmailSubject := StrSubstNo('[%1] PO Overdue Report', EnvironmentName);
+
         CreateExcelFile();
         TempBlob.CreateInStream(InStr);
         Clear(EmailMsg);
 
-        EmailMsg.Create('deep@eliterf.com',
-                'PO Overdue Report',
+        EmailMsg.Create(EmailTo,
+                EmailSubject,
                 'Please find attached the weekly PO Overdue Report.',
                 true);
 
+        /* 
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
-
+        */
+        If EmailCCTo <> '' then
+            AddCCRecipients(EmailMsg, EmailCCTo);
         EmailMsg.AddAttachment('PO Overdue Report.xlsx',
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             InStr);
@@ -122,4 +141,18 @@ report 52115 "ERF PO Overdue Report"
         OutStr: OutStream;
         TempBlob: Codeunit "Temp Blob";
         SendByEmail: Boolean;
+        PurchaseSetup: Record "Purchases & Payables Setup";
+
+    local procedure AddCCRecipients(var EmailMsg: Codeunit "Email Message"; CCList: Text)
+    var
+        EmailAddress: Text;
+    begin
+        foreach EmailAddress in CCList.Split(';') do begin
+            EmailAddress := DelChr(EmailAddress, '<>', ' ');
+            if EmailAddress <> '' then
+                EmailMsg.AddRecipient(
+                Enum::"Email Recipient Type"::Cc,
+                EmailAddress);
+        end;
+    end;
 }
