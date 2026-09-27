@@ -276,7 +276,10 @@ codeunit 52100 "ERF Subscriber Management"
     var
         Email: Codeunit Email;
         EmailMessage: Codeunit "Email Message";
+        EnvironmentInformation: Codeunit "Environment Information";
         BodyText: Text;
+        EnvironmentName: Text;
+        EmailSubject: Text;
     begin
         if Rec.Status = Rec.Status::Error then begin
             if Rec."ERF Set Ready When Failed" then begin
@@ -293,8 +296,11 @@ codeunit 52100 "ERF Subscriber Management"
                     'Object ID: ' + Format(Rec."Object ID to Run") + '<br>' +
                     'Error Message:<br>' + Rec."Error Message";
 
+                EnvironmentName := EnvironmentInformation.GetEnvironmentName();
+                EmailSubject := StrSubstNo('[%1] Job Queue Failure Alert', EnvironmentName);
+
                 EmailMessage.Create(Rec."ERF Notify All EmailRecipients",
-                'Job Queue Failure Alert',
+                EmailSubject,
                     BodyText,
                     true);
 
