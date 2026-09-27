@@ -10,6 +10,10 @@ report 52113 "ERF Export Low Qty Items"
         {
             trigger OnPreDataItem()
             begin
+                if SendByEmail then begin
+                    InventorySetup.Get();
+                    InventorySetup.TestField("ERF Low Stock Item Email To");
+                end;
                 Clear(TempExcelBufferRecGbl);
                 TempExcelBufferRecGbl.DeleteAll();
 
@@ -55,7 +59,6 @@ report 52113 "ERF Export Low Qty Items"
             }
         }
     }
-
     trigger OnPostReport()
     begin
         if not LowStockFound then
@@ -90,22 +93,35 @@ report 52113 "ERF Export Low Qty Items"
     end;
 
     local procedure SendEmail()
+    var
+        EmailTo: Text;
+        EmailCCTo: Text;
+        EmailSubject: Text;
+        EnvironmentInformation: Codeunit "Environment Information";
+        EnvironmentName: Text;
     begin
-        CreateExcelFile();
+        EmailTo := InventorySetup."ERF Low Stock Item Email To";
+        if InventorySetup."ERF Low Stock Item Email CC To" <> '' then
+            EmailCCTo := InventorySetup."ERF Low Stock Item Email CC To";
 
+        EnvironmentName := EnvironmentInformation.GetEnvironmentName();
+        EmailSubject := StrSubstNo('[%1] Weekly Low Stock Report', EnvironmentName);
+
+        CreateExcelFile();
         TempBlob.CreateInStream(InStr);
 
         Clear(EmailMsg);
 
-        EmailMsg.Create('deep@eliterf.com', 'Weekly Low Stock Report', 'Please find attached the weekly low stock items report.', true);
-
+        EmailMsg.Create(EmailTo, EmailSubject, 'Please find attached the weekly low stock items report.', true);
+        /*
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'clopez@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'gwen@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'het@eliterf.com');
         EmailMsg.AddRecipient("Email Recipient Type"::Cc, 'parthb@eliterf.com');
-
+        */
+        If EmailCCTo <> '' then
+            AddCCRecipients(EmailMsg, EmailCCTo);
         EmailMsg.AddAttachment(FileName, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InStr);
-
         Email.Send(EmailMsg);
     end;
 
@@ -119,4 +135,21 @@ report 52113 "ERF Export Low Qty Items"
         OutStr: OutStream;
         LowStockFound: Boolean;
         SendByEmail: Boolean;
+
+        InventorySetup: Record "Inventory Setup";
+
+
+    local procedure AddCCRecipients(var EmailMsg: Codeunit "Email Message"; CCList: Text)
+    var
+        EmailAddress: Text;
+    begin
+        foreach EmailAddress in CCList.Split(';') do begin
+            EmailAddress := DelChr(EmailAddress, '<>', ' ');
+            if EmailAddress <> '' then
+                EmailMsg.AddRecipient(
+                Enum::"Email Recipient Type"::Cc,
+                EmailAddress);
+        end;
+    end;
+
 }
