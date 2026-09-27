@@ -19,53 +19,90 @@ page 52118 "ERF Engg. TT Entry"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
+                    Visible = false;
                 }
-                field("Employee No."; Rec."Employee No.")
+                group(Employee)
                 {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
+                    Caption = 'Employee';
+                    field("Employee No."; Rec."Employee No.")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'No.';
+                        ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
+                    }
+                    field("Employee Name"; Rec."Employee Name")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Name';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
+                    }
                 }
-                field("Employee Name"; Rec."Employee Name")
+                group(Project)
                 {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
+                    Caption = 'Project';
+                    field("Project No."; Rec."Project No.")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'No.';
+                        ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
+                    }
+                    field("Project Description"; Rec."Project Description")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Description';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Project Description field.', Comment = '%';
+                    }
                 }
-                field("Project No."; Rec."Project No.")
+                group(ProjectTask)
                 {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
+                    Caption = 'Project Task';
+                    field("Project Task No."; Rec."Project Task No.")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'No.';
+                        ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
+                    }
+                    field("Project Task Description"; Rec."Project Task Description")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Decription';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Project Task Description field.', Comment = '%';
+                    }
                 }
-                field("Project Task No."; Rec."Project Task No.")
+                group(TimeTracking)
                 {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
-                }
-                field("Start Time"; Rec."Start Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
-                }
-                field("End Time"; Rec."End Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
-                }
-                field("Duration"; Rec."Duration")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
-                }
-                field("Duration in Minutes"; Rec."Duration in Minutes")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Duration in Minutes field.', Comment = '%';
-                }
-                field(Status; Rec.Status)
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                    Caption = 'Time Tracking';
+                    field("Start Time"; Rec."Start Time")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
+                    }
+                    field("End Time"; Rec."End Time")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
+                    }
+                    field("Duration"; Rec."Duration")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
+                    }
+                    field("Duration in Minutes"; Rec."Duration in Minutes")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Duration in Minutes field.', Comment = '%';
+                    }
+                    field(Status; Rec.Status)
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                    }
                 }
             }
         }
@@ -81,6 +118,8 @@ page 52118 "ERF Engg. TT Entry"
                 Ellipsis = true;
                 Enabled = Rec.Status = Rec.Status::" ";
                 Image = Start;
+                Promoted = true;
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     Rec."Start Time" := CurrentDateTime();
@@ -95,6 +134,8 @@ page 52118 "ERF Engg. TT Entry"
                 Ellipsis = true;
                 Enabled = Rec.Status = Rec.Status::"In Progress";
                 Image = Stop;
+                Promoted = true;
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     Rec."End Time" := CurrentDateTime();
