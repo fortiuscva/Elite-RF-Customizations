@@ -18,7 +18,7 @@ report 52115 "ERF PO Overdue Report"
                 end;
 
                 SetFilter("Outstanding Quantity", '>0');
-                SetFilter("Expected Receipt Date", '>%1', Today);
+                SetFilter("Expected Receipt Date", '<%1', Today);
 
                 TempExcelBufferRecGbl.NewRow();
 
