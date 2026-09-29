@@ -1,7 +1,8 @@
 page 52118 "ERF Engg. TT Entry"
 {
     ApplicationArea = All;
-    Caption = 'Enggineering Time Tracking Entry';
+    Caption = 'Engineering Time Tracking Entry';
+    DeleteAllowed = false;
     PageType = Card;
     SourceTable = "ERF Engg. TT Entries";
     RefreshOnActivate = true;
@@ -178,9 +179,11 @@ page 52118 "ERF Engg. TT Entry"
                 begin
                     UpdateEnggEntry.SetStartTime(Rec."Start Time");
                     UpdateEnggEntry.SetEndTime(Rec."End Time");
+                    UpdateEnggEntry.SetComments(Rec.GetComments());
                     if UpdateEnggEntry.RunModal() = Action::OK then begin
                         Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
                         Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
+                        Rec.SetComments(UpdateEnggEntry.GetComments());
                         Rec.Modify(true);
                         CurrPage.Update(false);
                     end

@@ -1,7 +1,7 @@
 page 52120 "ERF Update Engg Entry"
 {
     ApplicationArea = All;
-    Caption = 'Update Engg Entry';
+    Caption = 'Update Engineering Time Tracking Entry';
     PageType = StandardDialog;
     layout
     {
@@ -18,11 +18,20 @@ page 52120 "ERF Update Engg Entry"
                 ApplicationArea = All;
                 Caption = 'End Time';
             }
+            field(Comments; Comment)
+            {
+                ApplicationArea = All;
+                Caption = 'Comments';
+                Importance = Additional;
+                MultiLine = true;
+                ToolTip = 'Specifies the value of the Comments field.', Comment = '%';
+            }
         }
     }
     var
         StartTime: DateTime;
         EndTime: DateTime;
+        Comment: Text;
 
     procedure SetStartTime(StartTimePar: DateTime)
     begin
@@ -34,6 +43,11 @@ page 52120 "ERF Update Engg Entry"
         EndTime := EndTimePar;
     end;
 
+    procedure SetComments(CommentsPar: Text)
+    begin
+        Comment := CommentsPar;
+    end;
+
     procedure GetStartTime(): DateTime
     begin
         exit(StartTime);
@@ -42,5 +56,10 @@ page 52120 "ERF Update Engg Entry"
     procedure GetEndTime(): DateTime
     begin
         exit(EndTime);
+    end;
+
+    Procedure GetComments(): Text
+    begin
+        exit(Comment);
     end;
 }
