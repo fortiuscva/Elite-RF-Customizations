@@ -112,6 +112,11 @@ table 52112 "ERF Engg. TT Entries"
             Caption = 'Project Task Description';
             DataClassification = CustomerContent;
         }
+        field(13; Comments; BLOB)
+        {
+            Caption = 'Comments';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
@@ -136,5 +141,25 @@ table 52112 "ERF Engg. TT Entries"
         "Duration In Minutes" := Round(("End Time" - "Start Time") / 60000, 1, '=');
         TimeDurationLcl := "End Time" - "Start Time";
         "Duration" := Format(TimeDurationLcl);
+    end;
+
+    procedure SetComments(NewComments: Text)
+    var
+        OutStream: OutStream;
+    begin
+        Clear(Comments);
+        Comments.CreateOutStream(OutStream, TEXTENCODING::UTF8);
+        OutStream.WriteText(NewComments);
+        Modify();
+    end;
+
+    procedure GetComments() Comment: Text
+    var
+        TypeHelper: Codeunit "Type Helper";
+        InStream: InStream;
+    begin
+        CalcFields(Comments);
+        Comments.CreateInStream(InStream, TEXTENCODING::UTF8);
+        exit(TypeHelper.TryReadAsTextWithSepAndFieldErrMsg(InStream, TypeHelper.LFSeparator(), FieldName(Comments)));
     end;
 }

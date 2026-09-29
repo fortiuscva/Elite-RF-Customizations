@@ -78,11 +78,13 @@ page 52118 "ERF Engg. TT Entry"
                     field("Start Time"; Rec."Start Time")
                     {
                         ApplicationArea = All;
+                        Editable = false;
                         ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
                     }
                     field("End Time"; Rec."End Time")
                     {
                         ApplicationArea = All;
+                        Editable = false;
                         ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
                     }
                     field("Duration"; Rec."Duration")
@@ -102,6 +104,22 @@ page 52118 "ERF Engg. TT Entry"
                         ApplicationArea = All;
                         Editable = false;
                         ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                    }
+                }
+                group(Comments)
+                {
+                    Caption = 'Comments';
+                    field(Comment; CommentGbl)
+                    {
+                        ApplicationArea = All;
+                        Importance = Additional;
+                        MultiLine = true;
+                        ShowCaption = false;
+                        ToolTip = 'Specifies the value of the Comments field.', Comment = '%';
+                        trigger OnValidate()
+                        begin
+                            Rec.SetComments(CommentGbl);
+                        end;
                     }
                 }
             }
@@ -146,8 +164,36 @@ page 52118 "ERF Engg. TT Entry"
                     Rec.Modify(true);
                 end;
             }
+            action(UpdateEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Entry';
+                Ellipsis = true;
+                Image = EditLines;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    UpdateEnggEntry: Page "ERF Update Engg Entry";
+                begin
+                    UpdateEnggEntry.SetStartTime(Rec."Start Time");
+                    UpdateEnggEntry.SetEndTime(Rec."End Time");
+                    if UpdateEnggEntry.RunModal() = Action::OK then begin
+                        Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
+                        Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
+                        Rec.Modify(true);
+                        CurrPage.Update(false);
+                    end
+                end;
+            }
         }
     }
     var
         TimeDurationGbl: Duration;
+        CommentGbl: Text;
+
+    trigger OnAfterGetRecord()
+    begin
+        Rec.GetComments();
+    end;
 }
