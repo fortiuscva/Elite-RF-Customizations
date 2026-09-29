@@ -194,6 +194,6 @@ page 52118 "ERF Engg. TT Entry"
 
     trigger OnAfterGetRecord()
     begin
-        Rec.GetComments();
+        CommentGbl := Rec.GetComments();
     end;
 }
