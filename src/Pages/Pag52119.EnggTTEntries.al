@@ -3,6 +3,7 @@ page 52119 "ERF Engg. TT Entries"
     ApplicationArea = All;
     Caption = 'Engineering Time Tracking Entries';
     CardPageId = "ERF Engg. TT Entry";
+    DeleteAllowed = false;
     PageType = List;
     SourceTable = "ERF Engg. TT Entries";
     UsageCategory = Lists;
@@ -14,11 +15,6 @@ page 52119 "ERF Engg. TT Entries"
         {
             repeater(General)
             {
-                field("Entry No."; Rec."Entry No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
-                }
                 field("Employee No."; Rec."Employee No.")
                 {
                     ApplicationArea = All;
@@ -34,10 +30,18 @@ page 52119 "ERF Engg. TT Entries"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
                 }
+                field("Project Description"; Rec."Project Description")
+                {
+                    ToolTip = 'Specifies the value of the Project Description field.', Comment = '%';
+                }
                 field("Project Task No."; Rec."Project Task No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
+                }
+                field("Project Task Description"; Rec."Project Task Description")
+                {
+                    ToolTip = 'Specifies the value of the Project Task Description field.', Comment = '%';
                 }
                 field("Start Time"; Rec."Start Time")
                 {
@@ -64,6 +68,12 @@ page 52119 "ERF Engg. TT Entries"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
+                    Visible = false;
+                }
             }
         }
     }
@@ -85,9 +95,11 @@ page 52119 "ERF Engg. TT Entries"
                 begin
                     UpdateEnggEntry.SetStartTime(Rec."Start Time");
                     UpdateEnggEntry.SetEndTime(Rec."End Time");
+                    UpdateEnggEntry.SetComments(Rec.GetComments());
                     if UpdateEnggEntry.RunModal() = Action::OK then begin
                         Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
                         Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
+                        Rec.SetComments(UpdateEnggEntry.GetComments());
                         Rec.Modify(true);
                         CurrPage.Update(false);
                     end
