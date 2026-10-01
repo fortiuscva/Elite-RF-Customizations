@@ -55,8 +55,120 @@ pageextension 52149 "ERF Released Prod. Order Lines" extends "Released Prod. Ord
                     Report.RunModal(Report::"F-812-9 Order Traveler Form", true, false, ProdOrderLine);
                 end;
             }
+            action("ERF RefreshRPOLine")
+            {
+                Caption = 'Refresh Released Production Order Line';
+                ApplicationArea = All;
+                Image = RefreshLines;
+                ToolTip = 'Refresh the selected released production order line without refreshing the entire production order.';
+
+                trigger OnAction()
+                var
+                    ProdOrderLine: Record "Prod. Order Line";
+                begin
+                    CurrPage.SetSelectionFilter(ProdOrderLine);
+
+                    if ProdOrderLine.IsEmpty() then
+                        Error('Please select at least one production order line.');
+
+                    Report.RunModal(Report::"ERF Refresh Prod. Order Line", true, false, ProdOrderLine);
+
+                    CurrPage.Update(false);
+                end;
+            }
+
         }
     }
+    procedure RefreshRPOline(var ProdOrderLine: Record "Prod. Order Line")
+    var
+        ProdOrderRoutingLine: Record "Prod. Order Routing Line";
+        ProdOrderComponent: Record "Prod. Order Component";
+        CalculateProdOrder: Codeunit "Calculate Prod. Order";
+        Direction: Option Forward,Backward;
+        IsHandled: Boolean;
+    begin
+        ProdOrderLine.TestField(Status, ProdOrderLine.Status::Released);
+
+        ProdOrderLine.TestField("Prod. Order No.");
+        ProdOrderLine.TestField("Line No.");
+
+        Direction := Direction::Backward;
+
+        ProdOrderRoutingLine.SetRange(Status, ProdOrderLine.Status);
+
+        ProdOrderRoutingLine.SetRange("Prod. Order No.", ProdOrderLine."Prod. Order No.");
+
+        ProdOrderRoutingLine.SetRange("Routing Reference No.", ProdOrderLine."Routing Reference No.");
+
+        ProdOrderRoutingLine.SetRange("Routing No.", ProdOrderLine."Routing No.");
+
+        if ProdOrderRoutingLine.FindSet(true) then
+            repeat
+                ProdOrderRoutingLine.SetSkipUpdateOfCompBinCodes(true);
+                ProdOrderRoutingLine.Delete(true);
+            until ProdOrderRoutingLine.Next() = 0;
+
+        ProdOrderComponent.SetRange(Status, ProdOrderLine.Status);
+
+        ProdOrderComponent.SetRange("Prod. Order No.", ProdOrderLine."Prod. Order No.");
+
+        ProdOrderComponent.SetRange("Prod. Order Line No.", ProdOrderLine."Line No.");
+
+        ProdOrderComponent.DeleteAll(true);
+
+        CheckProductionBOMStatus(ProdOrderLine."Production BOM No.", ProdOrderLine."Production BOM Version Code");
+        CheckRoutingStatus(ProdOrderLine."Routing No.", ProdOrderLine."Routing Version Code");
+
+        ProdOrderLine."Due Date" := ProdOrderLine."Due Date";
+
+        CalculateProdOrder.Calculate(ProdOrderLine, Direction, true, true, false, false);
+
+        ProdOrderLine.Modify(true);
+
+    end;
+
+
+    procedure CheckProductionBOMStatus(ProductionBOMNo: Code[20]; ProductionBOMVersionNo: Code[20])
+    var
+        ProductionBOMHeader: Record "Production BOM Header";
+        ProductionBOMVersion: Record "Production BOM Version";
+    begin
+        if ProductionBOMNo = '' then
+            exit;
+
+        if ProductionBOMVersionNo = '' then begin
+            ProductionBOMHeader.SetLoadFields(Status);
+            ProductionBOMHeader.Get(ProductionBOMNo);
+            ProductionBOMHeader.TestField(Status, ProductionBOMHeader.Status::Certified);
+        end else begin
+            ProductionBOMVersion.SetLoadFields(Status);
+            ProductionBOMVersion.Get(ProductionBOMNo, ProductionBOMVersionNo);
+
+            ProductionBOMVersion.TestField(Status, ProductionBOMVersion.Status::Certified);
+        end;
+    end;
+
+
+    procedure CheckRoutingStatus(RoutingNo: Code[20]; RoutingVersionNo: Code[20])
+    var
+        RoutingHeader: Record "Routing Header";
+        RoutingVersion: Record "Routing Version";
+    begin
+        if RoutingNo = '' then
+            exit;
+
+        if RoutingVersionNo = '' then begin
+            RoutingHeader.SetLoadFields(Status);
+            RoutingHeader.Get(RoutingNo);
+            RoutingHeader.TestField(Status, RoutingHeader.Status::Certified);
+        end else begin
+            RoutingVersion.SetLoadFields(Status);
+            RoutingVersion.Get(RoutingNo, RoutingVersionNo);
+
+            RoutingVersion.TestField(Status, RoutingVersion.Status::Certified);
+        end;
+    end;
+
     procedure CreateInventoryPick(var ProdOrderLine: Record "Prod. Order Line")
     var
         WhseRequest: Record "Warehouse Request";
