@@ -134,14 +134,6 @@ table 52112 "ERF Engg. TT Entries"
         {
         }
     }
-    trigger OnInsert()
-    var
-        EmployeeUserIDMapping: Record "ERF User ID Mapping";
-    begin
-        EmployeeUserIDMapping.Reset();
-        if EmployeeUserIDMapping.Get(UserId) then
-            Rec."Employee Name" := EmployeeUserIDMapping."Employee Name";
-    end;
 
     // local procedure CalculateDuration()
     // var
