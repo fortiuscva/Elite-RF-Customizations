@@ -15,11 +15,11 @@ page 52119 "ERF Engg. TT Entries"
         {
             repeater(General)
             {
-                field("Employee No."; Rec."Employee No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
-                }
+                // field("Employee No."; Rec."Employee No.")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
+                // }
                 field("Employee Name"; Rec."Employee Name")
                 {
                     ApplicationArea = All;
@@ -43,16 +43,16 @@ page 52119 "ERF Engg. TT Entries"
                 {
                     ToolTip = 'Specifies the value of the Project Task Description field.', Comment = '%';
                 }
-                field("Start Time"; Rec."Start Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
-                }
-                field("End Time"; Rec."End Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
-                }
+                // field("Start Time"; Rec."Start Time")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
+                // }
+                // field("End Time"; Rec."End Time")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
+                // }
                 field("Duration"; Rec."Duration")
                 {
                     ApplicationArea = All;
@@ -81,30 +81,30 @@ page 52119 "ERF Engg. TT Entries"
     {
         area(Processing)
         {
-            action(UpdateEntry)
-            {
-                ApplicationArea = all;
-                Caption = 'Update Entry';
-                Ellipsis = true;
-                Image = EditLines;
-                Promoted = true;
-                PromotedCategory = Process;
-                trigger OnAction()
-                var
-                    UpdateEnggEntry: Page "ERF Update Engg Entry";
-                begin
-                    UpdateEnggEntry.SetStartTime(Rec."Start Time");
-                    UpdateEnggEntry.SetEndTime(Rec."End Time");
-                    UpdateEnggEntry.SetComments(Rec.GetComments());
-                    if UpdateEnggEntry.RunModal() = Action::OK then begin
-                        Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
-                        Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
-                        Rec.SetComments(UpdateEnggEntry.GetComments());
-                        Rec.Modify(true);
-                        CurrPage.Update(false);
-                    end
-                end;
-            }
+            // action(UpdateEntry)
+            // {
+            //     ApplicationArea = all;
+            //     Caption = 'Update Entry';
+            //     Ellipsis = true;
+            //     Image = EditLines;
+            //     Promoted = true;
+            //     PromotedCategory = Process;
+            //     trigger OnAction()
+            //     var
+            //         UpdateEnggEntry: Page "ERF Update Engg Entry";
+            //     begin
+            //         UpdateEnggEntry.SetStartTime(Rec."Start Time");
+            //         UpdateEnggEntry.SetEndTime(Rec."End Time");
+            //         UpdateEnggEntry.SetComments(Rec.GetComments());
+            //         if UpdateEnggEntry.RunModal() = Action::OK then begin
+            //             Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
+            //             Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
+            //             Rec.SetComments(UpdateEnggEntry.GetComments());
+            //             Rec.Modify(true);
+            //             CurrPage.Update(false);
+            //         end
+            //     end;
+            // }
         }
     }
 }

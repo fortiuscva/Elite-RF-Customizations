@@ -14,22 +14,22 @@ table 52112 "ERF Engg. TT Entries"
             Caption = 'Entry No.';
             DataClassification = CustomerContent;
         }
-        field(2; "Employee No."; Code[20])
-        {
-            Caption = 'Employee No.';
-            DataClassification = CustomerContent;
-            TableRelation = Employee;
-            trigger OnValidate()
-            var
-                Employee: Record Employee;
-            begin
-                if ("Employee No." <> xRec."Employee No.") and ("Employee No." <> '') then begin
-                    Employee.Get("Employee No.");
-                    Validate("Employee Name", Employee.FullName());
-                end else
-                    Validate("Employee Name", '');
-            end;
-        }
+        // field(2; "Employee No."; Code[20])
+        // {
+        //     Caption = 'Employee No.';
+        //     DataClassification = CustomerContent;
+        //     TableRelation = Employee;
+        //     trigger OnValidate()
+        //     var
+        //         Employee: Record Employee;
+        //     begin
+        //         if ("Employee No." <> xRec."Employee No.") and ("Employee No." <> '') then begin
+        //             Employee.Get("Employee No.");
+        //             Validate("Employee Name", Employee.FullName());
+        //         end else
+        //             Validate("Employee Name", '');
+        //     end;
+        // }
         field(3; "Employee Name"; Text[250])
         {
             Caption = 'Employee Name';
@@ -67,26 +67,26 @@ table 52112 "ERF Engg. TT Entries"
                 end
             end;
         }
-        field(6; "Start Time"; DateTime)
-        {
-            Caption = 'Start Time';
-            DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if ((Rec."Start Time" <> xRec."Start Time") and (Rec."Start Time" <> 0DT) and (Rec."End Time" <> 0DT)) then
-                    CalculateDuration();
-            end;
-        }
-        field(7; "End Time"; DateTime)
-        {
-            Caption = 'End Time';
-            DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if ((Rec."End Time" <> xRec."End Time") and (Rec."Start Time" <> 0DT) and (Rec."End Time" <> 0DT)) then
-                    CalculateDuration();
-            end;
-        }
+        // field(6; "Start Time"; DateTime)
+        // {
+        //     Caption = 'Start Time';
+        //     DataClassification = CustomerContent;
+        //     trigger OnValidate()
+        //     begin
+        //         if ((Rec."Start Time" <> xRec."Start Time") and (Rec."Start Time" <> 0DT) and (Rec."End Time" <> 0DT)) then
+        //             CalculateDuration();
+        //     end;
+        // }
+        // field(7; "End Time"; DateTime)
+        // {
+        //     Caption = 'End Time';
+        //     DataClassification = CustomerContent;
+        //     trigger OnValidate()
+        //     begin
+        //         if ((Rec."End Time" <> xRec."End Time") and (Rec."Start Time" <> 0DT) and (Rec."End Time" <> 0DT)) then
+        //             CalculateDuration();
+        //     end;
+        // }
         field(8; "Duration in Minutes"; Integer)
         {
             Caption = 'Duration in Minutes';
@@ -127,21 +127,30 @@ table 52112 "ERF Engg. TT Entries"
     }
     fieldgroups
     {
-        fieldgroup(DropDown; "Employee No.", "Employee Name", "Project No.", "Project Task No.")
+        fieldgroup(DropDown; "Employee Name", "Project Description", "Project Task Description")
         {
         }
-        fieldgroup(Brick; "Employee No.", "Employee Name", "Project No.", "Project Task No.")
+        fieldgroup(Brick; "Employee Name", "Project Description", "Project Task Description")
         {
         }
     }
-    local procedure CalculateDuration()
+    trigger OnInsert()
     var
-        TimeDurationLcl: Duration;
+        EmployeeUserIDMapping: Record "ERF User ID Mapping";
     begin
-        "Duration In Minutes" := Round(("End Time" - "Start Time") / 60000, 1, '=');
-        TimeDurationLcl := "End Time" - "Start Time";
-        "Duration" := Format(TimeDurationLcl);
+        EmployeeUserIDMapping.Reset();
+        if EmployeeUserIDMapping.Get(UserId) then
+            Rec."Employee Name" := EmployeeUserIDMapping."Employee Name";
     end;
+
+    // local procedure CalculateDuration()
+    // var
+    //     TimeDurationLcl: Duration;
+    // begin
+    //     "Duration In Minutes" := Round(("End Time" - "Start Time") / 60000, 1, '=');
+    //     TimeDurationLcl := "End Time" - "Start Time";
+    //     "Duration" := Format(TimeDurationLcl);
+    // end;
 
     procedure SetComments(NewComments: Text)
     var
