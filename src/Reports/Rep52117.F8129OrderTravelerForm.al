@@ -8,52 +8,48 @@ report 52117 "F-812-9 Order Traveler Form"
 
     dataset
     {
-        dataitem(ProductionOrder; "Production Order")
+        dataitem(ProdOrderLine; "Prod. Order Line")
         {
-            RequestFilterFields = "No.";
-            column(ProductionOrderNo; "No.") { }
-            column(AssignedTo; "Assigned User ID") { }
-            column(ItemPartNumber; "Source No.") { }
-            column(Quantity; Quantity) { }
+            DataItemTableView = SORTING(Status, "Prod. Order No.", "Line No.") WHERE(Status = FILTER(Released));
+            RequestFilterFields = "Prod. Order No.", "Line No.", Status;
+            column(ProductionOrderNo; ProductionOrder."No.") { }
+            column(AssignedTo; ProductionOrder."Assigned User ID") { }
+            column(ItemPartNumber; ProdOrderLine."Item No.") { }
+            column(Quantity; ProdOrderLine.Quantity) { }
             column(ReservationEntry_SerialNo; ReservationEntry."Serial No.") { }
             column(Picture; CompanyInformation.Picture) { }
             column(ProdOrderLine_LineNo; ProdOrderLine."Line No.") { }
             column(ProdOrderRoutingLine_OperationNo; ProdOrderRoutingLine."Operation No.") { }
-            dataitem(ProdOrderLine; "Prod. Order Line")
+            dataitem(ProdOrderCommentLine; "Prod. Order Line Comment Line")
             {
-                DataItemLinkReference = ProductionOrder;
-                DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("No.");
-                DataItemTableView = SORTING(Status, "Prod. Order No.", "Line No.") WHERE(Status = FILTER(Released));
-                dataitem(ProdOrderCommentLine; "Prod. Order Line Comment Line")
-                {
-                    DataItemLinkReference = ProdOrderLine;
-                    DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("Prod. Order No."), "Prod. Order Line No." = FIELD("Line No.");
-                    DataItemTableView = SORTING(Status, "Prod. Order No.", "Prod. Order Line No.", "Line No.");
-                    column(Comment; Comment)
-                    { }
-                    column(LineNo; "Line No.")
-                    { }
-                    column(ProdOrderLineNo; "Prod. Order Line No.")
-                    { }
-                }
+                DataItemLinkReference = ProdOrderLine;
+                DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("Prod. Order No."), "Prod. Order Line No." = FIELD("Line No.");
+                DataItemTableView = SORTING(Status, "Prod. Order No.", "Prod. Order Line No.", "Line No.");
+                column(Comment; Comment)
+                { }
+                column(LineNo; "Line No.")
+                { }
+                column(ProdOrderLineNo; "Prod. Order Line No.")
+                { }
             }
             trigger OnAfterGetRecord()
             begin
+                if ProductionOrder.Get(ProdOrderLine.Status, ProdOrderLine."Prod. Order No.") then;
+
                 ReservationEntry.SetRange("Source type", Database::"Prod. Order Line");
                 ReservationEntry.SetRange("Source ID", ProductionOrder."No.");
+                ReservationEntry.SetRange("Source Prod. Order Line", "Line No.");
                 if ReservationEntry.FindFirst() then;
-
-                // ProdOrderLine.SetRange(Status, ProductionOrder.Status);
-                // ProdOrderLine.SetRange("Prod. Order No.", ProductionOrder."No.");
-                // if ProdOrderLine.FindFirst() then;
 
                 ProdOrderRoutingLine.SetRange("Prod. Order No.", ProductionOrder."No.");
                 ProdOrderRoutingLine.SetRange(Status, ProductionOrder.Status);
                 ProdOrderRoutingLine.SetRange("Routing Reference No.", ProdOrderLine."Line No.");
-                if ProdOrderRoutingLine.FindFirst() then;
+                if ProdOrderRoutingLine.FindLast() then;
             end;
         }
+
     }
+
     requestpage
     {
         layout
@@ -83,4 +79,5 @@ report 52117 "F-812-9 Order Traveler Form"
         CompanyInformation: Record "Company Information";
         ProdOrderLineRec: Record "Prod. Order Line";
         ProdOrderRoutingLine: Record "Prod. Order Routing Line";
+        ProductionOrder: Record "Production Order";
 }
