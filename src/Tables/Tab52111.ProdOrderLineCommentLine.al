@@ -14,7 +14,6 @@ table 52111 "Prod. Order Line Comment Line"
         field(2; "Prod. Order No."; Code[20])
         {
             Caption = 'Prod. Order No.';
-            ToolTip = 'Specifies the number of the related production order.';
             NotBlank = true;
             TableRelation = "Production Order"."No." where(Status = field(Status));
         }
@@ -31,12 +30,10 @@ table 52111 "Prod. Order Line Comment Line"
         field(5; "Date"; Date)
         {
             Caption = 'Date';
-            ToolTip = 'Specifies a date.';
         }
         field(7; Comment; Text[80])
         {
             Caption = 'Comment';
-            ToolTip = 'Specifies the comment.';
         }
         field(8; "Template Code"; Code[20])
         {
