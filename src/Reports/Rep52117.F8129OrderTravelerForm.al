@@ -19,16 +19,23 @@ report 52117 "F-812-9 Order Traveler Form"
             column(Picture; CompanyInformation.Picture) { }
             column(ProdOrderLine_LineNo; ProdOrderLine."Line No.") { }
             column(ProdOrderRoutingLine_OperationNo; ProdOrderRoutingLine."Operation No.") { }
-
-            dataitem(ProdOrderCommentLine; "Prod. Order Comment Line")
+            dataitem(ProdOrderLine; "Prod. Order Line")
             {
                 DataItemLinkReference = ProductionOrder;
                 DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("No.");
-                DataItemTableView = SORTING(Status, "Prod. Order No.", "Line No.");
-                column(Comment; Comment)
-                { }
-                column(LineNo; "Line No.")
-                { }
+                DataItemTableView = SORTING(Status, "Prod. Order No.", "Line No.") WHERE(Status = FILTER(Released));
+                dataitem(ProdOrderCommentLine; "Prod. Order Line Comment Line")
+                {
+                    DataItemLinkReference = ProdOrderLine;
+                    DataItemLink = Status = FIELD(Status), "Prod. Order No." = FIELD("Prod. Order No."), "Prod. Order Line No." = FIELD("Line No.");
+                    DataItemTableView = SORTING(Status, "Prod. Order No.", "Prod. Order Line No.", "Line No.");
+                    column(Comment; Comment)
+                    { }
+                    column(LineNo; "Line No.")
+                    { }
+                    column(ProdOrderLineNo; "Prod. Order Line No.")
+                    { }
+                }
             }
             trigger OnAfterGetRecord()
             begin
@@ -36,9 +43,9 @@ report 52117 "F-812-9 Order Traveler Form"
                 ReservationEntry.SetRange("Source ID", ProductionOrder."No.");
                 if ReservationEntry.FindFirst() then;
 
-                ProdOrderLine.SetRange(Status, ProductionOrder.Status);
-                ProdOrderLine.SetRange("Prod. Order No.", ProductionOrder."No.");
-                if ProdOrderLine.FindFirst() then;
+                // ProdOrderLine.SetRange(Status, ProductionOrder.Status);
+                // ProdOrderLine.SetRange("Prod. Order No.", ProductionOrder."No.");
+                // if ProdOrderLine.FindFirst() then;
 
                 ProdOrderRoutingLine.SetRange("Prod. Order No.", ProductionOrder."No.");
                 ProdOrderRoutingLine.SetRange(Status, ProductionOrder.Status);
@@ -74,6 +81,6 @@ report 52117 "F-812-9 Order Traveler Form"
     var
         ReservationEntry: Record "Reservation Entry";
         CompanyInformation: Record "Company Information";
-        ProdOrderLine: Record "Prod. Order Line";
+        ProdOrderLineRec: Record "Prod. Order Line";
         ProdOrderRoutingLine: Record "Prod. Order Routing Line";
 }
