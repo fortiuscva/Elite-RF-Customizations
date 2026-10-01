@@ -29,7 +29,7 @@ table 52109 "ERF Engineering Group Line"
             Caption = 'Selected';
             DataClassification = CustomerContent;
         }
-        field(5; "Attachment No."; Code[50])
+        field(5; "Attachment No."; Code[20])
         {
             Caption = 'Attachment No.';
             Editable = false;
@@ -55,11 +55,6 @@ table 52109 "ERF Engineering Group Line"
         SetAttachmentNo();
     end;
 
-    trigger OnModify()
-    begin
-        SetAttachmentNo();
-    end;
-
     local procedure GetNextLineNo(): Integer
     var
         EngineeringGroupLine: Record "ERF Engineering Group Line";
@@ -71,8 +66,15 @@ table 52109 "ERF Engineering Group Line"
         exit(10000);
     end;
 
-    procedure SetAttachmentNo()
+    local procedure SetAttachmentNo()
+    var
+        GuidText: Text;
     begin
-        "Attachment No." := CopyStr(StrSubstNo('%1-%2', "Engineering Group Code", "Line No."), 1, MaxStrLen("Attachment No."));
+        if "Attachment No." <> '' then
+            exit;
+
+        GuidText := DelChr(Format(CreateGuid()), '=', '{}-');
+
+        "Attachment No." := CopyStr(GuidText, 1, MaxStrLen("Attachment No."));
     end;
 }
