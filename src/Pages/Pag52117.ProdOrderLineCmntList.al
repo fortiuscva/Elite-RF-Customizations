@@ -1,5 +1,6 @@
 page 52117 "ERF Prod. Order Line Cmnt List"
 {
+    ApplicationArea = All;
     Caption = 'Prod. Order Line Comment List';
     DataCaptionFields = Status, "Prod. Order No.";
     Editable = false;
