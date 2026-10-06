@@ -1,7 +1,7 @@
 page 52119 "ERF Engg. TT Entries"
 {
     ApplicationArea = All;
-    Caption = 'Engineering Time Tracking Entries';
+    Caption = 'Engineering Daily Duration Entries';
     CardPageId = "ERF Engg. TT Entry";
     DeleteAllowed = false;
     PageType = List;
