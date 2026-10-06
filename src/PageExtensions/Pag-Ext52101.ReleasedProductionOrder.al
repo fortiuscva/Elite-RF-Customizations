@@ -4,36 +4,6 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
     {
         addafter("Job Card")
         {
-            action("ERF SubQualityInspectionChecklist")
-            {
-                ApplicationArea = Manufacturing;
-                Caption = 'SUBA Quality Inspection Checklist';
-                Ellipsis = true;
-                Image = "Report";
-
-                trigger OnAction()
-                var
-                    ProductionOrder: Record "Production Order";
-                begin
-                    CurrPage.SetSelectionFilter(ProductionOrder);
-                    Report.RunModal(Report::"F-812-7 Quality Insp. Check", true, false, ProductionOrder);
-                end;
-            }
-            action("ERF PCBAQualityInspectionChecklist")
-            {
-                ApplicationArea = Manufacturing;
-                Caption = 'PCBA Quality Inspection Checklist';
-                Ellipsis = true;
-                Image = "Report";
-
-                trigger OnAction()
-                var
-                    ProductionOrder: Record "Production Order";
-                begin
-                    CurrPage.SetSelectionFilter(ProductionOrder);
-                    Report.RunModal(Report::"ERF F-812-7 Quality Insp. PCBA", true, false, ProductionOrder);
-                end;
-            }
             action("ERF RPORoutingBarCode")
             {
                 ApplicationArea = All;
@@ -76,10 +46,6 @@ pageextension 52101 "ERF Released Production Order" extends "Released Production
         }
         addafter("Job Card_Promoted")
         {
-            actionref("F-812-7 Quality Insp. Check"; "ERF SubQualityInspectionChecklist")
-            { }
-            actionref("ERF F-812-7 Quality Insp. PCBA"; "ERF PCBAQualityInspectionChecklist")
-            { }
             actionref("RPO Routing Barcode"; "ERF RPORoutingBarCode")
             { }
         }
