@@ -2,7 +2,7 @@ page 52118 "ERF Engg. TT Entry"
 {
     ApplicationArea = All;
     Caption = 'Engineering Time Tracking Entry';
-    DeleteAllowed = false;
+    // DeleteAllowed = false;
     PageType = Card;
     SourceTable = "ERF Engg. TT Entries";
     RefreshOnActivate = true;
@@ -22,23 +22,23 @@ page 52118 "ERF Engg. TT Entry"
                     ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
                     Visible = false;
                 }
-                group(Employee)
+                // group(Employee)
+                // {
+                //     Caption = 'Employee';
+                // field("Employee No."; Rec."Employee No.")
+                // {
+                //     ApplicationArea = All;
+                //     Caption = 'No.';
+                //     ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
+                // }
+                field("Employee Name"; Rec."Employee Name")
                 {
-                    Caption = 'Employee';
-                    // field("Employee No."; Rec."Employee No.")
-                    // {
-                    //     ApplicationArea = All;
-                    //     Caption = 'No.';
-                    //     ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
-                    // }
-                    field("Employee Name"; Rec."Employee Name")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Name';
-                        Editable = false;
-                        ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
-                    }
+                    ApplicationArea = All;
+                    Caption = 'Employee Name';
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
                 }
+                // }
                 group(Project)
                 {
                     Caption = 'Project';
@@ -194,6 +194,15 @@ page 52118 "ERF Engg. TT Entry"
     var
         TimeDurationGbl: Duration;
         CommentGbl: Text;
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        EmployeeUserIDMapping: Record "ERF User ID Mapping";
+    begin
+        EmployeeUserIDMapping.Reset();
+        if EmployeeUserIDMapping.Get(UserId) then
+            Rec."Employee Name" := EmployeeUserIDMapping."Employee Name";
+    end;
 
     trigger OnAfterGetRecord()
     begin
