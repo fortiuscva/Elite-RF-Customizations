@@ -32,15 +32,18 @@ page 52121 "Critical Inspection Cmt. Sheet"
             {
                 field("Date"; Rec."Date")
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Date field.', Comment = '%';
                 }
                 field("Template Code"; Rec."Template Code")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Template Code field.', Comment = '%';
                 }
                 field(Comment; Rec.Comment)
                 {
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Comment field.', Comment = '%';
                 }
             }
