@@ -22,6 +22,12 @@
       "name": "Dynamic Ship: Integrated Shipping",
       "version": "2.9.9686.1",
       "publisher": "Insight Works" 
+    },
+    {
+      "id": "9f159800-b42a-41b6-b19c-189d7e6070cf",
+      "name": "Shop Floor Time Tracker",
+      "version": "1.0.0.6",
+      "publisher": "Adcirrus"
     }
   ],
   "screenshots": [],
