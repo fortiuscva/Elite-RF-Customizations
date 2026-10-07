@@ -76,40 +76,15 @@ page 52118 "ERF Engg. TT Entry"
                 group(TimeDuration)
                 {
                     Caption = 'Time Tracking';
-                    // field("Start Time"; Rec."Start Time")
-                    // {
-                    //     ApplicationArea = All;
-                    //     Editable = false;
-                    //     ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
-                    // }
-                    // field("End Time"; Rec."End Time")
-                    // {
-                    //     ApplicationArea = All;
-                    //     Editable = false;
-                    //     ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
-                    // }
-                    field("Duration"; Rec."Duration")
-                    {
-                        ApplicationArea = All;
-                        // Editable = false;
-                        ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
-                    }
                     field("Duration in Minutes"; Rec."Duration in Minutes")
                     {
                         ApplicationArea = All;
-                        // Editable = false;
                         ToolTip = 'Specifies the value of the Duration in Minutes field.', Comment = '%';
-                    }
-                    field(Status; Rec.Status)
-                    {
-                        ApplicationArea = All;
-                        // Editable = false;
-                        ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                     }
                 }
                 group(Comments)
                 {
-                    Caption = 'Comments';
+                    Caption = 'Task Description';
                     field(Comment; CommentGbl)
                     {
                         ApplicationArea = All;
@@ -125,72 +100,15 @@ page 52118 "ERF Engg. TT Entry"
                 }
             }
         }
+        area(FactBoxes)
+        {
+            systempart(Notes; Notes)
+            {
+                Caption = 'Notes';
+                ApplicationArea = Notes;
+            }
+        }
     }
-    // actions
-    // {
-    //     area(Processing)
-    //     {
-    //         action(StartTask)
-    //         {
-    //             ApplicationArea = All;
-    //             Caption = 'Start Task';
-    //             Ellipsis = true;
-    //             Enabled = Rec.Status = Rec.Status::" ";
-    //             Image = Start;
-    //             Promoted = true;
-    //             PromotedCategory = Process;
-    //             trigger OnAction()
-    //             begin
-    //                 Rec."Start Time" := CurrentDateTime();
-    //                 Rec.Status := Rec.Status::"In Progress";
-    //                 Rec.Modify(true);
-    //             end;
-    //         }
-    //         action(StopTask)
-    //         {
-    //             ApplicationArea = All;
-    //             Caption = 'Stop Task';
-    //             Ellipsis = true;
-    //             Enabled = Rec.Status = Rec.Status::"In Progress";
-    //             Image = Stop;
-    //             Promoted = true;
-    //             PromotedCategory = Process;
-    //             trigger OnAction()
-    //             begin
-    //                 Rec."End Time" := CurrentDateTime();
-    //                 Rec."Duration In Minutes" := Round((CurrentDateTime() - Rec."Start Time") / 60000, 1, '=');
-    //                 TimeDurationGbl := CurrentDateTime() - Rec."Start Time";
-    //                 Rec.Duration := Format(TimeDurationGbl);
-    //                 Rec.Status := Rec.Status::Completed;
-    //                 Rec.Modify(true);
-    //             end;
-    //         }
-    //         action(UpdateEntry)
-    //         {
-    //             ApplicationArea = all;
-    //             Caption = 'Update Entry';
-    //             Ellipsis = true;
-    //             Image = EditLines;
-    //             Promoted = true;
-    //             PromotedCategory = Process;
-    //             trigger OnAction()
-    //             var
-    //                 UpdateEnggEntry: Page "ERF Update Engg Entry";
-    //             begin
-    //                 UpdateEnggEntry.SetStartTime(Rec."Start Time");
-    //                 UpdateEnggEntry.SetEndTime(Rec."End Time");
-    //                 UpdateEnggEntry.SetComments(Rec.GetComments());
-    //                 if UpdateEnggEntry.RunModal() = Action::OK then begin
-    //                     Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
-    //                     Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
-    //                     Rec.SetComments(UpdateEnggEntry.GetComments());
-    //                     Rec.Modify(true);
-    //                     CurrPage.Update(false);
-    //                 end
-    //             end;
-    //         }
-    //     }
-    // }
     var
         TimeDurationGbl: Duration;
         CommentGbl: Text;
