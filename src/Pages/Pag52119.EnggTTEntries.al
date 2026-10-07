@@ -67,4 +67,32 @@ page 52119 "ERF Engg. TT Entries"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(UpdateEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Entry';
+                Ellipsis = true;
+                Image = EditLines;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    UpdateEnggEntry: Page "ERF Update Engg Entry";
+                begin
+                    UpdateEnggEntry.SetStartTime(Rec."Start Time");
+                    UpdateEnggEntry.SetEndTime(Rec."End Time");
+                    if UpdateEnggEntry.RunModal() = Action::OK then begin
+                        Rec.Validate("Start Time", UpdateEnggEntry.GetStartTime());
+                        Rec.Validate("End Time", UpdateEnggEntry.GetEndTime());
+                        Rec.Modify(true);
+                        CurrPage.Update(false);
+                    end
+                end;
+            }
+        }
+    }
 }
