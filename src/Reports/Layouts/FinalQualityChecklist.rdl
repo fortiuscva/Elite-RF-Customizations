@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-05T17:01:08.0849264Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-09T12:50:18.9908019Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,49 +22,6 @@
       <rd:DataSourceID>67ee5b17-7744-4821-9862-9f3e7c2ae8e2</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="SalesOrderNo">
-          <DataField>SalesOrderNo</DataField>
-        </Field>
-        <Field Name="OrderDate">
-          <DataField>OrderDate</DataField>
-        </Field>
-        <Field Name="CustomerNo">
-          <DataField>CustomerNo</DataField>
-        </Field>
-        <Field Name="CustomerName">
-          <DataField>CustomerName</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="LineNo">
-          <DataField>LineNo</DataField>
-        </Field>
-        <Field Name="ItemDescription">
-          <DataField>ItemDescription</DataField>
-        </Field>
-        <Field Name="SerialNo">
-          <DataField>SerialNo</DataField>
-        </Field>
-        <Field Name="CheckedBy">
-          <DataField>CheckedBy</DataField>
-        </Field>
-        <Field Name="CheckDate">
-          <DataField>CheckDate</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -357,14 +314,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox197">
+                        <Textbox Name="Qty_to_Ship">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Qty_to_Ship.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -377,7 +334,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox197</rd:DefaultName>
+                          <rd:DefaultName>Qty_to_Ship</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -413,7 +370,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.45in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -800,68 +757,6 @@
                               <Width>1pt</Width>
                             </RightBorder>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <ColSpan>6</ColSpan>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                    <TablixCell />
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.25in</Height>
-                  <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox249">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox249</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2121,11 +2016,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember>
-                  <Visibility>
-                    <Hidden>true</Hidden>
-                  </Visibility>
-                </TablixMember>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -2141,8 +2031,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.04295in</Top>
-            <Height>5.20081in</Height>
-            <Width>7.62286in</Width>
+            <Height>5.15081in</Height>
+            <Width>7.62287in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2168,7 +2058,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>1.53878in</Top>
+            <Top>1.43878in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2221,7 +2111,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>1.89086in</Top>
+            <Top>1.79086in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2274,7 +2164,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>2.22836in</Top>
+            <Top>2.12836in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2327,7 +2217,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>2.56586in</Top>
+            <Top>2.46586in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2380,7 +2270,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>4.00336in</Top>
+            <Top>3.89086in</Top>
             <Left>0.14775in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2433,7 +2323,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>3.27836in</Top>
+            <Top>3.17836in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2486,7 +2376,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>2.92836in</Top>
+            <Top>2.82836in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2539,7 +2429,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>3.62836in</Top>
+            <Top>3.51586in</Top>
             <Left>0.125in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2592,7 +2482,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>4.34086in</Top>
+            <Top>4.22836in</Top>
             <Left>0.14775in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2645,7 +2535,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>4.67836in</Top>
+            <Top>4.56586in</Top>
             <Left>0.13525in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
@@ -2698,8 +2588,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox44</rd:DefaultName>
-            <Top>5.04086in</Top>
-            <Left>0.14775in</Left>
+            <Top>4.94086in</Top>
+            <Left>0.13525in</Left>
             <Height>0.44125cm</Height>
             <Width>0.50271cm</Width>
             <ZIndex>11</ZIndex>
@@ -2738,7 +2628,7 @@
         <Height>5.24376in</Height>
         <Style />
       </Body>
-      <Width>7.62286in</Width>
+      <Width>7.62287in</Width>
       <Page>
         <PageHeader>
           <Height>1.01205in</Height>
@@ -2942,4 +2832,41 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="SerialNo">
+          <DataField>SerialNo</DataField>
+        </Field>
+        <Field Name="CheckedBy">
+          <DataField>CheckedBy</DataField>
+        </Field>
+        <Field Name="CheckDate">
+          <DataField>CheckDate</DataField>
+        </Field>
+        <Field Name="Qty_to_Ship">
+          <DataField>Qty_to_Ship</DataField>
+        </Field>
+        <Field Name="Qty_to_ShipFormat">
+          <DataField>Qty_to_ShipFormat</DataField>
+        </Field>
+        <Field Name="SalesOrderNo">
+          <DataField>SalesOrderNo</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
