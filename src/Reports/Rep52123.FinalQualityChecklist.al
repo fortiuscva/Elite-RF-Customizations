@@ -31,6 +31,8 @@ report 52123 "ERF Final Quality Checklist"
             { }
             column(CheckDate; CheckDate)
             { }
+            column(Qty_to_Ship; "Qty. to Ship")
+            { }
 
             trigger OnAfterGetRecord()
             begin
