@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-06T15:26:46.3682030Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-08T14:05:03.0058182Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -125,7 +125,6 @@
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -4157,7 +4156,6 @@
                                                     </TablixMember>
                                                   </TablixMembers>
                                                 </TablixRowHierarchy>
-                                                <Left>0in</Left>
                                                 <Height>0.47234in</Height>
                                                 <Width>8.00001in</Width>
                                                 <Style>
@@ -5580,7 +5578,7 @@
                               </TablixRowHierarchy>
                               <Top>4.69022cm</Top>
                               <Left>0cm</Left>
-                              <Height>20.56354cm</Height>
+                              <Height>20.56355cm</Height>
                               <Width>20.32003cm</Width>
                               <Style>
                                 <Border>
@@ -6449,7 +6447,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant">F-812-7 Quality Inspection Checklist</Value>
+                      <Value EvaluationMode="Constant">F-812-7-B Quality Inspection Checklist</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>20pt</FontSize>
@@ -6466,7 +6464,7 @@
               <Top>0cm</Top>
               <Left>5.95028cm</Left>
               <Height>1.71125cm</Height>
-              <Width>13.26326cm</Width>
+              <Width>14.36975cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -6498,14 +6496,8 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>F-812-7 Rev C Released </Value>
+                      <Value EvaluationMode="Constant">F-812-7-B Rev D</Value>
                       <Style />
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
-                      <Style>
-                        <Format>d</Format>
-                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />

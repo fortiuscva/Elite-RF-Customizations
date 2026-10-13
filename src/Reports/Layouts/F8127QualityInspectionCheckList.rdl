@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-06T16:38:52.6265809Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-08T14:08:21.9861239Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -4941,7 +4941,6 @@
                                                     </TablixMember>
                                                   </TablixMembers>
                                                 </TablixRowHierarchy>
-                                                <Left>0in</Left>
                                                 <Height>0.47234in</Height>
                                                 <Width>8.00001in</Width>
                                                 <Style>
@@ -6733,7 +6732,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant">F-812-7 Quality Inspection Checklist</Value>
+                      <Value EvaluationMode="Constant">F-812-7-A Quality Inspection Checklist</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>20pt</FontSize>
@@ -6750,7 +6749,7 @@
               <Top>0cm</Top>
               <Left>5.95028cm</Left>
               <Height>1.71125cm</Height>
-              <Width>13.26326cm</Width>
+              <Width>14.08514cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -6782,14 +6781,8 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>F-812-7 Rev C Released </Value>
+                      <Value EvaluationMode="Constant">F-812-7-A Rev D</Value>
                       <Style />
-                    </TextRun>
-                    <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
-                      <Style>
-                        <Format>d</Format>
-                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
