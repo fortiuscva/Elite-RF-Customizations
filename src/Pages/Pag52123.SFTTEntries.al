@@ -116,32 +116,29 @@ page 52123 "ERF SFTT Entries"
     {
         area(Processing)
         {
-            action(UpdateEntry)
+            action(CreateOutputJournals)
             {
-                ApplicationArea = all;
-                Caption = 'Update Entry';
+                ApplicationArea = All;
+                Caption = 'Create Output Journals';
                 Ellipsis = true;
-                Image = EditLines;
+                Image = OutputJournal;
+                Promoted = true;
+                PromotedCategory = Process;
                 trigger OnAction()
                 var
-                    UpdateSFTTEntry: Page "ERF Update SFTT Entry";
+                    SFTTSetup: Record "ERF SFTT Setup";
+                    SFTTFunctions: Codeunit "ERF SFTT Functions";
+                    CreateOutputJournalConfirmQst: Label 'Do you want to create an Output Journal for this Shop Floor Time Tracking Entry %1';
+                    OutputJournalSuccessfullyCreatedLbl: Label 'Output Journal was successfully created for this Shop Floor Time Tracking Entry %1';
                 begin
-                    UpdateSFTTEntry.SetStartTime(Rec."Start Time");
-                    UpdateSFTTEntry.SetEndTime(Rec."End Time");
-                    UpdateSFTTEntry.SetOutputQty(Rec."Output Quantity");
-                    UpdateSFTTEntry.SetSerialNo(Rec."Serial No.");
-
-                    if UpdateSFTTEntry.RunModal() = Action::OK then begin
-                        Rec.Validate("Start Time", UpdateSFTTEntry.GetStartTime());
-                        Rec.Validate("End Time", UpdateSFTTEntry.GetEndTime());
-                        Rec.Validate("Output Quantity", UpdateSFTTEntry.GetOutputQty());
-                        Rec.Validate("Serial No.", UpdateSFTTEntry.GetSerialNo());
-                        Rec.Modify(true);
-                        CurrPage.Update(false);
-                    end
+                    if Confirm(StrSubstNo(CreateOutputJournalConfirmQst, Rec."Entry No."), false) then begin
+                        Rec.TestField(Rec.Status, Rec.Status::Completed);
+                        SFTTSetup.Get();
+                        SFTTFunctions.CreateOutputJournal(Rec, SFTTSetup);
+                        Message(OutputJournalSuccessfullyCreatedLbl, Rec."Entry No.");
+                    end;
                 end;
             }
-
         }
         area(Navigation)
         {
@@ -206,25 +203,6 @@ page 52123 "ERF SFTT Entries"
                         Page.RunModal(Page::"ERF User ID Mappings", EmployeeUserIDMapping);
                 end;
             }
-        }
-        area(Promoted)
-        {
-            group(Category_Process)
-            {
-                actionref(UpdateEntry_Promoted; UpdateEntry)
-                {
-                }
-            }
-            // group(Category_Category4)
-            // {
-            //     Caption = 'Related';
-            //     actionref(Employee_Promoted; Employee)
-            //     {
-            //     }
-            //     actionref(RPO_Promoted; RPO)
-            //     {
-            //     }
-            // }
         }
     }
 }

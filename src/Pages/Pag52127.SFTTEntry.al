@@ -3,6 +3,7 @@ page 52127 "ERF SFTT Entry"
     ApplicationArea = All;
     Caption = 'Shop Floor Time Tracking Entry';
     PageType = Card;
+    UsageCategory = Tasks;
     layout
     {
         area(Content)
@@ -77,9 +78,12 @@ page 52127 "ERF SFTT Entry"
                 trigger OnAction()
                 var
                     SFTTFunctions: Codeunit "ERF SFTT Functions";
+                    StartOperationConfirmQst: Label 'Do you want to start the operation?';
                 begin
-                    SFTTFunctions.ValidateStartOperation();
-                    SFTTFunctions.CreateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                    if Confirm(StrSubstNo(StartOperationConfirmQst, false)) then begin
+                        SFTTFunctions.ValidateStartOperation();
+                        SFTTFunctions.CreateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                    end;
                 end;
             }
             action(StopOperation)
@@ -93,8 +97,17 @@ page 52127 "ERF SFTT Entry"
                 trigger OnAction()
                 var
                     SFTTFunctions: Codeunit "ERF SFTT Functions";
+                    StopOperationConfirmQst: Label 'Do you want to stop the operation?';
                 begin
-                    SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
+                    if Confirm(StrSubstNo(StopOperationConfirmQst, false)) then begin
+                        SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
+                        Clear(ScanOperationCodeVarGbl);
+                        Clear(ProdOrderNoVarGbl);
+                        Clear(LineNoVarGbl);
+                        Clear(OperationNoVarGbl);
+                        Clear(OutputQtyVarGbl);
+                        Clear(SerialNoVarGbl);
+                    end;
                 end;
             }
         }

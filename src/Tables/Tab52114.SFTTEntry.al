@@ -9,7 +9,7 @@ table 52114 "ERF SFTT Entry"
     {
         field(1; "Entry No."; Integer)
         {
-            AutoIncrement = true;
+            // AutoIncrement = true;
             DataClassification = CustomerContent;
         }
         field(2; "User ID"; Code[50])
