@@ -20,6 +20,23 @@ report 52123 "ERF Final Quality Checklist"
                 column(Picture; CompanyInformation.Picture)
                 { }
             }
+            // Sales Line Comments
+            dataitem(SalesCommentLine; "Sales Comment Line")
+            {
+                DataItemLink =
+                    "Document Type" = field("Document Type"),
+                    "No." = field("Document No."),
+                    "Document Line No." = field("Line No.");
+
+                DataItemTableView = sorting(
+                    "Document Type", "No.",
+                    "Document Line No.", "Line No.");
+
+                column(LineComment; '• ' + SalesCommentLine.Comment)
+                { }
+                column(LineCommentDate; Date) { }
+                column(CommentLineNo; "Line No.") { }
+            }
 
             column(ItemNo; SalesLine."No.")
             { }
@@ -51,6 +68,7 @@ report 52123 "ERF Final Quality Checklist"
         SOCaptionLbl = 'SO:';
         CheckedByCaptionLbl = 'Checked By:';
         NoOfUnitsCaptionLbl = 'No. Of Units:';
+        LineCommentCaptionLbl = 'Critical Check Points:';
     }
 
     trigger OnPreReport()
