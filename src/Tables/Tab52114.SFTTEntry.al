@@ -23,8 +23,16 @@ table 52114 "ERF SFTT Entry"
             Caption = 'Employee No.';
             TableRelation = Employee;
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            var
+                Employee: Record Employee;
+            begin
+                Employee.Reset();
+                Employee.Get("Employee No.");
+                Validate("Employee Name", Employee.FullName());
+            end;
         }
-        field(4; "Employee Name"; Text[250])
+        field(4; "Employee Name"; Text[100])
         {
             Caption = 'Employee Name';
             DataClassification = CustomerContent;
@@ -40,7 +48,7 @@ table 52114 "ERF SFTT Entry"
             begin
                 ProductionOrder.Reset();
                 ProductionOrder.Get(ProductionOrder.Status::Released, "Prod Order No.");
-                Validate("Item Description", ProductionOrder."Source No.");
+                Validate("Item Description", ProductionOrder.Description);
             end;
         }
         field(6; "Line No."; Integer)
@@ -79,7 +87,7 @@ table 52114 "ERF SFTT Entry"
             Caption = 'Duration in Minutes';
             DataClassification = CustomerContent;
         }
-        field(11; Status; Text[30])
+        field(11; Status; enum "ERF SFTT Status")
         {
             Caption = 'Status';
             DataClassification = CustomerContent;
@@ -105,20 +113,6 @@ table 52114 "ERF SFTT Entry"
         {
             Caption = 'Routing Line Operation Description';
             DataClassification = CustomerContent;
-        }
-        field(16; "Scan Operation Barcode"; Text[100])
-        {
-            Caption = 'Operation Barcode';
-            DataClassification = CustomerContent;
-            trigger OnValidate()
-            var
-                Parts: List of [Text];
-            begin
-                Parts := "Scan Operation Barcode".Split('-');
-                Validate("Prod Order No.", Parts.Get(1));
-                Evaluate("Line No.", Parts.Get(2));
-                Validate("Operation No.", Parts.Get(3));
-            end;
         }
     }
     keys

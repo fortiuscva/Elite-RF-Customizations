@@ -3,8 +3,6 @@ page 52127 "ERF SFTT Entry"
     ApplicationArea = All;
     Caption = 'Shop Floor Time Tracking Entry';
     PageType = Card;
-    SourceTable = "ERF SFTT Entry";
-
     layout
     {
         area(Content)
@@ -12,94 +10,54 @@ page 52127 "ERF SFTT Entry"
             group(General)
             {
                 Caption = 'General';
-
-                field("Entry No."; Rec."Entry No.")
+                field("Scan Operation Barcode"; ScanOperationCodeVarGbl)
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the ID field.', Comment = '%';
-                    Visible = false;
-                }
-                field("User ID"; Rec."User ID")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the User ID field.', Comment = '%';
-                    Visible = false;
-                }
-                field("Employee No."; Rec."Employee No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
-                    Visible = false;
-                }
-                field("Employee Name"; Rec."Employee Name")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
-                }
-                field("Scan Operation Barcode"; Rec."Scan Operation Barcode")
-                {
-                    ApplicationArea = All;
+                    Caption = 'Scan Operation Code';
                     ToolTip = 'Specifies the value of the Operation Barcode field.', Comment = '%';
+                    trigger OnValidate()
+                    var
+                        Parts: List of [Text];
+                    begin
+                        Parts := ScanOperationCodeVarGbl.Split('-');
+                        ProdOrderNoVarGbl := Parts.Get(1);
+                        Evaluate(LineNoVarGbl, Parts.Get(2));
+                        OperationNoVarGbl := Parts.Get(3);
+                    end;
                 }
-                field("Prod Order No."; Rec."Prod Order No.")
+                field("Prod Order No."; ProdOrderNoVarGbl)
                 {
                     ApplicationArea = All;
+                    Caption = 'RPO No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Production Order No. field.', Comment = '%';
                 }
-                field("Line No."; Rec."Line No.")
+                field("Line No."; LineNoVarGbl)
                 {
                     ApplicationArea = All;
+                    Caption = 'Line No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
                 }
-                field("Operation No."; Rec."Operation No.")
+                field("Operation No."; OperationNoVarGbl)
                 {
                     ApplicationArea = All;
+                    Caption = 'Operation No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
                 }
-                field("Item Description"; Rec."Item Description")
+                field("Output Quantity"; OutputQtyVarGbl)
                 {
                     ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Routing Header Item Description field.', Comment = '%';
-                }
-                field("Operation Description"; Rec."Operation Description")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Routing Line Operation Description field.', Comment = '%';
-                }
-                field("Start Time"; Rec."Start Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Start Time field.', Comment = '%';
-                }
-                field("Output Quantity"; Rec."Output Quantity")
-                {
-                    ApplicationArea = All;
+                    Caption = 'Output Quantity';
+                    DecimalPlaces = 0 : 2;
                     ToolTip = 'Specifies the value of the Output Quantity field.', Comment = '%';
                 }
-                field("Serial No."; Rec."Serial No.")
+                field("Serial No."; SerialNoVarGbl)
                 {
                     ApplicationArea = All;
+                    Caption = 'Serial No.';
                     ToolTip = 'Specifies the value of the Serial No. field.', Comment = '%';
-                }
-                field("End Time"; Rec."End Time")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the End Time field.', Comment = '%';
-                }
-                field("Duration in Minutes"; Rec."Duration in Minutes")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Duration in Minutes field.', Comment = '%';
-                }
-                field(Status; Rec.Status)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
             }
         }
@@ -117,10 +75,11 @@ page 52127 "ERF SFTT Entry"
                 Promoted = true;
                 PromotedCategory = Process;
                 trigger OnAction()
+                var
+                    SFTTFunctions: Codeunit "ERF SFTT Functions";
                 begin
-                    Rec."Start Time" := CurrentDateTime;
-                    Rec.Status := 'In Progress';
-                    Rec.Modify(true);
+                    SFTTFunctions.ValidateStartOperation();
+                    SFTTFunctions.CreateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                 end;
             }
             action(StopOperation)
@@ -132,22 +91,19 @@ page 52127 "ERF SFTT Entry"
                 Promoted = true;
                 PromotedCategory = Process;
                 trigger OnAction()
+                var
+                    SFTTFunctions: Codeunit "ERF SFTT Functions";
                 begin
-                    Rec."End Time" := CurrentDateTime;
-                    Rec.Status := 'Completed';
-                    Rec.Modify(true);
+                    SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
                 end;
             }
         }
     }
-    trigger OnNewRecord(BelowxRec: Boolean)
     var
-        EmpUserIDMapping: Record "ERF User ID Mapping";
-    begin
-        Rec.Validate("User ID", UserId);
-        EmpUserIDMapping.Reset();
-        EmpUserIDMapping.Get(UserId);
-        Rec.Validate("Employee No.", EmpUserIDMapping."Employee No.");
-        Rec.Validate("Employee Name", EmpUserIDMapping."Employee Name");
-    end;
+        ScanOperationCodeVarGbl: Text;
+        ProdOrderNoVarGbl: Code[20];
+        LineNoVarGbl: Integer;
+        OperationNoVarGbl: Code[10];
+        OutputQtyVarGbl: Decimal;
+        SerialNoVarGbl: Code[50];
 }
