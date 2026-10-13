@@ -1,7 +1,7 @@
 page 52124 "ERF SFTT Setup"
 {
     ApplicationArea = All;
-    Caption = 'SFTT Setup';
+    Caption = 'Shop Floor Time Tracking Setup';
     PageType = Card;
     SourceTable = "ERF SFTT Setup";
     UsageCategory = Administration;
