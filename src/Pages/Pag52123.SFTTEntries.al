@@ -181,10 +181,12 @@ page 52123 "ERF SFTT Entries"
                 trigger OnAction()
                 var
                     ProdOrderRoutingLine: Record "Prod. Order Routing Line";
+                    RoutingNo: Code[20];
                 begin
+                    RoutingNo := Rec.GetRoutingNo(Rec."Prod Order No.", Rec."Line No.", Rec."Operation No.");
                     ProdOrderRoutingLine.Reset();
-                    if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, Rec."Prod Order No.", Rec."Line No.", 'STD', Rec."Operation No.") then
-                        Page.RunModal(Page::"Prod. Order Routing", ProdOrderRoutingLine);
+                    if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, Rec."Prod Order No.", Rec."Line No.", RoutingNo, Rec."Operation No.") then
+                        Page.Run(Page::"Prod. Order Routing Lines", ProdOrderRoutingLine);
                 end;
             }
             action(EmployeeUserIDMapping)
