@@ -22,6 +22,24 @@ pageextension 52149 "ERF Released Prod. Order Lines" extends "Released Prod. Ord
                     Page.Run(Page::"Prod. Order Line Comment Sheet", RPOCommentLine);
                 end;
             }
+            action("ERF Critical Inspection Comments")
+            {
+                Caption = 'Critical Inspection Comments';
+                ApplicationArea = All;
+                Image = Comment;
+
+                trigger OnAction()
+                var
+                    CriticalInspecComment: Record "Critical Inspection Comment";
+                begin
+                    CriticalInspecComment.Reset();
+                    CriticalInspecComment.SetRange(Status, Rec.Status);
+                    CriticalInspecComment.SetRange("Prod. Order No.", Rec."Prod. Order No.");
+                    CriticalInspecComment.SetRange("Prod. Order Line No.", Rec."Line No.");
+
+                    Page.Run(Page::"Critical Inspection Cmt. Sheet", CriticalInspecComment);
+                end;
+            }
             action("ERF Create Inventory Pick")
             {
                 ApplicationArea = Manufacturing;
@@ -53,6 +71,38 @@ pageextension 52149 "ERF Released Prod. Order Lines" extends "Released Prod. Ord
                 begin
                     CurrPage.SetSelectionFilter(ProdOrderLine);
                     Report.RunModal(Report::"F-812-9 Order Traveler Form", true, false, ProdOrderLine);
+                end;
+            }
+            action("ERF SubQualityInspectionChecklist")
+            {
+                ApplicationArea = Manufacturing;
+                Caption = 'SUBA Quality Inspection Checklist';
+                Ellipsis = true;
+                Image = "Report";
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    ProdOrderLine: Record "Prod. Order Line";
+                begin
+                    CurrPage.SetSelectionFilter(ProdOrderLine);
+                    Report.RunModal(Report::"F-812-7 Quality Insp. Check", true, false, ProdOrderLine);
+                end;
+            }
+            action("ERF PCBAQualityInspectionChecklist")
+            {
+                ApplicationArea = Manufacturing;
+                Caption = 'PCBA Quality Inspection Checklist';
+                Ellipsis = true;
+                Image = "Report";
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    ProdOrderLine: Record "Prod. Order Line";
+                begin
+                    CurrPage.SetSelectionFilter(ProdOrderLine);
+                    Report.RunModal(Report::"ERF F-812-7 Quality Insp. PCBA", true, false, ProdOrderLine);
                 end;
             }
             action("ERF RefreshRPOLine")

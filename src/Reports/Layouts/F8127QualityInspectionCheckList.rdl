@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-09-07T14:09:14.2607149Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-06T05:57:49.6468288Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,6 +22,37 @@
       <rd:DataSourceID>305c4137-c5ac-4c47-b227-717128a6af41</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="ProductionOrderNo">
+          <DataField>ProductionOrderNo</DataField>
+        </Field>
+        <Field Name="AssignedTo">
+          <DataField>AssignedTo</DataField>
+        </Field>
+        <Field Name="ItemPartNumber">
+          <DataField>ItemPartNumber</DataField>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+        </Field>
+        <Field Name="QuantityFormat">
+          <DataField>QuantityFormat</DataField>
+        </Field>
+        <Field Name="ReservationEntry_SerialNo">
+          <DataField>ReservationEntry_SerialNo</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -30,12 +61,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>20.03543cm</Width>
+                  <Width>20.32003cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>26.25634cm</Height>
+                  <Height>27.45608cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -51,10 +82,177 @@
                                     <Width>2.12745cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>2.04658cm</Width>
+                                    <Width>2.33117cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
+                                  <TablixRow>
+                                    <Height>1.19974cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Rectangle Name="Rectangle30">
+                                            <ReportItems>
+                                              <Tablix Name="Tablix5">
+                                                <TablixBody>
+                                                  <TablixColumns>
+                                                    <TablixColumn>
+                                                      <Width>2.66667in</Width>
+                                                    </TablixColumn>
+                                                    <TablixColumn>
+                                                      <Width>2.66667in</Width>
+                                                    </TablixColumn>
+                                                    <TablixColumn>
+                                                      <Width>2.66667in</Width>
+                                                    </TablixColumn>
+                                                  </TablixColumns>
+                                                  <TablixRows>
+                                                    <TablixRow>
+                                                      <Height>0.23617in</Height>
+                                                      <TablixCells>
+                                                        <TablixCell>
+                                                          <CellContents>
+                                                            <Textbox Name="Textbox263">
+                                                              <CanGrow>true</CanGrow>
+                                                              <KeepTogether>true</KeepTogether>
+                                                              <Paragraphs>
+                                                                <Paragraph>
+                                                                  <TextRuns>
+                                                                    <TextRun>
+                                                                      <Value>="Critical Steps"</Value>
+                                                                      <Style>
+                                                                        <FontFamily>Segoe UI</FontFamily>
+                                                                        <FontSize>9pt</FontSize>
+                                                                        <FontWeight>Bold</FontWeight>
+                                                                      </Style>
+                                                                    </TextRun>
+                                                                  </TextRuns>
+                                                                  <Style />
+                                                                </Paragraph>
+                                                              </Paragraphs>
+                                                              <rd:DefaultName>Textbox124</rd:DefaultName>
+                                                              <Style>
+                                                                <Border>
+                                                                  <Style>None</Style>
+                                                                </Border>
+                                                                <BottomBorder>
+                                                                  <Color>Black</Color>
+                                                                  <Style>Solid</Style>
+                                                                  <Width>1pt</Width>
+                                                                </BottomBorder>
+                                                                <PaddingLeft>2pt</PaddingLeft>
+                                                                <PaddingRight>2pt</PaddingRight>
+                                                                <PaddingTop>2pt</PaddingTop>
+                                                                <PaddingBottom>2pt</PaddingBottom>
+                                                              </Style>
+                                                            </Textbox>
+                                                            <ColSpan>3</ColSpan>
+                                                          </CellContents>
+                                                        </TablixCell>
+                                                        <TablixCell />
+                                                        <TablixCell />
+                                                      </TablixCells>
+                                                    </TablixRow>
+                                                    <TablixRow>
+                                                      <Height>0.23617in</Height>
+                                                      <TablixCells>
+                                                        <TablixCell>
+                                                          <CellContents>
+                                                            <Textbox Name="Textbox264">
+                                                              <CanGrow>true</CanGrow>
+                                                              <KeepTogether>true</KeepTogether>
+                                                              <Paragraphs>
+                                                                <Paragraph>
+                                                                  <TextRuns>
+                                                                    <TextRun>
+                                                                      <Value>=" • " &amp; Fields!Comment.Value</Value>
+                                                                      <Style>
+                                                                        <FontFamily>Segoe UI</FontFamily>
+                                                                        <FontSize>9pt</FontSize>
+                                                                      </Style>
+                                                                    </TextRun>
+                                                                  </TextRuns>
+                                                                  <Style />
+                                                                </Paragraph>
+                                                              </Paragraphs>
+                                                              <rd:DefaultName>Textbox124</rd:DefaultName>
+                                                              <Style>
+                                                                <Border>
+                                                                  <Style>None</Style>
+                                                                </Border>
+                                                                <LeftBorder>
+                                                                  <Color>Black</Color>
+                                                                  <Style>Solid</Style>
+                                                                  <Width>1pt</Width>
+                                                                </LeftBorder>
+                                                                <RightBorder>
+                                                                  <Color>Black</Color>
+                                                                  <Style>Solid</Style>
+                                                                  <Width>1pt</Width>
+                                                                </RightBorder>
+                                                                <PaddingLeft>2pt</PaddingLeft>
+                                                                <PaddingRight>2pt</PaddingRight>
+                                                                <PaddingTop>2pt</PaddingTop>
+                                                                <PaddingBottom>2pt</PaddingBottom>
+                                                              </Style>
+                                                            </Textbox>
+                                                            <ColSpan>3</ColSpan>
+                                                          </CellContents>
+                                                        </TablixCell>
+                                                        <TablixCell />
+                                                        <TablixCell />
+                                                      </TablixCells>
+                                                    </TablixRow>
+                                                  </TablixRows>
+                                                </TablixBody>
+                                                <TablixColumnHierarchy>
+                                                  <TablixMembers>
+                                                    <TablixMember />
+                                                    <TablixMember />
+                                                    <TablixMember />
+                                                  </TablixMembers>
+                                                </TablixColumnHierarchy>
+                                                <TablixRowHierarchy>
+                                                  <TablixMembers>
+                                                    <TablixMember>
+                                                      <KeepWithGroup>After</KeepWithGroup>
+                                                    </TablixMember>
+                                                    <TablixMember>
+                                                      <Group Name="Details3">
+                                                        <GroupExpressions>
+                                                          <GroupExpression>=Fields!ProdOrderLineNo.Value</GroupExpression>
+                                                          <GroupExpression>=Fields!LineNo.Value</GroupExpression>
+                                                        </GroupExpressions>
+                                                      </Group>
+                                                    </TablixMember>
+                                                  </TablixMembers>
+                                                </TablixRowHierarchy>
+                                                <Height>0.47234in</Height>
+                                                <Width>8.00001in</Width>
+                                                <Style>
+                                                  <Border>
+                                                    <Style>None</Style>
+                                                  </Border>
+                                                  <BottomBorder>
+                                                    <Style>Solid</Style>
+                                                  </BottomBorder>
+                                                </Style>
+                                              </Tablix>
+                                            </ReportItems>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                            </Style>
+                                          </Rectangle>
+                                          <ColSpan>3</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell />
+                                      <TablixCell />
+                                    </TablixCells>
+                                  </TablixRow>
                                   <TablixRow>
                                     <Height>0.76933cm</Height>
                                     <TablixCells>
@@ -6021,6 +6219,18 @@
                               </TablixColumnHierarchy>
                               <TablixRowHierarchy>
                                 <TablixMembers>
+                                  <TablixMember>
+                                    <Group Name="ProductionOrderNo">
+                                      <GroupExpressions>
+                                        <GroupExpression>=Fields!ProductionOrderNo.Value</GroupExpression>
+                                      </GroupExpressions>
+                                    </Group>
+                                    <SortExpressions>
+                                      <SortExpression>
+                                        <Value>=Fields!ProductionOrderNo.Value</Value>
+                                      </SortExpression>
+                                    </SortExpressions>
+                                  </TablixMember>
                                   <TablixMember />
                                   <TablixMember />
                                   <TablixMember />
@@ -6059,8 +6269,8 @@
                               </TablixRowHierarchy>
                               <Top>4.572cm</Top>
                               <Left>0cm</Left>
-                              <Height>21.68434cm</Height>
-                              <Width>20.03544cm</Width>
+                              <Height>22.88408cm</Height>
+                              <Width>20.32003cm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -6797,8 +7007,8 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Left>0cm</Left>
-            <Height>26.25634cm</Height>
-            <Width>20.03543cm</Width>
+            <Height>27.45608cm</Height>
+            <Width>20.32003cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -6806,10 +7016,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>26.25634cm</Height>
+        <Height>27.45608cm</Height>
         <Style />
       </Body>
-      <Width>20.03543cm</Width>
+      <Width>20.32003cm</Width>
       <Page>
         <PageHeader>
           <Height>1.905cm</Height>
@@ -6924,6 +7134,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -6963,35 +7179,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="ProductionOrderNo">
-          <DataField>ProductionOrderNo</DataField>
-        </Field>
-        <Field Name="AssignedTo">
-          <DataField>AssignedTo</DataField>
-        </Field>
-        <Field Name="ItemPartNumber">
-          <DataField>ItemPartNumber</DataField>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-        </Field>
-        <Field Name="QuantityFormat">
-          <DataField>QuantityFormat</DataField>
-        </Field>
-        <Field Name="ReservationEntry_SerialNo">
-          <DataField>ReservationEntry_SerialNo</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
