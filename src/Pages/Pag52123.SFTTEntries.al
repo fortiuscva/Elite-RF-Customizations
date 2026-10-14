@@ -128,10 +128,10 @@ page 52123 "ERF SFTT Entries"
                 var
                     SFTTSetup: Record "ERF SFTT Setup";
                     SFTTFunctions: Codeunit "ERF SFTT Functions";
-                    CreateOutputJournalConfirmQst: Label 'Do you want to create an Output Journal for this Shop Floor Time Tracking Entry %1';
-                    OutputJournalSuccessfullyCreatedLbl: Label 'Output Journal was successfully created for this Shop Floor Time Tracking Entry %1';
+                    CreateOutputJournalConfirmQst: Label 'Do you want to create an Output Journal for this Shop Floor Time Tracking Entry?';
+                    OutputJournalSuccessfullyCreatedLbl: Label 'The Output Journal was created successfully for this Shop Floor Time Tracking Entry.';
                 begin
-                    if Confirm(StrSubstNo(CreateOutputJournalConfirmQst, Rec."Entry No."), false) then begin
+                    if Confirm(CreateOutputJournalConfirmQst, false) then begin
                         Rec.TestField(Rec.Status, Rec.Status::Completed);
                         SFTTSetup.Get();
                         SFTTFunctions.CreateOutputJournal(Rec, SFTTSetup);
@@ -200,7 +200,7 @@ page 52123 "ERF SFTT Entries"
                     EmployeeUserIDMapping: Record "ERF User ID Mapping";
                 begin
                     EmployeeUserIDMapping.Reset();
-                    EmployeeUserIDMapping.SetRange("User ID", Rec."User ID");
+                    EmployeeUserIDMapping.SetRange("Employee No.", Rec."Employee No.");
                     if EmployeeUserIDMapping.FindLast() then
                         Page.RunModal(Page::"ERF User ID Mappings", EmployeeUserIDMapping);
                 end;
