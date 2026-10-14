@@ -36,14 +36,13 @@ page 52127 "ERF SFTT Entry"
                     Caption = 'RPO No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Production Order No. field.', Comment = '%';
-                    trigger OnLookup(var Text: Text): Boolean
+                    trigger OnDrillDown()
                     var
                         ProductionOrder: Record "Production Order";
                     begin
                         ProductionOrder.Reset();
-                        ProductionOrder.Get(ProductionOrder.Status::Released, ProdOrderNoVarGbl);
-                        if Page.RunModal(Page::"Released Production Order", ProductionOrder) = Action::LookupOK then
-                            exit(true);
+                        if ProductionOrder.Get(ProductionOrder.Status::Released, ProdOrderNoVarGbl) then
+                            Page.Run(Page::"Released Production Order", ProductionOrder);
                     end;
                 }
                 field("Line No."; LineNoVarGbl)
@@ -52,14 +51,13 @@ page 52127 "ERF SFTT Entry"
                     Caption = 'Line No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
-                    trigger OnLookup(var Text: Text): Boolean
+                    trigger OnDrillDown()
                     var
                         ProdOrderLine: Record "Prod. Order Line";
                     begin
                         ProdOrderLine.Reset();
-                        ProdOrderLine.Get(ProdOrderLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl);
-                        if Page.RunModal(Page::"Prod. Order Line List", ProdOrderLine) = Action::LookupOK then
-                            exit(true);
+                        if ProdOrderLine.Get(ProdOrderLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl) then
+                            Page.Run(Page::"Prod. Order Line List", ProdOrderLine);
                     end;
                 }
                 field("Operation No."; OperationNoVarGbl)
@@ -68,7 +66,7 @@ page 52127 "ERF SFTT Entry"
                     Caption = 'Operation No.';
                     Editable = false;
                     ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
-                    trigger OnLookup(var Text: Text): Boolean
+                    trigger OnDrillDown()
                     var
                         ProdOrderRoutingLine: Record "Prod. Order Routing Line";
                         SFTTFunctions: Codeunit "ERF SFTT Functions";
@@ -76,9 +74,8 @@ page 52127 "ERF SFTT Entry"
                     begin
                         RoutingNo := SFTTFunctions.GetRoutingNo(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                         ProdOrderRoutingLine.Reset();
-                        ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNo, OperationNoVarGbl);
-                        if Page.RunModal(Page::"Prod. Order Routing Lines", ProdOrderRoutingLine) = Action::LookupOK then
-                            exit(true);
+                        if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNo, OperationNoVarGbl) then
+                            Page.Run(Page::"Prod. Order Routing Lines", ProdOrderRoutingLine);
                     end;
                 }
                 field("Output Quantity"; OutputQtyVarGbl)
