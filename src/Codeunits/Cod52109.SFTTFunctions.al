@@ -78,7 +78,8 @@ codeunit 52109 "ERF SFTT Functions"
         SFTTEntry.SetRange("Line No.", LineNo);
         SFTTEntry.SetRange("Operation No.", OperationNo);
         SFTTEntry.SetRange(Status, SFTTEntry.Status::"In Progress");
-        SFTTEntry.FindLast();
+        if not SFTTEntry.FindLast() then
+            Error('The operation cannot be stopped because it has not been started yet.');
         SFTTEntry.Validate("Output Quantity", OutputQty);
         SFTTEntry.Validate("Serial No.", SerialNo);
         SFTTEntry.Validate("End Time", CurrentDateTime);
@@ -95,7 +96,7 @@ codeunit 52109 "ERF SFTT Functions"
         ProdOrderLine: Record "Prod. Order Line";
         ProdOrderRoutingLine: Record "Prod. Order Routing Line";
         RoutingNo: Code[20];
-        LogoutErrLbl: Label 'Please Log Out of Current Active Production Order [Number %1 and Routing Step %2] before Scanning into New Production Order, Entry No. %3';
+        LogoutErrLbl: Label 'Please log out of the active Production Order (No. %1, Routing Step %2) before scanning a new Production Order.';
         RPONoBlankErrLbl: Label 'Released Production Order No. cannot be blank.';
         LineNoErrLbl: Label 'Line No. cannot be zero.';
         OperationNoBlankErrLbl: Label 'Routing Operation No. cannot be blank.';
@@ -124,7 +125,7 @@ codeunit 52109 "ERF SFTT Functions"
         SFTTEntry.SetRange("Employee No.", GetEmployeeNo());
         SFTTEntry.SetRange(Status, SFTTEntry.Status::"In Progress");
         if SFTTEntry.FindLast() then
-            Error(StrSubstNo(LogoutErrLbl, SFTTEntry."Prod Order No.", SFTTEntry."Operation Description", SFTTEntry."Entry No."));
+            Error(StrSubstNo(LogoutErrLbl, SFTTEntry."Prod Order No.", SFTTEntry."Operation Description"));
     end;
 
     local procedure GetNextEntryNo(): Integer

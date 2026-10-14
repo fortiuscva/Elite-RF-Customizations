@@ -9,13 +9,7 @@ table 52114 "ERF SFTT Entry"
     {
         field(1; "Entry No."; Integer)
         {
-            // AutoIncrement = true;
-            DataClassification = CustomerContent;
-        }
-        field(2; "User ID"; Code[50])
-        {
-            Caption = 'User ID';
-            TableRelation = User;
+            Caption = 'Entry No.';
             DataClassification = CustomerContent;
         }
         field(3; "Employee No."; Code[20])
@@ -54,11 +48,13 @@ table 52114 "ERF SFTT Entry"
         field(6; "Line No."; Integer)
         {
             Caption = 'Line No.';
+            TableRelation = "Prod. Order Line"."Line No." where(Status = const(Released), "Prod. Order No." = field("Prod Order No."));
             DataClassification = CustomerContent;
         }
         field(7; "Operation No."; Code[10])
         {
             Caption = 'Operation No.';
+            TableRelation = "Prod. Order Routing Line"."Operation No." where(Status = const(Released), "Prod. Order No." = field("Prod Order No."), "Routing Reference No." = field("Line No."));
             DataClassification = CustomerContent;
             trigger OnValidate()
             var

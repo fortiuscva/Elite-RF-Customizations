@@ -1,16 +1,12 @@
-
-page 52128 "ERF SFTT Entry test"
+page 52126 "ERF SFTT Entry"
 {
     ApplicationArea = All;
-    Caption = 'Shop Floor Time Tracking Entry Test';
+    Caption = 'Shop Floor Time Tracking Entry';
     PageType = Card;
     InsertAllowed = false;
     ModifyAllowed = true;
     DeleteAllowed = false;
     UsageCategory = Tasks;
-
-
-
     layout
     {
         area(Content)
@@ -18,19 +14,15 @@ page 52128 "ERF SFTT Entry test"
             grid(MainLayout)
             {
                 GridLayout = Columns;
-
                 group(ScannerGroup)
                 {
                     ShowCaption = false;
-
                     usercontrol(Scanner; "ERF SFTT Scanner")
                     {
                         ApplicationArea = All;
-
                         trigger ControlAddInReady()
                         begin
                         end;
-
 
                         trigger BarcodeScanned(Barcode: Text)
                         var
@@ -42,8 +34,7 @@ page 52128 "ERF SFTT Entry test"
                             Parts := Barcode.Split('-');
 
                             if Parts.Count() <> 3 then
-                                Error(
-                                    'Invalid operation barcode. Expected ProductionOrder-LineNo-OperationNo.');
+                                Error('Invalid operation barcode. Expected ProductionOrder-LineNo-OperationNo.');
 
                             ProdOrderNoVarGbl := CopyStr(Parts.Get(1), 1, 20);
 
@@ -67,100 +58,66 @@ page 52128 "ERF SFTT Entry test"
                         ApplicationArea = All;
                         Caption = 'RPO No.';
                         Editable = false;
-
-                        trigger OnLookup(var Text: Text): Boolean
+                        ToolTip = 'Specifies the value of the Production Order No. field.', Comment = '%';
+                        trigger OnDrillDown()
                         var
                             ProductionOrder: Record "Production Order";
                         begin
                             ProductionOrder.Reset();
-                            ProductionOrder.Get(
-                                ProductionOrder.Status::Released,
-                                ProdOrderNoVarGbl);
-
-                            if Page.RunModal(
-                                Page::"Released Production Order",
-                                ProductionOrder) = Action::LookupOK
-                            then
-                                exit(true);
+                            if ProductionOrder.Get(ProductionOrder.Status::Released, ProdOrderNoVarGbl) then
+                                Page.Run(Page::"Released Production Order", ProductionOrder);
                         end;
                     }
-
                     field("Line No."; LineNoVarGbl)
                     {
                         ApplicationArea = All;
                         Caption = 'Line No.';
                         Editable = false;
-
-                        trigger OnLookup(var Text: Text): Boolean
+                        ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
+                        trigger OnDrillDown()
                         var
                             ProdOrderLine: Record "Prod. Order Line";
                         begin
                             ProdOrderLine.Reset();
-                            ProdOrderLine.Get(
-                                ProdOrderLine.Status::Released,
-                                ProdOrderNoVarGbl,
-                                LineNoVarGbl);
-
-                            if Page.RunModal(
-                                Page::"Prod. Order Line List",
-                                ProdOrderLine) = Action::LookupOK
-                            then
-                                exit(true);
+                            if ProdOrderLine.Get(ProdOrderLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl) then
+                                Page.Run(Page::"Prod. Order Line List", ProdOrderLine);
                         end;
                     }
-
                     field("Operation No."; OperationNoVarGbl)
                     {
                         ApplicationArea = All;
                         Caption = 'Operation No.';
                         Editable = false;
-
-                        trigger OnLookup(var Text: Text): Boolean
+                        ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
+                        trigger OnDrillDown()
                         var
                             ProdOrderRoutingLine: Record "Prod. Order Routing Line";
                             SFTTFunctions: Codeunit "ERF SFTT Functions";
                             RoutingNo: Code[20];
                         begin
-                            RoutingNo := SFTTFunctions.GetRoutingNo(
-                                ProdOrderNoVarGbl,
-                                LineNoVarGbl,
-                                OperationNoVarGbl);
-
+                            RoutingNo := SFTTFunctions.GetRoutingNo(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                             ProdOrderRoutingLine.Reset();
-                            ProdOrderRoutingLine.Get(
-                                ProdOrderRoutingLine.Status::Released,
-                                ProdOrderNoVarGbl,
-                                LineNoVarGbl,
-                                RoutingNo,
-                                OperationNoVarGbl);
-
-                            if Page.RunModal(
-                                Page::"Prod. Order Routing",
-                                ProdOrderRoutingLine) = Action::LookupOK
-                            then
-                                exit(true);
+                            if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNo, OperationNoVarGbl) then
+                                Page.Run(Page::"Prod. Order Routing Lines", ProdOrderRoutingLine);
                         end;
                     }
-
                     field("Output Quantity"; OutputQtyVarGbl)
                     {
                         ApplicationArea = All;
                         Caption = 'Output Quantity';
                         DecimalPlaces = 0 : 2;
+                        ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
                     }
-
                     field("Serial No."; SerialNoVarGbl)
                     {
                         ApplicationArea = All;
                         Caption = 'Serial No.';
+                        ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
                     }
                 }
             }
         }
     }
-
-
-
     actions
     {
         area(Processing)
@@ -180,15 +137,8 @@ page 52128 "ERF SFTT Entry test"
                     StartOperationConfirmQst: Label 'Do you want to start the operation?';
                 begin
                     if Confirm(StartOperationConfirmQst, false) then begin
-                        SFTTFunctions.ValidateStartOperation(
-                            ProdOrderNoVarGbl,
-                            LineNoVarGbl,
-                            OperationNoVarGbl);
-
-                        SFTTFunctions.CreateShopFloorTimeTrackingEntry(
-                            ProdOrderNoVarGbl,
-                            LineNoVarGbl,
-                            OperationNoVarGbl);
+                        SFTTFunctions.ValidateStartOperation(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                        SFTTFunctions.CreateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                     end;
                 end;
             }
@@ -208,12 +158,7 @@ page 52128 "ERF SFTT Entry test"
                     StopOperationConfirmQst: Label 'Do you want to stop the operation?';
                 begin
                     if Confirm(StopOperationConfirmQst, false) then begin
-                        SFTTFunctions.UpdateShopFloorTimeTrackingEntry(
-                            ProdOrderNoVarGbl,
-                            LineNoVarGbl,
-                            OperationNoVarGbl,
-                            OutputQtyVarGbl,
-                            SerialNoVarGbl);
+                        SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
 
                         Clear(ScanOperationCodeVarGbl);
                         Clear(ProdOrderNoVarGbl);
