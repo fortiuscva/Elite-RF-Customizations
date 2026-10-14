@@ -19,6 +19,9 @@ report 52124 "Non Confirming Material Form"
             { }
             column(CustomerName; CustomerName)
             { }
+
+            column(ExternalDocNo; ExternalDocNo)
+            { }
             trigger OnAfterGetRecord()
 
             begin
@@ -26,8 +29,10 @@ report 52124 "Non Confirming Material Form"
                     exit;
 
                 SalesHeader.Reset();
-                if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+                if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then begin
                     CustomerName := SalesHeader."Sell-to Customer Name";
+                    ExternalDocNo := SalesHeader."External Document No.";
+                end;
             end;
         }
     }
@@ -58,4 +63,5 @@ report 52124 "Non Confirming Material Form"
         SalesHeader: Record "Sales Header";
         CompanyInformation: Record "Company Information";
         CustomerName: Text;
+        ExternalDocNo: Code[35];
 }

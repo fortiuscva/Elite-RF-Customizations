@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-08T13:04:06.1262069Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-10-14T10:47:27.6901342Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -586,10 +586,61 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExternalDocNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ExternalDocNo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExternalDocNo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -650,14 +701,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Qty">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Qty.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -668,7 +719,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Qty</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -785,7 +836,7 @@
                             </BottomBorder>
                             <LeftBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                               <Width>1pt</Width>
                             </LeftBorder>
                             <RightBorder>
@@ -1983,7 +2034,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Height>6.06612in</Height>
+            <Height>6.06616in</Height>
             <Width>8.49439in</Width>
             <Style>
               <Border>
@@ -3192,7 +3243,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox99</rd:DefaultName>
-              <Left>0in</Left>
               <Height>0.24861in</Height>
               <Width>8.48189in</Width>
               <Style>
@@ -3252,7 +3302,6 @@
               </Paragraphs>
               <rd:DefaultName>Textbox104</rd:DefaultName>
               <Top>0.2632in</Top>
-              <Left>0in</Left>
               <Height>0.24861in</Height>
               <Width>8.48189in</Width>
               <ZIndex>1</ZIndex>
@@ -3313,7 +3362,6 @@
               </Paragraphs>
               <rd:DefaultName>Textbox109</rd:DefaultName>
               <Top>0.50069in</Top>
-              <Left>0in</Left>
               <Height>0.24861in</Height>
               <Width>8.48189in</Width>
               <ZIndex>2</ZIndex>
@@ -3820,6 +3868,9 @@ End Function
         </Field>
         <Field Name="CustomerName">
           <DataField>CustomerName</DataField>
+        </Field>
+        <Field Name="ExternalDocNo">
+          <DataField>ExternalDocNo</DataField>
         </Field>
       </Fields>
       <Query>
