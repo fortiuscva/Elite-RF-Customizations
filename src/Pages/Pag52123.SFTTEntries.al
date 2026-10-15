@@ -189,6 +189,7 @@ page 52123 "ERF SFTT Entries"
                     if UpdateSFTTEntry.RunModal() = Action::OK then begin
                         Rec.Validate("Start Time", UpdateSFTTEntry.GetStartTime());
                         Rec.Validate("End Time", UpdateSFTTEntry.GetEndTime());
+                        Rec.Validate("Duration in Minutes", Round((Rec."End Time" - Rec."Start Time") / 60000, 1, '='));
                         Rec.Validate("Output Quantity", UpdateSFTTEntry.GetOutputQty());
                         Rec.Validate("Serial No.", UpdateSFTTEntry.GetSerialNo());
                         Rec.Modify(true);
