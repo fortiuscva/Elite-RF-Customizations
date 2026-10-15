@@ -114,6 +114,11 @@ table 52114 "ERF SFTT Entry"
             Caption = 'Routing Line Operation Description';
             DataClassification = CustomerContent;
         }
+        field(16; Processed; Boolean)
+        {
+            Caption = 'Processed';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
@@ -141,5 +146,14 @@ table 52114 "ERF SFTT Entry"
         ProdOrderRoutingLine.SetRange("Operation No.", OperationNo);
         If ProdOrderRoutingLine.FindFirst() then
             exit(ProdOrderRoutingLine."Routing No.");
+    end;
+
+    trigger OnDelete()
+    var
+        UserSetup: Record "User Setup";
+    begin
+        If UserSetup.Get(UserId) then
+            if not UserSetup."ERF Allow Delete SFTT Entries" then
+                Error('You do not have the necessary permissions to delete this Shop Floor Time Tracking Entry');
     end;
 }
