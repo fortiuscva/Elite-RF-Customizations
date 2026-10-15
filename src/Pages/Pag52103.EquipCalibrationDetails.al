@@ -107,6 +107,11 @@ page 52103 "ERF Equip. Calibration Details"
                 SubPageLink = "Table ID" = const(Database::"ERF Equipment Calibration"),
                               "No." = field("Equipment ID");
             }
+            systempart(Notes; Notes)
+            {
+                Caption = 'Notes';
+                ApplicationArea = Notes;
+            }
         }
     }
     actions
