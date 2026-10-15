@@ -123,6 +123,11 @@ page 52104 "ERF Equipment Calibration Card"
                 SubPageLink = "Table ID" = const(Database::"ERF Equipment Calibration"),
                               "No." = field("Equipment ID");
             }
+            systempart(Notes; Notes)
+            {
+                Caption = 'Notes';
+                ApplicationArea = Notes;
+            }
         }
     }
     actions
