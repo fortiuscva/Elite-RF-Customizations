@@ -10,12 +10,8 @@ enum 52105 "ERF SFTT Status"
     {
         Caption = 'In Progress';
     }
-    value(2; Completed)
+    value(2; Finished)
     {
-        Caption = 'Completed';
-    }
-    value(3; Processed)
-    {
-        Caption = 'Processed';
+        Caption = 'Finished';
     }
 }
