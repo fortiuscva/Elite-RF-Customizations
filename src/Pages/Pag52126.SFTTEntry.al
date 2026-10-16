@@ -141,16 +141,14 @@ page 52126 "ERF SFTT Entry"
                         ApplicationArea = All;
                         Caption = 'Status';
                         Editable = false;
-                        Style = Unfavorable;
+                        Style = Favorable;
                         StyleExpr = true;
                         ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                     }
                     field("Output Quantity"; OutputQtyVarGbl)
                     {
                         ApplicationArea = All;
-                        BlankZero = true;
                         Caption = 'Output Quantity';
-                        DecimalPlaces = 0 : 2;
                         ShowMandatory = true;
                         ToolTip = 'Specifies the value of the Output Quantity field.', Comment = '%';
                     }
@@ -207,13 +205,16 @@ page 52126 "ERF SFTT Entry"
                     StopOperationConfirmQst: Label 'Do you want to stop the operation?';
                 begin
                     if Confirm(StopOperationConfirmQst, false) then begin
-                        if OutputQtyVarGbl <= 0 then
-                            Error('Output Quantity must be greater than zero.');
+                        if OutputQtyVarGbl = 'N/A' then
+                            OutputQuantity := 0
+                        else
+                            if not Evaluate(OutputQuantity, OutputQtyVarGbl) then
+                                Error('Output Quantity must be a valid number or N/A.');
 
                         if SerialNoVarGbl = '' then
                             Error('Serial No. must have a value.');
 
-                        SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
+                        SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQuantity, SerialNoVarGbl);
 
                         Clear(ScanOperationCodeVarGbl);
                         Clear(ProdOrderNoVarGbl);
@@ -243,7 +244,8 @@ page 52126 "ERF SFTT Entry"
         ProdOrderNoVarGbl: Code[20];
         LineNoVarGbl: Integer;
         OperationNoVarGbl: Code[10];
-        OutputQtyVarGbl: Decimal;
+        OutputQtyVarGbl: Text;
+        OutputQuantity: Decimal;
         SerialNoVarGbl: Code[50];
         RoutingNoVarGbl: Code[20];
         RPOItemDescription: Text;
