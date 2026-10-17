@@ -43,6 +43,26 @@ page 52126 "ERF SFTT Entry"
 
                             OperationNoVarGbl := CopyStr(Parts.Get(3), 1, 10);
 
+                            if ProductionOrder.Get(ProductionOrder.Status::Released, ProdOrderNoVarGbl) then
+                                RPOItemDescription := ProductionOrder.Description;
+
+                            RoutingNoVarGbl := SFTTFunctions.GetRoutingNo(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                            if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNoVarGbl, OperationNoVarGbl) then
+                                RoutingLineOperationDescriptionVarGbl := ProdOrderRoutingLine.Description;
+
+                            UserIDMapping.Reset();
+                            UserIDMapping.Get(UserId);
+                            SFTTEntry.Reset();
+                            SFTTEntry.SetRange("Employee No.", UserIDMapping."Employee No.");
+                            SFTTEntry.SetRange("Prod Order No.", ProdOrderNoVarGbl);
+                            SFTTEntry.SetRange("Line No.", LineNoVarGbl);
+                            SFTTEntry.SetRange("Operation No.", OperationNoVarGbl);
+                            SFTTEntry.SetRange(Status, SFTTEntry.Status::"In Progress");
+                            if SFTTEntry.FindLast() then
+                                Status := 'Operation is in progress'
+                            else
+                                Status := 'Operation not started';
+
                             CurrPage.Update(false);
                         end;
 
@@ -58,7 +78,7 @@ page 52126 "ERF SFTT Entry"
                         ApplicationArea = All;
                         Caption = 'RPO No.';
                         Editable = false;
-                        ToolTip = 'Specifies the value of the Production Order No. field.', Comment = '%';
+                        ToolTip = 'Specifies the value of the Released Production Order No. field.', Comment = '%';
                         trigger OnDrillDown()
                         var
                             ProductionOrder: Record "Production Order";
@@ -90,29 +110,56 @@ page 52126 "ERF SFTT Entry"
                         Editable = false;
                         ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
                         trigger OnDrillDown()
-                        var
-                            ProdOrderRoutingLine: Record "Prod. Order Routing Line";
-                            SFTTFunctions: Codeunit "ERF SFTT Functions";
-                            RoutingNo: Code[20];
                         begin
-                            RoutingNo := SFTTFunctions.GetRoutingNo(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                            RoutingNoVarGbl := SFTTFunctions.GetRoutingNo(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                             ProdOrderRoutingLine.Reset();
-                            if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNo, OperationNoVarGbl) then
+                            if ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, ProdOrderNoVarGbl, LineNoVarGbl, RoutingNoVarGbl, OperationNoVarGbl) then
                                 Page.Run(Page::"Prod. Order Routing Lines", ProdOrderRoutingLine);
                         end;
+                    }
+                    field("RPO Header Item Description"; RPOItemDescription)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'RPO Header Item Description';
+                        Editable = false;
+                        Importance = Additional;
+                        MultiLine = true;
+                        ToolTip = 'Specifies the value of the RPO Header Item Description field.', Comment = '%';
+                    }
+
+                    field("Routing Line Operation Description"; RoutingLineOperationDescriptionVarGbl)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Routing Line Operation Description';
+                        Editable = false;
+                        Importance = Additional;
+                        MultiLine = true;
+                        ToolTip = 'Specifies the value of the Routing Line Operation Description field.', Comment = '%';
+                    }
+                    field(Status; Status)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Status';
+                        Editable = false;
+                        Style = Unfavorable;
+                        StyleExpr = true;
+                        ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                     }
                     field("Output Quantity"; OutputQtyVarGbl)
                     {
                         ApplicationArea = All;
+                        BlankZero = true;
                         Caption = 'Output Quantity';
                         DecimalPlaces = 0 : 2;
-                        ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
+                        ShowMandatory = true;
+                        ToolTip = 'Specifies the value of the Output Quantity field.', Comment = '%';
                     }
                     field("Serial No."; SerialNoVarGbl)
                     {
                         ApplicationArea = All;
                         Caption = 'Serial No.';
-                        ToolTip = 'Specifies the value of the Operation No. field.', Comment = '%';
+                        ShowMandatory = true;
+                        ToolTip = 'Specifies the value of the Serial No. field.', Comment = '%';
                     }
                 }
             }
@@ -139,6 +186,8 @@ page 52126 "ERF SFTT Entry"
                     if Confirm(StartOperationConfirmQst, false) then begin
                         SFTTFunctions.ValidateStartOperation(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
                         SFTTFunctions.CreateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl);
+                        Status := 'Operation is in progress';
+                        CurrPage.Update(false);
                     end;
                 end;
             }
@@ -158,14 +207,23 @@ page 52126 "ERF SFTT Entry"
                     StopOperationConfirmQst: Label 'Do you want to stop the operation?';
                 begin
                     if Confirm(StopOperationConfirmQst, false) then begin
+                        if OutputQtyVarGbl <= 0 then
+                            Error('Output Quantity must be greater than zero.');
+
+                        if SerialNoVarGbl = '' then
+                            Error('Serial No. must have a value.');
+
                         SFTTFunctions.UpdateShopFloorTimeTrackingEntry(ProdOrderNoVarGbl, LineNoVarGbl, OperationNoVarGbl, OutputQtyVarGbl, SerialNoVarGbl);
 
                         Clear(ScanOperationCodeVarGbl);
                         Clear(ProdOrderNoVarGbl);
                         Clear(LineNoVarGbl);
                         Clear(OperationNoVarGbl);
+                        Clear(RPOItemDescription);
+                        Clear(RoutingLineOperationDescriptionVarGbl);
                         Clear(OutputQtyVarGbl);
                         Clear(SerialNoVarGbl);
+                        Clear(Status);
 
                         CurrPage.Scanner.ClearInputs();
                         CurrPage.Update(false);
@@ -176,10 +234,19 @@ page 52126 "ERF SFTT Entry"
     }
 
     var
+        ProductionOrder: Record "Production Order";
+        ProdOrderRoutingLine: Record "Prod. Order Routing Line";
+        UserIDMapping: Record "ERF User ID Mapping";
+        SFTTEntry: Record "ERF SFTT Entry";
+        SFTTFunctions: Codeunit "ERF SFTT Functions";
         ScanOperationCodeVarGbl: Text;
         ProdOrderNoVarGbl: Code[20];
         LineNoVarGbl: Integer;
         OperationNoVarGbl: Code[10];
         OutputQtyVarGbl: Decimal;
         SerialNoVarGbl: Code[50];
+        RoutingNoVarGbl: Code[20];
+        RPOItemDescription: Text;
+        RoutingLineOperationDescriptionVarGbl: Text;
+        Status: Text;
 }
