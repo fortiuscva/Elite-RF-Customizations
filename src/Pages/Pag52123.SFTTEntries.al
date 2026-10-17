@@ -2,7 +2,6 @@ page 52123 "ERF SFTT Entries"
 {
     ApplicationArea = All;
     Caption = 'Shop Floor Time Tracking Entries';
-    CardPageId = "ERF SFTT Entry";
     PageType = List;
     SourceTable = "ERF SFTT Entry";
     SourceTableView = sorting("Entry No.")
@@ -17,13 +16,6 @@ page 52123 "ERF SFTT Entries"
         {
             repeater(General)
             {
-                field("User ID"; Rec."User ID")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the User ID field.', Comment = '%';
-                    Visible = false;
-                }
                 field("Employee No."; Rec."Employee No.")
                 {
                     ApplicationArea = All;
