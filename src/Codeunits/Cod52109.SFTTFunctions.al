@@ -88,11 +88,38 @@ codeunit 52109 "ERF SFTT Functions"
         Message('Operation Stopped');
     end;
 
-    procedure ValidateStartOperation()
+    procedure ValidateStartOperation(RPONo: Code[20]; LineNo: Integer; OperationNo: Code[10])
     var
         SFTTEntry: Record "ERF SFTT Entry";
+        ProductionOrder: Record "Production Order";
+        ProdOrderLine: Record "Prod. Order Line";
+        ProdOrderRoutingLine: Record "Prod. Order Routing Line";
+        RoutingNo: Code[20];
         LogoutErrLbl: Label 'Please Log Out of Current Active Production Order [Number %1 and Routing Step %2] before Scanning into New Production Order, Entry No. %3';
+        RPONoBlankErrLbl: Label 'Released Production Order No. cannot be blank.';
+        LineNoErrLbl: Label 'Line No. cannot be zero.';
+        OperationNoBlankErrLbl: Label 'Routing Operation No. cannot be blank.';
     begin
+        if RPONo = '' then
+            Error(RPONoBlankErrLbl);
+
+        if LineNo = 0 then
+            Error(LineNoErrLbl);
+
+        if OperationNo = '' then
+            Error(OperationNoBlankErrLbl);
+
+        ProductionOrder.Reset();
+        ProductionOrder.Get(ProductionOrder.Status::Released, RPONo);
+
+        ProdOrderLine.Reset();
+        ProdOrderLine.Get(ProdOrderLine.Status::Released, RPONo, LineNo);
+
+        RoutingNo := GetRoutingNo(RPONo, LineNo, OperationNo);
+
+        ProdOrderRoutingLine.Reset();
+        ProdOrderRoutingLine.Get(ProdOrderRoutingLine.Status::Released, RPONo, LineNo, RoutingNo, OperationNo);
+
         SFTTEntry.Reset();
         SFTTEntry.SetRange("Employee No.", GetEmployeeNo());
         SFTTEntry.SetRange(Status, SFTTEntry.Status::"In Progress");
@@ -143,7 +170,7 @@ codeunit 52109 "ERF SFTT Functions"
                 exit(ProductionOrder."Source No.");
     end;
 
-    local procedure GetRoutingNo(ProdOrderNo: Code[20]; RoutingRefNo: Integer; OperationNo: Code[10]): Code[20]
+    procedure GetRoutingNo(ProdOrderNo: Code[20]; RoutingRefNo: Integer; OperationNo: Code[10]): Code[20]
     var
         ProdOrderRoutingLine: Record "Prod. Order Routing Line";
     begin
