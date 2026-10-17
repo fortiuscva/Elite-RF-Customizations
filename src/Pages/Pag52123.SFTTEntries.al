@@ -2,13 +2,15 @@ page 52123 "ERF SFTT Entries"
 {
     ApplicationArea = All;
     Caption = 'Shop Floor Time Tracking Entries';
+    DeleteAllowed = false;
+    Editable = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
     PageType = List;
     SourceTable = "ERF SFTT Entry";
     SourceTableView = sorting("Entry No.")
                       order(descending);
-
     UsageCategory = Lists;
-    Editable = false;
 
     layout
     {
@@ -101,6 +103,11 @@ page 52123 "ERF SFTT Entries"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the ID field.', Comment = '%';
                 }
+                field(Processed; Rec.Processed)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Processed field.', Comment = '%';
+                }
             }
         }
         area(FactBoxes)
@@ -132,11 +139,61 @@ page 52123 "ERF SFTT Entries"
                     OutputJournalSuccessfullyCreatedLbl: Label 'The Output Journal was created successfully for this Shop Floor Time Tracking Entry.';
                 begin
                     if Confirm(CreateOutputJournalConfirmQst, false) then begin
-                        Rec.TestField(Rec.Status, Rec.Status::Completed);
+                        Rec.TestField(Rec.Status, Rec.Status::Finished);
                         SFTTSetup.Get();
                         SFTTFunctions.CreateOutputJournal(Rec, SFTTSetup);
                         Message(OutputJournalSuccessfullyCreatedLbl, Rec."Entry No.");
                     end;
+                end;
+            }
+            action(DeleteEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Delete Entry';
+                Image = Delete;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    UserSetup: Record "User Setup";
+                begin
+                    Rec.TestField(Processed, false);
+                    Rec.TestField(Rec.Status, Rec.Status::Finished);
+                    Rec.Delete(true);
+                end;
+
+            }
+            action(UpdateEntry)
+            {
+                ApplicationArea = all;
+                Caption = 'Update Entry';
+                Image = EditLines;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    UpdateSFTTEntry: Page "ERF Update SFTT Entry";
+                    UserSetup: Record "User Setup";
+                begin
+                    Rec.TestField(Processed, false);
+                    Rec.TestField(Rec.Status, Rec.Status::Finished);
+                    If UserSetup.Get(UserId) then
+                        if not UserSetup."ERF Allow Update SFTT Entries" then
+                            Error('You do not have the necessary permissions to update this Shop Floor Time Tracking Entry');
+
+                    UpdateSFTTEntry.SetStartTime(Rec."Start Time");
+                    UpdateSFTTEntry.SetEndTime(Rec."End Time");
+                    UpdateSFTTEntry.SetOutputQty(Rec."Output Quantity");
+                    UpdateSFTTEntry.SetSerialNo(Rec."Serial No.");
+
+                    if UpdateSFTTEntry.RunModal() = Action::OK then begin
+                        Rec.Validate("Start Time", UpdateSFTTEntry.GetStartTime());
+                        Rec.Validate("End Time", UpdateSFTTEntry.GetEndTime());
+                        Rec.Validate("Output Quantity", UpdateSFTTEntry.GetOutputQty());
+                        Rec.Validate("Serial No.", UpdateSFTTEntry.GetSerialNo());
+                        Rec.Modify(true);
+                        CurrPage.Update(false);
+                    end
                 end;
             }
         }

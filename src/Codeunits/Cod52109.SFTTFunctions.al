@@ -8,7 +8,7 @@ codeunit 52109 "ERF SFTT Functions"
     begin
         SFTTSetup.Get();
         SFTTEntry.Reset;
-        SFTTEntry.SetRange(Status, SFTTEntry.Status::Completed);
+        SFTTEntry.SetRange(Status, SFTTEntry.Status::Finished);
         IF SFTTEntry.FindSet() then begin
             repeat
                 CreateOutputJournal(SFTTEntry, SFTTSetup);
@@ -45,7 +45,7 @@ codeunit 52109 "ERF SFTT Functions"
         ItemJnlLine2.Validate("Item No.", GetRPOItemNo(SFTTEntry));
         ItemJnlLine2.Validate("Cap. Unit of Measure Code", 'MINUTES');
         ItemJnlLine2.Modify(true);
-        SFTTEntry.Validate(Status, SFTTEntry.Status::Processed);
+        SFTTEntry.Validate(Processed, true);
         SFTTEntry.Modify(true);
     end;
 
@@ -84,7 +84,7 @@ codeunit 52109 "ERF SFTT Functions"
         SFTTEntry.Validate("Serial No.", SerialNo);
         SFTTEntry.Validate("End Time", CurrentDateTime);
         SFTTEntry.Validate("Duration in Minutes", Round((SFTTEntry."End Time" - SFTTEntry."Start Time") / 60000, 1, '='));
-        SFTTEntry.Validate(Status, SFTTEntry.Status::Completed);
+        SFTTEntry.Validate(Status, SFTTEntry.Status::Finished);
         SFTTEntry.Modify(true);
         Message('Operation Stopped');
     end;
