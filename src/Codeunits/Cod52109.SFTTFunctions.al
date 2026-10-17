@@ -64,6 +64,7 @@ codeunit 52109 "ERF SFTT Functions"
         SFTTEntry.Validate("Start Time", CurrentDateTime);
         SFTTEntry.Validate(Status, SFTTEntry.Status::"In Progress");
         SFTTEntry.Modify(true);
+        Message('Operation Started');
     end;
 
     procedure UpdateShopFloorTimeTrackingEntry(RPONo: Code[20]; LineNo: Integer; OperationNo: Code[10]; OutputQty: Decimal; SerialNo: Code[50])
@@ -80,21 +81,23 @@ codeunit 52109 "ERF SFTT Functions"
         SFTTEntry.FindLast();
         SFTTEntry.Validate("Output Quantity", OutputQty);
         SFTTEntry.Validate("Serial No.", SerialNo);
+        SFTTEntry.Validate("End Time", CurrentDateTime);
         SFTTEntry.Validate("Duration in Minutes", Round((SFTTEntry."End Time" - SFTTEntry."Start Time") / 60000, 1, '='));
         SFTTEntry.Validate(Status, SFTTEntry.Status::Completed);
         SFTTEntry.Modify(true);
+        Message('Operation Stopped');
     end;
 
     procedure ValidateStartOperation()
     var
         SFTTEntry: Record "ERF SFTT Entry";
-        LogoutErrLbl: Label 'PLEASE LOG OUT OF CURRENT ACTIVE PRODUCTION ORDER [NUMBER %1 AND ROUTING STEP %2] BEFORE SCANNING INTO NEW PRODUCTION ORDER, ENTRY NO. %3';
+        LogoutErrLbl: Label 'Please Log Out of Current Active Production Order [Number %1 and Routing Step %2] before Scanning into New Production Order, Entry No. %3';
     begin
         SFTTEntry.Reset();
         SFTTEntry.SetRange("Employee No.", GetEmployeeNo());
         SFTTEntry.SetRange(Status, SFTTEntry.Status::"In Progress");
         if SFTTEntry.FindLast() then
-            Error(StrSubstNo(LogoutErrLbl, SFTTEntry."Prod Order No.", UpperCase(SFTTEntry."Operation Description"), SFTTEntry."Entry No."));
+            Error(StrSubstNo(LogoutErrLbl, SFTTEntry."Prod Order No.", SFTTEntry."Operation Description", SFTTEntry."Entry No."));
     end;
 
     local procedure GetNextEntryNo(): Integer
