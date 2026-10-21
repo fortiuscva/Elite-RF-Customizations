@@ -7,7 +7,7 @@ pageextension 52153 "ERF Sales Return Order Subform" extends "Sales Return Order
             action("ERF NCMForm")
             {
                 ApplicationArea = All;
-                Caption = 'Non Confirming Material Form';
+                Caption = 'Non Conforming Material Form';
                 Image = Print;
                 Promoted = true;
                 PromotedCategory = Process;
