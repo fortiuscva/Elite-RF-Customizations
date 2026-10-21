@@ -22,52 +22,6 @@
       <rd:DataSourceID>67ee5b17-7744-4821-9862-9f3e7c2ae8e2</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="LineNo">
-          <DataField>LineNo</DataField>
-        </Field>
-        <Field Name="SerialNo">
-          <DataField>SerialNo</DataField>
-        </Field>
-        <Field Name="CheckedBy">
-          <DataField>CheckedBy</DataField>
-        </Field>
-        <Field Name="CheckDate">
-          <DataField>CheckDate</DataField>
-        </Field>
-        <Field Name="Qty_to_Ship">
-          <DataField>Qty_to_Ship</DataField>
-        </Field>
-        <Field Name="Qty_to_ShipFormat">
-          <DataField>Qty_to_ShipFormat</DataField>
-        </Field>
-        <Field Name="SalesOrderNo">
-          <DataField>SalesOrderNo</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="LineComment">
-          <DataField>LineComment</DataField>
-        </Field>
-        <Field Name="LineCommentDate">
-          <DataField>LineCommentDate</DataField>
-        </Field>
-        <Field Name="CommentLineNo">
-          <DataField>CommentLineNo</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -366,7 +320,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Qty_to_Ship.Value</Value>
+                                  <Value>=Code.BlankZero(Fields!Qty_to_Ship.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3226,4 +3180,50 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="SerialNo">
+          <DataField>SerialNo</DataField>
+        </Field>
+        <Field Name="CheckedBy">
+          <DataField>CheckedBy</DataField>
+        </Field>
+        <Field Name="CheckDate">
+          <DataField>CheckDate</DataField>
+        </Field>
+        <Field Name="Qty_to_Ship">
+          <DataField>Qty_to_Ship</DataField>
+        </Field>
+        <Field Name="Qty_to_ShipFormat">
+          <DataField>Qty_to_ShipFormat</DataField>
+        </Field>
+        <Field Name="SalesOrderNo">
+          <DataField>SalesOrderNo</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="LineComment">
+          <DataField>LineComment</DataField>
+        </Field>
+        <Field Name="LineCommentDate">
+          <DataField>LineCommentDate</DataField>
+        </Field>
+        <Field Name="CommentLineNo">
+          <DataField>CommentLineNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

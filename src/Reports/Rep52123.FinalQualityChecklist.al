@@ -81,7 +81,7 @@ report 52123 "ERF Final Quality Checklist"
         Clear(CheckDate);
     end;
 
-    procedure GetSerialNo(SalesLineRec: Record "Sales Line"): Code[50]
+    procedure GetSerialNo(SalesLineRec: Record "Sales Line"): Text
     var
         ReservationEntry: Record "Reservation Entry";
         SerialNoList: Text;
@@ -109,7 +109,7 @@ report 52123 "ERF Final Quality Checklist"
 
     var
         CompanyInformation: Record "Company Information";
-        SerialNo: Code[50];
+        SerialNo: Text;
         CheckedBy: Code[50];
         CheckDate: Date;
 }
