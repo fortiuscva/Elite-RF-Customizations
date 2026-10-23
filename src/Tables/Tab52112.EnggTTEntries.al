@@ -1,7 +1,7 @@
 table 52112 "ERF Engg. TT Entries"
 {
     Caption = 'Engineering Time Tracking Entries';
-    DataCaptionFields = "Employee Name", "Project Description", "Task Notes";
+    DataCaptionFields = "Employee Name", "Project Name", "Phase Name", "Task Name";
     DrillDownPageId = "ERF Engg. TT Entries";
     LookupPageId = "ERF Engg. TT Entries";
     DataClassification = CustomerContent;
@@ -47,7 +47,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Phase No..';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Phases";
+            TableRelation = "ERC PMS Project Phases"."Phase No.";
             trigger OnValidate()
             var
                 PMSPhase: Record "ERC PMS Project Phases";
@@ -83,7 +83,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Project Task No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Tasks";
+            TableRelation = "ERC PMS Project Tasks"."Task No.";
             trigger OnValidate()
             var
                 PMSProjectTasks: Record "ERC PMS Project Tasks";
