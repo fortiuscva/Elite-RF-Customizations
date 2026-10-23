@@ -41,8 +41,15 @@ report 52119 "ERF RPO Routing Barcode"
                     { }
                     Column(BarCodeText; BarCodeText)
                     { }
+
                     column(OperationNoCaption; OperationNoCaption)
                     { }
+                    trigger OnAfterGetRecord()
+                    begin
+                        if DoNotPrintBarcode("Prod. Order Routing Line") then
+                            CurrReport.Skip();
+                    end;
+
                 }
             }
         }
@@ -54,6 +61,18 @@ report 52119 "ERF RPO Routing Barcode"
         BarCodeCaption: Label 'BarCode';
         BarCodeText: Text;
         RPOBarCodeCaptionLbl: Label 'Operation Barcode';
+
+    local procedure DoNotPrintBarcode(ProdOrderRoutingLine: Record "Prod. Order Routing Line"): Boolean
+    var
+        WorkCenter: Record "Work Center";
+    begin
+        if ProdOrderRoutingLine.Type <> ProdOrderRoutingLine.Type::"Work Center" then
+            exit(false);
+        if not WorkCenter.Get(ProdOrderRoutingLine."No.") then
+            exit(false);
+
+        exit(WorkCenter."ERF Do Not Print Barcode");
+    end;
 }
 
 
