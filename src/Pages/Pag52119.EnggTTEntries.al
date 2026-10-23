@@ -25,16 +25,36 @@ page 52119 "ERF Engg. TT Entries"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
                 }
+                field("Project Name"; Rec."Project Name")
+                {
+                    ToolTip = 'Specifies the value of the Project Name field.', Comment = '%';
+                }
                 field("Project Description"; Rec."Project Description")
                 {
                     ToolTip = 'Specifies the value of the Project Description field.', Comment = '%';
                 }
-                field("Project Task No."; Rec."Project Task No.")
+                field("Phase No."; Rec."Phase No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Phase No. field.', Comment = '%';
+                }
+                field("Phase Name"; Rec."Phase Name")
+                {
+                    ToolTip = 'Specifies the value of the Phase Name field.', Comment = '%';
+                }
+                field("Phase Description"; Rec."Phase Description")
+                {
+                    ToolTip = 'Specifies the value of the Phase Description field.', Comment = '%';
+                }
+                field("Project Task No."; Rec."Project Task No.")
+                {
                     ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
                 }
-                field("Project Task Description"; Rec."Project Task Description")
+                field("Task Name"; Rec."Task Name")
+                {
+                    ToolTip = 'Specifies the value of the Task Name field.', Comment = '%';
+                }
+                field("Task Notes"; Rec."Task Notes")
                 {
                     ToolTip = 'Specifies the value of the Project Task Description field.', Comment = '%';
                 }

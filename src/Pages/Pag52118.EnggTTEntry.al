@@ -48,6 +48,13 @@ page 52118 "ERF Engg. TT Entry"
                         Caption = 'No.';
                         ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
                     }
+                    field("Project Name"; Rec."Project Name")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Name';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Project Name field.', Comment = '%';
+                    }
                     field("Project Description"; Rec."Project Description")
                     {
                         ApplicationArea = All;
@@ -55,6 +62,31 @@ page 52118 "ERF Engg. TT Entry"
                         Editable = false;
                         ToolTip = 'Specifies the value of the Project Description field.', Comment = '%';
                     }
+                }
+                group(Phase)
+                {
+                    Caption = 'Phase';
+                    field("Phase No."; Rec."Phase No.")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'No.';
+                        ToolTip = 'Specifies the value of the Phase No. field.', Comment = '%';
+                    }
+                    field("Phase Name"; Rec."Phase Name")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Name';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Phase Name field.', Comment = '%';
+                    }
+                    field("Phase Description"; Rec."Phase Description")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Description';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Phase Description field.', Comment = '%';
+                    }
+
                 }
                 group(ProjectTask)
                 {
@@ -65,12 +97,19 @@ page 52118 "ERF Engg. TT Entry"
                         Caption = 'No.';
                         ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
                     }
-                    field("Project Task Description"; Rec."Project Task Description")
+                    field("Task Name"; Rec."Task Name")
                     {
                         ApplicationArea = All;
-                        Caption = 'Decription';
+                        Caption = 'Name';
                         Editable = false;
-                        ToolTip = 'Specifies the value of the Project Task Description field.', Comment = '%';
+                        ToolTip = 'Specifies the value of the Task Name field.', Comment = '%';
+                    }
+                    field("Task Notes"; Rec."Task Notes")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Description';
+                        Editable = false;
+                        ToolTip = 'Specifies the value of the Task Notes field.', Comment = '%';
                     }
                 }
                 group(TimeDuration)
