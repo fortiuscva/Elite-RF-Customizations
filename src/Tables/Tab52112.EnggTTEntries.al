@@ -45,7 +45,7 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(5; "Phase No."; Code[20])
         {
-            Caption = 'Phase No..';
+            Caption = 'Phase No.';
             DataClassification = CustomerContent;
             TableRelation = "ERC PMS Project Phases"."Phase No.";
             trigger OnValidate()
@@ -81,7 +81,7 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(14; "Project Task No."; Code[20])
         {
-            Caption = 'Project Task No.';
+            Caption = 'Task No.';
             DataClassification = CustomerContent;
             TableRelation = "ERC PMS Project Tasks"."Task No.";
             trigger OnValidate()
