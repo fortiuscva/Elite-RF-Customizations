@@ -2,7 +2,6 @@ page 52118 "ERF Engg. TT Entry"
 {
     ApplicationArea = All;
     Caption = 'Engineering Daily Duration Entry';
-    // DeleteAllowed = false;
     PageType = Card;
     SourceTable = "ERF Engg. TT Entries";
     RefreshOnActivate = true;
@@ -22,15 +21,6 @@ page 52118 "ERF Engg. TT Entry"
                     ToolTip = 'Specifies the value of the Entry No. field.', Comment = '%';
                     Visible = false;
                 }
-                // group(Employee)
-                // {
-                //     Caption = 'Employee';
-                // field("Employee No."; Rec."Employee No.")
-                // {
-                //     ApplicationArea = All;
-                //     Caption = 'No.';
-                //     ToolTip = 'Specifies the value of the Employee No. field.', Comment = '%';
-                // }
                 field("Employee Name"; Rec."Employee Name")
                 {
                     ApplicationArea = All;
@@ -38,51 +28,50 @@ page 52118 "ERF Engg. TT Entry"
                     Editable = false;
                     ToolTip = 'Specifies the value of the Employee Name field.', Comment = '%';
                 }
-                // }
                 group(Project)
                 {
                     Caption = 'Project';
                     field("Project No."; Rec."Project No.")
                     {
                         ApplicationArea = All;
-                        Caption = 'No.';
+                        // Caption = 'No.';
                         ToolTip = 'Specifies the value of the Project No. field.', Comment = '%';
                     }
                     field("Project Name"; Rec."Project Name")
                     {
                         ApplicationArea = All;
-                        Caption = 'Name';
+                        // Caption = 'Name';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Project Name field.', Comment = '%';
                     }
                     field("Project Description"; Rec."Project Description")
                     {
                         ApplicationArea = All;
-                        Caption = 'Description';
+                        // Caption = 'Description';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Project Description field.', Comment = '%';
                     }
                 }
                 group(Phase)
                 {
-                    Caption = 'Phase';
+                    Caption = 'Project Phase';
                     field("Phase No."; Rec."Phase No.")
                     {
                         ApplicationArea = All;
-                        Caption = 'No.';
+                        // Caption = 'No.';
                         ToolTip = 'Specifies the value of the Phase No. field.', Comment = '%';
                     }
                     field("Phase Name"; Rec."Phase Name")
                     {
                         ApplicationArea = All;
-                        Caption = 'Name';
+                        // Caption = 'Name';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Phase Name field.', Comment = '%';
                     }
                     field("Phase Description"; Rec."Phase Description")
                     {
                         ApplicationArea = All;
-                        Caption = 'Description';
+                        // Caption = 'Description';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Phase Description field.', Comment = '%';
                     }
@@ -94,20 +83,20 @@ page 52118 "ERF Engg. TT Entry"
                     field("Project Task No."; Rec."Project Task No.")
                     {
                         ApplicationArea = All;
-                        Caption = 'No.';
+                        // Caption = 'No.';
                         ToolTip = 'Specifies the value of the Project Task No. field.', Comment = '%';
                     }
                     field("Task Name"; Rec."Task Name")
                     {
                         ApplicationArea = All;
-                        Caption = 'Name';
+                        // Caption = 'Name';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Task Name field.', Comment = '%';
                     }
                     field("Task Notes"; Rec."Task Notes")
                     {
                         ApplicationArea = All;
-                        Caption = 'Description';
+                        // Caption = 'Description';
                         Editable = false;
                         ToolTip = 'Specifies the value of the Task Notes field.', Comment = '%';
                     }
