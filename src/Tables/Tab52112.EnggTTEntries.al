@@ -45,7 +45,7 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(5; "Phase No."; Code[20])
         {
-            Caption = 'Project Phase No.';
+            Caption = 'Phase No.';
             DataClassification = CustomerContent;
             TableRelation = "ERC PMS Project Phases"."Phase No.";
             trigger OnValidate()
@@ -61,7 +61,7 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(16; "Phase Name"; Text[50])
         {
-            caption = 'Project Phase Name';
+            caption = 'Phase Name';
             DataClassification = CustomerContent;
         }
         field(8; "Duration in Minutes"; Integer)
@@ -76,12 +76,12 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(12; "Phase Description"; Text[2048])
         {
-            Caption = 'Project Phase Description';
+            Caption = 'Phase Description';
             DataClassification = CustomerContent;
         }
         field(14; "Project Task No."; Code[20])
         {
-            Caption = 'Project Task No.';
+            Caption = 'Task No.';
             DataClassification = CustomerContent;
             TableRelation = "ERC PMS Project Tasks"."Task No.";
             trigger OnValidate()
@@ -97,12 +97,12 @@ table 52112 "ERF Engg. TT Entries"
         }
         field(17; "Task Name"; Text[50])
         {
-            caption = 'Project Task Name';
+            caption = 'Task Name';
             DataClassification = CustomerContent;
         }
         field(18; "Task Notes"; Text[2048])
         {
-            Caption = 'Project Task Notes';
+            Caption = 'Task Notes';
             DataClassification = CustomerContent;
         }
 
