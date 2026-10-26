@@ -15,7 +15,6 @@ pageextension 52153 "ERF Sales Return Order Subform" extends "Sales Return Order
 
                 trigger OnAction()
                 var
-                    NCMReport: Report "Non Confirming Material Form";
                     SalesLine: Record "Sales Line";
                 begin
                     if Rec."Document Type" <> Rec."Document Type"::"Return Order" then
@@ -25,7 +24,7 @@ pageextension 52153 "ERF Sales Return Order Subform" extends "Sales Return Order
                     SalesLine.SetRange(Type, Rec.Type);
                     SalesLine.SetRange("No.", Rec."No.");
 
-                    Report.RunModal(Report::"Non Confirming Material Form", true, false, SalesLine);
+                    Report.RunModal(Report::"Non Conforming Material Form", true, false, SalesLine);
                     CurrPage.Update(false);
                 end;
             }
