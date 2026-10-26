@@ -1,7 +1,7 @@
-report 52124 "Non Confirming Material Form"
+report 52124 "Non Conforming Material Form"
 {
     ApplicationArea = All;
-    Caption = 'Non-Confirming Material Form';
+    Caption = 'Non-Conforming Material Form';
     UsageCategory = ReportsAndAnalysis;
     DefaultLayout = RDLC;
     RDLCLayout = './src/Reports/Layouts/NCMForm.rdl';
