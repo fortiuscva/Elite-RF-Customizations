@@ -2,7 +2,7 @@
   "id": "4eeb772b-d90d-44ef-a21b-ee8b44c7c461",
   "name": "Elite RF Customizations",
   "publisher": "Adcirrus",
-  "version": "23.0.0.119",
+  "version": "23.0.0.121",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -34,6 +34,12 @@
       "name": "RUX Toolbox Common Objects",
       "publisher": "RUX Software",
       "version": "27.0.1.86"
+    },
+    {
+      "id": "38cc4b1d-7e60-4e1f-bae1-dab445c006ce",
+      "name": "Project Management",
+      "publisher": "RUX Software",
+      "version": "27.0.0.25"
     }
   ],
   "screenshots": [],
