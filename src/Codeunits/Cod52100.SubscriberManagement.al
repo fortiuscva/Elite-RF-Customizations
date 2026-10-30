@@ -226,6 +226,7 @@ codeunit 52100 "ERF Subscriber Management"
     var
         EngineeringGroup: Record "ERF Engineering Group";
         EngineeringGroupLine: Record "ERF Engineering Group Line";
+        F830AECNLogRevA: Record "ERF F-830-4 ECN Log Rev A";
     begin
         case DocumentAttachment."Table ID" of
 
@@ -246,6 +247,14 @@ codeunit 52100 "ERF Subscriber Management"
                     if EngineeringGroupLine.FindFirst() then
                         RecRef.GetTable(EngineeringGroupLine);
                 end;
+            Database::"ERF F-830-4 ECN Log Rev A":
+                begin
+                    RecRef.Open(Database::"ERF F-830-4 ECN Log Rev A");
+
+                    if F830AECNLogRevA.Get(DocumentAttachment."No.") then
+                        RecRef.GetTable(F830AECNLogRevA);
+                end;
+
         end;
     end;
 
@@ -268,6 +277,12 @@ codeunit 52100 "ERF Subscriber Management"
                     FieldRef := RecRef.Field(5);
                     DocumentAttachment.Validate("No.", Format(FieldRef.Value));
                 end;
+            Database::"ERF F-830-4 ECN Log Rev A":
+                begin
+                    FieldRef := RecRef.Field(1);
+                    DocumentAttachment.Validate("No.", Format(FieldRef.Value));
+                end;
+
         end;
     end;
 
