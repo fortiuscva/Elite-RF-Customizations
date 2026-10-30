@@ -63,5 +63,17 @@ page 52109 "ERF F-830-4 ECN Log Rev A List"
                 }
             }
         }
+        area(FactBoxes)
+        {
+            part("Attached Documents List"; "Doc. Attachment List Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Documents';
+                UpdatePropagation = Both;
+
+                SubPageLink = "Table ID" = const(Database::"ERF F-830-4 ECN Log Rev A"),
+                              "No." = field("ECN Number");
+            }
+        }
     }
 }
