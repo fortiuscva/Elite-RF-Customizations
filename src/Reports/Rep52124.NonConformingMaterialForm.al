@@ -38,7 +38,7 @@ report 52124 "Non Conforming Material Form"
     }
     labels
     {
-        NCMCaptionLbl = 'Nonconforming Material (NCM)';
+        NCMCaptionLbl = 'Non Conforming Material (NCM)';
         FormNoCaptionLbl = 'Form Number';
         FormRevCaptionLbl = 'Form Rev';
         PageCaptionLbl = 'Page';
