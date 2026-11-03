@@ -84,14 +84,25 @@ report 52123 "ERF Final Quality Checklist"
     procedure GetSerialNo(SalesLineRec: Record "Sales Line"): Code[50]
     var
         ReservationEntry: Record "Reservation Entry";
+        SerialNoList: Text;
     begin
         ReservationEntry.Reset();
         ReservationEntry.SetRange("Source Type", Database::"Sales Line");
         ReservationEntry.SetRange("Source ID", SalesLineRec."Document No.");
         ReservationEntry.SetRange("Source Ref. No.", SalesLineRec."Line No.");
+        ReservationEntry.SetRange("Reservation Status", ReservationEntry."Reservation Status"::Surplus, ReservationEntry."Reservation Status"::Prospect);
 
-        if ReservationEntry.FindFirst() then
-            exit(ReservationEntry."Serial No.");
+        if ReservationEntry.FindSet() then
+            repeat
+                if ReservationEntry."Serial No." <> '' then begin
+                    if SerialNoList <> '' then
+                        SerialNoList += ', ';
+
+                    SerialNoList += ReservationEntry."Serial No.";
+                end;
+            until ReservationEntry.Next() = 0;
+
+        exit(SerialNoList);
 
         exit('');
     end;
