@@ -4,62 +4,43 @@ report 52123 "ERF Final Quality Checklist"
     Caption = 'Final Quality Checklist';
     UsageCategory = ReportsAndAnalysis;
     RDLCLayout = './src/Reports/Layouts/FinalQualityChecklist.rdl';
+
     dataset
     {
-        dataitem(SalesHeader; "Sales Header")
+        dataitem(SalesLine; "Sales Line")
         {
-            DataItemTableView = where("Document Type" = const(Order));
-
-            // RequestFilterFields = "No.", "Sell-to Customer No.", "Order Date";
-
-            column(SalesOrderNo; "No.")
+            DataItemTableView = where("Document Type" = const(Order), Type = const(Item));
+            RequestFilterFields = "Document Type", "Document No.", "Line No.", Type, "No.";
+            dataitem(SalesHeader; "Sales Header")
             {
+                DataItemLink = "Document Type" = field("Document Type"), "No." = field("Document No.");
+
+                column(SalesOrderNo; "No.")
+                { }
+                column(Picture; CompanyInformation.Picture)
+                { }
             }
-            column(OrderDate; "Order Date")
-            {
-            }
-            column(CustomerNo; "Sell-to Customer No.")
-            {
-            }
-            column(CustomerName; "Sell-to Customer Name")
-            {
-            }
-            column(Picture; CompanyInformation.Picture) { }
 
-            dataitem(SalesLine; "Sales Line")
-            {
-                DataItemLink = "Document Type" = field("Document Type"), "Document No." = field("No.");
+            column(ItemNo; SalesLine."No.")
+            { }
+            column(LineNo; SalesLine."Line No.")
+            { }
+            column(SerialNo; SerialNo)
+            { }
+            column(CheckedBy; CheckedBy)
+            { }
+            column(CheckDate; CheckDate)
+            { }
 
-                DataItemTableView = where(Type = const(Item), Quantity = filter(> 0));
-
-                column(ItemNo; "No.")
-                {
-                }
-                column(ItemDescription; Description)
-                {
-                }
-                column(SerialNo; SerialNo)
-                {
-                }
-
-                column(CheckedBy; CheckedBy)
-                {
-                }
-
-                column(CheckDate; CheckDate)
-                {
-                }
-                trigger OnAfterGetRecord()
-                begin
-                    SerialNo := GetSerialNo(SalesLine);
-
-                    CheckedBy := UserId;
-
-                    CheckDate := Today;
-                end;
-            }
+            trigger OnAfterGetRecord()
+            begin
+                SerialNo := GetSerialNo(SalesLine);
+                CheckedBy := UserId;
+                CheckDate := Today;
+            end;
         }
     }
+
     labels
     {
         PartCaptionLbl = 'Part:';
@@ -67,12 +48,17 @@ report 52123 "ERF Final Quality Checklist"
         DateCaptionLbl = 'Date:';
         SOCaptionLbl = 'SO:';
         CheckedByCaptionLbl = 'Checked By:';
-        NoOfUnitsCaptionLbl = 'No. Of Units';
+        NoOfUnitsCaptionLbl = 'No. Of Units:';
     }
+
     trigger OnPreReport()
     begin
         CompanyInformation.Get('');
         CompanyInformation.CalcFields(Picture);
+
+        Clear(SerialNo);
+        Clear(CheckedBy);
+        Clear(CheckDate);
     end;
 
     procedure GetSerialNo(SalesLineRec: Record "Sales Line"): Code[50]
