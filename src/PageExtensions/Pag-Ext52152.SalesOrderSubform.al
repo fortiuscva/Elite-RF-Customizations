@@ -26,6 +26,17 @@ pageextension 52152 "ERF Sales Order Subform" extends "Sales Order Subform"
                     CurrPage.Update(false);
                 end;
             }
+            action("ERF Sales Line Comments")
+            {
+                ApplicationArea = Comments;
+                Caption = 'Sales Line Comments';
+                Image = ViewComments;
+                RunObject = Page "Sales Comment Sheet";
+                RunPageLink = "Document Type" = field("Document Type"),
+                  "No." = field("Document No."),
+                  "Document Line No." = field("Line No.");
+                ToolTip = 'View or add comments for the selected sales line.';
+            }
         }
     }
 }
