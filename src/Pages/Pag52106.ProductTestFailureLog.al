@@ -5,7 +5,6 @@ page 52106 "ERF Product Test Failure Log"
     PageType = List;
     SourceTable = "ERF Product Test Failure Log";
     UsageCategory = Lists;
-    Editable = false;
 
     layout
     {
@@ -13,6 +12,7 @@ page 52106 "ERF Product Test Failure Log"
         {
             repeater(General)
             {
+                Editable = AllowEditRevB;
                 field("Issue Date"; Rec."Issue Date")
                 {
                     ToolTip = 'Specifies the value of the Issue Date field.', Comment = '%';
@@ -92,10 +92,22 @@ page 52106 "ERF Product Test Failure Log"
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        UserSetup: Record "User Setup";
+    begin
+        AllowEditRevB := false;
+
+        if UserSetup.Get(UserId()) then
+            AllowEditRevB := UserSetup."ERF Allow Edit Rev B";
+    end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         if Rec."Issue Date" = 0D then
             Rec."Issue Date" := Today;
     end;
+
+    var
+        AllowEditRevB: Boolean;
 }
