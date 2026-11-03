@@ -46,7 +46,7 @@ report 52123 "ERF Final Quality Checklist"
             { }
             column(CheckedBy; CheckedBy)
             { }
-            column(CheckDate; CheckDate)
+            column(CheckDate; SystemCreatedAt)
             { }
             column(Qty_to_Ship; "Qty. to Ship")
             { }
