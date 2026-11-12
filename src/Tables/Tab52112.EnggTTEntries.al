@@ -28,15 +28,40 @@ table 52112 "ERF Engg. TT Entries"
             var
                 PMSProject: Record "ERC PMS Project";
             begin
-                if (("Project No." <> xRec."Project No.") or ("Project No." = '')) then
-                    "Phase No." := '';
                 if (("Project No." <> xRec."Project No.") and ("Project No." <> '')) then begin
                     PMSProject.Get("Project No.");
                     Validate("Project Name", PMSProject."Project Name");
                     Validate("Project Description", PMSProject."Project Description");
-
+                    "Phase No." := '';
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
+                end else begin
+                    validate("Project Name", '');
+                    Validate("Project Description", '');
+                    "Phase No." := '';
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
             end;
+
+            // trigger OnLookup()
+            // var
+            //     PMSProject: Record "ERC PMS Project";
+            //     PMSProjectList: Page "ERC PMS Project List";
+            // begin
+            //     PMSProjectList.LookupMode(true);
+
+            //     if PMSProjectList.RunModal() = Action::LookupOK then begin
+            //         PMSProjectList.GetRecord(PMSProject);
+            //         Validate("Project No.", PMSProject."Project No.");
+            //     end;
+            // end;
         }
         field(15; "Project Name"; text[50])
         {
@@ -47,7 +72,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Phase No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Phases"."Phase No.";
+            TableRelation = "ERC PMS Project Phases"."Phase No." where("Project No." = field("Project No."));
             trigger OnValidate()
             var
                 PMSPhase: Record "ERC PMS Project Phases";
@@ -56,6 +81,15 @@ table 52112 "ERF Engg. TT Entries"
                     PMSPhase.Get("Project No.", "Phase No.");
                     Validate("Phase Name", PMSPhase."Phase Name");
                     Validate("Phase Description", PMSPhase."Phase Description");
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
+                end else begin
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
             end;
         }
@@ -83,7 +117,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Task No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Tasks"."Task No.";
+            TableRelation = "ERC PMS Project Tasks"."Task No." where("Project No." = field("Project No."), "Phase No." = field("Phase No."));
             trigger OnValidate()
             var
                 PMSProjectTasks: Record "ERC PMS Project Tasks";
@@ -92,6 +126,9 @@ table 52112 "ERF Engg. TT Entries"
                     PMSProjectTasks.Get("Project No.", "Phase No.", "Project Task No.");
                     Validate("Task Name", PMSProjectTasks."Task Name");
                     Validate("Task Notes", PMSProjectTasks."Task Notes");
+                end else begin
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
             end;
         }
