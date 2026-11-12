@@ -28,6 +28,12 @@
       "name": "Shop Floor Time Tracker",
       "publisher": "Adcirrus",
       "version": "1.0.0.0"
+    },
+    {
+      "id": "16bdcfca-9d1b-4c63-8dcf-f289affe245c",
+      "name": "RUX Toolbox Common Objects",
+      "publisher": "RUX Software",
+      "version": "27.0.1.86"
     }
   ],
   "screenshots": [],
