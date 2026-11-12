@@ -32,6 +32,12 @@ table 52112 "ERF Engg. TT Entries"
                     PMSProject.Get("Project No.");
                     Validate("Project Name", PMSProject."Project Name");
                     Validate("Project Description", PMSProject."Project Description");
+                    "Phase No." := '';
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end else begin
                     validate("Project Name", '');
                     Validate("Project Description", '');
@@ -63,6 +69,9 @@ table 52112 "ERF Engg. TT Entries"
                     PMSPhase.Get("Project No.", "Phase No.");
                     Validate("Phase Name", PMSPhase."Phase Name");
                     Validate("Phase Description", PMSPhase."Phase Description");
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end else begin
                     Validate("Phase Name", '');
                     Validate("Phase Description", '');
