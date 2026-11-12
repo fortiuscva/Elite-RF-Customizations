@@ -1,7 +1,7 @@
 table 52112 "ERF Engg. TT Entries"
 {
     Caption = 'Engineering Time Tracking Entries';
-    DataCaptionFields = "Employee Name", "Project Name", "Phase Name", "Task Name";
+    DataCaptionFields = "Employee Name", "Project Description", "Project Task Description";
     DrillDownPageId = "ERF Engg. TT Entries";
     LookupPageId = "ERF Engg. TT Entries";
     DataClassification = CustomerContent;
@@ -23,126 +23,56 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Project No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project";
+            TableRelation = Job."No.";
             trigger OnValidate()
             var
-                PMSProject: Record "ERC PMS Project";
+                Job: Record Job;
             begin
                 if (("Project No." <> xRec."Project No.") and ("Project No." <> '')) then begin
-                    PMSProject.Get("Project No.");
-                    Validate("Project Name", PMSProject."Project Name");
-                    Validate("Project Description", PMSProject."Project Description");
-                    "Phase No." := '';
-                    Validate("Phase Name", '');
-                    Validate("Phase Description", '');
-                    "Project Task No." := '';
-                    Validate("Task Name", '');
-                    Validate("Task Notes", '');
+                    Job.Get("Project No.");
+                    Validate("Project Description", Job."Description");
+                    Validate("Project Task No.", '');
+                    Validate("Project Task Description", '');
                 end else begin
-                    validate("Project Name", '');
                     Validate("Project Description", '');
-                    "Phase No." := '';
-                    Validate("Phase Name", '');
-                    Validate("Phase Description", '');
-                    "Project Task No." := '';
-                    Validate("Task Name", '');
-                    Validate("Task Notes", '');
+                    Validate("Project Task No.", '');
+                    Validate("Project Task Description", '');
                 end;
             end;
-
-            // trigger OnLookup()
-            // var
-            //     PMSProject: Record "ERC PMS Project";
-            //     PMSProjectList: Page "ERC PMS Project List";
-            // begin
-            //     PMSProjectList.LookupMode(true);
-
-            //     if PMSProjectList.RunModal() = Action::LookupOK then begin
-            //         PMSProjectList.GetRecord(PMSProject);
-            //         Validate("Project No.", PMSProject."Project No.");
-            //     end;
-            // end;
         }
-        field(15; "Project Name"; text[50])
+        field(5; "Project Description"; Text[100])
         {
-            Caption = 'Project Name';
+            Caption = 'Project Description';
             DataClassification = CustomerContent;
         }
-        field(5; "Phase No."; Code[20])
+        field(6; "Project Task No."; Code[20])
         {
-            Caption = 'Phase No.';
+            Caption = 'Task No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Phases"."Phase No." where("Project No." = field("Project No."));
+            TableRelation = "Job Task"."Job Task No." where("Job No." = field("Project No."));
             trigger OnValidate()
             var
-                PMSPhase: Record "ERC PMS Project Phases";
+                JobTask: Record "Job Task";
             begin
-                if (("Phase No." <> xRec."Phase No.") and ("Phase No." <> '')) then begin
-                    PMSPhase.Get("Project No.", "Phase No.");
-                    Validate("Phase Name", PMSPhase."Phase Name");
-                    Validate("Phase Description", PMSPhase."Phase Description");
-                    "Project Task No." := '';
-                    Validate("Task Name", '');
-                    Validate("Task Notes", '');
-                end else begin
-                    Validate("Phase Name", '');
-                    Validate("Phase Description", '');
-                    "Project Task No." := '';
-                    Validate("Task Name", '');
-                    Validate("Task Notes", '');
-                end;
+                if (("Project Task No." <> xRec."Project Task No.") and ("Project Task No." <> '')) then begin
+                    JobTask.Get("Project No.", "Project Task No.");
+                    Validate("Project Task Description", JobTask.Description);
+                end
+                else
+                    Validate("Project Task Description", '');
             end;
         }
-        field(16; "Phase Name"; Text[50])
+        field(7; "Project Task Description"; Text[100])
         {
-            caption = 'Phase Name';
+            caption = 'Task Description';
             DataClassification = CustomerContent;
         }
+
         field(8; "Duration in Minutes"; Integer)
         {
             Caption = 'Duration in Minutes';
             DataClassification = CustomerContent;
         }
-        field(11; "Project Description"; Text[2048])
-        {
-            Caption = 'Project Description';
-            DataClassification = CustomerContent;
-        }
-        field(12; "Phase Description"; Text[2048])
-        {
-            Caption = 'Phase Description';
-            DataClassification = CustomerContent;
-        }
-        field(14; "Project Task No."; Code[20])
-        {
-            Caption = 'Task No.';
-            DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Tasks"."Task No." where("Project No." = field("Project No."), "Phase No." = field("Phase No."));
-            trigger OnValidate()
-            var
-                PMSProjectTasks: Record "ERC PMS Project Tasks";
-            begin
-                if (("Project Task No." <> xRec."Project Task No.") and ("Project Task No." <> '')) then begin
-                    PMSProjectTasks.Get("Project No.", "Phase No.", "Project Task No.");
-                    Validate("Task Name", PMSProjectTasks."Task Name");
-                    Validate("Task Notes", PMSProjectTasks."Task Notes");
-                end else begin
-                    Validate("Task Name", '');
-                    Validate("Task Notes", '');
-                end;
-            end;
-        }
-        field(17; "Task Name"; Text[50])
-        {
-            caption = 'Task Name';
-            DataClassification = CustomerContent;
-        }
-        field(18; "Task Notes"; Text[2048])
-        {
-            Caption = 'Task Notes';
-            DataClassification = CustomerContent;
-        }
-
         field(13; Comments; BLOB)
         {
             Caption = 'Task Description';
@@ -158,10 +88,10 @@ table 52112 "ERF Engg. TT Entries"
     }
     fieldgroups
     {
-        fieldgroup(DropDown; "Employee Name", "Project Description", "Task Notes")
+        fieldgroup(DropDown; "Employee Name", "Project Description", "Project Task Description")
         {
         }
-        fieldgroup(Brick; "Employee Name", "Project Description", "Task Notes")
+        fieldgroup(Brick; "Employee Name", "Project Description", "Project Task Description")
         {
         }
     }
