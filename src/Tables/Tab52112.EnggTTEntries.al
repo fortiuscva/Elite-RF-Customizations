@@ -60,7 +60,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Phase No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Phases"."Phase No.";
+            TableRelation = "ERC PMS Project Phases"."Phase No." where("Project No." = field("Project No."));
             trigger OnValidate()
             var
                 PMSPhase: Record "ERC PMS Project Phases";
@@ -105,7 +105,7 @@ table 52112 "ERF Engg. TT Entries"
         {
             Caption = 'Task No.';
             DataClassification = CustomerContent;
-            TableRelation = "ERC PMS Project Tasks"."Task No.";
+            TableRelation = "ERC PMS Project Tasks"."Task No." where("Project No." = field("Project No."), "Phase No." = field("Phase No."));
             trigger OnValidate()
             var
                 PMSProjectTasks: Record "ERC PMS Project Tasks";
