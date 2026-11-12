@@ -48,8 +48,20 @@ table 52112 "ERF Engg. TT Entries"
                     Validate("Task Name", '');
                     Validate("Task Notes", '');
                 end;
-
             end;
+
+            // trigger OnLookup()
+            // var
+            //     PMSProject: Record "ERC PMS Project";
+            //     PMSProjectList: Page "ERC PMS Project List";
+            // begin
+            //     PMSProjectList.LookupMode(true);
+
+            //     if PMSProjectList.RunModal() = Action::LookupOK then begin
+            //         PMSProjectList.GetRecord(PMSProject);
+            //         Validate("Project No.", PMSProject."Project No.");
+            //     end;
+            // end;
         }
         field(15; "Project Name"; text[50])
         {
