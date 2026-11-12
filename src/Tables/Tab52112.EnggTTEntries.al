@@ -28,14 +28,21 @@ table 52112 "ERF Engg. TT Entries"
             var
                 PMSProject: Record "ERC PMS Project";
             begin
-                if (("Project No." <> xRec."Project No.") or ("Project No." = '')) then
-                    "Phase No." := '';
                 if (("Project No." <> xRec."Project No.") and ("Project No." <> '')) then begin
                     PMSProject.Get("Project No.");
                     Validate("Project Name", PMSProject."Project Name");
                     Validate("Project Description", PMSProject."Project Description");
-
+                end else begin
+                    validate("Project Name", '');
+                    Validate("Project Description", '');
+                    "Phase No." := '';
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
+
             end;
         }
         field(15; "Project Name"; text[50])
@@ -56,6 +63,12 @@ table 52112 "ERF Engg. TT Entries"
                     PMSPhase.Get("Project No.", "Phase No.");
                     Validate("Phase Name", PMSPhase."Phase Name");
                     Validate("Phase Description", PMSPhase."Phase Description");
+                end else begin
+                    Validate("Phase Name", '');
+                    Validate("Phase Description", '');
+                    "Project Task No." := '';
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
             end;
         }
@@ -92,6 +105,9 @@ table 52112 "ERF Engg. TT Entries"
                     PMSProjectTasks.Get("Project No.", "Phase No.", "Project Task No.");
                     Validate("Task Name", PMSProjectTasks."Task Name");
                     Validate("Task Notes", PMSProjectTasks."Task Notes");
+                end else begin
+                    Validate("Task Name", '');
+                    Validate("Task Notes", '');
                 end;
             end;
         }
