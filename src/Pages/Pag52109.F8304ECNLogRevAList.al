@@ -68,7 +68,7 @@ page 52109 "ERF F-830-4 ECN Log Rev A List"
             part("Attached Documents List"; "Doc. Attachment List Factbox")
             {
                 ApplicationArea = All;
-                Caption = 'Documents';
+                Caption = 'Attachments';
                 UpdatePropagation = Both;
 
                 SubPageLink = "Table ID" = const(Database::"ERF F-830-4 ECN Log Rev A"),
