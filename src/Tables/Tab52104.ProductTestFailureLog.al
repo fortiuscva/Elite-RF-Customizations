@@ -180,6 +180,11 @@ table 52104 "ERF Product Test Failure Log"
     }
     trigger OnInsert()
     begin
-        Error('F-812-6 Rev B is obsolete. Use Rev C.');
+        if UserSetup.Get(UserId) then
+            if not (UserSetup."ERF Allow Edit REV B") then
+                Error('F-812-6 Rev B is obsolete. Use Rev C.');
     end;
+
+    var
+        UserSetup: Record "User Setup";
 }
