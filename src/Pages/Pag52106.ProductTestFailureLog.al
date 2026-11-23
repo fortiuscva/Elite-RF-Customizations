@@ -104,10 +104,14 @@ page 52106 "ERF Product Test Failure Log"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        if UserSetup.Get(UserId) then
+            if not (UserSetup."ERF Allow Edit REV B") then
+                Error('F-812-6 Rev B is obsolete. Use Rev C.');
         if Rec."Issue Date" = 0D then
             Rec."Issue Date" := Today;
     end;
 
     var
         AllowEditRevB: Boolean;
+        UserSetup: Record "User Setup";
 }

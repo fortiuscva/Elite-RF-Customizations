@@ -96,49 +96,9 @@ page 52123 "Product Test Failure Log Rev C"
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action(CopyRevBRecords)
-            {
-                Caption = 'Copy Rev B Records';
-                ApplicationArea = All;
-                Image = Copy;
-
-                trigger OnAction()
-                var
-                begin
-                    CopyRecords();
-                end;
-            }
-        }
-    }
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         if Rec."Issue Date" = 0D then
             Rec."Issue Date" := Today;
     end;
-
-    procedure CopyRecords()
-    var
-        RevB: Record "ERF Product Test Failure Log";
-        RevC: Record "Product Test Failure Log Rev C";
-        IsCopied: Boolean;
-    begin
-        if RevB.FindSet() then begin
-            repeat
-                if not RevC.Get(RevB."Entry No.") then begin
-                    RevC.Init();
-                    RevC.TransferFields(RevB);
-                    RevC.Insert(True);
-                end;
-            until RevB.Next() = 0;
-
-            Message('Rev B records copied to Rev C.');
-        end
-        else
-            Message('No records there to copy to Rev C ');
-    end;
-
 }
