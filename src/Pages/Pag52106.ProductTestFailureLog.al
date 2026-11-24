@@ -5,6 +5,7 @@ page 52106 "ERF Product Test Failure Log"
     PageType = List;
     SourceTable = "ERF Product Test Failure Log";
     UsageCategory = Lists;
+    Editable = false;
 
     layout
     {
@@ -91,6 +92,7 @@ page 52106 "ERF Product Test Failure Log"
             }
         }
     }
+
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         if Rec."Issue Date" = 0D then

@@ -170,9 +170,7 @@ table 52104 "ERF Product Test Failure Log"
             DataClassification = CustomerContent;
             Editable = false;
         }
-
     }
-
     keys
     {
         key(PK; "Entry No.")
@@ -180,4 +178,8 @@ table 52104 "ERF Product Test Failure Log"
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    begin
+        Error('F-812-6 Rev B is obsolete. Use Rev C.');
+    end;
 }
