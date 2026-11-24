@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <am:AuthoringMetadata>
     <am:CreatedBy>
@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-11-12T16:57:16.4203724Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-11-23T17:54:36.3261406Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,25 +22,6 @@
       <rd:DataSourceID>7e9420e4-aecb-4c8d-923e-abaa849423a1</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="PONo">
-          <DataField>PONo</DataField>
-        </Field>
-        <Field Name="PartNo">
-          <DataField>PartNo</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -474,7 +455,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.08053in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -536,7 +517,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.37917in</Height>
+                  <Height>0.29864in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3951,7 +3932,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.29864in</Height>
+                  <Height>0.19864in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4026,7 +4007,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.12917in</Top>
+                              <Top>0.04167in</Top>
                               <Left>0.0675in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4075,7 +4056,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.13053in</Top>
+                              <Top>0.04303in</Top>
                               <Left>0.77756in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4125,7 +4106,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.325in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4155,7 +4135,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.97756in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4716,7 +4695,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.175in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4819,7 +4798,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.29864in</Height>
+                  <Height>0.19311in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4894,7 +4873,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.12917in</Top>
+                              <Top>0.05417in</Top>
                               <Left>0.0675in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4943,7 +4922,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.13053in</Top>
+                              <Top>0.04303in</Top>
                               <Left>0.77756in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4993,7 +4972,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.325in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -5023,7 +5001,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.97756in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -5073,7 +5050,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.15in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -5162,7 +5139,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.75in</Height>
+                  <Height>0.6in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -5594,7 +5571,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.0375in</Top>
             <Left>0.175in</Left>
-            <Height>9.90741in</Height>
+            <Height>9.12688in</Height>
             <Width>7.65994in</Width>
             <Style>
               <Border>
@@ -5603,7 +5580,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.94491in</Height>
+        <Height>9.16438in</Height>
         <Style />
       </Body>
       <Width>7.83494in</Width>
@@ -5739,7 +5716,6 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox122</rd:DefaultName>
-              <Top>0in</Top>
               <Height>0.3in</Height>
               <Width>7.825in</Width>
               <Style>
@@ -5868,4 +5844,23 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="PONo">
+          <DataField>PONo</DataField>
+        </Field>
+        <Field Name="PartNo">
+          <DataField>PartNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
