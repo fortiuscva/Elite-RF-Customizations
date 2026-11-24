@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-10-30T16:50:26.6829512Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-11-23T17:54:36.3261406Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -22,25 +22,6 @@
       <rd:DataSourceID>7e9420e4-aecb-4c8d-923e-abaa849423a1</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="PONo">
-          <DataField>PONo</DataField>
-        </Field>
-        <Field Name="PartNo">
-          <DataField>PartNo</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -474,7 +455,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.08053in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -528,7 +509,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>4</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -537,7 +517,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.37917in</Height>
+                  <Height>0.29864in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2627,7 +2607,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PCB / PCBA Quality Inspection Checklist</Value>
+                                  <Value>PCBA Quality Inspection Checklist</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -3952,7 +3932,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.29864in</Height>
+                  <Height>0.19864in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4027,7 +4007,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.12917in</Top>
+                              <Top>0.04167in</Top>
                               <Left>0.0675in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4076,7 +4056,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.13053in</Top>
+                              <Top>0.04303in</Top>
                               <Left>0.77756in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4126,7 +4106,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.325in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4156,7 +4135,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.97756in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4460,7 +4438,264 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.29864in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Warpage no more than 2x thickness of the PCB</Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Normal</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle17">
+                          <ReportItems>
+                            <Textbox Name="Textbox183">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox123</rd:DefaultName>
+                              <Top>0.12917in</Top>
+                              <Left>0.0675in</Left>
+                              <Height>0.3cm</Height>
+                              <Width>0.4315cm</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <TopBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </TopBorder>
+                                <BottomBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </BottomBorder>
+                                <LeftBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </LeftBorder>
+                                <RightBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </RightBorder>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox184">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox123</rd:DefaultName>
+                              <Top>0.13053in</Top>
+                              <Left>0.77756in</Left>
+                              <Height>0.3cm</Height>
+                              <Width>0.4315cm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <TopBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </TopBorder>
+                                <BottomBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </BottomBorder>
+                                <LeftBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </LeftBorder>
+                                <RightBorder>
+                                  <Color>Black</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1pt</Width>
+                                </RightBorder>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox186">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Yes</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox123</rd:DefaultName>
+                              <Top>0.10553in</Top>
+                              <Left>0.325in</Left>
+                              <Height>0.4905cm</Height>
+                              <Width>0.78075cm</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox191">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>N/A</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox123</rd:DefaultName>
+                              <Top>0.10553in</Top>
+                              <Left>0.97756in</Left>
+                              <Height>0.4905cm</Height>
+                              <Width>0.78075cm</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                          </Style>
+                        </Rectangle>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.175in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4512,7 +4747,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PCB Quality Inspection Checklist</Value>
+                                  <Value>PCBA Quality Inspection Checklist</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -4563,7 +4798,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.29864in</Height>
+                  <Height>0.19311in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4638,7 +4873,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.12917in</Top>
+                              <Top>0.05417in</Top>
                               <Left>0.0675in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4687,7 +4922,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.13053in</Top>
+                              <Top>0.04303in</Top>
                               <Left>0.77756in</Left>
                               <Height>0.3cm</Height>
                               <Width>0.4315cm</Width>
@@ -4737,7 +4972,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.325in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4767,7 +5001,6 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox123</rd:DefaultName>
-                              <Top>0.10553in</Top>
                               <Left>0.97756in</Left>
                               <Height>0.4905cm</Height>
                               <Width>0.78075cm</Width>
@@ -4817,7 +5050,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.15in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -4906,7 +5139,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.75in</Height>
+                  <Height>0.6in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -5330,6 +5563,7 @@
                     <TablixMember />
                     <TablixMember />
                     <TablixMember />
+                    <TablixMember />
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
@@ -5337,7 +5571,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.0375in</Top>
             <Left>0.175in</Left>
-            <Height>9.60877in</Height>
+            <Height>9.12688in</Height>
             <Width>7.65994in</Width>
             <Style>
               <Border>
@@ -5346,7 +5580,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.94491in</Height>
+        <Height>9.16438in</Height>
         <Style />
       </Body>
       <Width>7.83494in</Width>
@@ -5367,6 +5601,9 @@
                   <Left>0.125in</Left>
                   <Height>0.76667in</Height>
                   <Width>1.80833in</Width>
+                  <Visibility>
+                    <Hidden>=Globals!PageNumber &gt; 1</Hidden>
+                  </Visibility>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -5403,6 +5640,9 @@
                   <Height>0.775in</Height>
                   <Width>5.73333in</Width>
                   <ZIndex>1</ZIndex>
+                  <Visibility>
+                    <Hidden>=Globals!PageNumber &gt; 1</Hidden>
+                  </Visibility>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -5467,9 +5707,8 @@
                     <TextRun>
                       <Value>F-812-10 Incoming Quality Inspection Rev A</Value>
                       <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>14pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -5605,4 +5844,23 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="PONo">
+          <DataField>PONo</DataField>
+        </Field>
+        <Field Name="PartNo">
+          <DataField>PartNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
